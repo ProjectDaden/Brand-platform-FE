@@ -1,0 +1,12 @@
+{
+    
+    "home-component": {
+        "title": "hallo Home"
+    },
+    "sidebar-component": {
+        "title": "hallo sidebar"
+    },
+    "preview-component": {
+        "title": "hallo preview"
+    }
+}
