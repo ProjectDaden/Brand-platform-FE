@@ -1,4 +1,4 @@
-import { Component, computed, input, signal, Signal, WritableSignal } from '@angular/core';
+import { Component, input, signal, Signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'daden-dropdown',
@@ -9,13 +9,16 @@ import { Component, computed, input, signal, Signal, WritableSignal } from '@ang
 })
 export class DropdownComponent {
 
-  colorThemes: Signal<string[]> = input(["select an item..."]);
+  items = input<string[]>([]);
+  placeholder = input<string>("");
   selectedColor: WritableSignal<string | null> = signal(null);
   isOpen: WritableSignal<boolean> = signal(false);
 
   // Method to select an item
-  selectItem(item: string) {
-    this.selectedColor.set(item);
+  selectItem(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.selectedColor.set(selectedValue);
+    console.log(this.selectedColor(), "<- currently selected item");
     // Optionally close the dropdown after selection
     // this.isOpen.set(false);
   }

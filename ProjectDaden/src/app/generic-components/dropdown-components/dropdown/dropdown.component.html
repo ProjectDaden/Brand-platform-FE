@@ -1,5 +1,7 @@
-<select>
-    @for (option of colorThemes() ?? []; track $index) {
+<select class="w-full p-2 border border-gray-300 rounded"
+    (change)="selectItem($event)">
+    <option value="" disabled selected>{{ placeholder() }}</option>
+    @for (option of items(); track $index) {
         <option>{{ option }}</option>
     }
 </select>

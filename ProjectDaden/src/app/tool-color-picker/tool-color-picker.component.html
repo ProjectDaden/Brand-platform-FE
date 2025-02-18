@@ -9,42 +9,34 @@
         <!-- Adjectives Dropdowns -->
         <h2 class="text-xl font-bold mb-4">Dropdowns</h2>
         <div class="my-8 flex flex-row gap-4">
-          <!-- <daden-dropdown [colorThemes]="items"></daden-dropdown> -->
-          <select class="w-full p-2 border border-gray-300 rounded">
-            <option value="" disabled selected>Select an adjective...</option>
-            <option value="bold">Bold</option>
-            <option value="elegant">Elegant</option>
-            <option value="youthful">Youthful</option>
-          </select>
+          <div class="w-full">
+            <daden-dropdown 
+              [items]="colorThemes()"
+              [placeholder]="colorThemePlaceholder()"></daden-dropdown>
+          </div>
           <!-- Mood dropdown -->
-          <select class="w-full p-2 border border-gray-300 rounded">
-            <option value="" disabled selected>Select a mood...</option>
-            <option value="happy">Happy</option>
-            <option value="serious">Serious</option>
-            <option value="energetic">Energetic</option>
-            <option value="luxurious">Luxurious</option>
-            <option value="playful">Playful</option>
-          </select>
+          <div class="w-full">
+            <daden-dropdown 
+              [items]="moods()"
+              [placeholder]="moodPlaceholder()">
+            </daden-dropdown>
+          </div>
           <!-- Keywords dropdown -->
-          <select class="w-full p-2 border border-gray-300 rounded">
-            <option value="" disabled selected>Select a keyword...</option>
-            <option value="calm">Calm</option>
-            <option value="trustworthy">Trustworthy</option>
-            <option value="Tech">Tech</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Health">Health</option>
-          </select>
+          <div class="w-full">
+            <daden-dropdown 
+              [items]="keywords()"
+              [placeholder]="keywordPlaceholder()">
+            </daden-dropdown>
+          </div>
         </div>
 
       <!-- Color Theory Dropdown -->
       <div class="mb-8">
         <h2 class="text-xl font-bold mb-4">Color Theory</h2>
-        <select class="w-full p-2 border border-gray-300 rounded">
-          <option value="" disabled selected>Select a color theory...</option>
-          <option value="complementary">Complementary</option>
-          <option value="analogous">Analogous</option>
-          <option value="triad">Triad</option>
-        </select>
+        <daden-dropdown
+          [items]="colorTheories()"
+          [placeholder]="colorTheoryPlaceholder()"
+        ></daden-dropdown>
       </div>
 
       <!-- Color Picker -->
