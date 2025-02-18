@@ -12,20 +12,24 @@
           <div class="w-full">
             <daden-dropdown 
               [items]="colorThemes()"
-              [placeholder]="colorThemePlaceholder()"></daden-dropdown>
+              [placeholder]="colorThemePlaceholder()"
+              (selectedValue)="handleSelection($event)">
+              ></daden-dropdown>
           </div>
           <!-- Mood dropdown -->
           <div class="w-full">
             <daden-dropdown 
               [items]="moods()"
-              [placeholder]="moodPlaceholder()">
+              [placeholder]="moodPlaceholder()"
+              (selectedValue)="handleSelection($event)">
             </daden-dropdown>
           </div>
           <!-- Keywords dropdown -->
           <div class="w-full">
             <daden-dropdown 
               [items]="keywords()"
-              [placeholder]="keywordPlaceholder()">
+              [placeholder]="keywordPlaceholder()"
+              (selectedValue)="handleSelection($event)">
             </daden-dropdown>
           </div>
         </div>
@@ -36,6 +40,7 @@
         <daden-dropdown
           [items]="colorTheories()"
           [placeholder]="colorTheoryPlaceholder()"
+          (selectedValue)="handleSelection($event)"
         ></daden-dropdown>
       </div>
 

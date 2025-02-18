@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { DropdownComponent } from "../generic-components/dropdown-components/dropdown/dropdown.component";
+import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/daden-dropdown.component";
 
 @Component({
   selector: 'tool-color-picker',
   standalone: true,
-  imports: [DropdownComponent],
+  imports: [DadenDropdownComponent],
   templateUrl: './tool-color-picker.component.html'
 })
 export class ToolColorPickerComponent {
@@ -18,4 +18,7 @@ export class ToolColorPickerComponent {
   colorTheories = signal<string[]>(['Complementary', 'Analogous', 'Triad']);
   colorTheoryPlaceholder = signal('Select a color theory...');
 
+  handleSelection(value: string|null): void {
+    console.log('Selection made!', value);
+  }
 }
