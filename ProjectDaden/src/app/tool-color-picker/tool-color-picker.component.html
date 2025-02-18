@@ -1,0 +1,264 @@
+   
+
+  <!-- Main Content (Color Tool - Flexible Width) -->
+  <div class="flex-grow bg-blue-50 h-screen overflow-y-auto"> 
+    <div class="bg-blue-50 m-auto max-w-screen-md p-8">
+      <h1 class="text-3xl font-bold">Color Palette</h1>
+      <p class=" text-m italic mb-8 opacity-75">Visual Identity</p>
+
+        <!-- Adjectives Dropdowns -->
+        <h2 class="text-xl font-bold mb-4">Dropdowns</h2>
+        <div class="my-8 flex flex-row gap-4">
+          <select class="w-full p-2 border border-gray-300 rounded">
+            <option value="" disabled selected>Select an adjective...</option>
+            <option value="bold">Bold</option>
+            <option value="elegant">Elegant</option>
+            <option value="youthful">Youthful</option>
+          </select>
+          <!-- Mood dropdown -->
+          <select class="w-full p-2 border border-gray-300 rounded">
+            <option value="" disabled selected>Select a mood...</option>
+            <option value="happy">Happy</option>
+            <option value="serious">Serious</option>
+            <option value="energetic">Energetic</option>
+            <option value="luxurious">Luxurious</option>
+            <option value="playful">Playful</option>
+          </select>
+          <!-- Keywords dropdown -->
+          <select class="w-full p-2 border border-gray-300 rounded">
+            <option value="" disabled selected>Select a keyword...</option>
+            <option value="calm">Calm</option>
+            <option value="trustworthy">Trustworthy</option>
+            <option value="Tech">Tech</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Health">Health</option>
+          </select>
+        </div>
+
+      <!-- Color Theory Dropdown -->
+      <div class="mb-8">
+        <h2 class="text-xl font-bold mb-4">Color Theory</h2>
+        <select class="w-full p-2 border border-gray-300 rounded">
+          <option value="" disabled selected>Select a color theory...</option>
+          <option value="complementary">Complementary</option>
+          <option value="analogous">Analogous</option>
+          <option value="triad">Triad</option>
+        </select>
+      </div>
+
+      <!-- Color Picker -->
+      <div class="mb-8">
+        <h2 class="text-xl font-bold mb-4">Color Picker</h2>
+
+        <div class="col-span-1 bg-white p-4 rounded-lg shadow-md">
+          <h2 class="text-lg font-semibold text-gray-700">Brand Colors</h2>
+          <!-- <div class="flex gap-2 mt-2">
+              <div class="w-12 h-12 rounded-lg bg-blue-500"></div>
+              <div class="w-12 h-12 rounded-lg bg-red-500"></div>
+              <div class="w-12 h-12 rounded-lg bg-yellow-500"></div>
+          </div> -->
+          <div class="flex flex-row gap-4 mt-4">
+            <div class="flex-1">
+                <label for="colorPicker" class="block text-sm font-medium text-gray-700">Primary color</label>
+                <input type="color" id="colorPicker" class="mt-1 block w-full" value="#3b82f6">
+            </div>
+            <div class="flex-1">
+                <label for="colorPicker" class="block text-sm font-medium text-gray-700">Secondary color</label>
+                <input type="color" id="colorPicker" class="mt-1 block w-full" value="#83f63c">
+            </div>
+            <div class="flex-1">
+                <label for="colorPicker" class="block text-sm font-medium text-gray-700">Tertiary color</label>
+                <input type="color" id="colorPicker" class="mt-1 block w-full" value="#f63c83">
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="w-64 h-64 bg-gray-300 rounded-full mx-auto">
+        </div> -->
+      </div>
+
+      <!-- Results -->
+      <div class="mb-8">
+        <h2 class="text-xl font-bold mb-4">Results</h2>
+
+        <!-- Primary color -->
+        <div class="mb-8 flex flex-wrap rounded-lg shadow-md overflow-hidden">
+          <div class="w-1/2 bg-white p-4" style="color:#3b82f6">
+            <h3 class="text-lg font-bold mb-2">Primary Color on light</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 0, 0, 0</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 bg-gray-800 p-4" style="color:#3b82f6">
+            <h3 class="text-lg font-bold mb-2">Primary Color on dark</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 255, 255, 255</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 text-white p-4" style="background-color:#3b82f6">
+            <h3 class="text-lg font-bold mb-2">Primary Color on light</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 0, 0, 0</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 text-gray-800 p-4" style="background-color:#3b82f6">
+            <h3 class="text-lg font-bold mb-2">Primary Color on dark</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 255, 255, 255</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary color -->
+        <div class="mb-8 flex flex-wrap rounded-lg shadow-md overflow-hidden">
+          <div class="w-1/2 bg-white p-4" style="color:#83f63c">
+            <h3 class="text-lg font-bold mb-2">Primary Color on light</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 0, 0, 0</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 bg-gray-800 p-4" style="color:#83f63c">
+            <h3 class="text-lg font-bold mb-2">Primary Color on dark</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 255, 255, 255</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 text-white p-4" style="background-color:#83f63c">
+            <h3 class="text-lg font-bold mb-2">Primary Color on light</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 0, 0, 0</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 text-gray-800 p-4" style="background-color:#83f63c">
+            <h3 class="text-lg font-bold mb-2">Primary Color on dark</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 255, 255, 255</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tertiary color -->
+        <div class="mb-8 flex flex-wrap rounded-lg shadow-md overflow-hidden">
+          <div class="w-1/2 bg-white p-4" style="color:#f63c83">
+            <h3 class="text-lg font-bold mb-2">Primary Color on light</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 0, 0, 0</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 bg-gray-800 p-4" style="color:#f63c83">
+            <h3 class="text-lg font-bold mb-2">Primary Color on dark</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 255, 255, 255</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 text-white p-4" style="background-color:#f63c83">
+            <h3 class="text-lg font-bold mb-2">Primary Color on light</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 0, 0, 0</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+          <div class="w-1/2 text-gray-800 p-4" style="background-color:#f63c83">
+            <h3 class="text-lg font-bold mb-2">Primary Color on dark</h3>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Hex: #3b82f6</p>
+              <p class="text-sm flex-1">RGB: 255, 255, 255</p>
+            </div>
+            <div class="flex flex-row gap-2">
+              <p class="text-sm flex-1">Contrast Ratio: 4.5:1</p>
+              <p class="text-sm flex-1">WCAG: AA</p>
+            </div>
+          </div>
+        </div>
+
+
+      <!-- Feelings Dropdowns -->
+      <!-- <div class="space-y-4 mb-8">
+        <select class="w-full p-2 border border-gray-300 rounded">
+          <option value="" disabled selected>Select a feeling...</option>
+          <option value="formal">Formal</option>
+          <option value="energetic">Energetic</option>
+          <option value="sustainable">Sustainable</option>
+        </select>
+      </div> -->
+
+      <!-- Color Picker -->
+      <!-- <div class="mb-8">
+        <h2 class="text-xl font-bold mb-4">Color Wheel</h2>
+        <div class="w-64 h-64 bg-gray-300 rounded-full mx-auto">
+        </div>
+      </div> -->
+
+      <!-- Color Theory Dropdown -->
+      <!-- <div class="mb-8">
+        <h2 class="text-xl font-bold mb-4">Color Theory</h2>
+        <select class="w-full p-2 border border-gray-300 rounded">
+          <option value="" disabled selected>Select a color theory...</option>
+          <option value="complementary">Complementary</option>
+          <option value="analogous">Analogous</option>
+          <option value="triad">Triad</option>
+        </select>
+      </div> -->
+
+      <!-- Save & Continue Button -->
+      <div class="pb-8">
+        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 float-right">
+          Save & Continue
+        </button>
+      </div>
+    </div>
+  </div>
