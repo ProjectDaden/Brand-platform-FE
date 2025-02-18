@@ -1,0 +1,5 @@
+<select>
+    @for (option of colorThemes() ?? []; track $index) {
+        <option>{{ option }}</option>
+    }
+</select>
