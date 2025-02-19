@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Branding Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .perspective {
+            transform: rotateX(20deg) rotateY(-10deg);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans flex items-center justify-center min-h-screen p-10">
+
+    <div class="flex gap-10">
+        
+        <!-- A4 Paper -->
+        <div class="bg-white w-[210mm] h-[297mm] p-10 perspective rounded-lg relative">
+            <img src="/assets/logo-placeholder.png" alt="Logo" class="w-32">
+            <h2 class="text-2xl font-bold text-gray-800 mt-6">Company Letterhead</h2>
+            <p class="text-gray-600 mt-2">This is a sample document preview, demonstrating how the brand elements, colors, and typography translate to print materials.</p>
+        </div>
+
+        <!-- Business Card -->
+        <div class="flex flex-col gap-4">
+
+            <!-- Business Card Front -->
+            <div class="w-[85mm] h-[55mm] bg-white p-4 perspective rounded-lg border border-gray-300 flex flex-col justify-center">
+                <h3 class="text-lg font-bold text-gray-800">John Doe</h3>
+                <p class="text-sm text-gray-600">Brand Designer</p>
+            </div>
+
+            <!-- Business Card Back -->
+            <div class="w-[85mm] h-[55mm] bg-blue-600 perspective rounded-lg flex items-center justify-center">
+                <img src="/assets/logo-placeholder-white.png" alt="Logo" class="w-16">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
