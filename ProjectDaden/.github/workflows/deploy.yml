@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - develop  # Trigger the workflow on pushes to the dev branch
+
+permissions:
+  contents: write  # Grant write permissions to the GITHUB_TOKEN
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'  # Specify the Node.js version you need
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to main branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/project-daden/browser/
+          publish_branch: main
