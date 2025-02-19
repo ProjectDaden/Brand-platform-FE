@@ -1,0 +1,31 @@
+{
+    "nav-side-bar": {
+        "categories": {
+            "core-brand-identity": {
+                "name": "Brand Name & Tagline",
+                "mission" : "Mission & Vision",
+                "values": "Brand Values & Personalities",
+                "audience": "Target Audience"
+            },
+            "brand-voice-and-tone": {
+                "messaging":"Messaging",
+                "voice-tone":"Voice & Tone",
+                "copywriting":"Copywriting"
+            },
+            "visual-identity": {
+                "logo":"Logo",
+                "color":"Color",
+                "typography":"Typography",
+                "imagery":"Imagery"
+            },
+            "application-and-implementation": {
+                "web-and-guidelines":"Website & UI Guidelines",
+                "socialmedia-styleguide":"Social Media Style Guide",
+                "print-offline-material":"Print & Offline Materials"
+            },
+            "settings": {
+
+            }
+        }
+    }
+}
