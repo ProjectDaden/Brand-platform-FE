@@ -12,5 +12,5 @@ import { ToolColorPickerComponent } from './features/tool-color-picker/tool-colo
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ProjectDaden';
+  title = 'ProjectDaden test';
 }
