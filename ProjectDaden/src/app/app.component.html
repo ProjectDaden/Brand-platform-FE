@@ -1,4 +1,15 @@
-  <div class="flex flex-col items-center justify-center h-screen bg-[#f6f7fe] text-[#040825] gap-4">
+<div class="flex">
+  <!-- Left Sidebar -->
+  <nav-sidebar class="flex min-h-screen"></nav-sidebar>
+
+  <!-- Main Content -->
+  <tool-color-picker class="flex-grow"></tool-color-picker>
+
+  <!-- Right Sidebar -->
+  <aside-previews class="w-96"></aside-previews>
+</div>
+
+<!-- <div class="flex flex-col items-center justify-center h-screen bg-[#f6f7fe] text-[#040825] gap-4">
     <svg id="logo" viewBox="0 0 360 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="w-28 h-28 text-[#040825] mx-auto">
       <path
         d="M197.802 229.09L156.175 240.173L123.445 118.802L165.072 107.719C178.198 104.225 190.221 103.721 201.141 106.209C212.199 108.46 221.584 113.455 229.298 121.193C237.149 128.694 242.759 138.69 246.127 151.181C249.446 163.486 249.618 174.93 246.643 185.514C243.857 196.047 238.267 205.128 229.874 212.758C221.618 220.152 210.927 225.596 197.802 229.09Z" />
@@ -18,5 +29,5 @@
             <p class="text-xs">View project on GitHub</p>
           </a>
     </footer>
-  </div>
+  </div> -->
 <router-outlet />
