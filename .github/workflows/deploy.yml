@@ -21,12 +21,6 @@ jobs:
         with:
           node-version: '22'  # Specify the Node.js version you need
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build site
-        run: npm run build
-
       - name: Deploy to main branch
         uses: peaceiris/actions-gh-pages@v3
         with:
