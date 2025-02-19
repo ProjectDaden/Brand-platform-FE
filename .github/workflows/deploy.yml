@@ -21,9 +21,19 @@ jobs:
         with:
           node-version: '22'  # Specify the Node.js version you need
 
+      - name: Install dependencies
+        run: |
+          cd ProjectDaden  # Change to the correct directory
+          npm install      # Install dependencies
+
+      - name: Build project
+        run: |
+          cd ProjectDaden  # Ensure we're in the correct directory
+          npm run build    # Run your build command, assuming it's defined in package.json
+
       - name: Deploy to main branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ProjectDaden/dist/project-daden/browser/
+          publish_dir: ./ProjectDaden/dist/project-daden/browser/  # Publish the built content
           publish_branch: main
