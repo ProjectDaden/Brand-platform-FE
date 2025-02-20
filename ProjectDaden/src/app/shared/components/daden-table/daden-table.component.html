@@ -2,20 +2,14 @@
   <thead>
     <tr>
       @for (column of columns(); track $index) {
-      <th class="px-4 py-2">{{ column }}</th>
+        <ng-container>
+          <th class="px-4 py-2">{{ column }}</th>
+        </ng-container>
       }
     </tr>
   </thead>
   <tbody>
-    @for (row of data(); track $index) {
-    <tr>
-      <ng-container
-        *ngTemplateOutlet="
-          rowTemplate;
-          context: { $implicit: row, context: context() }
-        "
-      ></ng-container>
-    </tr>
+    @for(row of data(); track $index) {
+      <ng-container *ngTemplateOutlet="rowTemplate(); context: { $implicit: row, context: context() }"></ng-container>
     }
   </tbody>
-</table>

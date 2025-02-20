@@ -12,17 +12,14 @@
     </app-daden-table>
 
     <ng-template #rowTemplate let-row let-context="context">
+      <tr>
         <td class="border px-4 py-2">{{ row.name }}</td>
-        @if (context().showAge) {
-          <td class="border px-4 py-2">{{ row.age }}</td>
-        }
+        @if (context.showAge) {
+        <td class="border px-4 py-2">{{ row.age }}</td>
         <td class="border px-4 py-2">{{ row.country }}</td>
+        <td class="border px-4 py-2">{{ row.mijnKlets }}</td>
+        }
+      </tr>
     </ng-template>
-
-    <!-- <p>{{ tableData | json }}</p> -->
-    <!-- Add this to see the data -->
-    <!-- <p>{{ tableColumns | json }}</p> -->
-    <!-- Add this to see the columns -->
-    <!-- <p>{{ additionalContext | json }}</p> -->
   </div>
 </div>
