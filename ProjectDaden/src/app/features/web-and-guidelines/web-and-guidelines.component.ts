@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-web-and-guidelines',
   imports: [],
   templateUrl: './web-and-guidelines.component.html',
-  styleUrl: './web-and-guidelines.component.scss'
+  styleUrl: './web-and-guidelines.component.scss',
+  standalone: true
 })
 export class WebAndGuidelinesComponent {
 

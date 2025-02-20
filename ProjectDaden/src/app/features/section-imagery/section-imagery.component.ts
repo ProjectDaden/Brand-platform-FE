@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-section-imagery',
   imports: [],
   templateUrl: './section-imagery.component.html',
-  styleUrl: './section-imagery.component.scss'
+  styleUrl: './section-imagery.component.scss',
+  standalone: true
 })
 export class SectionImageryComponent {
 

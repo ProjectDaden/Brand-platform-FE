@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-mission-vision',
   imports: [],
   templateUrl: './mission-vision.component.html',
-  styleUrl: './mission-vision.component.scss'
+  styleUrl: './mission-vision.component.scss',
+  standalone: true
 })
 export class MissionVisionComponent {
 

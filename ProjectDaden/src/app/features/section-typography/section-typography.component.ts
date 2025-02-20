@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-section-typography',
   imports: [],
   templateUrl: './section-typography.component.html',
-  styleUrl: './section-typography.component.scss'
+  styleUrl: './section-typography.component.scss',
+  standalone: true
 })
 export class SectionTypographyComponent {
 

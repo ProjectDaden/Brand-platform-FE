@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-target-audience',
   imports: [],
   templateUrl: './target-audience.component.html',
-  styleUrl: './target-audience.component.scss'
+  styleUrl: './target-audience.component.scss',
+  standalone: true
 })
 export class TargetAudienceComponent {
 

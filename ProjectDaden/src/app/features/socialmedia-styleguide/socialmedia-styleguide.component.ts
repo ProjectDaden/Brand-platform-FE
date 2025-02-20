@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-socialmedia-styleguide',
   imports: [],
   templateUrl: './socialmedia-styleguide.component.html',
-  styleUrl: './socialmedia-styleguide.component.scss'
+  styleUrl: './socialmedia-styleguide.component.scss',
+  standalone: true
 })
 export class SocialmediaStyleguideComponent {
 
