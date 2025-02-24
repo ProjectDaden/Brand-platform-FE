@@ -1,3 +1,4 @@
+import { brandColorTheme } from './models/brand-color-theme';
 import { Component, signal } from '@angular/core';
 import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/daden-dropdown.component";
 
@@ -9,16 +10,44 @@ import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/d
 })
 export class ToolColorPickerComponent {
 
-  colorThemes = signal<string[]>(['Bold', 'Elegant', 'Youthfull', "hallo"]);
+  colorThemes = brandColorTheme.genericSignalCollection().colorThemes;
+  moods = brandColorTheme.genericSignalCollection().moods;
+  keywords = brandColorTheme.genericSignalCollection().keywords;
+  colorTheories = brandColorTheme.genericSignalCollection().colorTheories;
+
   colorThemePlaceholder = signal('Select a color theme...');
-  moods = signal<string[]>(['Happy', 'Sad', 'Angry', 'Calm']);
   moodPlaceholder = signal('Select a mood...');
-  keywords = signal<string[]>(['Calm', 'Trustworthy', 'Tech', 'Fashion', 'Health']);
   keywordPlaceholder = signal('Select a keyword...');
-  colorTheories = signal<string[]>(['Complementary', 'Analogous', 'Triad']);
   colorTheoryPlaceholder = signal('Select a color theory...');
 
   handleSelection(value: string|null): void {
     console.log('Selection made!', value);
   }
+
+  private initializeSignal<T>(value: T): T {
+    return value;
+  }
+
+  // updateValue(field: keyof typeof this.selectedData['value'], value: any) {
+  //   // Only update if the new value is different
+  //   if (this.selectedData()[field] !== value) {
+  //     this.selectedData.update((data) => ({
+  //       ...data,
+  //       [field]: value,
+  //     }));
+  //   }
+  // }
+
+  // // Method to submit data to the backend
+  // submit() {
+  //   const jsonData = this.selectedData(); // Directly use the signal value
+  //   this.http.post('your-backend-endpoint', jsonData).subscribe({
+  //     next: (response) => {
+  //       console.log('Data submitted successfully:', response);
+  //     },
+  //     error: (error) => {
+  //       console.error('Error submitting data:', error);
+  //     },
+  //   });
+  // }
 }
