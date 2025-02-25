@@ -10,6 +10,20 @@
       [context]="additionalContext()"
     >
     </app-daden-table>
+    <br />
+
+    <app-daden-card 
+      [title]="'Dynamic Card Title'" 
+      [description]="'This is a dynamic description for the card.'" 
+      [imageUrl]="'someRef'">
+    </app-daden-card>
+    <br />
+
+    <app-daden-input (valueChange)="onInputValueChange($event)"></app-daden-input>
+
+    <!-- <app-daden-input
+    (input)="onInputChange($event)">
+    </app-daden-input> -->
 
     <ng-template #rowTemplate let-row let-context="context">
       <tr>
@@ -21,5 +35,13 @@
         <td class="border px-4 py-2">{{ row.mijnKlets }}</td>
       </tr>
     </ng-template>
+
+    <br />
+    <div>
+      <h3>Current Color Themes:</h3>
+      <ul>
+        <li *ngFor="let theme of currentThemes.colorThemes">{{ theme }}</li>
+      </ul>
+    </div>
   </div>
 </div>

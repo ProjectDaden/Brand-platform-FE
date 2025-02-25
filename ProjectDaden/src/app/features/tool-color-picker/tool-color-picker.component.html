@@ -11,7 +11,7 @@
         <div class="my-8 flex flex-row gap-4">
           <div class="w-full">
             <daden-dropdown 
-              [items]="colorThemes"
+              [items]="themes.colorThemes"
               [placeholder]="colorThemePlaceholder()"
               (selectedValue)="handleSelection($event)">
               ></daden-dropdown>
@@ -19,7 +19,7 @@
           <!-- Mood dropdown -->
           <div class="w-full">
             <daden-dropdown 
-              [items]="moods"
+              [items]="themes.moods"
               [placeholder]="moodPlaceholder()"
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>
@@ -27,7 +27,7 @@
           <!-- Keywords dropdown -->
           <div class="w-full">
             <daden-dropdown 
-              [items]="keywords"
+              [items]="themes.keywords"
               [placeholder]="keywordPlaceholder()"
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>
@@ -38,7 +38,7 @@
       <div class="mb-8">
         <h2 class="text-xl font-bold mb-4">Color Theory</h2>
         <daden-dropdown
-          [items]="colorTheories"
+          [items]="themes.colorTheories"
           [placeholder]="colorTheoryPlaceholder()"
           (selectedValue)="handleSelection($event)"
         ></daden-dropdown>

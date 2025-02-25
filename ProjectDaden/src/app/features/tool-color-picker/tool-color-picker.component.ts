@@ -1,6 +1,6 @@
-import { brandColorTheme } from './models/brand-color-theme';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/daden-dropdown.component";
+import { BrandColorThemeService } from './services/brand-color-theme.service';
 
 @Component({
   selector: 'tool-color-picker',
@@ -10,10 +10,14 @@ import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/d
 })
 export class ToolColorPickerComponent {
 
-  colorThemes = brandColorTheme.genericSignalCollection().colorThemes;
-  moods = brandColorTheme.genericSignalCollection().moods;
-  keywords = brandColorTheme.genericSignalCollection().keywords;
-  colorTheories = brandColorTheme.genericSignalCollection().colorTheories;
+  brandColorThemeService = inject(BrandColorThemeService);
+
+  themes = this.brandColorThemeService.getBrandColorTheme();
+
+  // colorThemes = brandColorTheme.genericSignalCollection().colorThemes;
+  // moods = brandColorTheme.genericSignalCollection().moods;
+  // keywords = brandColorTheme.genericSignalCollection().keywords;
+  // colorTheories = brandColorTheme.genericSignalCollection().colorTheories;
 
   colorThemePlaceholder = signal('Select a color theme...');
   moodPlaceholder = signal('Select a mood...');
