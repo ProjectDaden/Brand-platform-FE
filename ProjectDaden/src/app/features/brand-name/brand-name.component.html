@@ -53,6 +53,9 @@
       <daden-slider [slides]="slides"></daden-slider>
     </div>
 
+    <daden-value-slider [min]="0" [max]="100" [step]="1" [(value)]="sliderValue" (valueChange)="onSliderChange($event)">
+    </daden-value-slider>
+
     <div class="flex justify-around items-center p-6 bg-gray-100">
       <!-- Home Icon -->
       <div class="flex flex-col items-center">
