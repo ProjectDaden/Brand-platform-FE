@@ -1,7 +1,7 @@
    
 
   <!-- Main Content (Color Tool - Flexible Width) -->
-  <div class="flex-grow bg-blue-50 h-screen overflow-y-auto"> 
+  <div class="flex-grow bg-blue-50 max-h-screen overflow-y-auto"> 
     <div class="bg-blue-50 m-auto max-w-screen-md p-8">
       <h1 class="text-3xl font-bold">Color Palette</h1>
       <p class=" text-m italic mb-8 opacity-75">Visual Identity</p>
@@ -11,7 +11,7 @@
         <div class="my-8 flex flex-row gap-4">
           <div class="w-full">
             <daden-dropdown 
-              [items]="colorThemes()"
+              [items]="colorThemes"
               [placeholder]="colorThemePlaceholder()"
               (selectedValue)="handleSelection($event)">
               ></daden-dropdown>
@@ -19,7 +19,7 @@
           <!-- Mood dropdown -->
           <div class="w-full">
             <daden-dropdown 
-              [items]="moods()"
+              [items]="moods"
               [placeholder]="moodPlaceholder()"
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>
@@ -27,7 +27,7 @@
           <!-- Keywords dropdown -->
           <div class="w-full">
             <daden-dropdown 
-              [items]="keywords()"
+              [items]="keywords"
               [placeholder]="keywordPlaceholder()"
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>
@@ -38,7 +38,7 @@
       <div class="mb-8">
         <h2 class="text-xl font-bold mb-4">Color Theory</h2>
         <daden-dropdown
-          [items]="colorTheories()"
+          [items]="colorTheories"
           [placeholder]="colorTheoryPlaceholder()"
           (selectedValue)="handleSelection($event)"
         ></daden-dropdown>

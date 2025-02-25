@@ -1,11 +1,10 @@
-<div class="flex">
-  <!-- Left Sidebar -->
-  <nav-sidebar class="flex h-screen"></nav-sidebar>
-
-  <!-- Main Content -->
-  <tool-color-picker class="flex-grow"></tool-color-picker>
-
-  <!-- Right Sidebar -->
-  <aside-previews class="w-96"></aside-previews>
+<div class="flex max-h-auto">
+    <nav-sidebar class="flex"></nav-sidebar>
+  <div class="flex-1">
+    <div class="h-full">
+      <!-- Main Content (Router Outlet) -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+    <aside-previews class="flex right-0 top-0"></aside-previews>
 </div>
-<router-outlet />

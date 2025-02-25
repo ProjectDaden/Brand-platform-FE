@@ -1,0 +1,25 @@
+<div class="flex-grow bg-blue-50 h-screen overflow-y-auto">
+  <div class="bg-blue-50 m-auto max-w-screen-md p-8">
+    <h1 class="text-3xl font-bold">Brand name & tagline</h1>
+    <p class="text-m italic mb-8 opacity-75">Brand Identity and Tagline</p>
+
+    <app-daden-table
+      [data]="tableData()"
+      [columns]="tableColumns()"
+      [rowTemplate]="rowTemplate"
+      [context]="additionalContext()"
+    >
+    </app-daden-table>
+
+    <ng-template #rowTemplate let-row let-context="context">
+      <tr>
+        <td class="border px-4 py-2">{{ row.name }}</td>
+        @if (context.showAge) {
+          <td class="border px-4 py-2">{{ row.age }}</td>
+        }
+        <td class="border px-4 py-2">{{ row.country }}</td>
+        <td class="border px-4 py-2">{{ row.mijnKlets }}</td>
+      </tr>
+    </ng-template>
+  </div>
+</div>
