@@ -3,18 +3,12 @@
     <h1 class="text-3xl font-bold">Brand name & tagline</h1>
     <p class="text-m italic mb-8 opacity-75">Brand Identity and Tagline</p>
 
-    <app-daden-table
-      [data]="tableData()"
-      [columns]="tableColumns()"
-      [rowTemplate]="rowTemplate"
-      [context]="additionalContext()"
-    >
+    <app-daden-table [data]="tableData()" [columns]="tableColumns()" [rowTemplate]="rowTemplate"
+      [context]="additionalContext()">
     </app-daden-table>
     <br />
 
-    <app-daden-card 
-      [title]="'Dynamic Card Title'" 
-      [description]="'This is a dynamic description for the card.'" 
+    <app-daden-card [title]="'Dynamic Card Title'" [description]="'This is a dynamic description for the card.'"
       [imageUrl]="'someRef'">
     </app-daden-card>
     <br />
@@ -29,7 +23,7 @@
       <tr>
         <td class="border px-4 py-2">{{ row.name }}</td>
         @if (context.showAge) {
-          <td class="border px-4 py-2">{{ row.age }}</td>
+        <td class="border px-4 py-2">{{ row.age }}</td>
         }
         <td class="border px-4 py-2">{{ row.country }}</td>
         <td class="border px-4 py-2">{{ row.mijnKlets }}</td>
@@ -40,8 +34,68 @@
     <div>
       <h3>Current Color Themes:</h3>
       <ul>
-        <li *ngFor="let theme of currentThemes.colorThemes">{{ theme }}</li>
+        @for (theme of currentThemes.colorThemes; track theme) {
+        <li>{{ theme }}</li>
+        }
       </ul>
     </div>
+    <div style="margin: 30px;">
+      @if( isLoading ) {
+      <daden-loading></daden-loading>
+      }
+    </div>
+    <div class="bg-blue-50">
+      <daden-pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (pageChange)="onPageChange($event)">
+      </daden-pagination>
+    </div>
+
+    <div style="margin: 30px;">
+      <daden-slider [slides]="slides"></daden-slider>
+    </div>
+
+    <div class="flex justify-around items-center p-6 bg-gray-100">
+      <!-- Home Icon -->
+      <div class="flex flex-col items-center">
+        <svg class="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3L3 9h2v8h4V12h2v5h4V9h2L10 3z" />
+        </svg>
+        <span class="mt-2 text-gray-700">Home</span>
+      </div>
+
+      <!-- User Icon -->
+      <div class="flex flex-col items-center">
+        <svg class="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3a7 7 0 100 14 7 7 0 000-14zM3 17a9 9 0 0118 0H3z" />
+        </svg>
+        <span class="mt-2 text-gray-700">User</span>
+      </div>
+
+      <!-- Settings Icon -->
+      <div class="flex flex-col items-center">
+        <svg class="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2a1 1 0 00-1 1v1H7a1 1 0 000 2h2v1a1 1 0 002 0v-1h2a1 1 0 000-2h-2V4a1 1 0 00-1-1z" />
+          <path fill-rule="evenodd" d="M4 10a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z" clip-rule="evenodd" />
+        </svg>
+        <span class="mt-2 text-gray-700">Settings</span>
+      </div>
+
+      <!-- Logout Icon -->
+      <div class="flex flex-col items-center">
+        <svg class="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3a1 1 0 00-1 1v1H7a1 1 0 000 2h2v1a1 1 0 002 0v-1h2a1 1 0 000-2h-2V4a1 1 0 00-1-1z" />
+          <path fill-rule="evenodd" d="M4 10a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z" clip-rule="evenodd" />
+        </svg>
+        <span class="mt-2 text-gray-700">Logout</span>
+      </div>
+
+      <!-- Search Icon -->
+      <div class="flex flex-col items-center">
+        <svg class="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.5 3a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM1 8.5a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0z" />
+        </svg>
+        <span class="mt-2 text-gray-700">Search</span>
+      </div>
+    </div>
+
   </div>
 </div>

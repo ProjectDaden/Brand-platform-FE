@@ -1,0 +1,22 @@
+<div class="relative w-full overflow-hidden">
+    <div class="flex transition-transform duration-500 ease-in-out"
+        [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
+        @for (slide of slides(); track $index) {
+        <div class="w-full flex-shrink-0">
+            <img [src]="slide" alt="Slide" class="w-full h-auto object-cover" />
+        </div>
+        }
+    </div>
+
+    <button (click)="prevSlide()"
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+        &#10094;
+        <!-- Left Arrow -->
+    </button>
+
+    <button (click)="nextSlide()"
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+        &#10095;
+        <!-- Right Arrow -->
+    </button>
+</div>
