@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { NavigationService } from './services/nav-sidebar.service';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'nav-sidebar',
@@ -10,6 +11,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavSidebarComponent {
   private navigationService = inject(NavigationService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
   
   categories = computed(() => 
     Object.entries(this.navigationService.navigation())
@@ -30,5 +33,10 @@ export class NavSidebarComponent {
       key,
       value: value as string
     }));
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

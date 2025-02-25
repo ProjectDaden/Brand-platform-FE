@@ -1,10 +1,14 @@
 <div class="flex max-h-auto">
-    <nav-sidebar class="flex"></nav-sidebar>
+  @if(this.isLoggedIn()) {
+  <nav-sidebar class="flex"></nav-sidebar>
+  }
   <div class="flex-1">
     <div class="h-full">
       <!-- Main Content (Router Outlet) -->
       <router-outlet></router-outlet>
     </div>
   </div>
-    <aside-previews class="flex right-0 top-0"></aside-previews>
+  @if(this.isLoggedIn()) {
+  <aside-previews class="flex right-0 top-0"></aside-previews>
+  }
 </div>
