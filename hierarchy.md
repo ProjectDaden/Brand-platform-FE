@@ -9,7 +9,6 @@
 |  |  |  |  | Dropdown: psychographic | Interests, Behaviors,  |  |
 |  |  |  |  | Dropdown: gains | What they want to achieve, goals, needs, aspirations |  |  |
 |  |  |  |  | Dropdown: pains | What they want to avoid, fears, frustrations, obstacles |  |  |
-|  |  | Brand Positioning |  |  |  |  | Generate company names and taglines that share they goals |
 |  |  | Brand name & Tagline | Thesaurus |  |  |  | Synonyms for and that align with industry/personality/values/mission |
 |  |  |  |  | Radio button: Tagline | TaglineUsed (not set, yes, no) |  |
 |  |  |  |  | Text input: Tagline | Tagline | Tagline (string) |
@@ -24,7 +23,12 @@
 |  |  | Copywriting |  | Editable text fields |  | Pull data from the brand name, problem, messaging and voice/tone sections to pre-populate templates | Pick or customize templates for pages like “About Us” or product descriptions |
 |  |  Visual Identity |  |  |  |  |  |
 |  |  | Logo |  |  |  | Appears across all preview views | Use a logo maker with templates or upload a custom design with logo variations (e.g., primary, secondary, icon-only) |
-|  |  | Color |  |  |  |  | Provide a color palette generator that suggests colors based on the brand personality (e.g., bold colors for "Rebel," muted tones for "Sage") |
+|  |  | Color |  |  |  |  | Provide a color palette generator that suggests colors based on previous choices |
+|  |  |  |  | Multi-select: Industry/Personality/Values |  |  |  |
+|  |  |  | Color Picker |  |  |  | Colors are highlighted based on industry/personality/values, color with highest correlation is pre-picked, user can still change hue/sat/lum |
+|  |  |  |  | Dropdown: Color scheme | Tone (hue minus saturation) = professional, Shades (hue plus black), tint (hue plus white), Analogous (adjacent hues), Complementary (2 hues, +180 degrees), Triad (3 hues, +120/+240 degrees) |  |  |
+|  |  |  |  | Color preview |  | Tone/Shades/Tint |  |
+|  |  |  | Color results test (Contrast & WCAG compliance) |  |  |
 |  |  | Typography |  | Include options for headings, body text, and accents |  | Curate font pairs that align with the brand personality (e.g., modern sans-serif for "Explorer," classic serif for "Ruler") | Select font pairs from a curated list or upload custom fonts |
 |  |  |  Imagery |  |  |  | Offer filters based on the target audience and personality. For example, a "Lover" personality might see romantic, warm imagery, while "Everyman" sees relatable, everyday scenes | Choose styles (e.g., “minimalist photos”) or pick from a filtered stock library |
 |  | Application & Implementation |  |  |  |  |  |
