@@ -7,6 +7,7 @@ import { BrandColorThemeService } from '../tool-color-picker/services/brand-colo
 import { DadenLoadingComponent } from "../../shared/components/daden-loading/daden-loading.component";
 import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
 import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
+import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
 
 @Component({
   selector: 'app-brand-name',
@@ -17,7 +18,9 @@ import { DadenSliderComponent } from '../../shared/components/daden-slider/daden
     DadenInputComponent, 
     DadenLoadingComponent, 
     DadenPaginationComponent,
-    DadenSliderComponent],
+    DadenSliderComponent,
+    DadenValueSliderComponent
+  ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
   standalone: true,
@@ -26,7 +29,14 @@ export class BrandNameComponent {
 
   prop1 = inject(BrandColorThemeService);
 
-  
+  // Value-Slider variables
+  sliderValue: number = 50; // Initial value for the slider
+
+  onSliderChange(value: number) {
+    console.log('Slider Value:', value);
+  }
+
+  // Slider component
   slides: string[] = [
     '/assets/image1.jpg',
     '/assets/image2.jpg',
