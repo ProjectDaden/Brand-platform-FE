@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
+import { DadenLoginComponent } from './shared/components/daden-login/daden-login.component';
+import { ToolColorPickerComponent } from './features/tool-color-picker/tool-color-picker.component';
+import { AuthGuard } from './auth.service';
 
 export const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'color-picker'
-  },
+  { path: 'login', component: DadenLoginComponent },
+  { path: 'color-picker', component: ToolColorPickerComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'color-picker',
     loadComponent: () => import('./features/tool-color-picker/tool-color-picker.component')
@@ -105,5 +106,6 @@ export const routes: Routes = [
         ]
       },
     ]
-  }
+  },
+  { path: '**', redirectTo: '/color-picker' },
 ];
