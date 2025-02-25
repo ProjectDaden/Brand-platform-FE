@@ -4,8 +4,11 @@
   }
   <div class="flex-1">
     <div class="h-full">
-      <!-- Main Content (Router Outlet) -->
-      <router-outlet></router-outlet>
+      @if( isLoading ) {
+        <daden-loading></daden-loading>
+      } @else {
+        <router-outlet></router-outlet>
+      }
     </div>
   </div>
   @if(this.isLoggedIn()) {
