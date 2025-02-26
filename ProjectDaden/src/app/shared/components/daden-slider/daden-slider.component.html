@@ -2,21 +2,32 @@
     <div class="flex transition-transform duration-500 ease-in-out"
         [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
         @for (slide of slides(); track $index) {
-        <div class="w-full flex-shrink-0">
-            <img [src]="slide" alt="Slide" class="w-full h-auto object-cover" />
+        <div class="mx-6 max-w-fit flex-shrink-0">
+            <img [src]="slide" alt="Slide" class="w-full h-full my-auto object-contain" />
         </div>
         }
     </div>
 
     <button (click)="prevSlide()"
-        class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
-        &#10094;
+        class="absolute left-0 top-1/2 transform -translate-y-1/2
+        p-2 h-10 w-10 rounded-full
+        bg-white text-blue-900 shadow-md    
+        hover:bg-blue-300 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+          
         <!-- Left Arrow -->
     </button>
 
     <button (click)="nextSlide()"
-        class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
-        &#10095;
+        class="absolute right-0 top-1/2 transform -translate-y-1/2
+        p-2 h-10 w-10 rounded-full
+        bg-white text-blue-900 shadow-md  
+        hover:bg-blue-300 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
         <!-- Right Arrow -->
     </button>
 </div>

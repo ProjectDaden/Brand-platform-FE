@@ -20,11 +20,11 @@ Below is the connection list that maps the relationships between inputs (user in
 
 **Inputs**:
 - Dropdown: `Industry (string)` (e.g., Technology, Retail, Education)
-- Multi-select: `Personality (name)` with `Traits (value, value, value)` (e.g., Hero: Bold, Determined, Strong)
-- Multi-select: `Values (string)` (e.g., Sustainability, Growth, Community)
+- Multi-select:  `Traits (value, value, value)` (e.g., archetype traits)
+- Multi-select: `Personality (name)` with (e.g., 12archetypes, decided from the traits, but can be changed)
 
 **Outputs**:
-- Data: `Industry (string)`, `Personality (name)`, `Traits (value, value, value)`, `Values (string)`
+- Data: `Industry (string)`, `Personality (name)`, `Traits (value, value, value)`
 
 **Connection**:
 - **Tone of Voice**: `Personality` suggests initial slider positions in **Tone of Voice** (e.g., "Jester" sets `playfulness` high).
