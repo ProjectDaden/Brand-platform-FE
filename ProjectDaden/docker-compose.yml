@@ -1,0 +1,11 @@
+
+services:
+  angular-app:
+    build: .
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+    command: npm start
+    environment:
+      - NODE_ENV=development
