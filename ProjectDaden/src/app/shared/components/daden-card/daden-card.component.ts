@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
 export class DadenCardComponent {
   title = input<string>('Default Title');
   description = input<string>('Default description');
-  imageUrl = input<string>('someImgRef');
-  showImage = input<boolean>(true);
+  imageUrl = input<string>('');
+  tags = input<string[]>([]);
 
   constructor() {}
 }

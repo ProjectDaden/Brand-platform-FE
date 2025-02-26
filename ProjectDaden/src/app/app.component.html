@@ -1,9 +1,9 @@
-<div class="flex max-h-auto">
+<div class="flex flex-row max-h-screen">
   @if(this.isLoggedIn()) {
   <nav-sidebar class="flex"></nav-sidebar>
   }
   <div class="flex-1">
-    <div class="h-full">
+    <div class="">
       @if( isLoading ) {
         <daden-loading></daden-loading>
       } @else {
@@ -12,6 +12,6 @@
     </div>
   </div>
   @if(this.isLoggedIn()) {
-  <aside-previews class="flex right-0 top-0"></aside-previews>
+  <aside-previews class="flex"></aside-previews>
   }
 </div>
