@@ -22,10 +22,10 @@
                 "web-and-guidelines":"Website & UI Guidelines",
                 "socialmedia-styleguide":"Social Media Style Guide",
                 "print-offline-material":"Print & Offline Materials"
-            },
-            "settings": {
-
             }
+        },
+        "settings": {
+
         }
     }
 }

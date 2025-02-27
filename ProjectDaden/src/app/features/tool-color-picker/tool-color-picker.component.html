@@ -18,7 +18,7 @@
             <label class="block text-sm font-medium mb-2">Industry</label>
             <daden-dropdown 
               class="w-full" 
-              [items]="themes.colorThemes" 
+              [items]="themes.industries" 
               [placeholder]="colorThemePlaceholder()" 
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>
@@ -27,7 +27,7 @@
             <label class="block text-sm font-medium mb-2">Personality</label>
             <daden-dropdown 
               class="w-full" 
-              [items]="themes.moods" 
+              [items]="themes.personalities" 
               [placeholder]="moodPlaceholder()" 
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>
@@ -36,7 +36,7 @@
             <label class="block text-sm font-medium mb-2">Values</label>
             <daden-dropdown 
               class="w-full" 
-              [items]="themes.keywords" 
+              [items]="themes.values" 
               [placeholder]="keywordPlaceholder()" 
               (selectedValue)="handleSelection($event)">
             </daden-dropdown>

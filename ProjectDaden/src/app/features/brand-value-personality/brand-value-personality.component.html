@@ -16,42 +16,34 @@
           <!-- Industry Dropdown -->
           <div>
             <label class="block text-sm font-medium mb-2">Industry</label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <daden-dropdown
+                class="w-full" 
+                [items]="brandPersonalityValues.industries"
+                [placeholder]="'Select your industry...'"
+                (selectedValue)="handleSelection($event)"
+              ></daden-dropdown>
               <option value="" disabled selected>Select your industry...</option>
-              <option value="technology">Technology</option>
-              <option value="retail">Retail</option>
-              <option value="education">Education</option>
-              <option value="healthcare">Healthcare</option>
-              <option value="finance">Finance</option>
-            </select>
           </div>
           
           <!-- Traits Multi-select -->
           <div>
             <label class="block text-sm font-medium mb-2">Traits</label>
-            <select multiple class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all h-32">
-              <option value="innovative">Innovative</option>
-              <option value="trustworthy">Trustworthy</option>
-              <option value="playful">Playful</option>
-              <option value="sustainable">Sustainable</option>
-              <option value="reliable">Reliable</option>
-              <option value="bold">Bold</option>
-            </select>
+            <daden-multi-list-selection 
+            [options]="brandPersonalityValues.traits" 
+            (selectionChange)="handleSelectionChange($event)"
+            ></daden-multi-list-selection>
             <p class="text-sm opacity-50 mt-1">Hold Ctrl (or Cmd) to select multiple traits.</p>
           </div>
           
           <!-- Personality Single-select -->
           <div>
             <label class="block text-sm font-medium mb-2">Personality</label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-              <option value="" disabled selected>Select a personality...</option>
-              <option value="creator">Creator</option>
-              <option value="jester">Jester</option>
-              <option value="explorer">Explorer</option>
-              <option value="caregiver">Caregiver</option>
-              <option value="hero">Hero</option>
-              <option value="sage">Sage</option>
-            </select>
+            <daden-dropdown
+              class="w-full" 
+              [items]="brandPersonalityValues.personalities"
+              [placeholder]="'Select a personality...'"
+              (selectedValue)="handleSelection($event)"
+            ></daden-dropdown>
             <p class="text-sm opacity-50 mt-1">Choose one personality to define your brand.</p>
           </div>
         </div>

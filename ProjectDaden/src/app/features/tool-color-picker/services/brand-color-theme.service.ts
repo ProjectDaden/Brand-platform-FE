@@ -1,5 +1,5 @@
-import { Injectable, signal } from '@angular/core';
-import { BrandColorTheme, } from '../models/brand-color-theme';
+import { Injectable } from '@angular/core';
+import { BrandColorTheme, brandColorTheme } from '../models/brand-color-theme';
 import { SignalCollection } from '../../../shared/models/signal-object-creation';
 
 @Injectable({
@@ -7,21 +7,15 @@ import { SignalCollection } from '../../../shared/models/signal-object-creation'
 })
 export class BrandColorThemeService {
   
-  // All these arrays can be fetched from the backend when the time is there.
-  public colorPaletteCollection: SignalCollection<BrandColorTheme> = {
-    genericSignalCollection: signal({
-      colorThemes: ['Bold', 'Elegant', 'Youthful', 'Hallo', "Nog een prop"],
-      moods: ['Happy', 'Sad', 'Angry', 'Calm', 'explosive'],
-      keywords: ['Calm', 'Trustworthy', 'Tech', 'Fashion', 'Health'],
-      colorTheories: ['Complementary', 'Analogous', 'Triad'],
-    })};
+  // All these brandColorTheme arrays can be fetched from the backend when the time is there.
+  public colorPaletteCollection: SignalCollection<BrandColorTheme> = brandColorTheme;
 
   constructor() { };
 
   addColorTheme(newTheme: string) {
     this.colorPaletteCollection.genericSignalCollection.update((current) => ({
       ...current,
-      colorThemes: [...current.colorThemes, newTheme], // Create a new array
+      industries: [...current.industries, newTheme], // Create a new array
     }));
   }
 
@@ -29,14 +23,14 @@ export class BrandColorThemeService {
     removeColorTheme(themeToRemove: string) {
       this.colorPaletteCollection.genericSignalCollection.update((current) => ({
         ...current,
-        colorThemes: current.colorThemes.filter((theme) => theme !== themeToRemove),
+        industries: current.industries.filter((theme) => theme !== themeToRemove),
       }));
     }
   
     // Method to update a mood
     updateMood(newMood: string, index: number) {
       this.colorPaletteCollection.genericSignalCollection.update((current) => {
-        const updatedMoods = [...current.moods];
+        const updatedMoods = [...current.personalities];
         updatedMoods[index] = newMood;
         return { ...current, moods: updatedMoods };
       });
@@ -46,7 +40,7 @@ export class BrandColorThemeService {
     addKeyword(newKeyword: string) {
       this.colorPaletteCollection.genericSignalCollection.update((current) => ({
         ...current,
-        keywords: [...current.keywords, newKeyword],
+        values: [...current.values, newKeyword],
       }));
     }
   
@@ -54,7 +48,7 @@ export class BrandColorThemeService {
     removeKeyword(keywordToRemove: string) {
       this.colorPaletteCollection.genericSignalCollection.update((current) => ({
         ...current,
-        keywords: current.keywords.filter((keyword) => keyword !== keywordToRemove),
+        keywords: current.values.filter((value) => value !== keywordToRemove),
       }));
     }
   
