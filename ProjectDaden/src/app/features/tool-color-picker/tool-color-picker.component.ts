@@ -14,11 +14,6 @@ export class ToolColorPickerComponent {
 
   themes = this.brandColorThemeService.getBrandColorTheme();
 
-  // colorThemes = brandColorTheme.genericSignalCollection().colorThemes;
-  // moods = brandColorTheme.genericSignalCollection().moods;
-  // keywords = brandColorTheme.genericSignalCollection().keywords;
-  // colorTheories = brandColorTheme.genericSignalCollection().colorTheories;
-
   colorThemePlaceholder = signal('Select a color theme...');
   moodPlaceholder = signal('Select a mood...');
   keywordPlaceholder = signal('Select a keyword...');

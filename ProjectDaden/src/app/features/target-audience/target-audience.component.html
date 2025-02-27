@@ -1,7 +1,111 @@
+<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
+  <div class="m-auto max-w-screen-md p-8">
+    <!-- Header -->
+    <header class="text-center">
+      <h1 class="text-4xl font-bold text-blue-900">Target Audience</h1>
+      <p class="text-lg italic mb-8 opacity-75">Understanding Who You Serve</p>
+    </header>
 
-<div class="flex-grow bg-blue-50 h-screen overflow-y-auto"> 
-    <div class="bg-blue-50 m-auto max-w-screen-md p-8">
-      <h1 class="text-3xl font-bold">Target audience</h1>
-      <p class=" text-m italic mb-8 opacity-75">Brand Identity and Tagline</p>
+    <!-- Inputs Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Audience Profile</h2>
+        <p class="text-sm opacity-75 mb-4">Define your audience’s demographics, interests, goals, and challenges.</p>
+        
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Demographic: Age -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Age Group</label>
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="" disabled selected>Select an age group...</option>
+              <option value="18-24">18-24</option>
+              <option value="25-34">25-34</option>
+              <option value="35-44">35-44</option>
+              <option value="45-64">45-64</option>
+              <option value="65+">65+</option>
+            </select>
+          </div>
+          
+          <!-- Demographic: Location -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Location</label>
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="" disabled selected>Select a location...</option>
+              <option value="urban">Urban</option>
+              <option value="suburban">Suburban</option>
+              <option value="rural">Rural</option>
+              <option value="global">Global</option>
+            </select>
+          </div>
+          
+          <!-- Psychographic: Interests -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Interests</label>
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="" disabled selected>Select an interest...</option>
+              <option value="technology">Technology</option>
+              <option value="wellness">Wellness</option>
+              <option value="travel">Travel</option>
+              <option value="education">Education</option>
+              <option value="entertainment">Entertainment</option>
+            </select>
+          </div>
+          
+          <!-- Psychographic: Behaviors -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Behaviors</label>
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="" disabled selected>Select a behavior...</option>
+              <option value="early-adopter">Early Adopter</option>
+              <option value="value-driven">Value-Driven</option>
+              <option value="community-focused">Community-Focused</option>
+              <option value="trend-follower">Trend Follower</option>
+            </select>
+          </div>
+          
+          <!-- Gains -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Goals & Aspirations</label>
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="" disabled selected>Select a goal...</option>
+              <option value="success">Achieve Success</option>
+              <option value="connection">Build Connections</option>
+              <option value="growth">Personal Growth</option>
+              <option value="security">Financial Security</option>
+            </select>
+          </div>
+          
+          <!-- Pains -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Fears & Frustrations</label>
+            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="" disabled selected>Select a challenge...</option>
+              <option value="uncertainty">Uncertainty</option>
+              <option value="cost">High Costs</option>
+              <option value="complexity">Complexity</option>
+              <option value="isolation">Isolation</option>
+            </select>
+          </div>
+        </div>
+        
+        <p class="text-sm opacity-50 mt-4">These choices will shape your brand’s imagery, messaging, and story.</p>
+      </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Audience Snapshot</h2>
+        <p class="text-sm opacity-75 mb-4">A preview of your target audience based on your selections.</p>
+        <div class="p-4 bg-blue-50 rounded-lg">
+          <p class="text-lg font-medium italic">“<span class="text-blue-700">25-34</span> year-olds in <span class="text-blue-700">urban</span> areas, interested in <span class="text-blue-700">technology</span>, behaving as <span class="text-blue-700">early adopters</span>, seeking <span class="text-blue-700">success</span>, and avoiding <span class="text-blue-700">uncertainty</span>.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Save & Continue Button -->
+    <div class="pb-8">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 float-right transition-all">Save & Continue</button>
     </div>
+  </div>
 </div>
