@@ -10,9 +10,21 @@
     <section class="py-6">
       <div class="bg-white p-6 rounded-xl shadow-md">
         <h2 class="text-xl font-semibold">Define Your Typography</h2>
-        <p class="text-sm opacity-75 mb-4">Select font pairs and a type scale to shape your brand’s text style, curated based on your personality.</p>
+        <p class="text-sm opacity-75 mb-4">Select a personality, font pairs, and a type scale to shape your brand’s text style.</p>
         
         <div class="grid grid-cols-1 gap-6">
+          <!-- Personality Dropdown -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Personality</label>
+            <daden-dropdown
+              class="w-full"
+              [items]="personalityOptions"
+              [placeholder]="'Select a personality...'"
+              (selectedValue)="handlePersonalitySelection($event)"
+            ></daden-dropdown>
+            <p class="text-sm opacity-50 mt-1">Choose a personality to curate your font options.</p>
+          </div>
+
           <!-- Heading Font Dropdown -->
           <div>
             <label class="block text-sm font-medium mb-2">Heading Font</label>
@@ -22,7 +34,7 @@
               [placeholder]="'Select a heading font...'"
               (selectedValue)="handleFontSelection($event, 'heading')"
             ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Choose from Google Fonts, tailored to your <span class="font-medium">Personality</span>.</p>
+            <p class="text-sm opacity-50 mt-1">Choose from Google Fonts, tailored to your selected <span class="font-medium">Personality</span>.</p>
           </div>
 
           <!-- Body Font Dropdown -->
@@ -37,14 +49,16 @@
             <p class="text-sm opacity-50 mt-1">Pairs with your heading font, reflecting your brand’s character.</p>
           </div>
 
-          <!-- Type Scale Multi-select -->
+          <!-- Type Scale Dropdown -->
           <div>
             <label class="block text-sm font-medium mb-2">Type Scale</label>
-            <daden-multi-list-selection
-              [options]="typographyOptions.typeScales"
-              (selectionChange)="handleTypeScaleChange($event)"
-            ></daden-multi-list-selection>
-            <p class="text-sm opacity-50 mt-1">Select sizes for headings, body, and details. Hold Ctrl (or Cmd) for multiple selections.</p>
+            <daden-dropdown
+              class="w-full"
+              [items]="typeScaleNames"
+              [placeholder]="'Select a type scale...'"
+              (selectedValue)="handleTypeScaleSelection($event)"
+            ></daden-dropdown>
+            <p class="text-sm opacity-50 mt-1">Choose a size scale for headings, body, and details.</p>
           </div>
         </div>
         
@@ -58,11 +72,17 @@
         <h2 class="text-xl font-semibold">Typography Preview</h2>
         <p class="text-sm opacity-75 mb-4">A snapshot of how your fonts and type scale will look in use.</p>
         <div class="p-4 bg-blue-50 rounded-lg">
-          <h3 class="text-2xl font-bold mb-2" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.heading">Heading Sample</h3>
-          <p class="text-base mb-2" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.body">This is a body text example showing your brand’s typography in action.</p>
-          <p class="text-sm font-bold" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.detail">Bold Detail</p>
-          <p class="text-sm italic" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.detail">Italic Detail</p>
-          <p class="text-sm" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.detail">Regular Detail Text</p>
+          <h1 class="text-4xl font-bold mb-2 leading-normal" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.h1">Heading 1 Sample</h1>
+          <h2 class="text-3xl font-bold mb-2 leading-normal" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.h2">Heading 2 Sample</h2>
+          <h3 class="text-2xl font-bold mb-2 leading-normal" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.h3">Heading 3 Sample</h3>
+          <h4 class="text-xl font-bold mb-2 leading-normal" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.h4">Heading 4 Sample</h4>
+          <h5 class="text-xl font-bold mb-2 leading-normal" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.h5">Heading 5 Sample</h5>
+          <h6 class="text-xl font-bold mb-2 leading-normal" [style.fontFamily]="selectedHeadingFont" [style.fontSize]="typeScale.h6">Heading 6 Sample</h6>
+          <p class="text-base mb-2 leading-relaxed" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.body">This is a body text example showing your brand’s typography in action.</p>
+          <p class="text-sm leading-relaxed" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.small">Small Text</p>
+          <p class="text-sm font-bold leading-relaxed" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.small">Bold Small Text</p>
+          <p class="text-sm italic leading-relaxed" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.small">Italic Small Text</p>
+          <p class="text-sm leading-relaxed" [style.fontFamily]="selectedBodyFont" [style.fontSize]="typeScale.detail">Detail Text</p>
         </div>
       </div>
     </section>
