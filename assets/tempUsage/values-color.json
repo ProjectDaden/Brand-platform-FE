@@ -1,0 +1,83 @@
+{
+	"color_theory": {
+	  "description": "The color picker selects a base hue from the archetype, then adjusts based on the Stability-Vitality axis influenced by user-selected brand values.",
+	  "schemes": {
+		"Simple": {"description": "Single HSL value", "adjustment": "none"},
+		"Tints": {"description": "HSL + lightness", "adjustment": "+10-20% lightness", "axis": "Vitality"},
+		"Shades": {"description": "HSL - lightness", "adjustment": "-10-20% lightness", "axis": "Stability"},
+		"Tones": {"description": "HSL - saturation", "adjustment": "-15-40% saturation", "axis": "Stability"},
+		"Analogous": {"description": "HSL + adjacent hue", "adjustment": "+30-60 degrees", "axis": "Vitality"},
+		"Split Analogous": {"description": "HSL + two adjacent hues", "adjustment": "±30-60 degrees", "axis": "Neutral"},
+		"Triad": {"description": "HSL + two evenly spaced hues", "adjustment": "±120 degrees", "axis": "Vitality"},
+		"Complementary": {"description": "HSL + opposite hue", "adjustment": "+180 degrees", "axis": "Stability"}
+	  }
+	},
+	"values": [
+	  {
+		"condition": {
+		  "value": ["authority", "control"]
+		},
+		"axis": "-5"
+	  },
+	  {
+		"condition": {
+		  "value": ["stability"]
+		},
+		"axis": "-4"
+	  },
+	  {
+		"condition": {
+		  "value": ["prestige", "responsibility", "wisdom"]
+		},
+		"axis": "-3"
+	  },
+	  {
+		"condition": {
+		  "value": ["knowledge", "clarity", "intellect", "guidance", "honor", "hard work", "protection"]
+		},
+		"axis": "-2"
+	  },
+	  {
+		"condition": {
+		  "value": ["simplicity", "trust"]
+		},
+		"axis": "-1"
+	  },
+	  {
+		"condition": {
+		  "value": ["relatability", "honesty", "belonging", "authenticity", "curiosity", "compassion", "connection"]
+		},
+		"axis": "0"
+	  },
+	  {
+		"condition": {
+		  "value": ["imagination", "innovation", "originality", "vision", "self-expression", "purity"]
+		},
+		"axis": "1"
+	  },
+	  {
+		"condition": {
+		  "value": ["optimism", "wholesomeness", "nurturing", "generosity", "friendliness", "empathy"]
+		},
+		"axis": "2"
+	  },
+	  {
+		"condition": {
+		  "value": ["freedom", "adventure", "discovery", "courage", "strength", "determination", "triumph"]
+		},
+		"axis": "3"
+	  },
+	  {
+		"condition": {
+		  "value": ["rebellion", "boldness", "liberation", "disruption", "individuality", "transformation", "charisma"]
+		},
+		"axis": "4"
+	  },
+	  {
+		"condition": {
+		  "value": ["passion", "intimacy", "beauty", "sensuality", "joy", "humor", "spontaneity", "playfulness", "irreverence", "mystery", "wonder"]
+		},
+		"axis": "5"
+	  }
+	]
+  }
