@@ -3,25 +3,25 @@
         "categories": {
             "core-brand-identity": {
                 "name": "Brand Name & Tagline",
-                "mission" : "Mission & Vision",
-                "values": "Brand Values & Personalities",
-                "audience": "Target Audience"
+                "values": "Industry & Value",
+                "audience": "Target Audience",
+                "mission" : "Mission & Vision"
             },
             "brand-voice-and-tone": {
+                "voice-tone":"Tone-of-Voice",
                 "messaging":"Messaging",
-                "voice-tone":"Voice & Tone",
                 "copywriting":"Copywriting"
             },
             "visual-identity": {
-                "logo":"Logo",
                 "color":"Color",
                 "typography":"Typography",
+                "logo":"Logo",
                 "imagery":"Imagery"
             },
             "application-and-implementation": {
-                "web-and-guidelines":"Website & UI Guidelines",
-                "socialmedia-styleguide":"Social Media Style Guide",
-                "print-offline-material":"Print & Offline Materials"
+                "socialmedia-styleguide":"Social Media",
+                "print-offline-material":"Print & Offline",
+                "web-and-guidelines":"Web & App UI"
             },
             "settings": {
 
