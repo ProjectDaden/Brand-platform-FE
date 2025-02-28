@@ -1,0 +1,88 @@
+{
+	"rules": [
+	  {
+		"condition": {
+		  "industry": ["luxury goods", "finance", "government", "high-end real estate", "corporate leadership"],
+		  "value": ["authority", "control", "stability", "prestige", "responsibility"]
+		},
+		"archetype": "ruler"
+	  },
+	  {
+		"condition": {
+		  "industry": ["advertising", "design", "arts", "entertainment", "tech innovation", "fashion"],
+		  "value": ["imagination", "innovation", "originality", "vision", "self-expression"]
+		},
+		"archetype": "creator"
+	  },
+	  {
+		"condition": {
+		  "industry": ["organic food", "children’s products", "wellness", "education", "eco-friendly brands"],
+		  "value": ["purity", "simplicity", "optimism", "trust", "wholesomeness"]
+		},
+		"archetype": "innocent"
+	  },
+	  {
+		"condition": {
+		  "industry": ["education", "consulting", "publishing", "research", "technology"],
+		  "value": ["wisdom", "knowledge", "clarity", "intellect", "guidance"]
+		},
+		"archetype": "sage"
+	  },
+	  {
+		"condition": {
+		  "industry": ["travel", "outdoor gear", "adventure tourism", "off-road cars", "experiential tech"],
+		  "value": ["freedom", "adventure", "discovery", "authenticity", "curiosity"]
+		},
+		"archetype": "explorer"
+	  },
+	  {
+		"condition": {
+		  "industry": ["alternative fashion", "music", "extreme sports", "craft beer", "disruptive tech"],
+		  "value": ["rebellion", "boldness", "liberation", "disruption", "individuality"]
+		},
+		"archetype": "rebel"
+	  },
+	  {
+		"condition": {
+		  "industry": ["cutting-edge tech", "cosmetics", "film", "theater", "spirituality"],
+		  "value": ["transformation", "vision", "charisma", "mystery", "wonder"]
+		},
+		"archetype": "magician"
+	  },
+	  {
+		"condition": {
+		  "industry": ["fitness", "military", "sports apparel", "emergency services", "performance cars"],
+		  "value": ["courage", "strength", "determination", "honor", "triumph"]
+		},
+		"archetype": "hero"
+	  },
+	  {
+		"condition": {
+		  "industry": ["beauty", "jewelry", "luxury hotels", "wine", "chocolate", "dating"],
+		  "value": ["passion", "intimacy", "beauty", "sensuality", "connection"]
+		},
+		"archetype": "lover"
+	  },
+	  {
+		"condition": {
+		  "industry": ["comedy", "toys", "fast food", "gaming", "quirky retail"],
+		  "value": ["joy", "humor", "spontaneity", "playfulness", "irreverence"]
+		},
+		"archetype": "jester"
+	  },
+	  {
+		"condition": {
+		  "industry": ["casual apparel", "home goods", "grocery", "family cars", "community services"],
+		  "value": ["relatability", "honesty", "belonging", "hard work", "friendliness"]
+		},
+		"archetype": "everyman"
+	  },
+	  {
+		"condition": {
+		  "industry": ["healthcare", "childcare", "nonprofits", "pet care", "senior living"],
+		  "value": ["compassion", "nurturing", "generosity", "protection", "empathy"]
+		},
+		"archetype": "caregiver"
+	  }
+	]
+  }
