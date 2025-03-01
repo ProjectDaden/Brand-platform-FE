@@ -1,4 +1,4 @@
-import { Component, Renderer2, Inject } from '@angular/core';
+import { Component, Renderer2, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 
@@ -9,17 +9,19 @@ import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/d
   styleUrl: './section-typography.component.scss',
   standalone: true,
 })
-export class SectionTypographyComponent {
+export class SectionTypographyComponent implements OnInit{
   constructor(
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
-  ) {
+  ) {}
+  ngOnInit() {
     // Pre-select personality and load fonts on initialization
     this.selectedPersonality = this.getPersonalityFromBrandValues();
     this.loadFontsBasedOnPersonality(this.selectedPersonality);
   }
 
   personalityOptions: string[] = [
+    'Everyman',
     'Hero',
     'Caregiver',
     'Explorer',
@@ -30,7 +32,6 @@ export class SectionTypographyComponent {
     'Magician',
     'Rebel',
     'Ruler',
-    'Everyman',
     'Lover',
   ];
 
@@ -277,8 +278,8 @@ export class SectionTypographyComponent {
         bodyFonts = ['Georgia', 'Times New Roman', 'Lora'];
         break;
       case 'Everyman':
-        headingFonts = ['Roboto Slab', 'Bitter', 'Arvo'];
-        bodyFonts = ['Open Sans', 'Lato', 'Source Sans Pro'];
+        headingFonts = ['Inter', 'Roboto Slab', 'Bitter', 'Arvo'];
+        bodyFonts = ['Inter', 'Open Sans', 'Lato', 'Source Sans Pro'];
         break;
       case 'Lover':
         headingFonts = ['Great Vibes', 'Sacramento', 'Parisienne'];
@@ -289,12 +290,16 @@ export class SectionTypographyComponent {
         bodyFonts = ['Open Sans', 'Lora', 'Merriweather'];
     }
 
-    // Assign fonts to options
+    // Update typography options
     this.typographyOptions.headingFonts = headingFonts;
     this.typographyOptions.bodyFonts = bodyFonts;
 
-    // Load fonts dynamically from Google Fonts
-    const allFonts = [...headingFonts, ...bodyFonts];
+    // Set the first font of each list as the selected font
+    this.selectedHeadingFont = headingFonts[0];
+    this.selectedBodyFont = bodyFonts[0];
+
+    // Load the fonts dynamically
+    const allFonts = [...new Set([...headingFonts, ...bodyFonts])]; // Remove duplicates
     this.loadGoogleFonts(allFonts);
   }
 
@@ -305,9 +310,11 @@ export class SectionTypographyComponent {
       this.renderer.removeChild(this.document.head, existingLink);
     }
 
-    // Format fonts with weights (400 and 700 for versatility)
-    const formattedFonts = fonts.map(font => `${font}:wght@400;700`).join('|');
-    const fontUrl = `https://fonts.googleapis.com/css2?family=${formattedFonts}&display=swap`;
+    // Format fonts for Google Fonts API (modern syntax)
+    const formattedFonts = fonts
+      .map(font => `family=${encodeURIComponent(font)}:wght@400;700`)
+      .join('&');
+    const fontUrl = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
 
     // Create and append the link element
     const link = this.renderer.createElement('link');
@@ -331,8 +338,6 @@ export class SectionTypographyComponent {
   }
 
   private getPersonalityFromBrandValues(): string {
-    return 'Jester'; // Mocked; replace with actual logic
+    return 'Everyman'; // Mocked; replace with actual logic
   }
-
-  
 }
