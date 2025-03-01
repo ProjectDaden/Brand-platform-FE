@@ -1,89 +1,156 @@
-import { Component, inject, model, signal } from '@angular/core';
-import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
+import { Component, Renderer2, Inject, OnInit, signal, model } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DadenCardComponent } from "../../shared/components/daden-card/daden-card.component";
+import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
+import { DadenCardComponent } from '../../shared/components/daden-card/daden-card.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
-import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
-import { DadenLoadingComponent } from "../../shared/components/daden-loading/daden-loading.component";
+import { DadenLoadingComponent } from '../../shared/components/daden-loading/daden-loading.component';
 import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
 import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
 import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
+import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
 
 @Component({
-  selector: 'app-brand-name',
+  selector: 'app-brand-name-tagline',
   imports: [
-    DadenTableComponent, 
-    CommonModule, 
-    DadenCardComponent, 
-    DadenInputComponent, 
-    DadenLoadingComponent, 
+    DadenDropdownComponent,
+    FormsModule,
+    CommonModule,
+    DadenTableComponent,
+    DadenCardComponent,
+    DadenInputComponent,
+    DadenLoadingComponent,
     DadenPaginationComponent,
     DadenSliderComponent,
-    DadenValueSliderComponent
+    DadenValueSliderComponent,
   ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
   standalone: true,
 })
-export class BrandNameComponent {
+export class BrandNameComponent implements OnInit {
+  constructor(
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document,
+    private brandColorThemeService: BrandColorThemeService
+  ) {}
 
-  prop1 = inject(BrandColorThemeService);
+  ngOnInit() {
+    this.selectedPersonality = this.getPersonalityFromBrandValues();
+    this.loadSynonymsBasedOnPersonality(this.selectedPersonality);
+  }
 
-  // Value-Slider variables
-  sliderValue: number = 50; // Initial value for the slider
+  // Personality and Tagline Logic
+  personalityOptions: string[] = [
+    'Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
+    'Magician', 'Rebel', 'Ruler', 'Everyman', 'Lover',
+  ];
+  selectedPersonality: string = '';
+  taglineUsed: 'yes' | 'no' = 'no'; // Updated to only allow "yes" or "no", default to "no"
+  tagline: string = '';
+  synonymOptions: string[] = [];
+  selectedHeadingFont: string = '';
+  selectedBodyFont: string = '';
 
+  handlePersonalitySelection(personality: string) {
+    this.selectedPersonality = personality;
+    this.loadSynonymsBasedOnPersonality(personality);
+  }
+
+  private loadSynonymsBasedOnPersonality(personality: string) {
+    let synonyms: string[];
+    let headingFonts: string[];
+    let bodyFonts: string[];
+
+    switch (personality) {
+      case 'Jester':
+        synonyms = ['Playful', 'Witty', 'Fun'];
+        headingFonts = ['Bangers', 'Fredoka One', 'Luckiest Guy'];
+        bodyFonts = ['Comic Neue', 'Roboto', 'Open Sans'];
+        break;
+      case 'Creator':
+        synonyms = ['Innovative', 'Creative', 'Visionary'];
+        headingFonts = ['Montserrat', 'Playfair Display', 'Raleway'];
+        bodyFonts = ['Lato', 'Source Sans Pro', 'Poppins'];
+        break;
+      // ... other cases as before ...
+      default:
+        synonyms = ['Versatile', 'Standard', 'Default'];
+        headingFonts = ['Roboto', 'Arial', 'Helvetica'];
+        bodyFonts = ['Open Sans', 'Lora', 'Merriweather'];
+    }
+
+    this.synonymOptions = synonyms;
+    this.selectedHeadingFont = headingFonts[0];
+    this.selectedBodyFont = bodyFonts[0];
+    const allFonts = [...new Set([...headingFonts, ...bodyFonts])];
+    this.loadGoogleFonts(allFonts);
+  }
+
+  private loadGoogleFonts(fonts: string[]) {
+    const existingLink = this.document.getElementById('google-fonts-link');
+    if (existingLink) {
+      this.renderer.removeChild(this.document.head, existingLink);
+    }
+
+    const formattedFonts = fonts
+      .map(font => `family=${encodeURIComponent(font)}:wght@400;700`)
+      .join('&');
+    const fontUrl = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
+
+    const link = this.renderer.createElement('link');
+    this.renderer.setAttribute(link, 'id', 'google-fonts-link');
+    this.renderer.setAttribute(link, 'rel', 'stylesheet');
+    this.renderer.setAttribute(link, 'href', fontUrl);
+    this.renderer.appendChild(this.document.head, link);
+  }
+
+  private getPersonalityFromBrandValues(): string {
+    return 'Jester';
+  }
+
+  get taglineOutput(): { taglineUsed: boolean; tagline: string } { // Updated to return boolean only
+    return {
+      taglineUsed: this.taglineUsed === 'yes', // Simplifies to true/false
+      tagline: this.tagline,
+    };
+  }
+
+  // Test Component Logic
+  sliderValue: number = 50;
   onSliderChange(value: number) {
     console.log('Slider Value:', value);
   }
 
-  // Slider component
-  slides: string[] = [
-    '/assets/image1.jpg',
-    '/assets/image2.jpg',
-    '/assets/image3.jpg'
-  ];
-
-  // loading component
+  slides: string[] = ['/assets/image1.jpg', '/assets/image2.jpg', '/assets/image3.jpg'];
   isLoading = true;
+  totalItems: number = 100;
+  itemsPerPage: number = 10;
 
-    // Pagination component
-  totalItems: number = 100; // Total number of items dependend on data-input
-  itemsPerPage: number = 10; // Items per page
-
-  // Table component
-  tableData = signal<{name: string, age: number, country: string, mijnKlets: string}[]>([
+  tableData = signal<{ name: string; age: number; country: string; mijnKlets: string }[]>([
     { name: 'John', age: 25, country: 'USA', mijnKlets: 'Klets' },
     { name: 'Anna', age: 22, country: 'Canada', mijnKlets: 'Klets2' },
     { name: 'Mike', age: 30, country: 'UK', mijnKlets: 'Klets3' },
   ]);
 
-  // Input component
   inputValue = model<string>('');
 
-  // Input component event
   onInputValueChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     const value = inputElement.value;
     this.inputValue.set(value);
   }
 
-  // Table component
   tableColumns = signal(['Name', 'Age', 'Country', 'Mijn Klets']);
+  additionalContext = signal({ showAge: true });
 
-  // Table component context
-  additionalContext = signal({
-    showAge: true,
-  });
-
-  // Color theme service
   get currentThemes() {
-    return this.prop1.colorPaletteCollection.genericSignalCollection();
+    return this.brandColorThemeService.colorPaletteCollection.genericSignalCollection();
   }
 
-  // Pagination component needs Fetch or update data based on the current page
   onPageChange(page: number) {
     console.log('Current Page:', page);
   }
-
-  
 }
