@@ -1,6 +1,109 @@
-<div class="flex-grow bg-blue-50 h-screen overflow-y-auto"> 
-    <div class="bg-blue-50 m-auto max-w-screen-md p-8">
-      <h1 class="text-3xl font-bold">Voice and tone</h1>
-      <p class=" text-m italic mb-8 opacity-75">Brand Voice and Tone</p>
+<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
+  <div class="m-auto max-w-screen-md p-8">
+    <!-- Header -->
+    <header class="text-center">
+      <h1 class="text-4xl font-bold text-blue-900">Tone of Voice</h1>
+      <p class="text-lg italic mb-8 opacity-75">Defining How Your Brand Speaks</p>
+    </header>
+
+    <!-- Inputs Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Set Your Tone</h2>
+        <p class="text-sm opacity-75 mb-4">Adjust the sliders to craft your brand’s unique voice.</p>
+
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Formality Slider -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Formality (Casual to Professional)</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              [value]="formality"
+              (input)="handleSliderChange($event, 'formality')"
+              class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+              <span>Casual</span>
+              <span>Professional</span>
+            </div>
+            <p class="text-sm opacity-50 mt-1">Current: {{ formality }}%</p>
+          </div>
+
+          <!-- Playfulness Slider -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Playfulness (Serious to Playful)</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              [value]="playfulness"
+              (input)="handleSliderChange($event, 'playfulness')"
+              class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+              <span>Serious</span>
+              <span>Playful</span>
+            </div>
+            <p class="text-sm opacity-50 mt-1">Current: {{ playfulness }}%</p>
+          </div>
+
+          <!-- Respect Slider -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Respect (Respectful to Irreverent)</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              [value]="respect"
+              (input)="handleSliderChange($event, 'respect')"
+              class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+              <span>Respectful</span>
+              <span>Irreverent</span>
+            </div>
+            <p class="text-sm opacity-50 mt-1">Current: {{ respect }}%</p>
+          </div>
+
+          <!-- Emotion Slider -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Emotion (Matter-of-Fact to Enthusiastic)</label>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              [value]="emotion"
+              (input)="handleSliderChange($event, 'emotion')"
+              class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+              <span>Matter-of-Fact</span>
+              <span>Enthusiastic</span>
+            </div>
+            <p class="text-sm opacity-50 mt-1">Current: {{ emotion }}%</p>
+          </div>
+        </div>
+
+        <p class="text-sm opacity-50 mt-4">These settings will influence your brand’s copywriting and style guide.</p>
+      </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Tone Preview</h2>
+        <p class="text-sm opacity-75 mb-4">See how your tone settings adjust the way your brand communicates.</p>
+        <div class="p-4 bg-blue-50 rounded-lg">
+          <p class="text-base leading-relaxed">{{ getTonePreview() }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Save & Continue Button -->
+    <div class="pb-8">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 float-right transition-all">Save & Continue</button>
     </div>
+  </div>
 </div>
