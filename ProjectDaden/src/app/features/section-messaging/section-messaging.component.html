@@ -1,6 +1,74 @@
-<div class="flex-grow bg-blue-50 h-screen overflow-y-auto"> 
-    <div class="bg-blue-50 m-auto max-w-screen-md p-8">
-      <h1 class="text-3xl font-bold">Messaging</h1>
-      <p class=" text-m italic mb-8 opacity-75">Brand Voice and Tone</p>
+<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
+  <div class="m-auto max-w-screen-md p-8">
+    <!-- Header -->
+    <header class="text-center">
+      <h1 class="text-4xl font-bold text-blue-900">Messaging</h1>
+      <p class="text-lg italic mb-8 opacity-75">Defining Your Brand’s Core Message</p>
+    </header>
+
+    <!-- Inputs Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Craft Your Messaging</h2>
+        <p class="text-sm opacity-75 mb-4">Fill in the blanks to create a concise brand message.</p>
+
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Problem/Solution Text Field -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Core Message</label>
+            <div class="flex items-center gap-2">
+              <span class="text-sm opacity-75">We solve</span>
+              <input
+                type="text"
+                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., boring days"
+              />
+              <span class="text-sm opacity-75">with</span>
+              <input
+                type="text"
+                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., exciting solutions"
+                (input)="updateMessaging()"
+              />
+            </div>
+            <p class="text-sm opacity-50 mt-1">Define the problem you address and your solution.</p>
+          </div>
+
+          <!-- Benefit Dropdown -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Differentiator (Benefit)</label>
+            <daden-dropdown
+              class="w-full"
+              [items]="benefitOptions"
+              [placeholder]="'Select a benefit...'"
+              (selectedValue)="handleBenefitSelection($event)"
+            ></daden-dropdown>
+            <p class="text-sm opacity-50 mt-1">Choose what sets your brand apart.</p>
+          </div>
+        </div>
+
+        <p class="text-sm opacity-50 mt-4">This messaging will pre-populate your copywriting templates and style guide.</p>
+      </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Messaging Preview</h2>
+        <p class="text-sm opacity-75 mb-4">See how your message comes together.</p>
+        <div class="p-4 bg-blue-50 rounded-lg">
+          <p class="text-base leading-relaxed">
+            We solve <span class="font-medium">{{ problem || '[problem]' }}</span> with
+            <span class="font-medium">{{ solution || '[solution]' }}</span>, delivering
+            <span class="font-medium">{{ selectedBenefit || '[benefit]' }}</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Save & Continue Button -->
+    <div class="pb-8">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 float-right transition-all">Save & Continue</button>
     </div>
+  </div>
 </div>
