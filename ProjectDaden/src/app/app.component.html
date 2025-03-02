@@ -1,17 +1,19 @@
-<div class="flex flex-row max-h-screen">
+<div class="flex flex-col lg:flex-row lg:max-h-screen">
   @if(this.isLoggedIn()) {
   <nav-sidebar class="flex"></nav-sidebar>
   }
-  <div class="flex-1">
+  <div class="flex-1 min-h-screen bg-blue-50 overflow-y-auto">
     <div class="">
       @if( isLoading ) {
         <daden-loading></daden-loading>
       } @else {
         <router-outlet></router-outlet>
       }
-    </div>
+      </div>
   </div>
   @if(this.isLoggedIn()) {
   <aside-previews class="flex"></aside-previews>
   }
 </div>
+
+

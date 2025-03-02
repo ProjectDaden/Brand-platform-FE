@@ -13,10 +13,14 @@ export class NavSidebarComponent {
   private navigationService = inject(NavigationService);
   private authService = inject(AuthService);
   private router = inject(Router);
-  
+
+  // Computed signal for categories
   categories = computed(() => 
     Object.entries(this.navigationService.navigation())
   );
+
+  // Toggle state for mobile menu
+  isMenuOpen = false;
 
   ngOnInit() {
     this.navigationService.loadNavigation();
@@ -38,5 +42,13 @@ export class NavSidebarComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 }
