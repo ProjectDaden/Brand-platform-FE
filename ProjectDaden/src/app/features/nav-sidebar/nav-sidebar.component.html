@@ -1,7 +1,6 @@
-<div class=" bg-blue-950 text-white p-6 pb-3 flex flex-col overflow-y-hidden">
-
-  <div class="flex flex-row justify-between gap-2 mb-8">
-
+<div class="bg-blue-950 text-white p-6 pb-6 flex flex-col overflow-y-hidden w-full lg:h-full">
+  <!-- Top Bar (always visible, contains logo and hamburger on mobile) -->
+  <div class="flex flex-row justify-between items-center">
     <!-- Logo and Name -->
     <div class="flex items-center">
       <svg class="w-6 h-6 ml-2 mr-2" viewBox="0 0 360 360" style="fill:white" xmlns="http://www.w3.org/2000/svg">
@@ -10,90 +9,90 @@
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M123.886 339.499L218.716 314.251C250.511 305.786 276.936 292.371 297.991 274.007C318.971 255.366 333.383 233.43 341.227 208.198C348.996 182.69 348.924 155.264 341.011 125.919C333.023 96.2984 319.284 72.5108 299.795 54.5565C280.306 36.6022 256.823 24.9034 229.348 19.46C201.799 13.7397 172.126 15.1123 140.331 23.5776L45.5008 48.8254C32.1265 52.3862 25.4393 54.1667 21.0284 58.113C17.1485 61.5842 14.4741 66.1869 13.3886 71.2612C12.1546 77.03 13.9464 83.6746 17.5301 96.9638L75.4388 311.706C79.0225 324.995 80.8143 331.64 84.7859 336.023C88.2794 339.878 92.9115 342.535 98.0184 343.614C103.824 344.84 110.511 343.06 123.886 339.499ZM67.8505 93.7391L120.64 289.499L210.082 265.686C231.458 259.994 249.222 250.969 263.373 238.609C277.474 226.062 287.158 211.295 292.424 194.306C297.64 177.131 297.584 158.663 292.254 138.9C286.875 118.952 277.63 102.929 264.521 90.8332C251.412 78.7373 235.619 70.8526 217.144 67.179C198.619 63.3191 178.668 64.2347 157.292 69.9259L67.8505 93.7391Z" />
       </svg>
-      <!-- <img src="/assets/daden-logotype.svg" alt="Daden Logo" > -->
       <span class="text-xl font-bold">Daden Platform</span>
     </div>
 
-    <!-- Login button -->
-    <button class="-m-1 p-2 rounded h-min
-    hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all" (click)="logout()">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-        class="size-6 text-white">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+    <!-- Hamburger Menu (visible on mobile/tablet) -->
+    <button class="lg:hidden p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all" (click)="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+
+    <!-- Login button (visible on desktop) -->
+    <button class="hidden lg:block -m-1 p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all" (click)="logout()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
       </svg>
     </button>
   </div>
 
-  <nav class="flex-grow">
-    <ul class="my-0">
-      @for (category of categories(); track $index) {
-      <li class="mb-4">
-        <div class="flex items-center gap-3 p-2 rounded w-full opacity-75 select-none">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="size-4">
-            @switch (category[0]) {
-            @case ('core-brand-identity') {
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-            }
-            @case ('brand-voice-and-tone') {
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" />
-            }
-            @case ('visual-identity') {
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
-            }
-            @case ('application-and-implementation') {
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
-            }
-            }
-          </svg>
-          {{ formatTitle(category[0]) }}
-        </div>
-
-        <ul class="pl-7 mt-0">
-          @for (item of getMenuItems(category[1]); track $index) {
-          <li>
-            <a [routerLink]="['/v1', category[0], item.key]" routerLinkActive="font-bold" class="flex items-center p-2 rounded w-full text-sm opacity-50 select-none 
-                          hover:bg-blue-900 hover:opacity-100 transition-all">
-              <div class="flex w-full align-middle justify-between">
-                <span>{{ item.value }}</span>
-                @if (item.key === 'logo') {
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                  stroke="currentColor" class="size-6 bg-green-500 rounded-full p-1">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+  <!-- Navigation Menu (hidden on mobile/tablet by default, toggled by hamburger) -->
+  <div [class.hidden]="!isMenuOpen" class="lg:block flex-grow overflow-y-auto pt-6 ">
+    <div [class.hidden]="!isMenuOpen" class="lg:block flex-grow overflow-y-auto">
+      <nav class="">
+        <ul class="my-0">
+          @for (category of categories(); track $index) {
+            <li class="mb-4">
+              <div class="flex items-center gap-3 p-2 rounded w-full opacity-75 select-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                  @switch (category[0]) {
+                    @case ('core-brand-identity') {
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                    }
+                    @case ('brand-voice-and-tone') {
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" />
+                    }
+                    @case ('visual-identity') {
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+                    }
+                    @case ('application-and-implementation') {
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                    }
+                  }
                 </svg>
+                {{ formatTitle(category[0]) }}
+              </div>
+    
+              <ul class="pl-7 mt-0">
+                @for (item of getMenuItems(category[1]); track $index) {
+                  <li>
+                    <a [routerLink]="['/v1', category[0], item.key]" 
+                       routerLinkActive="font-bold" 
+                       (click)="closeMenu()" 
+                       class="flex items-center p-2 rounded w-full text-sm opacity-50 select-none hover:bg-blue-900 hover:opacity-100 transition-all">
+                      <div class="flex w-full align-middle justify-between">
+                        <span>{{ item.value }}</span>
+                        @if (item.key === 'logo') {
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6 bg-green-500 rounded-full p-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                          </svg>
+                        }
+                      </div>
+                      @if (item.key === 'typography') {
+                        <div class="-m-1 font-medium py-2 px-2 rounded-full text-white border border-white opacity-50 w-36">
+                          <div class="text-xs font-normal leading-none flex-initial">coming soon</div>
+                        </div>
+                      }
+                    </a>
+                  </li>
                 }
-              </div>
-              @if (item.key === 'typography') {
-              <div class="-m-1 font-medium py-2 px-2 rounded-full text-white border border-white opacity-50 w-36">
-                <div class="text-xs font-normal leading-none flex-initial">coming soon</div>
-              </div>
-              }
-            </a>
-          </li>
+              </ul>
+            </li>
           }
         </ul>
-      </li>
-      }
-    </ul>
-  </nav>
+      </nav>
 
-  <!-- Settings -->
-  <div class="flex flex-col gap-1 mt-auto">
-    <div class="border-t-2 opacity-25"></div>
-    <button class="flex items-center p-2 rounded w-full opacity-75 select-none gap-2 
-                   hover:bg-gray-700 hover:opacity-100 transition-all">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" 
-           stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" 
-              d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-      </svg>
-      <p>Settings</p>
-    </button>
+    <!-- Settings -->
+    <div class="flex flex-col gap-1 mt-auto">
+      <div class="border-t-2 opacity-25"></div>
+      <button class="flex items-center p-2 rounded w-full opacity-75 select-none gap-2 hover:bg-gray-700 hover:opacity-100 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+        <p>Settings</p>
+      </button>
+    </div>
   </div>
 </div>
