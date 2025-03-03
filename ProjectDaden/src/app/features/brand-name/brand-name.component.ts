@@ -1,61 +1,76 @@
-import { Component, Renderer2, Inject, OnInit, signal, model } from '@angular/core';
+import {
+  Component,
+  Renderer2,
+  Inject,
+  OnInit,
+  signal,
+  model,
+  inject,
+  effect,
+  computed,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
-import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
-import { DadenCardComponent } from '../../shared/components/daden-card/daden-card.component';
-import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
-import { DadenLoadingComponent } from '../../shared/components/daden-loading/daden-loading.component';
-import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
-import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
-import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
-import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
+import { brandNameDefault } from './models/brand-name';
+import { BrandNameService } from './services/brand-name.service';
 
 @Component({
   selector: 'app-brand-name-tagline',
-  imports: [
-    DadenDropdownComponent,
-    FormsModule,
-    CommonModule,
-    DadenTableComponent,
-    DadenCardComponent,
-    DadenInputComponent,
-    DadenLoadingComponent,
-    DadenPaginationComponent,
-    DadenSliderComponent,
-    DadenValueSliderComponent,
-  ],
+  imports: [DadenDropdownComponent, FormsModule, CommonModule],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
   standalone: true,
 })
 export class BrandNameComponent implements OnInit {
-  constructor(
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document,
-    private brandColorThemeService: BrandColorThemeService
-  ) {}
+  private document = inject(DOCUMENT);
+  private renderer = inject(Renderer2);
+  private brandNameService = inject(BrandNameService);
+
+  brandName = brandNameDefault;
+
+  constructor() {}
+
+  watch = computed(() => {
+    const brandNameValue = this.brandName.genericSignalCollection();
+    console.log('TOUCHED BRANDNAME SIGNAL!!!', brandNameValue);
+    console.log('synonymOptions !!!', this.brandNameService.personalityComposition());
+    return brandNameValue;
+  });
 
   ngOnInit() {
-    this.selectedPersonality = this.getPersonalityFromBrandValues();
-    this.loadSynonymsBasedOnPersonality(this.selectedPersonality);
+    this.loadSynonymsBasedOnPersonality(
+      this.brandName.genericSignalCollection().selectedPersonality
+    );
+  }
+
+  updateBrandNameCollection(
+    updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>
+  ) {
+    this.brandName.genericSignalCollection.update((current) => {
+      const updatedBrandName = { ...current, ...updates };
+      return updatedBrandName;
+    });
+    console.log('UPDATES', this.brandName.genericSignalCollection());
   }
 
   // Personality and Tagline Logic
-  personalityOptions: string[] = [
-    'Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
-    'Magician', 'Rebel', 'Ruler', 'Everyman', 'Lover',
-  ];
-  selectedPersonality: string = '';
-  taglineUsed: 'yes' | 'no' = 'no'; // Updated to only allow "yes" or "no", default to "no"
-  tagline: string = '';
-  synonymOptions: string[] = [];
-  selectedHeadingFont: string = '';
-  selectedBodyFont: string = '';
+  // personalityOptions?: string[] = this.brandName.genericSignalCollection().personalityOptions;
+  selectedPersonality?: string = this.brandName.genericSignalCollection().selectedPersonality;
+  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed; // Updated to only allow "yes" or "no", default to "no"
+  tagline?: string = this.brandName.genericSignalCollection().tagLine;
+  synonymOptions?: string[] = this.brandName.genericSignalCollection().synonymOptions;
+  selectedHeadingFont?: string = this.brandName.genericSignalCollection().selectedHeadingFont;
+  selectedBodyFont?: string = this.brandName.genericSignalCollection().selectedBodyFont;
 
   handlePersonalitySelection(personality: string) {
-    this.selectedPersonality = personality;
+    this.updateBrandNameCollection({ selectedPersonality: personality });
+    const iets = this.brandNameService.getAllPersonalities();
+    this.brandNameService.setPersonality(personality, iets);
+
+    // comment
+    console.log('Personality selected:', personality);
     this.loadSynonymsBasedOnPersonality(personality);
   }
 
@@ -96,7 +111,7 @@ export class BrandNameComponent implements OnInit {
     }
 
     const formattedFonts = fonts
-      .map(font => `family=${encodeURIComponent(font)}:wght@400;700`)
+      .map((font) => `family=${encodeURIComponent(font)}:wght@400;700`)
       .join('&');
     const fontUrl = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
 
@@ -107,50 +122,11 @@ export class BrandNameComponent implements OnInit {
     this.renderer.appendChild(this.document.head, link);
   }
 
-  private getPersonalityFromBrandValues(): string {
-    return 'Jester';
-  }
-
-  get taglineOutput(): { taglineUsed: boolean; tagline: string } { // Updated to return boolean only
+  get taglineOutput(): { taglineUsed: boolean; tagline: string } {
+    // Updated to return boolean only
     return {
       taglineUsed: this.taglineUsed === 'yes', // Simplifies to true/false
-      tagline: this.tagline,
+      tagline: this.tagline ?? '',
     };
-  }
-
-  // Test Component Logic
-  sliderValue: number = 50;
-  onSliderChange(value: number) {
-    console.log('Slider Value:', value);
-  }
-
-  slides: string[] = ['/assets/image1.jpg', '/assets/image2.jpg', '/assets/image3.jpg'];
-  isLoading = true;
-  totalItems: number = 100;
-  itemsPerPage: number = 10;
-
-  tableData = signal<{ name: string; age: number; country: string; mijnKlets: string }[]>([
-    { name: 'John', age: 25, country: 'USA', mijnKlets: 'Klets' },
-    { name: 'Anna', age: 22, country: 'Canada', mijnKlets: 'Klets2' },
-    { name: 'Mike', age: 30, country: 'UK', mijnKlets: 'Klets3' },
-  ]);
-
-  inputValue = model<string>('');
-
-  onInputValueChange(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    const value = inputElement.value;
-    this.inputValue.set(value);
-  }
-
-  tableColumns = signal(['Name', 'Age', 'Country', 'Mijn Klets']);
-  additionalContext = signal({ showAge: true });
-
-  get currentThemes() {
-    return this.brandColorThemeService.colorPaletteCollection.genericSignalCollection();
-  }
-
-  onPageChange(page: number) {
-    console.log('Current Page:', page);
   }
 }
