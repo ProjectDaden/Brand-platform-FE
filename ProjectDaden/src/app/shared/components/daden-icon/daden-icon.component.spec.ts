@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsidePreviewsComponent } from './aside-previews.component';
+import { DadenIconComponent } from './daden-icon.component';
 
-
-describe('AsidePreviewsComponent', () => {
-  let component: AsidePreviewsComponent;
-  let fixture: ComponentFixture<AsidePreviewsComponent>;
+describe('DadenIconComponent', () => {
+  let component: DadenIconComponent;
+  let fixture: ComponentFixture<DadenIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AsidePreviewsComponent]
+      imports: [DadenIconComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AsidePreviewsComponent);
+    fixture = TestBed.createComponent(DadenIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

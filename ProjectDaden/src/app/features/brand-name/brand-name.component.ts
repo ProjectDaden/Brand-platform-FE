@@ -10,6 +10,7 @@ import { DadenLoadingComponent } from '../../shared/components/daden-loading/dad
 import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
 import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
 import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
+import { DadenIconComponent } from '../../shared/components/daden-icon/daden-icon.component';
 import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
 
 @Component({
@@ -24,6 +25,7 @@ import { BrandColorThemeService } from '../tool-color-picker/services/brand-colo
     DadenLoadingComponent,
     DadenPaginationComponent,
     DadenSliderComponent,
+    DadenIconComponent,
     DadenValueSliderComponent,
   ],
   templateUrl: './brand-name.component.html',
