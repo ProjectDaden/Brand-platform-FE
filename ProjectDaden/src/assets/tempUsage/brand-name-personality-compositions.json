@@ -1,4 +1,9 @@
 {
+  "default": {
+    "synonyms": [],
+    "headingFonts": [],
+    "bodyFonts": []
+  },
   "Jester": {
     "synonyms": ["Playful", "Witty", "Fun"],
     "headingFonts": ["Bangers", "Fredoka One", "Luckiest Guy"],

@@ -2,20 +2,20 @@
   <div class="m-auto max-w-screen-md p-8">
     <!-- Header -->
     <header class="text-center">
-      <!-- <h1 class="text-4xl font-bold text-blue-900">{{"brand-name-component.title" | translate}}</h1> -->
-      <p class="text-lg italic mb-8 opacity-75">Define Your Brand’s Identity</p>
+      <h1 class="text-4xl font-bold text-blue-900">{{ "brand-name-component.title" | translate }}</h1>
+      <p class="text-lg italic mb-8 opacity-75">{{ "brand-name-component.subtitle" | translate}}</p>
     </header>
 
     <!-- Inputs Section -->
     <section class="py-6">
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Set Your Tagline</h2>
-        <p class="text-sm opacity-75 mb-6">Craft a tagline that reflects your brand’s essence.</p>
+        <h2 class="text-xl font-semibold mb-4">{{ "brand-name-component.form-area.form-title" | translate }}</h2>
+        <p class="text-sm opacity-75 mb-6">{{ "brand-name-component.form-area.form-description" | translate }}</p>
 
         <div class="grid grid-cols-1 gap-6">
           <!-- Personality Dropdown -->
           <div>
-            <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
+            <label for="personality" class="block text-sm font-medium mb-2">{{ "brand-name-component.form-area.form-personality-label" | translate }}</label>
             <daden-dropdown
               id="personality"
               class="w-full"
@@ -23,24 +23,24 @@
               [placeholder]="'Select a personality...'"
               (selectedValue)="handlePersonalitySelection($event)"
             ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Choose a personality to align your tagline synonyms.</p>
+            <p class="text-sm opacity-50 mt-1">{{ "brand-name-component.form-area.form-personality-description" | translate }}</p>
           </div>
 
           <!-- Thesaurus Synonyms Dropdown -->
           <div>
-            <label for="synonyms" class="block text-sm font-medium mb-2">Thesaurus</label>
+            <label for="synonyms" class="block text-sm font-medium mb-2">{{ "brand-name-component.form-area.form-thesaurus-label" | translate }}</label>
             <daden-dropdown
               id="synonyms"
               class="w-full"
               [items]="brandName.genericSignalCollection().personalityOptions.synonyms"
               [placeholder]="'Select a synonym...'"
             ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Pick a keyword to inspire your tagline.</p>
+            <p class="text-sm opacity-50 mt-1">{{ "brand-name-component.form-area.form-thesaurus-description" | translate }}</p>
           </div>
 
           <!-- Tagline Usage Radio Buttons -->
           <div>
-            <label class="block text-sm font-medium mb-2">Use a Tagline?</label>
+            <label class="block text-sm font-medium mb-2">{{ "brand-name-component.form-area.form-tagline-radio-label" | translate }}</label>
             <div class="flex flex-col gap-2 sm:flex-row sm:gap-6">
               <label class="flex items-center">
                 <input
@@ -63,12 +63,12 @@
                 No
               </label>
             </div>
-            <p class="text-sm opacity-50 mt-1">Decide if your brand will use a tagline.</p>
+            <p class="text-sm opacity-50 mt-1">{{ "brand-name-component.form-area.form-tagline-radio-description" | translate }}</p>
           </div>
 
           <!-- Tagline Text Input -->
           <div>
-            <label for="tagline" class="block text-sm font-medium mb-2">Tagline</label>
+            <label for="tagline" class="block text-sm font-medium mb-2">{{ "brand-name-component.form-area.form-tagline-input-label" | translate }}</label>
             <input
               id="tagline"
               type="text"
@@ -77,7 +77,7 @@
               placeholder="Enter your tagline..."
               [disabled]="brandName.genericSignalCollection().tagLineUsed === 'no'"
             />
-            <p class="text-sm opacity-50 mt-1">Write a concise phrase that sums up your brand.</p>
+            <p class="text-sm opacity-50 mt-1">{{ "brand-name-component.form-area.form-tagline-input-description" | translate }}</p>
           </div>
         </div>
       </div>
@@ -86,8 +86,8 @@
     <!-- Preview Section -->
     <section class="py-6">
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Tagline Preview</h2>
-        <p class="text-sm opacity-75 mb-4">See how your tagline looks in action.</p>
+        <h2 class="text-xl font-semibold mb-4">{{ "brand-name-component.preview-area.preview-title" | translate }}</h2>
+        <p class="text-sm opacity-75 mb-4">{{ "brand-name-component.preview-area.preview-description" | translate }}</p>
         <div class="p-4 bg-blue-50 rounded-lg text-center">
           <h1
             class="text-4xl font-bold mb-2"

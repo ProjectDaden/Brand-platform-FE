@@ -1,31 +1,32 @@
 import { Component, Renderer2, OnInit, inject, computed } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { brandNameDefault } from './models/brand-name';
 import { BrandNameService } from './services/brand-name.service';
 import { PersonalityOptions } from './models/personalities-options';
-import { HttpLoaderFactory } from '../../services/translations/translations';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand-name-tagline',
-  imports: [DadenDropdownComponent, FormsModule, CommonModule],
+  imports: [DadenDropdownComponent, FormsModule, TranslateModule, CommonModule],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
   standalone: true,
 })
 export class BrandNameComponent implements OnInit {
-  private document = inject(DOCUMENT);
-  private renderer = inject(Renderer2);
-  private brandNameService = inject(BrandNameService);
-  private translate = inject(TranslateService);
+  private readonly document = inject(DOCUMENT);
+  private readonly renderer = inject(Renderer2);
+  private readonly brandNameService = inject(BrandNameService);
+  translate = inject(TranslateService);
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
 
-  constructor() {}
+  constructor() {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
+  }
 
   watchBrandName = computed(() => {
     const brandNameValue = this.brandName.genericSignalCollection();
@@ -61,20 +62,26 @@ export class BrandNameComponent implements OnInit {
 
   private loadSynonymsBasedOnPersonality(personality: string) {
     let personalityOpts: PersonalityOptions;
-    switch (personality) {
-      case 'Jester':
-        personalityOpts = this.brandNameService.personalityComposition();
-        this.brandName.genericSignalCollection().personalityOptions = personalityOpts;
-        console.log("personalityOpts", personalityOpts);
-        break;
-      case 'Creator':
-        personalityOpts = this.brandNameService.personalityComposition();
-        this.brandName.genericSignalCollection().personalityOptions = personalityOpts;
-        break;
-      // ... other cases as before ...
-      default:
-        personalityOpts = this.brandNameService.personalityComposition();
-        this.brandName.genericSignalCollection().personalityOptions = {} as PersonalityOptions;
+    const allPersonalities = this.brandNameService.getAllPersonalities();
+    
+    if (personality in allPersonalities) {
+      personalityOpts = this.brandNameService.personalityComposition();
+      this.brandName.genericSignalCollection.update(current => ({
+        ...current,
+        personalityOptions: personalityOpts
+      }));
+    } else {
+      // Reset personality options when no valid personality is selected
+      const emptyOptions: PersonalityOptions = {
+        synonyms: [],
+        headingFonts: [],
+        bodyFonts: []
+      };
+      this.brandName.genericSignalCollection.update(current => ({
+        ...current,
+        personalityOptions: emptyOptions
+      }));
+      return; // Exit early since we don't need to load fonts
     }
     const allFonts = [
       ...new Set([

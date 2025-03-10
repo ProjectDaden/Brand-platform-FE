@@ -1,0 +1,31 @@
+{
+    "home-component": {
+        "title": "hallo Home"
+    },
+    "sidebar-component": {
+        "title": "hallo sidebar"
+    },
+    "preview-component": {
+        "title": "hallo preview"
+    },
+    "brand-name-component": {
+        "title": "Brand Name & Tagline",
+        "subtitle": "Define Your Brand’s Identity",
+        "form-area": {
+            "form-title": "Set Your Tagline",
+            "form-description": "Craft a tagline that reflects your brand’s essence.",
+            "form-personality-label": "Personality",
+            "form-personality-description": "Choose a personality to align your tagline synonyms.",
+            "form-thesaurus-label": "Thesaurus",
+            "form-thesaurus-description": "Pick a keyword to inspire your tagline.",
+            "form-tagline-radio-label": "Use a Tagline?",
+            "form-tagline-radio-description": "Decide if your brand will use a tagline.",
+            "form-tagline-input-label": "Tagline",
+            "form-tagline-input-description": "Write a concise phrase that sums up your brand."
+        },
+        "preview-area": {
+            "preview-title": "Tagline Preview",
+            "preview-description": "See how your tagline looks in action."
+        }
+    }
+}
