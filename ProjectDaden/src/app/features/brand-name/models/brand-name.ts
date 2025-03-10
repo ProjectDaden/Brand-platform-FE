@@ -1,14 +1,13 @@
 import { signal } from '@angular/core';
 import { SignalCollection } from '../../../shared/models/signal-object-creation';
+import { PersonalityOptions } from './personalities-options';
 
 export interface BrandName {
-  personalityOptions: string[];
+  personalities: string[];
   tagLineUsed: 'yes' | 'no';
   tagLine: string;
-  synonymOptions: string[];
   selectedPersonality: string;
-  selectedHeadingFont: string;
-  selectedBodyFont: string;
+  personalityOptions: PersonalityOptions;
 
 //   handlePersonalitySelection(personality: string): void;
 //   handleTagLineUsed(used: 'yes' | 'no'): void;
@@ -19,14 +18,12 @@ export interface BrandName {
 
 export const brandNameDefault: SignalCollection<BrandName> = {
   genericSignalCollection: signal({
-    personalityOptions: ['Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
+    personalities: ['Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
     'Magician', 'Rebel', 'Ruler', 'Everyman', 'Lover'],
     tagLineUsed: 'no',
     tagLine: '',
-    synonymOptions: [],
     selectedPersonality: 'Jester',
-    selectedHeadingFont: '',
-    selectedBodyFont: '',
+    personalityOptions: {} as PersonalityOptions,
     // handlePersonalitySelection: (personality: string) => {},
     // handleTagLineUsed: (used: 'yes' | 'no') => {},
     // handleTagLine: (tagLine: string) => {},

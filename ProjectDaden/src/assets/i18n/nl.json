@@ -8,5 +8,8 @@
     },
     "preview-component": {
         "title": "hallo preview"
+    },
+    "brand-name-component": {
+        "title": "Brand Name & Tagline"
     }
 }

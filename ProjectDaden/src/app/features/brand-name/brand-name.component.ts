@@ -1,20 +1,13 @@
-import {
-  Component,
-  Renderer2,
-  Inject,
-  OnInit,
-  signal,
-  model,
-  inject,
-  effect,
-  computed,
-} from '@angular/core';
+import { Component, Renderer2, OnInit, inject, computed } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { brandNameDefault } from './models/brand-name';
 import { BrandNameService } from './services/brand-name.service';
+import { PersonalityOptions } from './models/personalities-options';
+import { HttpLoaderFactory } from '../../services/translations/translations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand-name-tagline',
@@ -27,15 +20,16 @@ export class BrandNameComponent implements OnInit {
   private document = inject(DOCUMENT);
   private renderer = inject(Renderer2);
   private brandNameService = inject(BrandNameService);
+  private translate = inject(TranslateService);
 
   brandName = brandNameDefault;
+  personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
 
   constructor() {}
 
-  watch = computed(() => {
+  watchBrandName = computed(() => {
     const brandNameValue = this.brandName.genericSignalCollection();
-    console.log('TOUCHED BRANDNAME SIGNAL!!!', brandNameValue);
-    console.log('synonymOptions !!!', this.brandNameService.personalityComposition());
+    console.log(brandNameValue, 'CURRENTLY LOADED OPTIONS');
     return brandNameValue;
   });
 
@@ -43,6 +37,16 @@ export class BrandNameComponent implements OnInit {
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
+  }
+
+  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed;
+  tagline?: string = this.brandName.genericSignalCollection().tagLine;
+
+  handlePersonalitySelection(personality: string) {
+    this.updateBrandNameCollection({ selectedPersonality: personality });
+    const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
+    this.brandNameService.setPersonality(personality, associatedPersonalityOptions);
+    this.loadSynonymsBasedOnPersonality(personality);
   }
 
   updateBrandNameCollection(
@@ -55,52 +59,29 @@ export class BrandNameComponent implements OnInit {
     console.log('UPDATES', this.brandName.genericSignalCollection());
   }
 
-  // Personality and Tagline Logic
-  // personalityOptions?: string[] = this.brandName.genericSignalCollection().personalityOptions;
-  selectedPersonality?: string = this.brandName.genericSignalCollection().selectedPersonality;
-  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed; // Updated to only allow "yes" or "no", default to "no"
-  tagline?: string = this.brandName.genericSignalCollection().tagLine;
-  synonymOptions?: string[] = this.brandName.genericSignalCollection().synonymOptions;
-  selectedHeadingFont?: string = this.brandName.genericSignalCollection().selectedHeadingFont;
-  selectedBodyFont?: string = this.brandName.genericSignalCollection().selectedBodyFont;
-
-  handlePersonalitySelection(personality: string) {
-    this.updateBrandNameCollection({ selectedPersonality: personality });
-    const iets = this.brandNameService.getAllPersonalities();
-    this.brandNameService.setPersonality(personality, iets);
-
-    // comment
-    console.log('Personality selected:', personality);
-    this.loadSynonymsBasedOnPersonality(personality);
-  }
-
   private loadSynonymsBasedOnPersonality(personality: string) {
-    let synonyms: string[];
-    let headingFonts: string[];
-    let bodyFonts: string[];
-
+    let personalityOpts: PersonalityOptions;
     switch (personality) {
       case 'Jester':
-        synonyms = ['Playful', 'Witty', 'Fun'];
-        headingFonts = ['Bangers', 'Fredoka One', 'Luckiest Guy'];
-        bodyFonts = ['Comic Neue', 'Roboto', 'Open Sans'];
+        personalityOpts = this.brandNameService.personalityComposition();
+        this.brandName.genericSignalCollection().personalityOptions = personalityOpts;
+        console.log("personalityOpts", personalityOpts);
         break;
       case 'Creator':
-        synonyms = ['Innovative', 'Creative', 'Visionary'];
-        headingFonts = ['Montserrat', 'Playfair Display', 'Raleway'];
-        bodyFonts = ['Lato', 'Source Sans Pro', 'Poppins'];
+        personalityOpts = this.brandNameService.personalityComposition();
+        this.brandName.genericSignalCollection().personalityOptions = personalityOpts;
         break;
       // ... other cases as before ...
       default:
-        synonyms = ['Versatile', 'Standard', 'Default'];
-        headingFonts = ['Roboto', 'Arial', 'Helvetica'];
-        bodyFonts = ['Open Sans', 'Lora', 'Merriweather'];
+        personalityOpts = this.brandNameService.personalityComposition();
+        this.brandName.genericSignalCollection().personalityOptions = {} as PersonalityOptions;
     }
-
-    this.synonymOptions = synonyms;
-    this.selectedHeadingFont = headingFonts[0];
-    this.selectedBodyFont = bodyFonts[0];
-    const allFonts = [...new Set([...headingFonts, ...bodyFonts])];
+    const allFonts = [
+      ...new Set([
+        ...personalityOpts.headingFonts,
+        ...personalityOpts.bodyFonts,
+      ]),
+    ];
     this.loadGoogleFonts(allFonts);
   }
 

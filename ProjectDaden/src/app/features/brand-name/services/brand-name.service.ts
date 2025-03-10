@@ -22,6 +22,7 @@ export class BrandNameService {
     this.loadAllPersonalities();
   }
 
+  // The api-call to load all existing personalities.
   private loadAllPersonalities() {
     this.http.get<{ [key: string]: PersonalityOptions }>(this.configUrl).subscribe((data) => {
       this.allPersonalities = data;
@@ -29,26 +30,30 @@ export class BrandNameService {
     });
   }
 
+  // Expose all personalities to interested consumers.
   getAllPersonalities(): { [key: string]: PersonalityOptions } {
     return this.allPersonalities;
   }
 
+  // The api-call to load the default personality.
   loadBrandNamePersonaltyOptions() {
     this.http.get<{ [key: string]: PersonalityOptions }>(this.configUrl).subscribe((data) => {
-      console.log(data, "DATA IN THE BRANDNAME SERVICE!!");
+      // console.log(data, "DATA IN THE BRANDNAME SERVICE!!");
         this.setPersonality('default', data);
       });
   }
 
+  // Set the personality composition.
   setPersonality(personalityKey: string, personalities: { [key: string]: PersonalityOptions }) {
     if (personalities[personalityKey]) {
-      console.log(personalities[personalityKey], "PERSONALITIES KEY!!");
+      // console.log(personalities[personalityKey], "PERSONALITIES KEY!!");
       this.personalityComposition.set(personalities[personalityKey]);
     } else {
       console.error(`Personality option "${personalityKey}" not found.`);
     }
   }
 
+  // The api-call to change the personality.
   changePersonality(personalityKey: string) {
     this.http.get<{ [key: string]: PersonalityOptions }>(this.configUrl).subscribe((data) => {
         this.setPersonality(personalityKey, data);

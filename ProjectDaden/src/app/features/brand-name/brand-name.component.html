@@ -2,7 +2,7 @@
   <div class="m-auto max-w-screen-md p-8">
     <!-- Header -->
     <header class="text-center">
-      <h1 class="text-4xl font-bold text-blue-900">Brand Name & Tagline</h1>
+      <!-- <h1 class="text-4xl font-bold text-blue-900">{{"brand-name-component.title" | translate}}</h1> -->
       <p class="text-lg italic mb-8 opacity-75">Define Your Brand’s Identity</p>
     </header>
 
@@ -19,7 +19,7 @@
             <daden-dropdown
               id="personality"
               class="w-full"
-              [items]="brandName.genericSignalCollection().personalityOptions"
+              [items]="brandName.genericSignalCollection().personalities"
               [placeholder]="'Select a personality...'"
               (selectedValue)="handlePersonalitySelection($event)"
             ></daden-dropdown>
@@ -32,7 +32,7 @@
             <daden-dropdown
               id="synonyms"
               class="w-full"
-              [items]="synonymOptions ?? []"
+              [items]="brandName.genericSignalCollection().personalityOptions.synonyms"
               [placeholder]="'Select a synonym...'"
             ></daden-dropdown>
             <p class="text-sm opacity-50 mt-1">Pick a keyword to inspire your tagline.</p>
@@ -46,7 +46,7 @@
                 <input
                   type="radio"
                   name="taglineUsed"
-                  [(ngModel)]="taglineUsed"
+                  [(ngModel)]="brandName.genericSignalCollection().tagLineUsed"
                   value="yes"
                   class="mr-2 focus:ring-blue-500"
                 />
@@ -56,7 +56,7 @@
                 <input
                   type="radio"
                   name="taglineUsed"
-                  [(ngModel)]="taglineUsed"
+                  [(ngModel)]="brandName.genericSignalCollection().tagLineUsed"
                   value="no"
                   class="mr-2 focus:ring-blue-500"
                 />
@@ -72,10 +72,10 @@
             <input
               id="tagline"
               type="text"
-              [(ngModel)]="tagline"
+              [(ngModel)]="brandName.genericSignalCollection().tagLine"
               class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your tagline..."
-              [disabled]="taglineUsed === 'no'"
+              [disabled]="brandName.genericSignalCollection().tagLineUsed === 'no'"
             />
             <p class="text-sm opacity-50 mt-1">Write a concise phrase that sums up your brand.</p>
           </div>
@@ -91,16 +91,19 @@
         <div class="p-4 bg-blue-50 rounded-lg text-center">
           <h1
             class="text-4xl font-bold mb-2"
-            [style.fontFamily]="selectedHeadingFont + ', sans-serif'"
+            [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.headingFonts[0]"
           >
             Your Brand Name
           </h1>
           <p
             class="text-lg italic"
-            [style.fontFamily]="selectedBodyFont + ', sans-serif'"
-            [class.opacity-50]="taglineUsed === 'no' || !tagline"
+            [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.bodyFonts[0] + ', sans-serif'"
+            [class.opacity-50]="brandName.genericSignalCollection().tagLineUsed === 'no' || !brandName.genericSignalCollection().tagLine"
           >
-            {{ taglineUsed === 'yes' && tagline ? tagline : 'No tagline set' }}
+            {{ brandName.genericSignalCollection().tagLineUsed === 'yes' && 
+            brandName.genericSignalCollection().tagLine ? 
+            brandName.genericSignalCollection().tagLine : 'No tagline set' 
+            }}
           </p>
         </div>
       </div>
@@ -116,5 +119,4 @@
       </button>
     </div>
   </div>
-  <p>{{ watch() | json }}</p>
 </div>
