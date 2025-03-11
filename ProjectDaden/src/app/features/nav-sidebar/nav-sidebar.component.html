@@ -1,4 +1,4 @@
-<div class="bg-blue-950 text-white p-6 pb-6 flex flex-col overflow-y-hidden w-full lg:h-full">
+<div class="bg-blue-950 text-white p-6 pb-6 flex flex-col w-full lg:h-full min-h-screen">
   <!-- Top Bar (always visible, contains logo and hamburger on mobile) -->
   <div class="flex flex-row justify-between items-center">
     <!-- Logo and Name -->
@@ -26,8 +26,8 @@
   </div>
 
   <!-- Navigation Menu (hidden on mobile/tablet by default, toggled by hamburger) -->
-  <div [class.hidden]="!isMenuOpen" class="lg:block flex overflow-y-auto pt-6 ">
-    <nav class="">
+  <div [class.hidden]="!isMenuOpen" class="lg:flex flex-col overflow-y-auto pt-6 h-full">
+    <nav>
       <ul class="my-0">
         @for (category of categories(); track $index) {
           <li class="mb-4">
@@ -80,9 +80,9 @@
     <!-- Settings -->
     <div class="flex flex-col gap-1 mt-auto">
       <div class="border-t-2 opacity-25"></div>
-      <button class="flex items-center p-2 rounded w-full opacity-50 select-none gap-1 hover:bg-blue-900 hover:opacity-100 transition-all">
+      <button class="flex items-center gap-2 p-1 rounded w-full opacity-75 select-none hover:bg-blue-900 hover:opacity-100 transition-all">
         <daden-icon icon="settings" [strokeWidth]="1.5" [class]="'size-4 mx-1'"></daden-icon>
         <p>Settings</p>
       </button>
     </div>
-</div>
+  </div>

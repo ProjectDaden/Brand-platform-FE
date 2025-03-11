@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 
 @Component({
   selector: 'app-section-messaging',
   templateUrl: './section-messaging.component.html',
   styleUrls: ['./section-messaging.component.scss'],
   standalone: true,
-  imports: [DadenDropdownComponent], // Required for ngModel and dropdown
+  imports: [
+    DadenHeaderComponent, 
+    DadenResetButtonComponent, 
+    DadenSaveButtonComponent, 
+    DadenDropdownComponent],
 })
 export class SectionMessagingComponent implements OnInit {
   problem: string = '';

@@ -1,10 +1,18 @@
 import { Component, Renderer2, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 
 @Component({
   selector: 'app-section-typography',
-  imports: [DadenDropdownComponent],
+  imports: [
+    DadenDropdownComponent,
+    DadenHeaderComponent, 
+    DadenResetButtonComponent, 
+    DadenSaveButtonComponent
+  ],
   templateUrl: './section-typography.component.html',
   styleUrl: './section-typography.component.scss',
   standalone: true,

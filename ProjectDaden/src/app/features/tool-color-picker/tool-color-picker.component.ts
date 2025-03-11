@@ -1,11 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/daden-dropdown.component";
 import { BrandColorThemeService } from './services/brand-color-theme.service';
 
 @Component({
   selector: 'tool-color-picker',
   standalone: true,
-  imports: [DadenDropdownComponent],
+  imports: [
+    DadenHeaderComponent, 
+    DadenResetButtonComponent, 
+    DadenSaveButtonComponent,
+    DadenDropdownComponent],
   templateUrl: './tool-color-picker.component.html'
 })
 export class ToolColorPickerComponent {
