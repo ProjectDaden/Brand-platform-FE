@@ -107,8 +107,8 @@ export class BrandNameComponent implements OnInit {
   }
 
   onReset(){
-    this.handlePersonalitySelection('');
     this.brandName.genericSignalCollection.set(DEFAULT_BRAND_NAME_VALUES);
+    this.handlePersonalitySelection('');
     this.taglineUsed = DEFAULT_BRAND_NAME_VALUES.tagLineUsed;
     this.tagline = DEFAULT_BRAND_NAME_VALUES.tagLine;
     console.log('RESET');
