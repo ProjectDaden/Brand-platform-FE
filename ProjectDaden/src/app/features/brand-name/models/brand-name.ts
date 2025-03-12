@@ -8,12 +8,6 @@ export interface BrandName {
   tagLine: string;
   selectedPersonality: string;
   personalityOptions: PersonalityOptions;
-
-//   handlePersonalitySelection(personality: string): void;
-//   handleTagLineUsed(used: 'yes' | 'no'): void;
-//   handleTagLine(tagLine: string): void;
-//   handleSynonymSelection(synonyms: string[]): void;
-//   loadSynonymsBasedOnPersonality(personality: string): void;
 }
 
 export const brandNameDefault: SignalCollection<BrandName> = {
@@ -23,10 +17,6 @@ export const brandNameDefault: SignalCollection<BrandName> = {
     tagLineUsed: 'no',
     tagLine: '',
     selectedPersonality: 'Jester',
-    personalityOptions: {} as PersonalityOptions,
-    // handlePersonalitySelection: (personality: string) => {},
-    // handleTagLineUsed: (used: 'yes' | 'no') => {},
-    // handleTagLine: (tagLine: string) => {},
-    // handleSynonymSelection: (synonyms: string[]) => {},
+    personalityOptions: {} as PersonalityOptions
   }),
 };

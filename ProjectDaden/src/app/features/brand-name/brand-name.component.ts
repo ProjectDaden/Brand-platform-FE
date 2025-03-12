@@ -44,10 +44,10 @@ export class BrandNameComponent implements OnInit {
   tagline?: string = this.brandName.genericSignalCollection().tagLine;
 
   handlePersonalitySelection(personality: string) {
-    this.updateBrandNameCollection({ selectedPersonality: personality });
     const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
     this.brandNameService.setPersonality(personality, associatedPersonalityOptions);
     this.loadSynonymsBasedOnPersonality(personality);
+    this.updateBrandNameCollection({ selectedPersonality: personality });
   }
 
   updateBrandNameCollection(
@@ -71,7 +71,6 @@ export class BrandNameComponent implements OnInit {
         personalityOptions: personalityOpts
       }));
     } else {
-      // Reset personality options when no valid personality is selected
       const emptyOptions: PersonalityOptions = {
         synonyms: [],
         headingFonts: [],
@@ -81,7 +80,7 @@ export class BrandNameComponent implements OnInit {
         ...current,
         personalityOptions: emptyOptions
       }));
-      return; // Exit early since we don't need to load fonts
+      return;
     }
     const allFonts = [
       ...new Set([
@@ -111,9 +110,8 @@ export class BrandNameComponent implements OnInit {
   }
 
   get taglineOutput(): { taglineUsed: boolean; tagline: string } {
-    // Updated to return boolean only
     return {
-      taglineUsed: this.taglineUsed === 'yes', // Simplifies to true/false
+      taglineUsed: this.taglineUsed === 'yes',
       tagline: this.tagline ?? '',
     };
   }
