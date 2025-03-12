@@ -10,13 +10,15 @@ export interface BrandName {
   personalityOptions: PersonalityOptions;
 }
 
-export const brandNameDefault: SignalCollection<BrandName> = {
-  genericSignalCollection: signal({
-    personalities: ['Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
+export const DEFAULT_BRAND_NAME_VALUES: BrandName = {
+  personalities: ['Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
     'Magician', 'Rebel', 'Ruler', 'Everyman', 'Lover'],
-    tagLineUsed: 'no',
-    tagLine: '',
-    selectedPersonality: 'Jester',
-    personalityOptions: {} as PersonalityOptions
-  }),
+  tagLineUsed: 'no',
+  tagLine: '',
+  selectedPersonality: '',
+  personalityOptions: {} as PersonalityOptions
+};
+
+export const brandNameDefault: SignalCollection<BrandName> = {
+  genericSignalCollection: signal(DEFAULT_BRAND_NAME_VALUES),
 };

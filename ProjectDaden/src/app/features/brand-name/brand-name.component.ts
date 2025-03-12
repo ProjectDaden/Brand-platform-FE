@@ -1,54 +1,54 @@
-import { Component, Renderer2, OnInit, inject, computed } from '@angular/core';
+import { Component, OnInit, inject, computed, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+
 import { BrandNameService } from './services/brand-name.service';
-import { brandNameDefault } from './models/brand-name';
+import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
 import { PersonalityOptions } from './models/personalities-options';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand-name-tagline',
+  standalone: true,
   imports: [
     DadenHeaderComponent,
     DadenDropdownComponent,
     FormsModule,
     CommonModule,
-    TranslateModule
+    TranslateModule,
+    DadenResetButtonComponent,
+    DadenSaveButtonComponent,
   ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
-  standalone: true,
 })
 export class BrandNameComponent implements OnInit {
   private readonly document = inject(DOCUMENT);
   private readonly renderer = inject(Renderer2);
   private readonly brandNameService = inject(BrandNameService);
-  translate = inject(TranslateService);
+  private readonly translate = inject(TranslateService);
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
 
-  constructor() {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
-  }
+  watchBrandName = computed(() => this.brandName.genericSignalCollection());
 
-  watchBrandName = computed(() => {
-    const brandNameValue = this.brandName.genericSignalCollection();
-    console.log(brandNameValue, 'CURRENTLY LOADED OPTIONS');
-    return brandNameValue;
-  });
+  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed;
+  tagline?: string = this.brandName.genericSignalCollection().tagLine;
 
   ngOnInit() {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
+
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
   }
-
-  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed;
-  tagline?: string = this.brandName.genericSignalCollection().tagLine;
 
   handlePersonalitySelection(personality: string) {
     const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
@@ -57,69 +57,60 @@ export class BrandNameComponent implements OnInit {
     this.updateBrandNameCollection({ selectedPersonality: personality });
   }
 
-  updateBrandNameCollection(
-    updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>
-  ) {
-    this.brandName.genericSignalCollection.update((current) => {
-      const updatedBrandName = { ...current, ...updates };
-      return updatedBrandName;
-    });
+  updateBrandNameCollection(updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>) {
+    this.brandName.genericSignalCollection.update(current => ({ ...current, ...updates }));
     console.log('UPDATES', this.brandName.genericSignalCollection());
   }
 
   private loadSynonymsBasedOnPersonality(personality: string) {
-    let personalityOpts: PersonalityOptions;
     const allPersonalities = this.brandNameService.getAllPersonalities();
-    
-    if (personality in allPersonalities) {
-      personalityOpts = this.brandNameService.personalityComposition();
+    if (!(personality in allPersonalities)) {
       this.brandName.genericSignalCollection.update(current => ({
         ...current,
-        personalityOptions: personalityOpts
-      }));
-    } else {
-      const emptyOptions: PersonalityOptions = {
-        synonyms: [],
-        headingFonts: [],
-        bodyFonts: []
-      };
-      this.brandName.genericSignalCollection.update(current => ({
-        ...current,
-        personalityOptions: emptyOptions
+        personalityOptions: { synonyms: [], headingFonts: [], bodyFonts: [] } as PersonalityOptions,
       }));
       return;
     }
-    const allFonts = [
-      ...new Set([
-        ...personalityOpts.headingFonts,
-        ...personalityOpts.bodyFonts,
-      ]),
-    ];
-    this.loadGoogleFonts(allFonts);
+
+    const personalityOpts = this.brandNameService.personalityComposition();
+    this.brandName.genericSignalCollection.update(current => ({
+      ...current,
+      personalityOptions: personalityOpts,
+    }));
+
+    this.loadGoogleFonts([...new Set([...personalityOpts.headingFonts, ...personalityOpts.bodyFonts])]);
   }
 
   private loadGoogleFonts(fonts: string[]) {
-    const existingLink = this.document.getElementById('google-fonts-link');
-    if (existingLink) {
-      this.renderer.removeChild(this.document.head, existingLink);
-    }
+    if (!fonts.length) return;
 
-    const formattedFonts = fonts
-      .map((font) => `family=${encodeURIComponent(font)}:wght@400;700`)
-      .join('&');
+    const existingLink = this.document.getElementById('google-fonts-link');
+    const formattedFonts = fonts.map(font => `family=${encodeURIComponent(font)}:wght@400;700`).join('&');
     const fontUrl = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
+
+    if (existingLink?.getAttribute('href') === fontUrl) return;
 
     const link = this.renderer.createElement('link');
     this.renderer.setAttribute(link, 'id', 'google-fonts-link');
     this.renderer.setAttribute(link, 'rel', 'stylesheet');
     this.renderer.setAttribute(link, 'href', fontUrl);
+
+    existingLink && this.renderer.removeChild(this.document.head, existingLink);
     this.renderer.appendChild(this.document.head, link);
   }
 
-  get taglineOutput(): { taglineUsed: boolean; tagline: string } {
+  get taglineOutput() {
     return {
       taglineUsed: this.taglineUsed === 'yes',
       tagline: this.tagline ?? '',
     };
+  }
+
+  onReset(){
+    this.handlePersonalitySelection('');
+    this.brandName.genericSignalCollection.set(DEFAULT_BRAND_NAME_VALUES);
+    this.taglineUsed = DEFAULT_BRAND_NAME_VALUES.tagLineUsed;
+    this.tagline = DEFAULT_BRAND_NAME_VALUES.tagLine;
+    console.log('RESET');
   }
 }

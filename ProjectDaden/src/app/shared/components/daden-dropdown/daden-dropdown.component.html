@@ -1,7 +1,8 @@
 <select class="w-full p-2 border border-gray-300 rounded"
-    (change)="selectItem($event)">
-    <option value="" disabled selected>{{ placeholder() }}</option>
+    [ngModel]="selectedItem()"
+    (ngModelChange)="onModelChange($event)">
+    <option value="" disabled>{{ placeholder() }}</option>
     @for (option of items(); track $index) {
-        <option>{{ option }}</option>
+        <option [value]="option">{{ option }}</option>
     }
 </select>
