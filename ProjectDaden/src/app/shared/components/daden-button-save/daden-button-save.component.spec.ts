@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsidePreviewsComponent } from './aside-previews.component';
+import { DadenButtonSaveComponent } from './daden-button-save.component';
 
-
-describe('AsidePreviewsComponent', () => {
-  let component: AsidePreviewsComponent;
-  let fixture: ComponentFixture<AsidePreviewsComponent>;
+describe('DadenButtonSaveComponent', () => {
+  let component: DadenButtonSaveComponent;
+  let fixture: ComponentFixture<DadenButtonSaveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AsidePreviewsComponent]
+      imports: [DadenButtonSaveComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AsidePreviewsComponent);
+    fixture = TestBed.createComponent(DadenButtonSaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

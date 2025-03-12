@@ -1,15 +1,18 @@
 import { Component, inject, model, signal } from '@angular/core';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
-import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
-import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { DadenCardComponent } from '../../shared/components/daden-card/daden-card.component';
+import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
 import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
+import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
 import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
 
 @Component({
   selector: 'app-socialmedia-styleguide',
-  imports: [
+  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent,
     DadenTableComponent, 
     DadenInputComponent, 
     DadenCardComponent, 

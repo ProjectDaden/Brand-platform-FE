@@ -1,15 +1,22 @@
 import { Component, Renderer2, OnInit, inject, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
-import { brandNameDefault } from './models/brand-name';
 import { BrandNameService } from './services/brand-name.service';
+import { brandNameDefault } from './models/brand-name';
 import { PersonalityOptions } from './models/personalities-options';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand-name-tagline',
-  imports: [DadenDropdownComponent, FormsModule, TranslateModule, CommonModule],
+  imports: [
+    DadenHeaderComponent,
+    DadenDropdownComponent,
+    FormsModule,
+    CommonModule,
+    TranslateModule
+  ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
   standalone: true,

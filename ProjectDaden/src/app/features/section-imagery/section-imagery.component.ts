@@ -3,12 +3,18 @@ import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-section-imagery',
   imports: [
+    DadenHeaderComponent, 
+    DadenResetButtonComponent, 
+    DadenSaveButtonComponent,
     DadenDropdownComponent,
     FormsModule,
     CommonModule,

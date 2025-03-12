@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsidePreviewsComponent } from './aside-previews.component';
+import { DadenHeaderComponent } from './daden-header.component';
 
-
-describe('AsidePreviewsComponent', () => {
-  let component: AsidePreviewsComponent;
-  let fixture: ComponentFixture<AsidePreviewsComponent>;
+describe('DadenHeaderComponent', () => {
+  let component: DadenHeaderComponent;
+  let fixture: ComponentFixture<DadenHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AsidePreviewsComponent]
+      imports: [DadenHeaderComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AsidePreviewsComponent);
+    fixture = TestBed.createComponent(DadenHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

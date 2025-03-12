@@ -1,9 +1,6 @@
 <div class="flex-grow bg-blue-50 text-blue-950">
   <div class="m-auto max-w-screen-md p-8">
-    <header class="text-center">
-      <h1 class="text-4xl font-bold text-blue-900">Color Palette</h1>
-      <p class="text-lg italic mb-8 opacity-75">Crafting your Visual Identity</p>
-    </header>
+    <daden-header></daden-header>
 
         <!-- Inputs Section -->
     <section class="py-6">
@@ -259,11 +256,9 @@
         </select>
       </div> -->
 
-      <!-- Save & Continue Button -->
-      <div class="pb-8">
-        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 float-right">
-          Save & Continue
-        </button>
-      </div>
+      <!-- Buttons -->
+    <div class="pb-8 flex justify-end gap-2">
+      <daden-reset-button></daden-reset-button>
+      <daden-save-button></daden-save-button>
     </div>
-  </div>
+</div>
