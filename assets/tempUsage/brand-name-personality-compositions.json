@@ -1,0 +1,22 @@
+{
+  "default": {
+    "synonyms": [],
+    "headingFonts": [],
+    "bodyFonts": []
+  },
+  "Jester": {
+    "synonyms": ["Playful", "Witty", "Fun"],
+    "headingFonts": ["Bangers", "Fredoka One", "Luckiest Guy"],
+    "bodyFonts": ["Comic Neue", "Roboto", "Open Sans"]
+  },
+  "Creator": {
+    "synonyms": ["Innovative", "Creative", "Visionary"],
+    "headingFonts": ["Montserrat", "Playfair Display", "Raleway"],
+    "bodyFonts": ["Lato", "Source Sans Pro", "Poppins"]
+  },
+  "Default": {
+    "synonyms": ["Versatile", "Standard", "Default"],
+    "headingFonts": ["Roboto", "Arial", "Helvetica"],
+    "bodyFonts": ["Open Sans", "Lora", "Merriweather"]
+  }
+}

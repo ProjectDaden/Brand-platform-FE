@@ -1,0 +1,99 @@
+{
+    "final-conclusion": {
+        "core-brand-identity": {
+            "brand-name-and-tagline": {
+                "selected-personality": "",
+                "associated-personality-options": {
+                    "synonyms": [],
+                    "headingFonts": [],
+                    "bodyFonts": []
+                },
+                "tagline": true,
+                "tagline:": "",
+                "brand-name-and-tagline-preview": ""
+            },
+            "industry-and-values": {
+                "industry": "",
+                "traits": [],
+                "personality": "",
+                "industry-and-value-preview": ""
+            },
+            "target-audience": {
+                "age-group": "",
+                "location": "",
+                "interests": "",
+                "behaviours": "",
+                "Goals-and-Aspirations": "",
+                "fears-and-frustrations": "",
+                "target-audience-preview": ""
+            },
+            "mission-and-vision": {
+                "purpose": "",
+                "for-audience": "",
+                "mission-statement": "",
+                "vision": "",
+                "mission-and-vision-preview": ""
+            }
+        },
+        "brand-voice-and-tone": {
+            "tone-of-voice": {
+                "fomrality-level": 0,
+                "playfulness-level": 0,
+                "respect-level": 0,
+                "emotional-level": 0,
+                "tone-of-voice-preview": ""
+            },
+            "messaging": {
+                "messaging-solving": "",
+                "messaging-solution": "",
+                "beneficiary": "",
+                "messaging-preview": ""
+            },
+            "copywriting": {
+                "about-message": "",
+                "product-description": "",
+                "call-to-action": "",
+                "copywriting-preview-website": "",
+                "copywriting-preview-product-page": "",
+                "copywriting-preview-social-media": ""
+            }
+        },
+        "visual-identity": {
+            "color": {
+                "color-industry": "",
+                "color-personality": "",
+                "color-values": "",
+                "color-sceme": "",
+                "primary-color": "",
+                "secondary-color": "",
+                "tertiary-color ": "",
+                "color-preview": ""
+            },
+            "typography": {
+                "font-personality": "",
+                "heading-font": "",
+                "body-font": "",
+                "font-scale": "",
+                "typography-preview": ""
+            },
+            "logo": {
+                "logo-personality": "",
+                "primary-logo-file": "",
+                "secondary-logo-file": "",
+                "icon-only-logo-file": "",
+                "logo-preview": ""
+            },
+            "imagery": {
+                "imagery-personality": "",
+                "imagery-style": "",
+                "search-imagery": [],
+                "imagery-preview": ""
+            }
+        },
+        "application-and-implementation":{
+            "print-offline-style": {},
+            "social-media-style": {},
+            "website-and-app-ui-style": { }
+        }
+    }
+}
