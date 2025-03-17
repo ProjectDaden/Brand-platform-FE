@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { NavigationService } from './services/nav-sidebar.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../auth.service';
-import { DadenIconComponent } from '../../shared/components/daden-icon/daden-icon.component';
+import { DadenIconComponent } from '../../shared/atoms/daden-icon/daden-icon.component';
 
 @Component({
   selector: 'nav-sidebar',

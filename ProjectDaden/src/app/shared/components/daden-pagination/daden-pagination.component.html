@@ -1,19 +1,24 @@
-<div class="flex justify-between items-center mt-4">
-    <button 
+<div class="flex justify-between items-center my-8">
+  <daden-button
       (click)="prevPage()" 
-      [disabled]="currentPage() === 1" 
-      class="bg-gray-600 text-white font-medium py-2 px-4 rounded hover:bg-gray-500 transition duration-200">
-      Previous
-    </button>
-  
-    <span class="text-gray-700">
+      [disabled]="currentPage() === 1" >
+      <div  class="flex flex-row gap-2 h-full items-center">
+          <daden-icon icon="arrowLeft" [strokeWidth]="2" class="size-4"></daden-icon>
+          <span class="max-sm:hidden"> Previous </span>
+      </div>
+  </daden-button>
+
+  <p class="text-base font-medium text-black opacity-50 ">
       Page {{ currentPage() }} of {{ totalPages() }}
-    </span>
-  
-    <button 
+  </p>
+    
+  <daden-button
       (click)="nextPage()" 
-      [disabled]="currentPage() === totalPages()" 
-      class="bg-gray-600 text-white font-medium py-2 px-4 rounded hover:bg-gray-500 transition duration-200">
-      Next
-    </button>
-  </div>
+      [disabled]="currentPage() === totalPages()"
+      >
+      <div class="flex flex-row gap-2 h-full items-center">
+          <span class="max-sm:hidden"> Next </span>
+          <daden-icon icon="arrowRight" [strokeWidth]="2" class="size-4"></daden-icon>
+      </div>
+  </daden-button>
+</div>
