@@ -3,22 +3,10 @@ import { DadenHeaderComponent } from '../../shared/components/daden-header/daden
 import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
 import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
-import { DadenCardComponent } from '../../shared/components/daden-card/daden-card.component';
-import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
-import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
-import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
-import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
-import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
 
 @Component({
   selector: 'app-socialmedia-styleguide',
-  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent,
-    DadenTableComponent, 
-    DadenInputComponent, 
-    DadenCardComponent, 
-    DadenPaginationComponent, 
-    DadenSliderComponent,
-    DadenValueSliderComponent
+  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent
   ],
   templateUrl: './socialmedia-styleguide.component.html',
   styleUrl: './socialmedia-styleguide.component.scss',
