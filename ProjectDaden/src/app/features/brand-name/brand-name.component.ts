@@ -10,11 +10,13 @@ import { DadenSaveButtonComponent } from '../../shared/components/daden-button-s
 
 import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
-import { PersonalityOptions } from './models/personalities-options';
+import { PersonalityOptions } from './store/brandname-tagline.model';
+import { BrandNameStore } from './store/brandname-tagline.store';
 
 @Component({
   selector: 'app-brand-name-tagline',
   standalone: true,
+  providers: [BrandNameStore],
   imports: [
     DadenHeaderComponent,
     DadenDropdownComponent,
@@ -32,6 +34,7 @@ export class BrandNameComponent implements OnInit {
   private readonly renderer = inject(Renderer2);
   private readonly brandNameService = inject(BrandNameService);
   private readonly translate = inject(TranslateService);
+  brandnameAndTaglineStore = inject(BrandNameStore);
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();

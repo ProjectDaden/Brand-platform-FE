@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { PersonalityOptions } from '../models/personalities-options';
+import { PersonalityOptions } from '../store/personalities-options';
 
 @Injectable({
   providedIn: 'root',

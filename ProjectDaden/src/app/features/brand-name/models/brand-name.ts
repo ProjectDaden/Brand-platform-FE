@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
 import { SignalCollection } from '../../../shared/models/signal-object-creation';
-import { PersonalityOptions } from './personalities-options';
+import { PersonalityOptions } from '../store/personalities-options';
 
 export interface BrandName {
   personalities: string[];
