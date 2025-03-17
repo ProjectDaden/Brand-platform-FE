@@ -1,13 +1,11 @@
 import { Component, inject, model, signal } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 
 @Component({
   selector: 'app-socialmedia-styleguide',
-  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent
-  ],
+  imports: [DadenHeaderComponent, DadenPageFooterComponent ],
   templateUrl: './socialmedia-styleguide.component.html',
   styleUrl: './socialmedia-styleguide.component.scss',
   standalone: true

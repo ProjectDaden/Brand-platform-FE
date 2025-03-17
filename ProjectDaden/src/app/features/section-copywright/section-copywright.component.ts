@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 
 @Component({
   selector: 'app-section-copywriting',
   templateUrl: './section-copywright.component.html',
   styleUrls: ['./section-copywright.component.scss'],
   standalone: true,
-  imports: [DadenHeaderComponent, FormsModule, DadenResetButtonComponent, DadenSaveButtonComponent], // Required for ngModel
+  imports: [DadenHeaderComponent, FormsModule, DadenPageFooterComponent, DadenGroupHeaderComponent], // Required for ngModel
 })
 export class SectionCopywrightComponent implements OnInit {
   aboutUsText: string = '';

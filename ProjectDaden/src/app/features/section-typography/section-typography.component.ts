@@ -2,16 +2,16 @@ import { Component, Renderer2, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 
 @Component({
   selector: 'app-section-typography',
   imports: [
     DadenDropdownComponent,
     DadenHeaderComponent, 
-    DadenResetButtonComponent, 
-    DadenSaveButtonComponent
+    DadenPageFooterComponent,
+    DadenGroupHeaderComponent
   ],
   templateUrl: './section-typography.component.html',
   styleUrl: './section-typography.component.scss',

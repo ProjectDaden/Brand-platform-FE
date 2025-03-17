@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DadenIconComponent } from '../../shared/components/daden-icon/daden-icon.component';
+import { DadenIconComponent } from '../../shared/atoms/daden-icon/daden-icon.component';
 
 @Component({
   selector: 'aside-previews',

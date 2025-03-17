@@ -1,0 +1,12 @@
+
+<div>	
+	@if (title) {
+		<h2 class="mb-1">{{ title | translate }}</h2>
+	}
+	@if (subtitle) {
+		<p class="text-sm opacity-75 mb-8">{{ subtitle | translate }}</p> 
+	} 
+	<div class="space-y-4">
+	  <ng-content></ng-content>
+	</div>
+  </div>

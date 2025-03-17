@@ -1,69 +1,57 @@
-<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
-  <div class="m-auto max-w-screen-md p-8">
-    <!-- Header -->
-     <daden-header></daden-header>
+<daden-header></daden-header>
 
-    <!-- Inputs Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold">Define Your Brand</h2>
-        <p class="text-sm opacity-75 mb-4">Choose your industry, traits, and personality to build your brand’s identity.</p>
-        
-        <div class="grid grid-cols-1 gap-6">
-          <!-- Industry Dropdown -->
-          <div>
+<section id="tone-of-voice">
+    <daden-group-header
+        title="Define Your Brand"
+        subtitle="Choose your industry, traits, and personality to build your brand’s identity.">
+    </daden-group-header>
+    
+    <div class="flex flex-col gap-6">
+        <!-- Industry Dropdown -->
+        <div>
             <label class="block text-sm font-medium mb-2">Industry</label>
-              <daden-dropdown
+            <daden-dropdown
                 class="w-full" 
                 [items]="brandPersonalityValues.industries"
                 [placeholder]="'Select your industry...'"
                 (selectedValue)="handleSelection($event)"
-              ></daden-dropdown>
-              <option value="" disabled selected>Select your industry...</option>
-          </div>
-          
-          <!-- Traits Multi-select -->
-          <div>
-            <label class="block text-sm font-medium mb-2">Traits</label>
-            <daden-multi-list-selection 
-            [options]="brandPersonalityValues.traits" 
-            (selectionChange)="handleSelectionChange($event)"
-            ></daden-multi-list-selection>
-            <p class="text-sm opacity-50 mt-1">Hold Ctrl (or Cmd) to select multiple traits.</p>
-          </div>
-          
-          <!-- Personality Single-select -->
-          <div>
-            <label class="block text-sm font-medium mb-2">Personality</label>
-            <daden-dropdown
-              class="w-full" 
-              [items]="brandPersonalityValues.personalities"
-              [placeholder]="'Select a personality...'"
-              (selectedValue)="handleSelection($event)"
             ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Choose one personality to define your brand.</p>
-          </div>
+            <!-- <option value="" disabled selected>Select your industry...</option> -->
         </div>
         
-        <p class="text-sm opacity-50 mt-4">These selections will influence your brand’s tone, colors, and story.</p>
-      </div>
-    </section>
-
-    <!-- Preview Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold">Brand Character Preview</h2>
-        <p class="text-sm opacity-75 mb-4">A snapshot of your brand’s identity based on your choices.</p>
-        <div class="p-4 bg-blue-50 rounded-lg">
-          <p class="text-lg font-medium italic">“A <span class="text-blue-700">Technology</span> brand that’s <span class="text-blue-700">Innovative</span> and <span class="text-blue-700">Trustworthy</span>, with a <span class="text-blue-700">Creator</span> personality.”</p>
+        <!-- Traits Multi-select -->
+        <div>
+            <label class="block text-sm font-medium mb-2">Traits</label>
+            <daden-multi-list-selection 
+                [options]="brandPersonalityValues.traits" 
+                (selectionChange)="handleSelectionChange($event)"
+            ></daden-multi-list-selection>
+            <p class="text-sm opacity-50 mt-1">Hold Ctrl (or Cmd) to select multiple traits.</p>
         </div>
-      </div>
-    </section>
-
-      
-    <!-- Buttons -->
-    <div class="pb-8 flex justify-end gap-2">
-      <daden-reset-button></daden-reset-button>
-      <daden-save-button></daden-save-button>
+        
+        <!-- Personality Single-select -->
+        <div>
+            <label class="block text-sm font-medium mb-2">Personality</label>
+            <daden-dropdown
+                class="w-full" 
+                [items]="brandPersonalityValues.personalities"
+                [placeholder]="'Select a personality...'"
+                (selectedValue)="handleSelection($event)"
+            ></daden-dropdown>
+            <p class="text-sm opacity-50 mt-1">Choose one personality to define your brand.</p>
+        </div>
     </div>
-</div>
+    <p class="text-sm opacity-50 mt-4">These selections will influence your brand’s tone, colors, and story.</p>
+</section>
+
+<section id="tone-of-voice-preview">
+    <daden-group-header
+        title="Brand Character Preview"
+        subtitle="A snapshot of your brand’s identity based on your choices.">
+    </daden-group-header>
+    <div class="p-4 bg-blue-50 rounded-lg">
+        <p class="text-lg font-medium italic">“A <span class="text-blue-700">Technology</span> brand that’s <span class="text-blue-700">Innovative</span> and <span class="text-blue-700">Trustworthy</span>, with a <span class="text-blue-700">Creator</span> personality.”</p>
+    </div>
+</section>
+
+<daden-page-footer></daden-page-footer>

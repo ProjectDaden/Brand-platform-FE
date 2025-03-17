@@ -3,12 +3,12 @@ import { BrandValuePersonalityService } from './services/brand-value-personality
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenMultiListSelectionComponent } from '../../shared/components/daden-multi-list-selection/daden-multi-list-selection.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 
 @Component({
   selector: 'app-brand-value-personality',
-  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent, DadenDropdownComponent, DadenMultiListSelectionComponent],
+  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenDropdownComponent, DadenMultiListSelectionComponent, DadenGroupHeaderComponent],
   templateUrl: './brand-value-personality.component.html',
   styleUrl: './brand-value-personality.component.scss',
   standalone: true

@@ -5,8 +5,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 
 import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
@@ -22,7 +22,9 @@ import { BrandNameStore } from './store/brandname-tagline.store';
     CommonModule,
     TranslateModule,
     DadenHeaderComponent,
+    DadenGroupHeaderComponent,
     DadenDropdownComponent,    
+    DadenPageFooterComponent
   ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
