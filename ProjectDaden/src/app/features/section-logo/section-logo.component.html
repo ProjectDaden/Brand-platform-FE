@@ -1,140 +1,124 @@
-<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
-  <div class="m-auto max-w-screen-md p-8">
-    <!-- Header -->
-     <daden-header></daden-header>
+<daden-header></daden-header>
 
-    <!-- Inputs Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Upload Logo Variations</h2>
-        <p class="text-sm opacity-75 mb-6">Add your primary, secondary, and icon-only logos.</p>
-
-        <div class="grid grid-cols-1 gap-6">
-          <!-- Personality Dropdown (Contextual) -->
-          <div>
-            <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
-            <daden-dropdown
-              id="personality"
-              class="w-full"
-              [items]="personalityOptions"
-              [placeholder]="'Select a personality...'"
-              (selectedValue)="handlePersonalitySelection($event)"
-            ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Provides context for your logo design.</p>
-          </div>
-
-          <!-- Primary Logo Upload -->
-          <div>
-            <label for="primary-upload" class="block text-sm font-medium mb-2">Primary Logo</label>
-            <input
-              id="primary-upload"
-              type="file"
-              accept="image/*"
-              (change)="onFileChange($event, 'primary')"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              *ngIf="logos.primary"
-              (click)="clearLogo('primary')"
-              class="mt-2 text-sm text-red-600 hover:underline"
-            >
-              Clear
-            </button>
-            <p class="text-sm opacity-50 mt-1">Your main brand logo.</p>
-          </div>
-
-          <!-- Secondary Logo Upload -->
-          <div>
-            <label for="secondary-upload" class="block text-sm font-medium mb-2">Secondary Logo</label>
-            <input
-              id="secondary-upload"
-              type="file"
-              accept="image/*"
-              (change)="onFileChange($event, 'secondary')"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              *ngIf="logos.secondary"
-              (click)="clearLogo('secondary')"
-              class="mt-2 text-sm text-red-600 hover:underline"
-            >
-              Clear
-            </button>
-            <p class="text-sm opacity-50 mt-1">An alternative logo variation.</p>
-          </div>
-
-          <!-- Icon-Only Logo Upload -->
-          <div>
-            <label for="icon-only-upload" class="block text-sm font-medium mb-2">Icon-Only Logo</label>
-            <input
-              id="icon-only-upload"
-              type="file"
-              accept="image/*"
-              (change)="onFileChange($event, 'iconOnly')"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              *ngIf="logos.iconOnly"
-              (click)="clearLogo('iconOnly')"
-              class="mt-2 text-sm text-red-600 hover:underline"
-            >
-              Clear
-            </button>
-            <p class="text-sm opacity-50 mt-1">A simplified icon version of your logo.</p>
-          </div>
+<daden-container id="logo"
+    title="Upload Logo Variations"
+    subtitle="Add your primary, secondary, and icon-only logos.">
+    <div class="grid grid-cols-1 gap-6">
+        <!-- Personality Dropdown (Contextual) -->
+        <div>
+        <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
+        <daden-dropdown
+            id="personality"
+            class="w-full"
+            [items]="personalityOptions"
+            [placeholder]="'Select a personality...'"
+            (selectedValue)="handlePersonalitySelection($event)"
+        ></daden-dropdown>
+        <p class="text-sm opacity-50 mt-1">Provides context for your logo design.</p>
         </div>
-
-        <!-- Logo Maker Placeholder -->
-        <div class="mt-6">
-          <h3 class="text-lg font-semibold mb-2">Logo Maker (Coming Soon)</h3>
-          <p class="text-sm opacity-75">Generate a logo based on your brand personality (feature not yet implemented).</p>
+    
+        <!-- Primary Logo Upload -->
+        <div>
+        <label for="primary-upload" class="block text-sm font-medium mb-2">Primary Logo</label>
+        <input
+            id="primary-upload"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'primary')"
+            class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+            *ngIf="logos.primary"
+            (click)="clearLogo('primary')"
+            class="mt-2 text-sm text-red-600 hover:underline"
+        >
+            Clear
+        </button>
+        <p class="text-sm opacity-50 mt-1">Your main brand logo.</p>
         </div>
-      </div>
-    </section>
+    
+        <!-- Secondary Logo Upload -->
+        <div>
+        <label for="secondary-upload" class="block text-sm font-medium mb-2">Secondary Logo</label>
+        <input
+            id="secondary-upload"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'secondary')"
+            class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+            *ngIf="logos.secondary"
+            (click)="clearLogo('secondary')"
+            class="mt-2 text-sm text-red-600 hover:underline"
+        >
+            Clear
+        </button>
+        <p class="text-sm opacity-50 mt-1">An alternative logo variation.</p>
+        </div>
+    
+        <!-- Icon-Only Logo Upload -->
+        <div>
+        <label for="icon-only-upload" class="block text-sm font-medium mb-2">Icon-Only Logo</label>
+        <input
+            id="icon-only-upload"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'iconOnly')"
+            class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+            *ngIf="logos.iconOnly"
+            (click)="clearLogo('iconOnly')"
+            class="mt-2 text-sm text-red-600 hover:underline"
+        >
+            Clear
+        </button>
+        <p class="text-sm opacity-50 mt-1">A simplified icon version of your logo.</p>
+        </div>
+    </div>
+</daden-container>
 
-    <!-- Preview Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Logo Preview</h2>
-        <p class="text-sm opacity-75 mb-4">See how your logos look in context.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="text-center">
+<daden-container id="logo-placeholder"
+    title="Logo Maker (Coming Soon)"
+    subtitle="Generate a logo based on your brand personality (feature not yet implemented).">
+</daden-container>
+
+<daden-container id="logo-preview"
+    title="Logo Preview"
+    subtitle="See how your logos look in context.">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="text-center">
             <h3 class="text-sm font-medium mb-2">Primary</h3>
             <img
-              *ngIf="logos.primary"
-              [src]="logos.primary"
-              alt="Primary Logo"
-              class="w-full max-h-32 object-contain mx-auto"
+                *ngIf="logos.primary"
+                [src]="logos.primary"
+                alt="Primary Logo"
+                class="w-full max-h-32 object-contain mx-auto"
             />
             <p *ngIf="!logos.primary" class="text-sm opacity-50">No primary logo uploaded</p>
-          </div>
-          <div class="text-center">
+        </div>
+        <div class="text-center">
             <h3 class="text-sm font-medium mb-2">Secondary</h3>
             <img
-              *ngIf="logos.secondary"
-              [src]="logos.secondary"
-              alt="Secondary Logo"
-              class="w-full max-h-32 object-contain mx-auto"
+                *ngIf="logos.secondary"
+                [src]="logos.secondary"
+                alt="Secondary Logo"
+                class="w-full max-h-32 object-contain mx-auto"
             />
             <p *ngIf="!logos.secondary" class="text-sm opacity-50">No secondary logo uploaded</p>
-          </div>
-          <div class="text-center">
+        </div>
+        <div class="text-center">
             <h3 class="text-sm font-medium mb-2">Icon-Only</h3>
             <img
-              *ngIf="logos.iconOnly"
-              [src]="logos.iconOnly"
-              alt="Icon-Only Logo"
-              class="w-full max-h-32 object-contain mx-auto"
+                *ngIf="logos.iconOnly"
+                [src]="logos.iconOnly"
+                alt="Icon-Only Logo"
+                class="w-full max-h-32 object-contain mx-auto"
             />
             <p *ngIf="!logos.iconOnly" class="text-sm opacity-50">No icon-only logo uploaded</p>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Buttons -->
-    <div class="pb-8 flex justify-end gap-2">
-      <daden-reset-button></daden-reset-button>
-      <daden-save-button></daden-save-button>
     </div>
-</div>
+</daden-container>
+
+<daden-page-footer></daden-page-footer>

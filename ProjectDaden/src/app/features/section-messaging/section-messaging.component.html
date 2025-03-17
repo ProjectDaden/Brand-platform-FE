@@ -1,71 +1,56 @@
-<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
-  <div class="m-auto max-w-screen-md p-8">
-    <!-- Header -->
-     <daden-header></daden-header>
+<daden-header></daden-header>
 
-    <!-- Inputs Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold">Craft Your Messaging</h2>
-        <p class="text-sm opacity-75 mb-4">Fill in the blanks to create a concise brand message.</p>
-
-        <div class="grid grid-cols-1 gap-6">
-          <!-- Problem/Solution Text Field -->
-          <div>
+<daden-container id="messaging"
+    title="Craft Your Messaging"
+    subtitle="Fill in the blanks to create a concise brand message.">
+    <div class="grid grid-cols-1 gap-6">
+        <!-- Problem/Solution Text Field -->
+        <div>
             <label class="block text-sm font-medium mb-2">Core Message</label>
             <div class="flex items-center gap-2">
-              <span class="text-sm opacity-75">We solve</span>
-              <input
+                <span class="text-sm opacity-75">We solve</span>
+                <input
                 type="text"
                 class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., boring days"
-              />
-              <span class="text-sm opacity-75">with</span>
-              <input
+                />
+                <span class="text-sm opacity-75">with</span>
+                <input
                 type="text"
                 class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., exciting solutions"
                 (input)="updateMessaging()"
-              />
+                />
             </div>
             <p class="text-sm opacity-50 mt-1">Define the problem you address and your solution.</p>
-          </div>
-
-          <!-- Benefit Dropdown -->
-          <div>
+        </div>
+    
+        <!-- Benefit Dropdown -->
+        <div>
             <label class="block text-sm font-medium mb-2">Differentiator (Benefit)</label>
             <daden-dropdown
-              class="w-full"
-              [items]="benefitOptions"
-              [placeholder]="'Select a benefit...'"
-              (selectedValue)="handleBenefitSelection($event)"
+                class="w-full"
+                [items]="benefitOptions"
+                [placeholder]="'Select a benefit...'"
+                (selectedValue)="handleBenefitSelection($event)"
             ></daden-dropdown>
             <p class="text-sm opacity-50 mt-1">Choose what sets your brand apart.</p>
-          </div>
         </div>
+    </div>
+    
+    <p class="text-sm opacity-50 mt-4">This messaging will pre-populate your copywriting templates and style guide.</p>
+</daden-container>
 
-        <p class="text-sm opacity-50 mt-4">This messaging will pre-populate your copywriting templates and style guide.</p>
-      </div>
-    </section>
-
-    <!-- Preview Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold">Messaging Preview</h2>
-        <p class="text-sm opacity-75 mb-4">See how your message comes together.</p>
-        <div class="p-4 bg-blue-50 rounded-lg">
-          <p class="text-base leading-relaxed">
+<daden-container id="messaging-preview"
+    title="Messaging Preview"
+    subtitle="See how your message comes together.">
+    <div class="p-4 bg-blue-50 rounded-lg">
+        <p class="text-base leading-relaxed">
             We solve <span class="font-medium">{{ problem || '[problem]' }}</span> with
             <span class="font-medium">{{ solution || '[solution]' }}</span>, delivering
             <span class="font-medium">{{ selectedBenefit || '[benefit]' }}</span>.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Buttons -->
-    <div class="pb-8 flex justify-end gap-2">
-      <daden-reset-button></daden-reset-button>
-      <daden-save-button></daden-save-button>
+        </p>
     </div>
-</div>
+</daden-container>
+
+<daden-page-footer></daden-page-footer>
