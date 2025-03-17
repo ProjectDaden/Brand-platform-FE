@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenContainerComponent } from '../../shared/atoms/daden-container/daden-container.component';
-import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
@@ -13,8 +13,8 @@ import { Observable, map } from 'rxjs';
   selector: 'app-section-imagery',
   imports: [
     DadenHeaderComponent, 
-    DadenContainerComponent, 
-    DadenPageFooterComponent,
+    DadenResetButtonComponent, 
+    DadenSaveButtonComponent,
     DadenDropdownComponent,
     FormsModule,
     CommonModule,

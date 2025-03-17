@@ -1,45 +1,61 @@
-<daden-header></daden-header>
+<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen min-h-screen overflow-y-auto">
+  <div class="m-auto max-w-screen-md p-8">
+    <!-- Header -->
+     <daden-header></daden-header>
 
-<daden-container id="mission"
-    title="Our Mission"
-    subtitle="Tell us why your brand exists and who it serves. Choose from pre-written options">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Purpose Dropdown/Input -->
-        <div>
+    <!-- Inputs Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Our Mission</h2>
+        <p class="text-sm opacity-75 mb-4">Tell us why your brand exists and who it serves. Choose from pre-written options or write your own.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Purpose Dropdown/Input -->
+          <div>
             <label class="block text-sm font-medium mb-2">We exist to...</label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select a purpose...</option>
-                <option value="empower">Empower</option>
-                <option value="inspire">Inspire</option>
-                <option value="connect">Connect</option>
-                <option value="custom">Custom (write your own)</option>
+              <option value="" disabled selected>Select a purpose...</option>
+              <option value="empower">Empower</option>
+              <option value="inspire">Inspire</option>
+              <option value="connect">Connect</option>
+              <option value="custom">Custom (write your own)</option>
             </select>
             <input type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all hidden" placeholder="Enter custom purpose">
-        </div>
-        
-        <!-- Audience Dropdown/Input -->
-        <div>
+          </div>
+          
+          <!-- Audience Dropdown/Input -->
+          <div>
             <label class="block text-sm font-medium mb-2">For...</label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select an audience...</option>
-                <option value="communities">Communities</option>
-                <option value="innovators">Innovators</option>
-                <option value="families">Families</option>
-                <option value="custom">Custom (write your own)</option>
+              <option value="" disabled selected>Select an audience...</option>
+              <option value="communities">Communities</option>
+              <option value="innovators">Innovators</option>
+              <option value="families">Families</option>
+              <option value="custom">Custom (write your own)</option>
             </select>
             <input type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all hidden" placeholder="Enter custom audience">
+          </div>
         </div>
-    </div>
-    
-    <p class="text-sm opacity-50 mt-2">These choices will shape your brand’s tagline and audience focus.</p>
-</daden-container>
+        
+        <p class="text-sm opacity-50 mt-2">These choices will shape your brand’s tagline and audience focus.</p>
+      </div>
+    </section>
 
-<daden-container id="mission-preview"
-    title="Mission Statement Preview"
-    subtitle="See how your selections come together.">
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-lg font-medium italic">“We exist to <span class="text-blue-700">empower</span>&nbsp;<span class="text-blue-700">communities</span>.”</p>
-    </div>
-</daden-container>
+    <!-- Preview Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Mission Statement Preview</h2>
+        <p class="text-sm opacity-75 mb-4">See how your selections come together.</p>
+        <div class="p-4 bg-blue-50 rounded-lg">
+          <p class="text-lg font-medium italic">“We exist to <span class="text-blue-700">empower</span>&nbsp;<span class="text-blue-700">communities</span>.”</p>
+        </div>
+      </div>
+    </section>
 
-<daden-page-footer></daden-page-footer>
+    <!-- Buttons -->
+    <div class="pb-8 flex justify-end gap-2">
+      <daden-reset-button></daden-reset-button>
+      <daden-save-button></daden-save-button>
+    </div>
+  </div>
+</div>

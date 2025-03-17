@@ -6,8 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
-      },      
+      },
     },
   },
   plugins: [],

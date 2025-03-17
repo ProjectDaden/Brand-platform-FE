@@ -1,63 +1,75 @@
-<daden-header></daden-header>
+<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
+  <div class="m-auto max-w-screen-md p-8">
+    <!-- Header -->
+     <daden-header></daden-header>
 
-<daden-container id="copywriting"
-    title="Edit Your Copy"
-    subtitle="Customize these templates to reflect your brand’s voice and messaging.">
-    <div class="grid grid-cols-1 gap-6">
-        <!-- About Us Template -->
-        <div>
+    <!-- Inputs Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Edit Your Copy</h2>
+        <p class="text-sm opacity-75 mb-4">Customize these templates to reflect your brand’s voice and messaging.</p>
+
+        <div class="grid grid-cols-1 gap-6">
+          <!-- About Us Template -->
+          <div>
             <label class="block text-sm font-medium mb-2">About Us</label>
             <textarea
-            class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="4"
-            [(ngModel)]="aboutUsText"
-            (input)="updateCopy()"
+              class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="4"
+              [(ngModel)]="aboutUsText"
+              (input)="updateCopy()"
             ></textarea>
             <p class="text-sm opacity-50 mt-1">Tell your brand’s story in your unique voice.</p>
-        </div>
+          </div>
 
-        <!-- Product Description Template -->
-        <div>
+          <!-- Product Description Template -->
+          <div>
             <label class="block text-sm font-medium mb-2">Product Description</label>
             <textarea
-            class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="4"
-            [(ngModel)]="productDescriptionText"
-            (input)="updateCopy()"
+              class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="4"
+              [(ngModel)]="productDescriptionText"
+              (input)="updateCopy()"
             ></textarea>
             <p class="text-sm opacity-50 mt-1">Describe your product with flair and precision.</p>
-        </div>
+          </div>
 
-        <!-- Call to Action Template -->
-        <div>
+          <!-- Call to Action Template -->
+          <div>
             <label class="block text-sm font-medium mb-2">Call to Action</label>
             <textarea
-            class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="2"
-            [(ngModel)]="ctaText"
-            (input)="updateCopy()"
+              class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="2"
+              [(ngModel)]="ctaText"
+              (input)="updateCopy()"
             ></textarea>
             <p class="text-sm opacity-50 mt-1">Motivate your audience to take action.</p>
+          </div>
         </div>
+
         <p class="text-sm opacity-50 mt-4">These templates are pre-populated based on your brand inputs and tone settings.</p>
-    </div>
-</daden-container>
+      </div>
+    </section>
 
-<daden-container id="copywriting-preview"
-    title="Copywriting Preview"
-    subtitle="See how your copy looks in different contexts.">
-    <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold"></h2>
-        <p class="text-sm opacity-75 mb-4"></p>
+    <!-- Preview Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Copywriting Preview</h2>
+        <p class="text-sm opacity-75 mb-4">See how your copy looks in different contexts.</p>
         <div class="p-4 bg-blue-50 rounded-lg">
-            <h3 class="text-lg font-semibold mb-2">Website Homepage</h3>
-            <p class="text-base leading-relaxed mb-4">{{ aboutUsText }}</p>
-            <h3 class="text-lg font-semibold mb-2">Product Page</h3>
-            <p class="text-base leading-relaxed mb-4">{{ productDescriptionText }}</p>
-            <h3 class="text-lg font-semibold mb-2">Social Media Post</h3>
-            <p class="text-base leading-relaxed">{{ ctaText }}</p>
+          <h3 class="text-lg font-semibold mb-2">Website Homepage</h3>
+          <p class="text-base leading-relaxed mb-4">{{ aboutUsText }}</p>
+          <h3 class="text-lg font-semibold mb-2">Product Page</h3>
+          <p class="text-base leading-relaxed mb-4">{{ productDescriptionText }}</p>
+          <h3 class="text-lg font-semibold mb-2">Social Media Post</h3>
+          <p class="text-base leading-relaxed">{{ ctaText }}</p>
         </div>
-    </div>
-</daden-container>
+      </div>
+    </section>
 
-<daden-page-footer></daden-page-footer>
+  <!-- Buttons -->
+  <div class="pb-8 flex justify-end gap-2">
+    <daden-reset-button></daden-reset-button>
+    <daden-save-button></daden-save-button>
+  </div>
+</div>

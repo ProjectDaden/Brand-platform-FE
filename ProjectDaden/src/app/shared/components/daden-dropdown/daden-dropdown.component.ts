@@ -1,19 +1,20 @@
 import { Component, input, output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'daden-dropdown',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './daden-dropdown.component.html',
   styleUrl: './daden-dropdown.component.scss'
 })
 export class DadenDropdownComponent {
   items = input<string[]>([]);
   placeholder = input<string>("");
+  selectedItem = input<string>("");
   selectedValue = output<string>();
 
-  selectItem(event: Event) {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    this.selectedValue.emit(selectedValue);
+  onModelChange(newValue: string) {
+    this.selectedValue.emit(newValue);
   }
 }

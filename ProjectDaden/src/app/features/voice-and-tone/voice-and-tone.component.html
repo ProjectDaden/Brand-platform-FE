@@ -1,8 +1,14 @@
-<daden-header></daden-header>
+<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
+  <div class="m-auto max-w-screen-md p-8">
+    <!-- Header -->
+     <daden-header></daden-header>
 
-<daden-container id="tone"
-    title="Set Your Tone"
-    subtitle="Adjust the sliders to craft your brand’s unique voice.">
+    <!-- Inputs Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Set Your Tone</h2>
+        <p class="text-sm opacity-75 mb-4">Adjust the sliders to craft your brand’s unique voice.</p>
+
         <div class="grid grid-cols-1 gap-6">
           <!-- Formality Slider -->
           <div>
@@ -76,15 +82,25 @@
             <p class="text-sm opacity-50 mt-1">Current: {{ emotion }}%</p>
           </div>
         </div>
+
         <p class="text-sm opacity-50 mt-4">These settings will influence your brand’s copywriting and style guide.</p>
-</daden-container>
+      </div>
+    </section>
 
-<daden-container id="tone-preview"
-    title="Tone Preview">
-    <p class="text-sm opacity-75 mb-4">See how your tone settings adjust the way your brand communicates.</p>
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-base leading-relaxed">{{ getTonePreview() }}</p>
+    <!-- Preview Section -->
+    <section class="py-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold">Tone Preview</h2>
+        <p class="text-sm opacity-75 mb-4">See how your tone settings adjust the way your brand communicates.</p>
+        <div class="p-4 bg-blue-50 rounded-lg">
+          <p class="text-base leading-relaxed">{{ getTonePreview() }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <div class="pb-8 flex justify-end gap-2">
+      <daden-reset-button></daden-reset-button>
+      <daden-save-button></daden-save-button>
     </div>
-</daden-container>
-
-<daden-page-footer></daden-page-footer>
+</div>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenContainerComponent } from '../../shared/atoms/daden-container/daden-container.component';
-import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
 
 @Component({
   selector: 'app-print-offline-material',
-    imports: [DadenHeaderComponent, DadenContainerComponent, DadenPageFooterComponent],
+  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent],
   templateUrl: './print-offline-material.component.html',
   styleUrl: './print-offline-material.component.scss',
   standalone: true

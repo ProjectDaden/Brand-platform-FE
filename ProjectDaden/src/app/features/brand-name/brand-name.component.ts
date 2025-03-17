@@ -1,162 +1,117 @@
-import { Component, Renderer2, Inject, OnInit, signal, model } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, inject, computed, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
-import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
-import { DadenCardComponent } from '../../shared/components/daden-card/daden-card.component';
-import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
-import { DadenLoadingComponent } from '../../shared/components/daden-loading/daden-loading.component';
-import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
-import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
-import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
-import { DadenIconComponent } from '../../shared/atoms/daden-icon/daden-icon.component';
-import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenContainerComponent } from '../../shared/atoms/daden-container/daden-container.component';
-import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
+import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+
+import { BrandNameService } from './services/brand-name.service';
+import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
+import { PersonalityOptions } from './store/brandname-tagline.model';
+import { BrandNameStore } from './store/brandname-tagline.store';
 
 @Component({
   selector: 'app-brand-name-tagline',
+  standalone: true,
+  providers: [BrandNameStore],
   imports: [
-    DadenDropdownComponent,
     FormsModule,
     CommonModule,
-    DadenTableComponent,
-    DadenCardComponent,
-    DadenInputComponent,
-    DadenLoadingComponent,
-    DadenPaginationComponent,
-    DadenSliderComponent,
-    DadenIconComponent,
-    DadenValueSliderComponent,
-    DadenHeaderComponent, DadenContainerComponent, DadenPageFooterComponent
+    TranslateModule,
+    DadenHeaderComponent,
+    DadenDropdownComponent,    
   ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
-  standalone: true,
 })
 export class BrandNameComponent implements OnInit {
-  constructor(
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document,
-    private brandColorThemeService: BrandColorThemeService
-  ) {}
+  private readonly document = inject(DOCUMENT);
+  private readonly renderer = inject(Renderer2);
+  private readonly brandNameService = inject(BrandNameService);
+  private readonly translate = inject(TranslateService);
+  brandnameAndTaglineStore = inject(BrandNameStore);
+
+  brandName = brandNameDefault;
+  personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
+
+  watchBrandName = computed(() => this.brandName.genericSignalCollection());
+
+  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed;
+  tagline?: string = this.brandName.genericSignalCollection().tagLine;
 
   ngOnInit() {
-    this.selectedPersonality = this.getPersonalityFromBrandValues();
-    this.loadSynonymsBasedOnPersonality(this.selectedPersonality);
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
+
+    this.loadSynonymsBasedOnPersonality(
+      this.brandName.genericSignalCollection().selectedPersonality
+    );
   }
 
-  // Personality and Tagline Logic
-  personalityOptions: string[] = [
-    'Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
-    'Magician', 'Rebel', 'Ruler', 'Everyman', 'Lover',
-  ];
-  selectedPersonality: string = '';
-  taglineUsed: 'yes' | 'no' = 'no'; // Updated to only allow "yes" or "no", default to "no"
-  tagline: string = '';
-  synonymOptions: string[] = [];
-  selectedHeadingFont: string = '';
-  selectedBodyFont: string = '';
-
   handlePersonalitySelection(personality: string) {
-    this.selectedPersonality = personality;
+    const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
+    this.brandNameService.setPersonality(personality, associatedPersonalityOptions);
     this.loadSynonymsBasedOnPersonality(personality);
+    this.updateBrandNameCollection({ selectedPersonality: personality });
+  }
+
+  updateBrandNameCollection(updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>) {
+    this.brandName.genericSignalCollection.update(current => ({ ...current, ...updates }));
+    console.log('UPDATES', this.brandName.genericSignalCollection());
   }
 
   private loadSynonymsBasedOnPersonality(personality: string) {
-    let synonyms: string[];
-    let headingFonts: string[];
-    let bodyFonts: string[];
-
-    switch (personality) {
-      case 'Jester':
-        synonyms = ['Playful', 'Witty', 'Fun'];
-        headingFonts = ['Bangers', 'Fredoka One', 'Luckiest Guy'];
-        bodyFonts = ['Comic Neue', 'Roboto', 'Open Sans'];
-        break;
-      case 'Creator':
-        synonyms = ['Innovative', 'Creative', 'Visionary'];
-        headingFonts = ['Montserrat', 'Playfair Display', 'Raleway'];
-        bodyFonts = ['Lato', 'Source Sans Pro', 'Poppins'];
-        break;
-      // ... other cases as before ...
-      default:
-        synonyms = ['Versatile', 'Standard', 'Default'];
-        headingFonts = ['Roboto', 'Arial', 'Helvetica'];
-        bodyFonts = ['Open Sans', 'Lora', 'Merriweather'];
+    const allPersonalities = this.brandNameService.getAllPersonalities();
+    if (!(personality in allPersonalities)) {
+      this.brandName.genericSignalCollection.update(current => ({
+        ...current,
+        personalityOptions: { synonyms: [], headingFonts: [], bodyFonts: [] } as PersonalityOptions,
+      }));
+      return;
     }
 
-    this.synonymOptions = synonyms;
-    this.selectedHeadingFont = headingFonts[0];
-    this.selectedBodyFont = bodyFonts[0];
-    const allFonts = [...new Set([...headingFonts, ...bodyFonts])];
-    this.loadGoogleFonts(allFonts);
+    const personalityOpts = this.brandNameService.personalityComposition();
+    this.brandName.genericSignalCollection.update(current => ({
+      ...current,
+      personalityOptions: personalityOpts,
+    }));
+
+    this.loadGoogleFonts([...new Set([...personalityOpts.headingFonts, ...personalityOpts.bodyFonts])]);
   }
 
   private loadGoogleFonts(fonts: string[]) {
-    const existingLink = this.document.getElementById('google-fonts-link');
-    if (existingLink) {
-      this.renderer.removeChild(this.document.head, existingLink);
-    }
+    if (!fonts.length) return;
 
-    const formattedFonts = fonts
-      .map(font => `family=${encodeURIComponent(font)}:wght@400;700`)
-      .join('&');
+    const existingLink = this.document.getElementById('google-fonts-link');
+    const formattedFonts = fonts.map(font => `family=${encodeURIComponent(font)}:wght@400;700`).join('&');
     const fontUrl = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
+
+    if (existingLink?.getAttribute('href') === fontUrl) return;
 
     const link = this.renderer.createElement('link');
     this.renderer.setAttribute(link, 'id', 'google-fonts-link');
     this.renderer.setAttribute(link, 'rel', 'stylesheet');
     this.renderer.setAttribute(link, 'href', fontUrl);
+
+    existingLink && this.renderer.removeChild(this.document.head, existingLink);
     this.renderer.appendChild(this.document.head, link);
   }
 
-  private getPersonalityFromBrandValues(): string {
-    return 'Jester';
-  }
-
-  get taglineOutput(): { taglineUsed: boolean; tagline: string } { // Updated to return boolean only
+  get taglineOutput() {
     return {
-      taglineUsed: this.taglineUsed === 'yes', // Simplifies to true/false
-      tagline: this.tagline,
+      taglineUsed: this.taglineUsed === 'yes',
+      tagline: this.tagline ?? '',
     };
   }
 
-  // Test Component Logic
-  sliderValue: number = 50;
-  onSliderChange(value: number) {
-    console.log('Slider Value:', value);
-  }
-
-  slides: string[] = ['/assets/image1.jpg', '/assets/image2.jpg', '/assets/image3.jpg'];
-  isLoading = true;
-  totalItems: number = 100;
-  itemsPerPage: number = 10;
-
-  tableData = signal<{ name: string; age: number; country: string; mijnKlets: string }[]>([
-    { name: 'John', age: 25, country: 'USA', mijnKlets: 'Klets' },
-    { name: 'Anna', age: 22, country: 'Canada', mijnKlets: 'Klets2' },
-    { name: 'Mike', age: 30, country: 'UK', mijnKlets: 'Klets3' },
-  ]);
-
-  inputValue = model<string>('');
-
-  onInputValueChange(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    const value = inputElement.value;
-    this.inputValue.set(value);
-  }
-
-  tableColumns = signal(['Name', 'Age', 'Country', 'Mijn Klets']);
-  additionalContext = signal({ showAge: true });
-
-  get currentThemes() {
-    return this.brandColorThemeService.colorPaletteCollection.genericSignalCollection();
-  }
-
-  onPageChange(page: number) {
-    console.log('Current Page:', page);
+  onReset(){
+    this.brandName.genericSignalCollection.set(DEFAULT_BRAND_NAME_VALUES);
+    this.handlePersonalitySelection('');
+    this.taglineUsed = DEFAULT_BRAND_NAME_VALUES.tagLineUsed;
+    this.tagline = DEFAULT_BRAND_NAME_VALUES.tagLine;
+    console.log('RESET');
   }
 }

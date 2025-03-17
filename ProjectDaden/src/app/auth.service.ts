@@ -12,7 +12,7 @@ import {
 export class AuthService {
   private readonly LOCAL_STORAGE_KEY = 'login-app';
   private users = [
-    { username: 'danny_karouw', password: 'password1' },
+    { username: 'danny_karouw', password: 'Ciella2014' },
     { username: 'dennis_ulijn', password: 'password2' },
   ];
 
