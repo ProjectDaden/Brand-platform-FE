@@ -1,87 +1,76 @@
-<div class="flex-grow bg-blue-50 text-blue-950 max-h-screen overflow-y-auto">
-  <div class="m-auto max-w-screen-md p-8">
-    <!-- Header -->
-     <daden-header></daden-header>
+<daden-header></daden-header>
 
-    <!-- Inputs Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Select Imagery Style</h2>
-        <p class="text-sm opacity-75 mb-6">Choose a style or browse stock photos for your brand.</p>
-
-        <div class="grid grid-cols-1 gap-6">
-          <!-- Personality Dropdown -->
-          <div>
-            <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
-            <daden-dropdown
-              id="personality"
-              class="w-full"
-              [items]="personalityOptions"
-              [placeholder]="'Select a personality...'"
-              (selectedValue)="handlePersonalitySelection($event)"
-            ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Filters imagery based on your brand’s personality.</p>
-          </div>
-
-          <!-- Imagery Style Dropdown -->
-          <div>
-            <label for="imageryStyle" class="block text-sm font-medium mb-2">Imagery Style</label>
-            <daden-dropdown
-              id="imageryStyle"
-              class="w-full"
-              [items]="imageryStyles"
-              [placeholder]="'Select a style...'"
-              (selectedValue)="handleImageryStyleSelection($event)"
-            ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Defines the aesthetic of your imagery.</p>
-          </div>
-
-          <!-- Stock Photo Search -->
-          <div>
-            <label for="searchQuery" class="block text-sm font-medium mb-2">Search Stock Library</label>
-            <input
-              id="searchQuery"
-              type="text"
-              [(ngModel)]="searchQuery"
-              (input)="onSearchQueryChange()"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., nature, technology..."
-            />
-            <p class="text-sm opacity-50 mt-1">Find photos matching your brand identity.</p>
-          </div>
+<daden-container id="imagery"
+    title="Select Imagery Style"
+    subtitle="Choose a style or browse stock photos for your brand.">
+    <div class="grid grid-cols-1 gap-6">
+        <!-- Personality Dropdown -->
+        <div>
+        <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
+        <daden-dropdown
+            id="personality"
+            class="w-full"
+            [items]="personalityOptions"
+            [placeholder]="'Select a personality...'"
+            (selectedValue)="handlePersonalitySelection($event)"
+        ></daden-dropdown>
+        <p class="text-sm opacity-50 mt-1">Filters imagery based on your brand’s personality.</p>
         </div>
-      </div>
-    </section>
+    
+        <!-- Imagery Style Dropdown -->
+        <div>
+        <label for="imageryStyle" class="block text-sm font-medium mb-2">Imagery Style</label>
+        <daden-dropdown
+            id="imageryStyle"
+            class="w-full"
+            [items]="imageryStyles"
+            [placeholder]="'Select a style...'"
+            (selectedValue)="handleImageryStyleSelection($event)"
+        ></daden-dropdown>
+        <p class="text-sm opacity-50 mt-1">Defines the aesthetic of your imagery.</p>
+        </div>
+    
+        <!-- Stock Photo Search -->
+        <div>
+        <label for="searchQuery" class="block text-sm font-medium mb-2">Search Stock Library</label>
+        <input
+            id="searchQuery"
+            type="text"
+            [(ngModel)]="searchQuery"
+            (input)="onSearchQueryChange()"
+            class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="e.g., nature, technology..."
+        />
+        <p class="text-sm opacity-50 mt-1">Find photos matching your brand identity.</p>
+        </div>
+    </div>
+</daden-container>
 
-    <!-- Stock Photos Preview -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Stock Photo Library</h2>
-        <p class="text-sm opacity-75 mb-4">Select images to include in your brand style guide.</p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          <div *ngFor="let photo of stockPhotos; let i = index" class="relative">
+<daden-container id="imary-picker"
+    title="Stock Photo Library"
+    subtitle="Select images to include in your brand style guide.">
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div *ngFor="let photo of stockPhotos; let i = index" class="relative">
             <img
-              [attr.data-src]="photo.url"
-              [alt]="photo.alt"
-              class="lazy-load w-full h-32 object-cover rounded-lg cursor-pointer"
-              [class.border-4]="photo.selected"
-              [class.border-blue-500]="photo.selected"
-              (click)="togglePhotoSelection(i)"
+                [attr.data-src]="photo.url"
+                [alt]="photo.alt"
+                class="lazy-load w-full h-32 object-cover rounded-lg cursor-pointer"
+                [class.border-4]="photo.selected"
+                [class.border-blue-500]="photo.selected"
+                (click)="togglePhotoSelection(i)"
             />
             <div
-              *ngIf="photo.selected"
-              class="absolute top-2 right-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
-            >
-              ✓
+                *ngIf="photo.selected"
+                class="absolute top-2 right-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                ✓
             </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Buttons -->
-    <div class="pb-8 flex justify-end gap-2">
-      <daden-reset-button></daden-reset-button>
-      <daden-save-button></daden-save-button>
     </div>
-</div>
+</daden-container>
+
+<daden-container id="imagery-preview"
+    title="Imagery preview"
+    subtitle="">
+</daden-container>
+
+<daden-page-footer></daden-page-footer>

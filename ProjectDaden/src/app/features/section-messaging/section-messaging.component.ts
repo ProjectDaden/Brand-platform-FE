@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenContainerComponent } from '../../shared/atoms/daden-container/daden-container.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 
 @Component({
   selector: 'app-section-messaging',
@@ -11,9 +11,9 @@ import { DadenSaveButtonComponent } from '../../shared/components/daden-button-s
   standalone: true,
   imports: [
     DadenHeaderComponent, 
-    DadenResetButtonComponent, 
-    DadenSaveButtonComponent, 
-    DadenDropdownComponent],
+    DadenDropdownComponent,
+    DadenContainerComponent, 
+    DadenPageFooterComponent],
 })
 export class SectionMessagingComponent implements OnInit {
   problem: string = '';

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenContainerComponent } from '../../shared/atoms/daden-container/daden-container.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 
 @Component({
   selector: 'app-voice-and-tone',
-  imports: [DadenHeaderComponent, DadenResetButtonComponent, DadenSaveButtonComponent],
+  imports: [DadenHeaderComponent, DadenContainerComponent, DadenPageFooterComponent],
   templateUrl: './voice-and-tone.component.html',
   styleUrls: ['./voice-and-tone.component.scss'],
   standalone: true,

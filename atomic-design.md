@@ -1,136 +1,210 @@
 # Atomic Design
 
-## Global element
+## Design Tokens
 
-- Header
-- Footer
-- Sidebar
-- Navigation
-- Pagination
-- Breadcrumbs
-- (interactive component) Controls
-- (ui) Navigation elements
+### Colors
 
-## Image types
+- [ ] Brand
+	- [ ] Primary
+	- [ ] Secondary
+	- [ ] Tertiary
+	- [ ] Text
+	- [ ] Background
+	- [ ] Accent
+	- [ ] UI
+	- [ ] Other?
 
-- Logos
-- Hero images
-- Avatars
-- Thumbnails
-- Backgrounds
-- Other?
+### Typography
 
-## Icons
+- [x] Headings
+	- [x] h1
+	- [x] h2
+	- [x] h3
+	- [x] h4
+	- [x] h5
+	- [x] h6
+- [x] Paragraphs
+- [x] Lists
+	- [x] unordered
+	- [x] ordered
+- [x] Links
+- [x] Blockquotes
+- [x] Code blocks
+- [ ] Other?
 
-- UI icons
-	- magnifying glasses
-	- social icons
-	- arrows
-	- hamburgers
-	- spinners
-	- favicons
+### Spacing
 
-## Forms
+- [ ] Margins
+- [ ] Paddings
+- [ ] Gutters
+- [ ] Grids
+- [ ] Gaps
+- [ ] Other?
 
-- inputs (text, email, password, value, date, etc.)
-- text areas
-- select menus
-- checkboxes
-- switches
-- radio buttons
-- sliders
-- Other?
+### Animation
 
-## Buttons
-- Buttons
-	- primary
-	- secondary
-	- big
-	- small
-	- disabled
-	- active
-	- loading
-	- buttons that look like text links
+- [ ] Timing
+- [ ] Easing
+- [ ] Duration
+- [ ] Keyframes
+- [ ] Transitions
+- [ ] Delays
+- [ ] Other?
 
-## Typography
-- Headings
-	- h1
-	- h2
-	- h3
-	- h4
-	- h5
-	- h6
-- Paragraphs
-- Lists
-	- unordered
-	- ordered
-	- definition
-	- bulleted
-	- numbered
-	- lined
-	- striped
-- Blockquotes
-- Code blocks
-- Other?
+## Atoms
 
-## Media
-- Video players
-- Audio players
-- Other?
+### Icons (icon library)
 
-## Third-party components
-- Widgets
-- Iframes
-- Stock tickers
-- Social buttons
-- Invisible tracking scripts
-- Other?
+- [ ] magnifying glasses
+- [ ] social icons
+- [ ] arrows
+- [ ] hamburgers
+- [ ] spinners
+- [ ] favicons
 
-## Advertising
-- ad formats and dimensions
+### Forms
 
-## Data visualization
-- Charts
-- Graphs
-- Tables
-- Maps
-- Other?
+- [ ] labels
+- [ ] inputs (text, email, password, value, date, etc.)
+- [ ] text areas
+- [ ] select menus
+- [ ] checkboxes
+- [ ] switches
+- [ ] radio buttons
+- [ ] sliders
+- [ ] Other?
 
-## Interactive components
-- accordions
-- tabs
-- carousels
-- modals
-- lightboxes
-- other?
+### Buttons
 
-## Messaging
-- alerts
-- success
-- errors
-- warnings
-- validation
-- loaders
-- popups
-- popovers
-- tooltips
-- other?
+- [x] primary
+- [x] secondary
+- [x] big
+- [x] small
+- [x] disabled
+- [x] active
+- [ ] loading
+- [ ] icon button
+- [x] buttons that look like text links
 
-## Colors
-- Brand
-	- Primary
-	- Secondary
-	- Tertiary
-	- Text
-	- Background
-	- Accent
-	- UI
-	- Other?
+### Images
 
-## Animation
-- Timing
-- Easing
-- Duration
-- Keyframes
-- Transitions
-- Other?
+- [ ] Logos
+- [ ] Hero images
+- [ ] Avatars
+- [ ] Thumbnails
+- [ ] Backgrounds
+
+## Molecules
+
+### Media
+
+- [ ] Images
+- [ ] Video controls
+- [ ] Audio controls
+- [ ] (ui) Navigation elements
+- [ ] Other?
+
+### Interactive components
+
+- [ ] Tooltips
+- [x] accordions
+- [ ] tabs
+- [ ] carousels
+- [ ] modals
+- [ ] lightboxes
+- [ ] other?
+
+### Media
+
+- [ ] Images
+- [ ] Video players
+- [ ] Audio players
+- [ ] Other?
+
+### Global element
+
+- [ ] Search
+- [ ] User menu
+- [ ] Filter
+- [ ] Navigation
+- [ ] Pagination
+- [ ] Breadcrumbs
+
+### Third-party components
+
+- [ ] Widgets
+- [ ] Iframes
+- [ ] Stock tickers
+- [ ] Social buttons
+- [ ] Invisible tracking scripts
+- [ ] Other?
+
+### Advertising
+
+- [ ] ad formats and dimensions
+
+### Data visualization
+
+- [ ] Charts
+- [ ] Graphs
+- [ ] Tables
+- [ ] Maps
+- [ ] Other?
+
+### Messaging
+
+- [ ] alerts
+- [ ] success
+- [ ] errors
+- [ ] warnings
+- [ ] validation
+- [ ] loaders
+- [ ] popups
+- [ ] popovers
+- [ ] tooltips
+- [ ] other?
+
+## Organisms
+
+- [ ] Header
+- [ ] Footer
+- [ ] Sidebar
+- [ ] User profile
+- [ ] Search
+
+## Templates
+
+### Base
+
+- [ ] Nav-sidebar
+- [ ] Aside-previews
+
+### Page
+
+- [ ] (all defined pages)
+
+### Previews
+
+- [ ] Content based pages
+	- [ ] Blog/news post
+	- [ ] Wiki page
+	- [ ] Gallery
+- [ ] Company pages
+	- [ ] Landing page
+	- [ ] About us
+	- [ ] Contact us
+	- [ ] Pricing
+	- [ ] Portfolio
+	- [ ] Team page
+- [ ] Marketing/E-commerce pages
+	- [ ] Product page
+	- [ ] Product grid
+	- [ ] Cart page
+	- [ ] Checkout page
+- [ ] Dashboard
+	- [ ] User dashboard
+	- [ ] Admin dashboard
+	- [ ] Forum thread
+	- [ ] Forum list
+- [ ] Print preview
+- [ ] Other?

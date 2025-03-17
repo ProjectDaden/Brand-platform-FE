@@ -1,74 +1,64 @@
-<div class="flex-grow bg-blue-50 text-blue-950">
-  <div class="m-auto max-w-screen-md p-8">
-    <!-- Header -->
-     <daden-header></daden-header>
+<daden-header></daden-header>
 
-     
-
-
-
-    <!-- Inputs Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Set Your Tagline</h2>
-        <p class="text-sm opacity-75 mb-6">Craft a tagline that reflects your brand’s essence.</p>
-
-        <div class="grid grid-cols-1 gap-6">
-          <!-- Personality Dropdown -->
-          <div>
+<daden-container id="tagline"
+    title="Set Your Tagline"
+    subtitle="Craft a tagline that reflects your brand’s essence.">
+    <div class="grid grid-cols-1 gap-6">
+        <!-- Personality Dropdown -->
+        <div>
             <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
             <daden-dropdown
-              id="personality"
-              class="w-full"
-              [items]="personalityOptions"
-              [placeholder]="'Select a personality...'"
-              (selectedValue)="handlePersonalitySelection($event)"
+                id="personality"
+                class="w-full"
+                [items]="personalityOptions"
+                [placeholder]="'Select a personality...'"
+                (selectedValue)="handlePersonalitySelection($event)"
             ></daden-dropdown>
             <p class="text-sm opacity-50 mt-1">Choose a personality to align your tagline synonyms.</p>
-          </div>
+        </div>
 
-          <!-- Thesaurus Synonyms Dropdown -->
-          <div>
-            <label for="synonyms" class="block text-sm font-medium mb-2">Thesaurus</label>
-            <daden-dropdown
-              id="synonyms"
-              class="w-full"
-              [items]="synonymOptions"
-              [placeholder]="'Select a synonym...'"
-            ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Pick a keyword to inspire your tagline.</p>
-          </div>
+        <!-- Thesaurus Synonyms Dropdown -->
+        <div>
+        <label for="synonyms" class="block text-sm font-medium mb-2">Thesaurus</label>
+        <daden-dropdown
+            id="synonyms"
+            class="w-full"
+            [items]="synonymOptions"
+            [placeholder]="'Select a synonym...'"
+        ></daden-dropdown>
+        <p class="text-sm opacity-50 mt-1">Pick a keyword to inspire your tagline.</p>
+        </div>
 
-          <!-- Tagline Usage Radio Buttons -->
-          <div>
-            <label class="block text-sm font-medium mb-2">Use a Tagline?</label>
-            <div class="flex flex-col gap-2 sm:flex-row sm:gap-6">
-              <label class="flex items-center">
-                <input
-                  type="radio"
-                  name="taglineUsed"
-                  [(ngModel)]="taglineUsed"
-                  value="yes"
-                  class="mr-2 focus:ring-blue-500"
-                />
-                Yes
-              </label>
-              <label class="flex items-center">
-                <input
-                  type="radio"
-                  name="taglineUsed"
-                  [(ngModel)]="taglineUsed"
-                  value="no"
-                  class="mr-2 focus:ring-blue-500"
-                />
-                No
-              </label>
-            </div>
-            <p class="text-sm opacity-50 mt-1">Decide if your brand will use a tagline.</p>
-          </div>
+        <!-- Tagline Usage Radio Buttons -->
+        <div>
+        <label class="block text-sm font-medium mb-2">Use a Tagline?</label>
+        <div class="flex flex-col gap-2 sm:flex-row sm:gap-6">
+            <label class="flex items-center">
+            <input
+                type="radio"
+                name="taglineUsed"
+                [(ngModel)]="taglineUsed"
+                value="yes"
+                class="mr-2 focus:ring-blue-500"
+            />
+            Yes
+            </label>
+            <label class="flex items-center">
+            <input
+                type="radio"
+                name="taglineUsed"
+                [(ngModel)]="taglineUsed"
+                value="no"
+                class="mr-2 focus:ring-blue-500"
+            />
+            No
+            </label>
+        </div>
+        <p class="text-sm opacity-50 mt-1">Decide if your brand will use a tagline.</p>
+        </div>
 
-          <!-- Tagline Text Input -->
-          <div>
+        <!-- Tagline Text Input -->
+        <div>
             <label for="tagline" class="block text-sm font-medium mb-2">Tagline</label>
             <input
               id="tagline"
@@ -80,41 +70,30 @@
             />
             <p class="text-sm opacity-50 mt-1">Write a concise phrase that sums up your brand.</p>
           </div>
-        </div>
-      </div>
-    </section>
+    </div>
+</daden-container>
 
-    <!-- Preview Section -->
-    <section class="py-6">
-      <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Tagline Preview</h2>
-        <p class="text-sm opacity-75 mb-4">See how your tagline looks in action.</p>
-        <div class="p-4 bg-blue-50 rounded-lg text-center">
-          <h1
+<daden-container id="tagline-preview"
+    title="Tagline Preview"
+    subtitle="See how your tagline looks in action.">
+    <div class="p-4 bg-blue-50 rounded-lg text-center">
+        <h1
             class="text-4xl font-bold mb-2"
             [style.fontFamily]="selectedHeadingFont + ', sans-serif'"
-          >
+        >
             Your Brand Name
-          </h1>
-          <p
+        </h1>
+        <p
             class="text-lg italic"
             [style.fontFamily]="selectedBodyFont + ', sans-serif'"
             [class.opacity-50]="taglineUsed === 'no' || !tagline"
-          >
+        >
             {{ taglineUsed === 'yes' && tagline ? tagline : 'No tagline set' }}
-          </p>
-        </div>
-      </div>
-    </section>
-    
-
-    
-   
-    <!-- Buttons -->
-    <div class="pb-8 flex justify-end gap-2">
-      <daden-reset-button></daden-reset-button>
-      <daden-save-button></daden-save-button>
+        </p>
     </div>
+</daden-container>
+
+<daden-page-footer></daden-page-footer>
 
 
 
@@ -145,164 +124,155 @@
 
 
 
+<!-- Developer's Test Content -->
+<h1 class="text-3xl font-bold">Brand name & tagline (Test Components)</h1>
+<p class="text-m italic mb-8 opacity-75">Brand Identity and Tagline</p>
 
-        <!-- Developer's Test Content -->
-          <h1 class="text-3xl font-bold">Brand name & tagline (Test Components)</h1>
-          <p class="text-m italic mb-8 opacity-75">Brand Identity and Tagline</p>
+<app-daden-table
+    [data]="tableData()"
+    [columns]="tableColumns()"
+    [rowTemplate]="rowTemplate"
+    [context]="additionalContext()"
+    >
+</app-daden-table>
+<br />
+
+<app-daden-input (valueChange)="onInputValueChange($event)"></app-daden-input>
+<br />
+
+<ng-template #rowTemplate let-row let-context="context">
+<tr>
+    <td class="border px-4 py-2">{{ row.name }}</td>
+    @if (context.showAge) {
+    <td class="border px-4 py-2">{{ row.age }}</td>
+    }
+    <td class="border px-4 py-2">{{ row.country }}</td>
+    <td class="border px-4 py-2">{{ row.mijnKlets }}</td>
+</tr>
+</ng-template>
+<br />
+
+<app-daden-card
+[title]="'Dynamic Card Title'"
+[description]="'This is a dynamic description for the card.'"
+[tags]="['added', 'tags', 'to', 'dynamic', 'Card', 'with', 'flex-wrap']"
+>
+</app-daden-card>
+<br />
+
+<app-daden-card
+[title]="'Card with Image'"
+[description]="'Made a boolean option to show image or not.'"
+[imageUrl]="'/assets/black.png'"
+[tags]="['Feature', 'Angular', 'Card']"
+>
+</app-daden-card>
+<br />
+
+<app-daden-card
+[title]="'Card without image and tags'"
+[description]="'This card has no image and tags.'"
+>
+</app-daden-card>
+<br />
+
+<div>
+<h3>Current Color Themes:</h3>
+<ul>
+    @for (theme of currentThemes.industries; track theme) {
+    <li>{{ theme }}</li>
+    }
+</ul>
+</div>
+
+<div>
+@if (isLoading) {
+<daden-loading></daden-loading>
+}
+</div>
+
+<div class="bg-blue-50">
+<daden-pagination
+    [totalItems]="totalItems"
+    [itemsPerPage]="itemsPerPage"
+    (pageChange)="onPageChange($event)"
+>
+</daden-pagination>
+</div>
+
+<div>
+<daden-slider [slides]="slides"></daden-slider>
+</div>
+
+<daden-value-slider
+[min]="0"
+[max]="100"
+[step]="1"
+[(value)]="sliderValue"
+(valueChange)="onSliderChange($event)"
+>
+</daden-value-slider>
+
+<div class="flex flex-wrap gap-4 items-center justify-start p-6">
+<!-- Home Icon -->
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+    <daden-icon icon="home" [strokeWidth]="1.5" class="size-6 text-blue-900"></daden-icon>
+    <span class="mt-2 text-xs text-blue-900 select-none">Home</span>
+</div>
+
+<!-- User Icon -->
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+    <daden-icon icon="user" [strokeWidth]="1.5" class="size-6 text-blue-900"></daden-icon>
+    <span class="mt-2 text-xs text-blue-900 select-none">User</span>
+</div>
+
+<!-- Settings Icon -->
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+    <daden-icon icon="settings" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+    <span class="mt-2 text-xs text-blue-900 select-none">Settings</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+    <daden-icon icon="logout" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+    <span class="mt-2 text-xs text-blue-900 select-none">Logout</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="login" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Login</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="filter" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Filter</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="adjust" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Adjust</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="code" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Code</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="coreBrand" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Core</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="brandVoice" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Tone-of-voice</span>
+</div>
+
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+<daden-icon icon="visualIdentity" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+<span class="mt-2 text-xs text-blue-900 select-none">Visual Identity</span>
+</div>
     
-          <app-daden-table
-            [data]="tableData()"
-            [columns]="tableColumns()"
-            [rowTemplate]="rowTemplate"
-            [context]="additionalContext()"
-          >
-          </app-daden-table>
-          <br />
-    
-          <app-daden-input (valueChange)="onInputValueChange($event)"></app-daden-input>
-          <br />
-    
-          <ng-template #rowTemplate let-row let-context="context">
-            <tr>
-              <td class="border px-4 py-2">{{ row.name }}</td>
-              @if (context.showAge) {
-              <td class="border px-4 py-2">{{ row.age }}</td>
-              }
-              <td class="border px-4 py-2">{{ row.country }}</td>
-              <td class="border px-4 py-2">{{ row.mijnKlets }}</td>
-            </tr>
-          </ng-template>
-          <br />
-    
-          <app-daden-card
-            [title]="'Dynamic Card Title'"
-            [description]="'This is a dynamic description for the card.'"
-            [tags]="['added', 'tags', 'to', 'dynamic', 'Card', 'with', 'flex-wrap']"
-          >
-          </app-daden-card>
-          <br />
-    
-          <app-daden-card
-            [title]="'Card with Image'"
-            [description]="'Made a boolean option to show image or not.'"
-            [imageUrl]="'/assets/black.png'"
-            [tags]="['Feature', 'Angular', 'Card']"
-          >
-          </app-daden-card>
-          <br />
-    
-          <app-daden-card
-            [title]="'Card without image and tags'"
-            [description]="'This card has no image and tags.'"
-          >
-          </app-daden-card>
-          <br />
-    
-          <div>
-            <h3>Current Color Themes:</h3>
-            <ul>
-              @for (theme of currentThemes.industries; track theme) {
-              <li>{{ theme }}</li>
-              }
-            </ul>
-          </div>
-    
-          <div>
-            @if (isLoading) {
-            <daden-loading></daden-loading>
-            }
-          </div>
-    
-          <div class="bg-blue-50">
-            <daden-pagination
-              [totalItems]="totalItems"
-              [itemsPerPage]="itemsPerPage"
-              (pageChange)="onPageChange($event)"
-            >
-            </daden-pagination>
-          </div>
-    
-          <div>
-            <daden-slider [slides]="slides"></daden-slider>
-          </div>
-    
-          <daden-value-slider
-            [min]="0"
-            [max]="100"
-            [step]="1"
-            [(value)]="sliderValue"
-            (valueChange)="onSliderChange($event)"
-          >
-          </daden-value-slider>
-    
-          <div class="flex flex-wrap gap-4 items-center justify-start p-6">
-            <!-- Home Icon -->
-            <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-              <daden-icon icon="home" [strokeWidth]="1.5" class="size-6 text-blue-900"></daden-icon>
-              <span class="mt-2 text-xs text-blue-900 select-none">Home</span>
-            </div>
-          
-            <!-- User Icon -->
-            <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-              <daden-icon icon="user" [strokeWidth]="1.5" class="size-6 text-blue-900"></daden-icon>
-              <span class="mt-2 text-xs text-blue-900 select-none">User</span>
-            </div>
-          
-            <!-- Settings Icon -->
-            <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-              <daden-icon icon="settings" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-              <span class="mt-2 text-xs text-blue-900 select-none">Settings</span>
-            </div>
-          
-            <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-              <daden-icon icon="logout" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-              <span class="mt-2 text-xs text-blue-900 select-none">Logout</span>
-            </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="login" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Login</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="filter" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Filter</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="adjust" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Adjust</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="code" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Code</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="coreBrand" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Core</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="brandVoice" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Tone-of-voice</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="visualIdentity" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Visual Identity</span>
-          </div>
-          
-          <div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
-            <daden-icon icon="AppImpl" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
-            <span class="mt-2 text-xs text-blue-900 select-none">Application & Implementation</span>
-          </div>
-
-
-
-
-        </div>
-
-
+<div class="flex flex-col items-center justify-center rounded-full hover:bg-blue-100 w-16 h-16">
+    <daden-icon icon="AppImpl" [strokeWidth]="2" class="size-6 text-blue-900"></daden-icon>
+    <span class="mt-2 text-xs text-blue-900 select-none">Application & Implementation</span>
 </div>

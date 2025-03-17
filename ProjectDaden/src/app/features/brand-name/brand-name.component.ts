@@ -2,7 +2,6 @@ import { Component, Renderer2, Inject, OnInit, signal, model } from '@angular/co
 import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenTableComponent } from '../../shared/components/daden-table/daden-table.component';
 import { DadenCardComponent } from '../../shared/components/daden-card/daden-card.component';
@@ -11,15 +10,15 @@ import { DadenLoadingComponent } from '../../shared/components/daden-loading/dad
 import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
 import { DadenSliderComponent } from '../../shared/components/daden-slider/daden-slider.component';
 import { DadenValueSliderComponent } from '../../shared/components/daden-value-slider/daden-value-slider.component';
-import { DadenIconComponent } from '../../shared/components/daden-icon/daden-icon.component';
+import { DadenIconComponent } from '../../shared/atoms/daden-icon/daden-icon.component';
 import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
-import { DadenResetButtonComponent } from '../../shared/components/daden-button-reset/daden-button-reset.component';
-import { DadenSaveButtonComponent } from '../../shared/components/daden-button-save/daden-button-save.component';
+import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
+import { DadenContainerComponent } from '../../shared/atoms/daden-container/daden-container.component';
+import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 
 @Component({
   selector: 'app-brand-name-tagline',
   imports: [
-    DadenHeaderComponent,
     DadenDropdownComponent,
     FormsModule,
     CommonModule,
@@ -31,8 +30,7 @@ import { DadenSaveButtonComponent } from '../../shared/components/daden-button-s
     DadenSliderComponent,
     DadenIconComponent,
     DadenValueSliderComponent,
-    DadenResetButtonComponent, 
-    DadenSaveButtonComponent
+    DadenHeaderComponent, DadenContainerComponent, DadenPageFooterComponent
   ],
   templateUrl: './brand-name.component.html',
   styleUrl: './brand-name.component.scss',
