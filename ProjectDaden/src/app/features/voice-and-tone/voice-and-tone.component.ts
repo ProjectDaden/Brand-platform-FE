@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 
 @Component({
   selector: 'app-voice-and-tone',
-  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenGroupHeaderComponent],
+  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenGroupHeaderComponent, DadenLabelComponent ],
   templateUrl: './voice-and-tone.component.html',
   styleUrls: ['./voice-and-tone.component.scss'],
   standalone: true,
