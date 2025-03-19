@@ -1,25 +1,26 @@
 import { Component, Input, Output, HostBinding, EventEmitter } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'daden-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './daden-button.component.html',
 })
 export class DadenButtonComponent {
   @Input() variant: 'primary' | 'secondary' | 'tertiary' | 'text' = 'primary';
   @Input() size: 'big' | 'medium' | 'small' = 'medium';
-  @Input() color: 'blue' | 'red' | 'yellow' | 'green' = 'blue'; // Base color
-  @Input() hoverColor: 'blue' | 'red' | 'yellow' | 'green' | null = null; // Hover color (optional)
+  @Input() color: 'blue' | 'red' | 'yellow' | 'green' = 'blue';
+  @Input() hoverColor: 'blue' | 'red' | 'yellow' | 'green' | null = null;
   @Input() disabled = false;
   @Input() active = false;
+  @Input() label: string = ''; // Added label input
   @Output() buttonClick = new EventEmitter<void>();
 
   onClick() {
     this.buttonClick.emit();
   }
-
 
   private getColorClasses() {
     const baseColorMap = {
@@ -86,7 +87,7 @@ export class DadenButtonComponent {
     const baseClasses = baseColorMap[this.color][this.variant] || baseColorMap.blue.primary;
     const hoverClasses = this.hoverColor
       ? hoverColorMap[this.hoverColor][this.variant]
-      : hoverColorMap[this.color][this.variant]; // Fallback to base color if no hoverColor
+      : hoverColorMap[this.color][this.variant];
     const focusActiveClasses = focusActiveMap[this.color];
 
     return `${baseClasses} ${hoverClasses} ${focusActiveClasses}`;
@@ -94,8 +95,8 @@ export class DadenButtonComponent {
 
   @HostBinding('class') get classes() {
     return [
-      'inline-flex items-center justify-center rounded-md  font-normaltransition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors',
-      this.disabled ? '' : 'cursor-pointer', // Only apply cursor-pointer when not disabled
+      'inline-flex items-center justify-center rounded-md font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors',
+      this.disabled ? '' : 'cursor-pointer',
       this.getColorClasses(),
       this.size === 'big' ? 'px-6 py-3 text-lg' :
       this.size === 'medium' ? 'px-4 py-2 text-md' :

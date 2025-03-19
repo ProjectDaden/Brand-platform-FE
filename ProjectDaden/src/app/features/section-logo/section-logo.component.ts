@@ -9,7 +9,8 @@ import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenButtonComponent } from '../../shared/atoms/daden-button/daden-button.component';
-import { DadenInputTypeComponent } from '../../shared/atoms/daden-input-type/daden-input-type.component';
+import { DadenInputComponent } from '../../shared/atoms/daden-input/daden-input.component';
+
 
 // Define a specific type for logos
 interface LogoVariations {
@@ -22,6 +23,7 @@ interface LogoVariations {
   selector: 'app-section-logo',
   imports: [
     DadenHeaderComponent, 
+    DadenInputComponent,
     DadenPageFooterComponent,
     DadenDropdownComponent,
     DadenGroupHeaderComponent,
@@ -29,8 +31,7 @@ interface LogoVariations {
     DadenLabelComponent,
     FormsModule,
     CommonModule,
-    DadenButtonComponent,
-    DadenInputTypeComponent
+    DadenButtonComponent
   ],
   templateUrl: './section-logo.component.html',
   standalone: true,

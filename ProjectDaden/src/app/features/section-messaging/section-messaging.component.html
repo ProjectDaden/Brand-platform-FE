@@ -11,11 +11,10 @@
             <daden-label
                 label="What do you solve?">
             </daden-label>
-            <input
+            <daden-input
                 type="text"
-                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., boring days"
-            />
+                placeholder="e.g., boring days">
+            </daden-input>
             <daden-detail
                 text="Define the problem you address.">
             </daden-detail>
@@ -24,19 +23,18 @@
             <daden-label
                 label="How do you solve it?">
             </daden-label>
-            <input
+            <daden-input
                 type="text"
-                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Define the solution your product offers."
-                (input)="updateMessaging()"
-            />
+                (input)="updateMessaging()">
+            </daden-input>
             <daden-detail
                 text="Define the problem you address and your solution.">
             </daden-detail>
         </div>
         <div>
             <daden-label
-                label="Differentiator (Benefit)">
+                label="Why do you do it that way?">
             </daden-label>
         <daden-dropdown
             class="w-full"

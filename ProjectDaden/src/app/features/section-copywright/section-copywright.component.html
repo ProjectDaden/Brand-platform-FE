@@ -9,15 +9,12 @@
     <div class="flex flex-col gap-6">
         <!-- About Us Template -->
         <div>
-            <daden-label
-                label="About Us">
-            </daden-label>
-            <textarea
-                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="4"
+            <daden-input
+                type="textarea"
+                [rows]="4"
                 [(ngModel)]="aboutUsText"
                 (input)="updateCopy()"
-            ></textarea>
+            ></daden-input>
             <daden-detail
                 text="Tell your brand’s story in your unique voice.">
             </daden-detail>
@@ -28,12 +25,12 @@
             <daden-label
                 label="Product Description">
             </daden-label>
-            <textarea
-                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="4"
+            <daden-input
+                type="textarea"
+                [rows]="4"
                 [(ngModel)]="productDescriptionText"
                 (input)="updateCopy()"
-            ></textarea>
+            ></daden-input>
             <daden-detail
                 text="Describe your product with flair and precision.">
             </daden-detail>
@@ -44,12 +41,12 @@
             <daden-label
                 label="Call to Action">
             </daden-label>
-            <textarea
-                class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="2"
+            <daden-input
+                type="textarea"
+                [rows]="2"
                 [(ngModel)]="ctaText"
                 (input)="updateCopy()"
-            ></textarea>
+            ></daden-input>
             <daden-detail
                 text="Motivate your audience to take action.">
             </daden-detail>

@@ -5,12 +5,13 @@ import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-foot
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenInputComponent } from '../../shared/atoms/daden-input/daden-input.component';
 
 @Component({
   selector: 'app-section-copywriting',
   templateUrl: './section-copywright.component.html',
   standalone: true,
-  imports: [DadenHeaderComponent, FormsModule, DadenPageFooterComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent], // Required for ngModel
+  imports: [DadenHeaderComponent, FormsModule, DadenPageFooterComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent, DadenInputComponent ], // Required for ngModel
 })
 export class SectionCopywrightComponent implements OnInit {
   aboutUsText: string = '';

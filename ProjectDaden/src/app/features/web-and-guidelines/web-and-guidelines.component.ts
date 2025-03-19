@@ -12,6 +12,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenModalComponent } from '../../shared/components/daden-modal/daden-modal.component';
+import { DadenInputComponent } from '../../shared/atoms/daden-input/daden-input.component';
+import { DadenInputRangeComponent } from '../../shared/components/daden-value-slider/daden-input-range.component';
+import { DadenCheckboxComponent } from '../../shared/atoms/daden-checkbox/daden-checkbox.component';
 
 @Component({
   selector: 'app-web-and-guidelines',
@@ -28,13 +32,20 @@ import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/d
     DadenPaginationComponent,
     DadenLabelComponent,
     DadenDetailComponent,
-    DadenDropdownComponent
+    DadenDropdownComponent,
+    DadenInputComponent,
+    DadenInputRangeComponent,
+    DadenCheckboxComponent
   ],
   templateUrl: './web-and-guidelines.component.html',
-  styleUrl: './web-and-guidelines.component.scss',
   standalone: true
 })
 export class WebAndGuidelinesComponent {
+  subscribeToNewsletter = false;
+
+  onNewsletterToggle(value: boolean) {
+    console.log('Newsletter subscription:', value);
+  }
   faqItems = [
     {
       title: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, eveniet?',

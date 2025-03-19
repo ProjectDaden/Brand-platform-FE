@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'daden-loading',
-  imports: [],
-  templateUrl: './daden-loading.component.html',
-  styleUrl: './daden-loading.component.scss'
+  imports: [TranslateModule],
+  templateUrl: './daden-loading.component.html'
 })
 export class DadenLoadingComponent {
 

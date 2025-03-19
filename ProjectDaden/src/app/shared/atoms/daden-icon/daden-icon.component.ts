@@ -31,6 +31,7 @@ export class DadenIconComponent {
     check: 'm4.5 12.75 6 6 9-13.5',
     arrowLeft: 'M15.75 19.5 8.25 12l7.5-7.5',
     arrowRight: 'm8.25 4.5 7.5 7.5-7.5 7.5',
+    arrowDown: 'm19.5 8.25-7.5 7.5-7.5-7.5',
   };
 
   get iconPath(): string {

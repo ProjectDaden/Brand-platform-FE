@@ -4,12 +4,12 @@ import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header
 import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenInputRangeComponent } from '../../shared/components/daden-value-slider/daden-input-range.component';
 
 @Component({
   selector: 'app-voice-and-tone',
-  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent ],
+  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent, DadenInputRangeComponent  ],
   templateUrl: './voice-and-tone.component.html',
-  styleUrls: ['./voice-and-tone.component.scss'],
   standalone: true,
 })
 export class VoiceAndToneComponent implements OnInit {

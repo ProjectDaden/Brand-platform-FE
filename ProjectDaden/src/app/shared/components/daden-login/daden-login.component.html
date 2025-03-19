@@ -1,17 +1,40 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-      <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
+<div class="h-screen -m-16 flex items-center justify-center">
+    <section>
+      <daden-group-header
+        title="Login">
+      </daden-group-header>
       <form (ngSubmit)="login()">
         <div class="mb-4">
-          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-          <input type="text" id="username" [(ngModel)]="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <daden-label
+            for="username" 
+            label="general.username">
+          </daden-label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            [(ngModel)]="username" 
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
         <div class="mb-6">
-          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-          <input type="password" id="password" [(ngModel)]="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <daden-label
+            for="password" 
+            label="general.password">
+          </daden-label>
+          <input 
+            type="password" 
+            id="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
-        <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</button>
+        <div class="flex justify-end">
+          <daden-button 
+            type="submit"
+            label="button.login">
+          </daden-button>
+        </div>
       </form>
-    </div>
-  </div>
+    </section>
+</div>
   

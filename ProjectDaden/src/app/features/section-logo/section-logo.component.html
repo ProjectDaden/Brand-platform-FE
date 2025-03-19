@@ -25,14 +25,16 @@
         </div>
         <!-- Primary Logo Upload -->
         <div>
-            <daden-label for="primary-upload" 
+            <daden-label 
+                for="primary-upload" 
                 label="Primary Logo">
             </daden-label>
            <div class="flex gap-4">
-            <daden-input-type
+            <daden-input
+                type="file"
                 id="primary-upload"
                 (change)="onFileChange($event, 'primary')">
-            </daden-input-type>
+            </daden-input>
             <!-- <input
                   type="file"
                   id="primary-upload"
@@ -48,8 +50,8 @@
                 <daden-button
                     *ngIf="logos.primary"
                     (click)="clearLogo('primary')"
-                    color="red">
-                    Clear
+                    color="red"
+                    label="button.clear">
                 </daden-button>
            </div>
             <daden-detail
@@ -59,15 +61,17 @@
 
         <!-- Secondary Logo Upload -->
         <div>
-            <daden-label for="secondary-upload" 
+            <daden-label 
+                for="secondary-upload" 
                 label="Secondary Logo">
             </daden-label>
             <div class="flex gap-4">
-                <daden-input-type
+                <daden-input
+                    type="file"
                     id="secondary-upload"
                     type="file"
                     (change)="onFileChange($event, 'secondary')">
-                </daden-input-type>
+                </daden-input>
                 <!-- <input
                     id="secondary-upload"
                     type="file"
@@ -82,8 +86,8 @@
                 <daden-button
                 *ngIf="logos.secondary"
                     (click)="clearLogo('secondary')"
-                    color="red">
-                    Clear
+                    color="red"
+                    label="button.clear">
                 </daden-button>
             </div>
             <daden-detail
@@ -93,20 +97,22 @@
 
         <!-- Icon-Logo Upload -->
         <div>
-            <daden-label for="icon-upload" 
+            <daden-label 
+                for="icon-upload" 
                 label="Icon Logo">
             </daden-label>
             <div class="flex gap-4">
-                <daden-input-type
+                <daden-input
+                    type="file"
                     id="icon-upload"
                     [accept]="'image/*'"
                     (change)="onFileChange($event, 'icon')">
-                </daden-input-type>
+                </daden-input>
                 <daden-button
                     *ngIf="logos.icon"
                     (click)="clearLogo('icon')"
-                    color="red">
-                    Clear
+                    color="red"
+                    label="button.clear">
                 </daden-button>
             </div>
             <daden-detail

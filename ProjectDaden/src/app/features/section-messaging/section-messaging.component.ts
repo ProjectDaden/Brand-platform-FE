@@ -5,6 +5,7 @@ import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-foot
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
+import { DadenInputComponent } from '../../shared/atoms/daden-input/daden-input.component';
 
 @Component({
   selector: 'app-section-messaging',
@@ -17,7 +18,8 @@ import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.
     DadenDropdownComponent,
     DadenGroupHeaderComponent,
     DadenDetailComponent,
-    DadenLabelComponent ],
+    DadenLabelComponent,
+    DadenInputComponent],
 })
 export class SectionMessagingComponent implements OnInit {
   problem: string = '';

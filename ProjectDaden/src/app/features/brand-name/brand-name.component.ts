@@ -14,6 +14,8 @@ import { PersonalityOptions } from './store/brandname-tagline.model';
 import { BrandNameStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenInputComponent } from '../../shared/atoms/daden-input/daden-input.component';
+import { DadenCheckboxComponent } from '../../shared/atoms/daden-checkbox/daden-checkbox.component';
 
 @Component({
   selector: 'app-brand-name-tagline',
@@ -28,7 +30,9 @@ import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-deta
     DadenDropdownComponent,    
     DadenPageFooterComponent,
     DadenLabelComponent,
-    DadenDetailComponent
+    DadenDetailComponent,
+    DadenInputComponent,
+    DadenCheckboxComponent
   ],
   templateUrl: './brand-name.component.html',
 })
@@ -44,8 +48,8 @@ export class BrandNameComponent implements OnInit {
 
   watchBrandName = computed(() => this.brandName.genericSignalCollection());
 
-  taglineUsed?: 'yes' | 'no' = this.brandName.genericSignalCollection().tagLineUsed;
-  tagline?: string = this.brandName.genericSignalCollection().tagLine;
+  useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes'; // Replace taglineUsed
+  tagline: string = this.brandName.genericSignalCollection().tagLine || ''; // Simplify optional chaining
 
   ngOnInit() {
     this.translate.setDefaultLang('en');
@@ -65,7 +69,14 @@ export class BrandNameComponent implements OnInit {
 
   updateBrandNameCollection(updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>) {
     this.brandName.genericSignalCollection.update(current => ({ ...current, ...updates }));
+    this.tagline = this.brandName.genericSignalCollection().tagLine || '';
     console.log('UPDATES', this.brandName.genericSignalCollection());
+  }
+
+  onTaglineToggle(value: boolean) {
+    this.useTagline = value;
+    this.updateBrandNameCollection({ tagLineUsed: value ? 'yes' : 'no' });
+    console.log('Tagline enabled:', value);
   }
 
   private loadSynonymsBasedOnPersonality(personality: string) {
@@ -107,16 +118,16 @@ export class BrandNameComponent implements OnInit {
 
   get taglineOutput() {
     return {
-      taglineUsed: this.taglineUsed === 'yes',
-      tagline: this.tagline ?? '',
+      taglineUsed: this.useTagline, // Updated to use boolean
+      tagline: this.tagline || '',
     };
   }
 
-  onReset(){
+  onReset() {
     this.brandName.genericSignalCollection.set(DEFAULT_BRAND_NAME_VALUES);
     this.handlePersonalitySelection('');
-    this.taglineUsed = DEFAULT_BRAND_NAME_VALUES.tagLineUsed;
-    this.tagline = DEFAULT_BRAND_NAME_VALUES.tagLine;
+    this.useTagline = DEFAULT_BRAND_NAME_VALUES.tagLineUsed === 'yes';
+    this.tagline = DEFAULT_BRAND_NAME_VALUES.tagLine || '';
     console.log('RESET');
   }
 }

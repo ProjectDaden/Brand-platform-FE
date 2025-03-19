@@ -1,0 +1,23 @@
+<div class="flex items-center">
+	<input
+	  type="checkbox"
+	  [id]="id()"
+	  [checked]="internalValue"
+	  [disabled]="disabled()"
+	  (change)="onCheckboxChange($event)"
+	  class="h-4 w-4 text-blue-500 border-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2
+			 disabled:cursor-default disabled:border-gray-200 disabled:text-gray-600 transition-colors duration-200"
+	  [attr.aria-checked]="internalValue"
+	  [attr.aria-disabled]="disabled()"
+	/>
+	<label
+	  [for]="id()"
+	  class="ml-2 text-blue-950 disabled:text-gray-600 cursor-pointer select-none"
+	  [ngClass]="{
+		'text-gray-900 hover:text-blue-500': !disabled(),
+		'text-gray-600 cursor-default': disabled()
+	  }"
+	>
+	  {{ label() || 'Checkbox' }}
+	</label>
+  </div>

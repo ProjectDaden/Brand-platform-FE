@@ -1,4 +1,5 @@
 <button 
 (click)="onClick()" [disabled]="disabled">
+	{{ label | translate }}
 	<ng-content></ng-content>
 </button>

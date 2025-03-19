@@ -1,4 +1,18 @@
-{
+{   
+    "general": {
+        "loading": "loading",
+        "username": "Username",
+        "password": "Password",
+        "type-something": "Type something..."
+    },
+    "button": {
+      "save-and-continue": "save & continue",
+      "reset": "reset",
+      "clear": "clear",
+      "previous": "previous",
+      "next": "next",
+      "login": "Login"
+    },
     "home-component": {
         "title": "hallo Home"
     },
@@ -15,11 +29,12 @@
             "form-title": "Set Your Tagline",
             "form-description": "Craft a tagline that reflects your brand’s essence.",
             "form-personality-label": "Personality",
-            "form-personality-description": "Choose a personality to align your tagline synonyms.",
+            "form-personality-description": "Your brand name and tagline should fit your personality.",
             "form-thesaurus-label": "Thesaurus",
             "form-thesaurus-description": "Pick a keyword to inspire your tagline.",
-            "form-tagline-radio-label": "Use a Tagline?",
-            "form-tagline-radio-description": "Decide if your brand will use a tagline.",
+            "form-tagline-checkbox-label": "Tagline",
+            "form-tagline-checkbox-text": "Do you want to use a tagline?",
+            "form-tagline-checkbox-description": "Decide if your brand will use a tagline.",
             "form-tagline-input-label": "Tagline",
             "form-tagline-input-description": "Write a concise phrase that sums up your brand."
         },

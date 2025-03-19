@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DadenInputComponent } from './daden-input.component';
+import { DadenInputRangeComponent } from './daden-input-range.component';
 
-describe('DadenInputComponent', () => {
-  let component: DadenInputComponent;
-  let fixture: ComponentFixture<DadenInputComponent>;
+describe('DadenInputRangeComponent', () => {
+  let component: DadenInputRangeComponent;
+  let fixture: ComponentFixture<DadenInputRangeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DadenInputComponent]
+      imports: [DadenInputRangeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DadenInputComponent);
+    fixture = TestBed.createComponent(DadenInputRangeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
