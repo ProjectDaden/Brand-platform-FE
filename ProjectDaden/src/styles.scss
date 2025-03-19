@@ -62,4 +62,24 @@
 	section {
 		@apply bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md mb-12;
 	}
+
+	.lazy-load{
+		@apply opacity-0 transition-opacity;
+	}
+
+	.lazy-load[src]{
+		@apply opacity-100;
+	}
+
+	img {
+		@apply opacity-100 transition-opacity;
+	}
+
+	img {
+		@apply hover:opacity-90;
+	}
+
+	daden-input-type {
+		@apply block w-full;
+	}
 }

@@ -8,6 +8,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 
 @Component({
   selector: 'app-section-imagery',
@@ -16,12 +18,13 @@ import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header
     DadenPageFooterComponent,
     DadenDropdownComponent,
     DadenGroupHeaderComponent,
+    DadenDetailComponent,
+    DadenLabelComponent,
     FormsModule,
     CommonModule,
     HttpClientModule, // For HTTP requests to Unsplash
   ],
   templateUrl: './section-imagery.component.html',
-  styleUrl: './section-imagery.component.scss',
   standalone: true,
 })
 export class SectionImageryComponent implements OnInit {

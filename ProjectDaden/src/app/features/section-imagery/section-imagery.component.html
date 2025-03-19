@@ -9,7 +9,9 @@
     <div class="grid grid-cols-1 gap-6">
         <!-- Personality Dropdown -->
         <div>
-        <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
+            <daden-label for="personality" 
+                label="Personality<">
+            </daden-label>
         <daden-dropdown
             id="personality"
             class="w-full"
@@ -17,12 +19,16 @@
             [placeholder]="'Select a personality...'"
             (selectedValue)="handlePersonalitySelection($event)"
         ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Filters imagery based on your brand’s personality.</p>
+            <daden-detail
+                text="Filters imagery based on your brand’s personality.">
+            </daden-detail>
         </div>
 
         <!-- Imagery Style Dropdown -->
         <div>
-        <label for="imageryStyle" class="block text-sm font-medium mb-2">Imagery Style</label>
+            <daden-label for="imageryStyle" 
+                label="Imagery Style">
+            </daden-label>
         <daden-dropdown
             id="imageryStyle"
             class="w-full"
@@ -30,12 +36,16 @@
             [placeholder]="'Select a style...'"
             (selectedValue)="handleImageryStyleSelection($event)"
         ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Defines the aesthetic of your imagery.</p>
+            <daden-detail
+                text="Defines the aesthetic of your imagery.">
+            </daden-detail>
         </div>
 
         <!-- Stock Photo Search -->
         <div>
-        <label for="searchQuery" class="block text-sm font-medium mb-2">Search Stock Library</label>
+            <daden-label for="searchQuery" 
+                label="Search Stock Library">
+            </daden-label>
         <input
             id="searchQuery"
             type="text"
@@ -44,7 +54,9 @@
             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="e.g., nature, technology..."
         />
-        <p class="text-sm opacity-50 mt-1">Find photos matching your brand identity.</p>
+            <daden-detail
+                text="Find photos matching your brand identity.">
+            </daden-detail>
         </div>
     </div>
 </section>

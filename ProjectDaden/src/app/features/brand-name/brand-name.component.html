@@ -9,72 +9,76 @@
     <div class="flex flex-col gap-6">
         <!-- Personality Dropdown -->
         <div>
-            <label for="personality"
-                class="block text-sm font-medium mb-2">{{"brand-name-component.form-area.form-personality-label" |
-                translate }}
-            </label>
+            <daden-label for="personality"
+                label="brand-name-component.form-area.form-personality-label"
+                >
+            </daden-label>
             <daden-dropdown id="personality" class="w-full" 
                 [items]="brandName.genericSignalCollection().personalities"
                 [placeholder]="'Select a personality...'"
                 [selectedItem]="brandName.genericSignalCollection().selectedPersonality || ''"
                 (selectedValue)="handlePersonalitySelection($event)">
             </daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">
-                {{"brand-name-component.form-area.form-personality-description" | translate }}
-            </p>
+            <daden-detail
+                text="brand-name-component.form-area.form-personality-description">
+            </daden-detail>
         </div>
 
         <!-- Thesaurus Synonyms Dropdown -->
         <div>
-            <label for="synonyms" class="block text-sm font-medium mb-2">{{
+            <daden-label for="synonyms" 
+                label="brand-name-component.form-area.form-thesaurus-label"
+                >
+            </daden-label>
+            <!-- <label class="block text-sm font-medium mb-2">{{
                 "brand-name-component.form-area.form-thesaurus-label" | translate }}
-            </label>
+            </label> -->
             <daden-dropdown id="synonyms" class="w-full"
                 [items]="brandName.genericSignalCollection().personalityOptions.synonyms || []"
                 [placeholder]="'Select a synonym...'"
                 [selectedItem]="''">
             </daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">
-                {{ "brand-name-component.form-area.form-thesaurus-description" | translate}}
-            </p>
+            <daden-detail
+                text="brand-name-component.form-area.form-thesaurus-description">
+            </daden-detail>
         </div>
 
         <!-- Tagline Usage Radio Buttons -->
         <div>
-            <label class="block text-sm font-medium mb-2">{{ "brand-name-component.form-area.form-tagline-radio-label" |
-                translate }}
-            </label>
+            <daden-label
+                label="brand-name-component.form-area.form-tagline-radio-label"
+                >
+            </daden-label>
             <div class="flex flex-col gap-2 sm:flex-row sm:gap-6">
-                <label class="flex items-center">
+                <div class="flex items-center">
                     <input type="radio" name="taglineUsed" [(ngModel)]="brandName.genericSignalCollection().tagLineUsed"
                     value="yes" class="mr-2 focus:ring-blue-500" />
                     Yes
-                </label>
-                <label class="flex items-center">
+                </div>
+                <div class="flex items-center">
                     <input type="radio" name="taglineUsed" [(ngModel)]="brandName.genericSignalCollection().tagLineUsed"
                     value="no" class="mr-2 focus:ring-blue-500" />
                     No
-                </label>
+                </div>
             </div>
-            <p class="text-sm opacity-50 mt-1">
-                {{ "brand-name-component.form-area.form-tagline-radio-description" | translate }}
-            </p>
+            <daden-detail
+                text="brand-name-component.form-area.form-tagline-radio-description">
+            </daden-detail>
         </div>
 
         <!-- Tagline Text Input -->
         <div>
-            <label for="tagline"
-                class="block text-sm font-medium mb-2">{{"brand-name-component.form-area.form-tagline-input-label" |
-                translate }}
-            </label>
+            <daden-label
+                label="brand-name-component.form-area.form-tagline-input-label">
+            </daden-label>
             <input id="tagline" type="text" [(ngModel)]="brandName.genericSignalCollection().tagLine"
                 class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter your tagline..." [disabled]="
                 brandName.genericSignalCollection().tagLineUsed === 'no'
                 " />
-            <p class="text-sm opacity-50 mt-1">
-                {{ "brand-name-component.form-area.form-tagline-input-description" | translate }}
-            </p>
+            <daden-detail
+                text="brand-name-component.form-area.form-tagline-input-description">
+            </daden-detail>
         </div>
     </div>
 </section>

@@ -9,6 +9,9 @@ import { DadenPaginationComponent } from '../../shared/components/daden-paginati
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 
 @Component({
   selector: 'app-web-and-guidelines',
@@ -22,7 +25,10 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     DadenHeaderComponent,
     DadenLoadingComponent,
-    DadenPaginationComponent
+    DadenPaginationComponent,
+    DadenLabelComponent,
+    DadenDetailComponent,
+    DadenDropdownComponent
   ],
   templateUrl: './web-and-guidelines.component.html',
   styleUrl: './web-and-guidelines.component.scss',

@@ -4,6 +4,8 @@ import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/d
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 
 @Component({
   selector: 'app-section-typography',
@@ -11,7 +13,9 @@ import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header
     DadenDropdownComponent,
     DadenHeaderComponent, 
     DadenPageFooterComponent,
-    DadenGroupHeaderComponent
+    DadenGroupHeaderComponent,
+    DadenDetailComponent,
+    DadenLabelComponent
   ],
   templateUrl: './section-typography.component.html',
   styleUrl: './section-typography.component.scss',

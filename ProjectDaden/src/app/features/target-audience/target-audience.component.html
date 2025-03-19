@@ -9,7 +9,9 @@
     <div class="flex flex-col gap-6">
         <!-- Demographic: Age -->
         <div>
-            <label class="block text-sm font-medium mb-2">Age Group</label>
+            <daden-label
+                label="Age Group">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select an age group...</option>
                 <option value="18-24">18-24</option>
@@ -18,11 +20,16 @@
                 <option value="45-64">45-64</option>
                 <option value="65+">65+</option>
             </select>
+            <daden-detail
+                text="Select an age group...">
+            </daden-detail>
         </div>
         
         <!-- Demographic: Location -->
         <div>
-            <label class="block text-sm font-medium mb-2">Location</label>
+            <daden-label
+                label="Location">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select a location...</option>
                 <option value="urban">Urban</option>
@@ -30,11 +37,16 @@
                 <option value="rural">Rural</option>
                 <option value="global">Global</option>
             </select>
+            <daden-detail
+                text="Select a location...">
+            </daden-detail>
         </div>
         
         <!-- Psychographic: Interests -->
         <div>
-            <label class="block text-sm font-medium mb-2">Interests</label>
+            <daden-label 
+                label="Interests">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select an interest...</option>
                 <option value="technology">Technology</option>
@@ -43,11 +55,16 @@
                 <option value="education">Education</option>
                 <option value="entertainment">Entertainment</option>
             </select>
+            <daden-detail
+                text="Select an interest...">
+            </daden-detail>
         </div>
         
         <!-- Psychographic: Behaviors -->
         <div>
-            <label class="block text-sm font-medium mb-2">Behaviors</label>
+            <daden-label 
+                label="Behaviors">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select a behavior...</option>
                 <option value="early-adopter">Early Adopter</option>
@@ -55,11 +72,16 @@
                 <option value="community-focused">Community-Focused</option>
                 <option value="trend-follower">Trend Follower</option>
             </select>
+            <daden-detail
+                text="Select a behavior...">
+            </daden-detail>
         </div>
         
         <!-- Gains -->
         <div>
-            <label class="block text-sm font-medium mb-2">Goals & Aspirations</label>
+            <daden-label 
+                label="Goals & Aspirations">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select a goal...</option>
                 <option value="success">Achieve Success</option>
@@ -67,11 +89,16 @@
                 <option value="growth">Personal Growth</option>
                 <option value="security">Financial Security</option>
             </select>
+            <daden-detail
+                text="Select a goal...">
+            </daden-detail>
         </div>
         
         <!-- Pains -->
         <div>
-            <label class="block text-sm font-medium mb-2">Fears & Frustrations</label>
+            <daden-label 
+                label="Fears & Frustrations">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select a challenge...</option>
                 <option value="uncertainty">Uncertainty</option>
@@ -79,9 +106,14 @@
                 <option value="complexity">Complexity</option>
                 <option value="isolation">Isolation</option>
             </select>
+            <daden-detail
+                text="Select a challenge...">
+            </daden-detail>
         </div>
     </div>
-    <p class="text-sm opacity-50 mt-4">These choices will shape your brand’s imagery, messaging, and story.</p>
+    <daden-detail
+        text="These choices will shape your brand’s imagery, messaging, and story.">
+    </daden-detail>
 </section>
 
 <section id="audience-preview">

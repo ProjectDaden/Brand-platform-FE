@@ -12,6 +12,8 @@ import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
 import { PersonalityOptions } from './store/brandname-tagline.model';
 import { BrandNameStore } from './store/brandname-tagline.store';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
 
 @Component({
   selector: 'app-brand-name-tagline',
@@ -24,10 +26,11 @@ import { BrandNameStore } from './store/brandname-tagline.store';
     DadenHeaderComponent,
     DadenGroupHeaderComponent,
     DadenDropdownComponent,    
-    DadenPageFooterComponent
+    DadenPageFooterComponent,
+    DadenLabelComponent,
+    DadenDetailComponent
   ],
   templateUrl: './brand-name.component.html',
-  styleUrl: './brand-name.component.scss',
 })
 export class BrandNameComponent implements OnInit {
   private readonly document = inject(DOCUMENT);

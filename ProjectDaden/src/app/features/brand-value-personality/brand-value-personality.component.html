@@ -9,36 +9,48 @@
     <div class="flex flex-col gap-6">
         <!-- Industry Dropdown -->
         <div>
-            <label class="block text-sm font-medium mb-2">Industry</label>
+            <daden-label
+                label="Industry">
+            </daden-label>
             <daden-dropdown
                 class="w-full" 
                 [items]="brandPersonalityValues.industries"
                 [placeholder]="'Select your industry...'"
                 (selectedValue)="handleSelection($event)"
             ></daden-dropdown>
-            <!-- <option value="" disabled selected>Select your industry...</option> -->
+            <daden-detail
+                text="Select your industry...">
+            </daden-detail>
         </div>
         
         <!-- Traits Multi-select -->
         <div>
-            <label class="block text-sm font-medium mb-2">Traits</label>
+            <daden-label
+                label="Traits">
+            </daden-label>
             <daden-multi-list-selection 
                 [options]="brandPersonalityValues.traits" 
                 (selectionChange)="handleSelectionChange($event)"
             ></daden-multi-list-selection>
-            <p class="text-sm opacity-50 mt-1">Hold Ctrl (or Cmd) to select multiple traits.</p>
+            <daden-detail
+                text="Hold Ctrl (or Cmd) to select multiple traits.">
+            </daden-detail>
         </div>
         
         <!-- Personality Single-select -->
         <div>
-            <label class="block text-sm font-medium mb-2">Personality</label>
+            <daden-label
+                label="Personality">
+            </daden-label>
             <daden-dropdown
                 class="w-full" 
                 [items]="brandPersonalityValues.personalities"
                 [placeholder]="'Select a personality...'"
                 (selectedValue)="handleSelection($event)"
             ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Choose one personality to define your brand.</p>
+            <daden-detail
+                text="Choose one personality to define your brand.">
+            </daden-detail>
         </div>
     </div>
     <p class="text-sm opacity-50 mt-4">These selections will influence your brand’s tone, colors, and story.</p>

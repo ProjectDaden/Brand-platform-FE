@@ -9,54 +9,72 @@
     <div class="flex flex-col gap-6">
         <!-- Personality Dropdown -->
         <div>
-        <label class="block text-sm font-medium mb-2">Personality</label>
-        <daden-dropdown
-            class="w-full"
-            [items]="personalityOptions"
-            [placeholder]="'Select a personality...'"
-            (selectedValue)="handlePersonalitySelection($event)"
-        ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Choose a personality to curate your font options.</p>
+            <daden-label
+                label="Personality">
+            </daden-label>
+            <daden-dropdown
+                class="w-full"
+                [items]="personalityOptions"
+                [placeholder]="'Select a personality...'"
+                (selectedValue)="handlePersonalitySelection($event)"
+            ></daden-dropdown>
+            <daden-detail
+                text="Choose a personality to curate your font options.">
+            </daden-detail>
         </div>
 
         <!-- Heading Font Dropdown -->
         <div>
-        <label class="block text-sm font-medium mb-2">Heading Font</label>
-        <daden-dropdown
-            class="w-full"
-            [items]="typographyOptions.headingFonts"
-            [placeholder]="'Select a heading font...'"
-            (selectedValue)="handleFontSelection($event, 'heading')"
-        ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Choose from Google Fonts, tailored to your selected <span class="font-medium">Personality</span>.</p>
+            <daden-label
+                label="Heading Font">
+            </daden-label>
+            <daden-dropdown
+                class="w-full"
+                [items]="typographyOptions.headingFonts"
+                [placeholder]="'Select a heading font...'"
+                (selectedValue)="handleFontSelection($event, 'heading')"
+            ></daden-dropdown>
+            <daden-detail
+                text="Choose from Google Fonts, tailored to your selected Personality.">
+            </daden-detail>
         </div>
 
         <!-- Body Font Dropdown -->
         <div>
-        <label class="block text-sm font-medium mb-2">Body Font</label>
-        <daden-dropdown
-            class="w-full"
-            [items]="typographyOptions.bodyFonts"
-            [placeholder]="'Select a body font...'"
-            (selectedValue)="handleFontSelection($event, 'body')"
-        ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Pairs with your heading font, reflecting your brand’s character.</p>
+            <daden-label
+                label="Body Font">
+            </daden-label>
+            <daden-dropdown
+                class="w-full"
+                [items]="typographyOptions.bodyFonts"
+                [placeholder]="'Select a body font...'"
+                (selectedValue)="handleFontSelection($event, 'body')"
+            ></daden-dropdown>
+            <daden-detail
+                text="Pairs with your heading font, reflecting your brand’s character.">
+            </daden-detail>
         </div>
 
         <!-- Type Scale Dropdown -->
         <div>
-        <label class="block text-sm font-medium mb-2">Type Scale</label>
-        <daden-dropdown
-            class="w-full"
-            [items]="typeScaleNames"
-            [placeholder]="'Select a type scale...'"
-            (selectedValue)="handleTypeScaleSelection($event)"
-        ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Choose a size scale for headings, body, and details.</p>
+            <daden-label
+                label="Type Scale">
+            </daden-label>
+            <label class="block text-sm font-medium mb-2"></label>
+            <daden-dropdown
+                class="w-full"
+                [items]="typeScaleNames"
+                [placeholder]="'Select a type scale...'"
+                (selectedValue)="handleTypeScaleSelection($event)"
+            ></daden-dropdown>
+            <daden-detail
+                text="Choose a size scale for headings, body, and details.">
+            </daden-detail>
         </div>
     </div>
-    
-    <p class="text-sm opacity-50 mt-4">These choices will style your templates and be included in your brand style guide.</p>
+    <daden-detail
+        text="These choices will style your templates and be included in your brand style guide.">
+    </daden-detail>
 </section>
 
 <section id="typography-preview">

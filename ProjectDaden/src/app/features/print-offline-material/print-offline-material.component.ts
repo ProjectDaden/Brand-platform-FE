@@ -6,7 +6,6 @@ import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-foot
   selector: 'app-print-offline-material',
   imports: [DadenHeaderComponent, DadenPageFooterComponent],
   templateUrl: './print-offline-material.component.html',
-  styleUrl: './print-offline-material.component.scss',
   standalone: true
 })
 export class PrintOfflineMaterialComponent {

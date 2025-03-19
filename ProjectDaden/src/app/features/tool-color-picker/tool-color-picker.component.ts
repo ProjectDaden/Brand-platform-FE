@@ -4,6 +4,8 @@ import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-foot
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
 import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/daden-dropdown.component";
 import { BrandColorThemeService } from './services/brand-color-theme.service';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 
 @Component({
   selector: 'tool-color-picker',
@@ -12,7 +14,9 @@ import { BrandColorThemeService } from './services/brand-color-theme.service';
     DadenHeaderComponent, 
     DadenPageFooterComponent,
     DadenDropdownComponent,
-    DadenGroupHeaderComponent],
+    DadenGroupHeaderComponent,
+    DadenDetailComponent,
+    DadenLabelComponent],
   templateUrl: './tool-color-picker.component.html'
 })
 export class ToolColorPickerComponent {
