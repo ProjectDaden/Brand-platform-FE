@@ -5,12 +5,13 @@ import { DadenMultiListSelectionComponent } from '../../shared/components/daden-
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
 
 @Component({
   selector: 'app-brand-value-personality',
-  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenDropdownComponent, DadenMultiListSelectionComponent, DadenGroupHeaderComponent],
+  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenDropdownComponent, DadenMultiListSelectionComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent],
   templateUrl: './brand-value-personality.component.html',
-  styleUrl: './brand-value-personality.component.scss',
   standalone: true
 })
 export class BrandValuePersonalityComponent {

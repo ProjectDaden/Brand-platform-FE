@@ -7,39 +7,48 @@
     </daden-group-header>
 
     <div class="flex flex-col gap-6">
-        <!-- Problem/Solution Text Field -->
         <div>
-            <label class="block text-sm font-medium mb-2">Core Message</label>
-            <div class="flex items-center gap-2">
-                <span class="text-sm opacity-75">We solve</span>
-                <input
+            <daden-label
+                label="What do you solve?">
+            </daden-label>
+            <input
                 type="text"
                 class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., boring days"
-                />
-                <span class="text-sm opacity-75">with</span>
-                <input
+            />
+            <daden-detail
+                text="Define the problem you address.">
+            </daden-detail>
+        </div>
+        <div>
+            <daden-label
+                label="How do you solve it?">
+            </daden-label>
+            <input
                 type="text"
                 class="w-full p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., exciting solutions"
+                placeholder="Define the solution your product offers."
                 (input)="updateMessaging()"
-                />
-            </div>
-            <p class="text-sm opacity-50 mt-1">Define the problem you address and your solution.</p>
+            />
+            <daden-detail
+                text="Define the problem you address and your solution.">
+            </daden-detail>
         </div>
-
-        <!-- Benefit Dropdown -->
         <div>
-        <label class="block text-sm font-medium mb-2">Differentiator (Benefit)</label>
+            <daden-label
+                label="Differentiator (Benefit)">
+            </daden-label>
         <daden-dropdown
             class="w-full"
             [items]="benefitOptions"
             [placeholder]="'Select a benefit...'"
             (selectedValue)="handleBenefitSelection($event)"
         ></daden-dropdown>
-        <p class="text-sm opacity-50 mt-1">Choose what sets your brand apart.</p>
+            <daden-detail
+                text="Choose what sets your brand apart.">
+            </daden-detail>
         </div>
-    </div>
+    </div> 
 </section>
 
 <section id="messaging-preview">

@@ -9,78 +9,98 @@
     <div class="grid grid-cols-1 gap-6">
         <!-- Formality Slider -->
         <div>
-        <label class="block text-sm font-medium mb-2">Formality (Casual to Professional)</label>
-        <input
-            type="range"
-            min="0"
-            max="100"
-            [value]="formality"
-            (input)="handleSliderChange($event, 'formality')"
-            class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-        />
-        <div class="flex justify-between text-sm opacity-50 mt-1">
-            <span>Casual</span>
-            <span>Professional</span>
-        </div>
-        <p class="text-sm opacity-50 mt-1">Current: {{ formality }}%</p>
+            <daden-label
+                label="Formality (Casual to Professional)">
+            </daden-label>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                [value]="formality"
+                (input)="handleSliderChange($event, 'formality')"
+                class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+                <span>Casual</span>
+                <span>Professional</span>
+            </div>
+            <daden-detail
+                text="Current: {{ formality }}%">
+            </daden-detail>
         </div>
 
         <!-- Playfulness Slider -->
         <div>
-        <label class="block text-sm font-medium mb-2">Playfulness (Serious to Playful)</label>
-        <input
-            type="range"
-            min="0"
-            max="100"
-            [value]="playfulness"
-            (input)="handleSliderChange($event, 'playfulness')"
-            class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-        />
-        <div class="flex justify-between text-sm opacity-50 mt-1">
-            <span>Serious</span>
-            <span>Playful</span>
-        </div>
-        <p class="text-sm opacity-50 mt-1">Current: {{ playfulness }}%</p>
+            <daden-label
+                label="Playfulness (Serious to Playful)"
+                >
+            </daden-label>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                [value]="playfulness"
+                (input)="handleSliderChange($event, 'playfulness')"
+                class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+                <span>Serious</span>
+                <span>Playful</span>
+            </div>
+            <daden-detail
+                text="Current: {{ playfulness }}%">
+            </daden-detail>
         </div>
 
         <!-- Respect Slider -->
         <div>
-        <label class="block text-sm font-medium mb-2">Respect (Respectful to Irreverent)</label>
-        <input
-            type="range"
-            min="0"
-            max="100"
-            [value]="respect"
-            (input)="handleSliderChange($event, 'respect')"
-            class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-        />
-        <div class="flex justify-between text-sm opacity-50 mt-1">
-            <span>Respectful</span>
-            <span>Irreverent</span>
-        </div>
-        <p class="text-sm opacity-50 mt-1">Current: {{ respect }}%</p>
+            <daden-label
+                label="Respect (Respectful to Irreverent)"
+                >
+            </daden-label>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                [value]="respect"
+                (input)="handleSliderChange($event, 'respect')"
+                class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+                <span>Respectful</span>
+                <span>Irreverent</span>
+            </div>
+            <daden-detail
+                text="Current: {{ respect }}%">
+            </daden-detail>
         </div>
 
         <!-- Emotion Slider -->
         <div>
-        <label class="block text-sm font-medium mb-2">Emotion (Matter-of-Fact to Enthusiastic)</label>
-        <input
-            type="range"
-            min="0"
-            max="100"
-            [value]="emotion"
-            (input)="handleSliderChange($event, 'emotion')"
-            class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
-        />
-        <div class="flex justify-between text-sm opacity-50 mt-1">
-            <span>Matter-of-Fact</span>
-            <span>Enthusiastic</span>
-        </div>
-        <p class="text-sm opacity-50 mt-1">Current: {{ emotion }}%</p>
+            <daden-label
+                label="Emotion (Matter-of-Fact to Enthusiastic)"
+                >
+            </daden-label>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                [value]="emotion"
+                (input)="handleSliderChange($event, 'emotion')"
+                class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <div class="flex justify-between text-sm opacity-50 mt-1">
+                <span>Matter-of-Fact</span>
+                <span>Enthusiastic</span>
+            </div>
+            <daden-detail
+                text="Current: {{ emotion }}%">
+            </daden-detail>
         </div>
     </div>
-
-    <p class="text-sm opacity-50 mt-4">These settings will influence your brand’s copywriting and style guide.</p>
+    <daden-detail
+        text="These settings will influence your brand’s copywriting and style guide.">
+    </daden-detail>
 </section>
 
 <section id="tone-of-voice-preview">

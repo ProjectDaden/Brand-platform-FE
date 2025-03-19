@@ -8,7 +8,9 @@
     <div class="flex flex-col gap-6">
         <!-- Purpose Dropdown/Input -->
         <div>
-            <label class="block text-sm font-medium mb-2">We exist to...</label>
+            <daden-label
+                label="We exist to...">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select a purpose...</option>
                 <option value="empower">Empower</option>
@@ -16,12 +18,17 @@
                 <option value="connect">Connect</option>
                 <option value="custom">Custom (write your own)</option>
             </select>
+            <daden-detail
+                text="Select a purpose...">
+            </daden-detail>
             <input type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all hidden" placeholder="Enter custom purpose">
         </div>
         
         <!-- Audience Dropdown/Input -->
         <div>
-            <label class="block text-sm font-medium mb-2">For...</label>
+            <daden-label
+                label="For...">
+            </daden-label>
             <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="" disabled selected>Select an audience...</option>
                 <option value="communities">Communities</option>
@@ -29,9 +36,14 @@
                 <option value="families">Families</option>
                 <option value="custom">Custom (write your own)</option>
             </select>
+            <daden-detail
+                text="Select an audience...">
+            </daden-detail>
             <input type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all hidden" placeholder="Enter custom audience">
         </div>
-        <p class="text-sm opacity-50 mt-2">These choices will shape your brand’s tagline and audience focus.</p>
+        <daden-detail
+            text="These choices will shape your brand’s tagline and audience focus.">
+        </daden-detail>
     </div>
 </section>
 

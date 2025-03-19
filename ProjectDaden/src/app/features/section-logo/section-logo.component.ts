@@ -6,12 +6,16 @@ import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/d
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
+import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
+import { DadenButtonComponent } from '../../shared/atoms/daden-button/daden-button.component';
+import { DadenInputTypeComponent } from '../../shared/atoms/daden-input-type/daden-input-type.component';
 
 // Define a specific type for logos
 interface LogoVariations {
   primary: string | null;
   secondary: string | null;
-  iconOnly: string | null;
+  icon: string | null;
 }
 
 @Component({
@@ -21,11 +25,14 @@ interface LogoVariations {
     DadenPageFooterComponent,
     DadenDropdownComponent,
     DadenGroupHeaderComponent,
+    DadenDetailComponent,
+    DadenLabelComponent,
     FormsModule,
     CommonModule,
+    DadenButtonComponent,
+    DadenInputTypeComponent
   ],
   templateUrl: './section-logo.component.html',
-  styleUrl: './section-logo.component.scss',
   standalone: true,
 })
 export class SectionLogoComponent implements OnInit {
@@ -49,7 +56,7 @@ export class SectionLogoComponent implements OnInit {
   logos: LogoVariations = {
     primary: null,
     secondary: null,
-    iconOnly: null,
+    icon: null,
   };
 
   // Handle Personality Selection (optional context)
@@ -59,7 +66,7 @@ export class SectionLogoComponent implements OnInit {
   }
 
   // Handle File Upload
-  onFileChange(event: Event, type: 'primary' | 'secondary' | 'iconOnly') {
+  onFileChange(event: Event, type: 'primary' | 'secondary' | 'icon') {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
@@ -72,7 +79,7 @@ export class SectionLogoComponent implements OnInit {
   }
 
   // Clear Logo
-  clearLogo(type: 'primary' | 'secondary' | 'iconOnly') {
+  clearLogo(type: 'primary' | 'secondary' | 'icon') {
     this.logos[type] = null;
     const input = this.document.getElementById(`${type}-upload`) as HTMLInputElement;
     if (input) input.value = ''; // Reset file input
@@ -83,11 +90,11 @@ export class SectionLogoComponent implements OnInit {
   }
 
   // Output for connections
-  get logoOutput(): { primary: string | null; secondary: string | null; iconOnly: string | null } {
+  get logoOutput(): { primary: string | null; secondary: string | null; icon: string | null } {
     return {
       primary: this.logos.primary,
       secondary: this.logos.secondary,
-      iconOnly: this.logos.iconOnly,
+      icon: this.logos.icon,
     };
   }
 }

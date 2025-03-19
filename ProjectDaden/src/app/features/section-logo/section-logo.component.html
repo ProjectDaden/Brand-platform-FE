@@ -4,12 +4,14 @@
 <section id="logo">
     <daden-group-header
         title="Upload Logo Variations"
-        subtitle="Add your primary, secondary, and icon-only logos.">
+        subtitle="Add your primary, secondary, and icon logos.">
     </daden-group-header>
     <div class="flex flex-col gap-6">
         <!-- Personality Dropdown (Contextual) -->
         <div>
-            <label for="personality" class="block text-sm font-medium mb-2">Personality</label>
+            <daden-label for="personality"
+                label="Personality">
+            </daden-label>
             <daden-dropdown
                 id="personality"
                 class="w-full"
@@ -17,67 +19,99 @@
                 [placeholder]="'Select a personality...'"
                 (selectedValue)="handlePersonalitySelection($event)"
             ></daden-dropdown>
-            <p class="text-sm opacity-50 mt-1">Provides context for your logo design.</p>
+            <daden-detail
+                text="Provides context for your logo design.">
+            </daden-detail>
         </div>
-
         <!-- Primary Logo Upload -->
         <div>
-            <label for="primary-upload" class="block text-sm font-medium mb-2">Primary Logo</label>
-            <input
+            <daden-label for="primary-upload" 
+                label="Primary Logo">
+            </daden-label>
+           <div class="flex gap-4">
+            <daden-input-type
                 id="primary-upload"
-                type="file"
-                accept="image/*"
-                (change)="onFileChange($event, 'primary')"
-                class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-                *ngIf="logos.primary"
-                (click)="clearLogo('primary')"
-                class="mt-2 text-sm text-red-600 hover:underline"
-            >
-                Clear
-            </button>
-            <p class="text-sm opacity-50 mt-1">Your main brand logo.</p>
+                (change)="onFileChange($event, 'primary')">
+            </daden-input-type>
+            <!-- <input
+                  type="file"
+                  id="primary-upload"
+                  accept="image/*"
+                  (change)="onFileChange($event, 'primary')"
+                  class="
+                    w-full cursor-pointer rounded-md border-[1px] border-stroke border-blue-500 outline-none
+                    file:py-2 file:px-4 file:border-collapse file:mr-4 file:cursor-pointer file:border-0
+                    file:font-normal file:bg-blue-500 file:text-white file:hover:bg-blue-700
+                    focus:outline-0 focus:ring-2 focus:ring-blue-500
+                    disabled:cursor-default disabled:bg-gray-500"
+                  /> -->
+                <daden-button
+                    *ngIf="logos.primary"
+                    (click)="clearLogo('primary')"
+                    color="red">
+                    Clear
+                </daden-button>
+           </div>
+            <daden-detail
+                text="Your main brand logo.">
+            </daden-detail>
         </div>
 
         <!-- Secondary Logo Upload -->
         <div>
-            <label for="secondary-upload" class="block text-sm font-medium mb-2">Secondary Logo</label>
-            <input
-                id="secondary-upload"
-                type="file"
-                accept="image/*"
-                (change)="onFileChange($event, 'secondary')"
-                class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
+            <daden-label for="secondary-upload" 
+                label="Secondary Logo">
+            </daden-label>
+            <div class="flex gap-4">
+                <daden-input-type
+                    id="secondary-upload"
+                    type="file"
+                    (change)="onFileChange($event, 'secondary')">
+                </daden-input-type>
+                <!-- <input
+                    id="secondary-upload"
+                    type="file"
+                    (change)="onFileChange($event, 'secondary')"
+                    class="
+                    w-full cursor-pointer rounded-md border-[1px] border-stroke border-blue-500 outline-none
+                    file:py-2 file:px-4 file:border-collapse file:mr-4 file:cursor-pointer file:border-0
+                    file:font-normal file:bg-blue-500 file:text-white file:hover:bg-blue-700
+                    focus:outline-0 focus:ring-2 focus:ring-blue-500
+                    disabled:cursor-default disabled:bg-gray-500"
+                /> -->
+                <daden-button
                 *ngIf="logos.secondary"
-                (click)="clearLogo('secondary')"
-                class="mt-2 text-sm text-red-600 hover:underline"
-            >
-                Clear
-            </button>
-            <p class="text-sm opacity-50 mt-1">An alternative logo variation.</p>
+                    (click)="clearLogo('secondary')"
+                    color="red">
+                    Clear
+                </daden-button>
+            </div>
+            <daden-detail
+                text="An alternative logo variation.">
+            </daden-detail>
         </div>
 
-        <!-- Icon-Only Logo Upload -->
+        <!-- Icon-Logo Upload -->
         <div>
-            <label for="icon-only-upload" class="block text-sm font-medium mb-2">Icon-Only Logo</label>
-            <input
-                id="icon-only-upload"
-                type="file"
-                accept="image/*"
-                (change)="onFileChange($event, 'iconOnly')"
-                class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-                *ngIf="logos.iconOnly"
-                (click)="clearLogo('iconOnly')"
-                class="mt-2 text-sm text-red-600 hover:underline"
-            >
-                Clear
-            </button>
-            <p class="text-sm opacity-50 mt-1">A simplified icon version of your logo.</p>
+            <daden-label for="icon-upload" 
+                label="Icon Logo">
+            </daden-label>
+            <div class="flex gap-4">
+                <daden-input-type
+                    id="icon-upload"
+                    [accept]="'image/*'"
+                    (change)="onFileChange($event, 'icon')">
+                </daden-input-type>
+                <daden-button
+                    *ngIf="logos.icon"
+                    (click)="clearLogo('icon')"
+                    color="red">
+                    Clear
+                </daden-button>
+            </div>
+            <daden-detail
+                text="A simplified icon version of your logo.">
+            </daden-detail>
         </div>
     </div>
 </section>
@@ -96,34 +130,50 @@
     </daden-group-header>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div class="text-center">
-            <h3 class="text-sm font-medium mb-2">Primary</h3>
+            <daden-label
+                label="Primary">
+            </daden-label>
             <img
                 *ngIf="logos.primary"
                 [src]="logos.primary"
                 alt="Primary Logo"
                 class="w-full max-h-32 object-contain mx-auto"
             />
+            <daden-detail 
+                *ngIf="!logos.primary"
+                text="No secondary logo uploaded">
+            </daden-detail>
             <p *ngIf="!logos.primary" class="text-sm opacity-50">No primary logo uploaded</p>
         </div>
         <div class="text-center">
-            <h3 class="text-sm font-medium mb-2">Secondary</h3>
+            <daden-label
+                label="Secondary">
+            </daden-label>
             <img
                 *ngIf="logos.secondary"
                 [src]="logos.secondary"
                 alt="Secondary Logo"
                 class="w-full max-h-32 object-contain mx-auto"
             />
-            <p *ngIf="!logos.secondary" class="text-sm opacity-50">No secondary logo uploaded</p>
+            <daden-detail 
+                *ngIf="!logos.secondary"
+                text="No secondary logo uploaded">
+            </daden-detail>
         </div>
         <div class="text-center">
-            <h3 class="text-sm font-medium mb-2">Icon-Only</h3>
+            <daden-label
+                label="Icon">
+            </daden-label>
             <img
-                *ngIf="logos.iconOnly"
-                [src]="logos.iconOnly"
-                alt="Icon-Only Logo"
+                *ngIf="logos.icon"
+                [src]="logos.icon"
+                alt="icon Logo"
                 class="w-full max-h-32 object-contain mx-auto"
             />
-            <p *ngIf="!logos.iconOnly" class="text-sm opacity-50">No icon-only logo uploaded</p>
+            <daden-detail
+                *ngIf="!logos.icon"
+                text="No icon logo uploaded">
+            </daden-detail>
         </div>
     </div>
 </section>
