@@ -11,14 +11,14 @@ import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header
 import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
 import { PersonalityOptions } from './store/brandname-tagline.model';
-import { BrandNameStore } from './store/brandname-tagline.store';
+import { brandNameTaglineStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
 
 @Component({
   selector: 'app-brand-name-tagline',
   standalone: true,
-  providers: [BrandNameStore],
+  providers: [brandNameTaglineStore],
   imports: [
     FormsModule,
     CommonModule,
@@ -37,7 +37,7 @@ export class BrandNameComponent implements OnInit {
   private readonly renderer = inject(Renderer2);
   private readonly brandNameService = inject(BrandNameService);
   private readonly translate = inject(TranslateService);
-  brandnameAndTaglineStore = inject(BrandNameStore);
+  brandnameAndTaglineStore = inject(brandNameTaglineStore);
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
@@ -54,6 +54,7 @@ export class BrandNameComponent implements OnInit {
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
+    this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
   }
 
   handlePersonalitySelection(personality: string) {
