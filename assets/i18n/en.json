@@ -3,7 +3,10 @@
         "loading": "loading",
         "username": "Username",
         "password": "Password",
-        "type-something": "Type something..."
+        "type-something": "Type something...",
+        "pagination.page": "page",
+        "pagination.of": "of"
+
     },
     "button": {
       "save-and-continue": "save & continue",
@@ -11,7 +14,9 @@
       "clear": "clear",
       "previous": "previous",
       "next": "next",
-      "login": "Login"
+      "login": "Login",
+      "go-home": "go home",
+      "search": "search"
     },
     "home-component": {
         "title": "hallo Home"
@@ -23,7 +28,7 @@
         "title": "hallo preview"
     },
     "brand-name-component": {
-        "title": "Brand Name & Tagline",
+        "title": "Brand Name and Tagline",
         "subtitle": "Define Your Brand’s Identity",
         "form-area": {
             "form-title": "Set Your Tagline",
