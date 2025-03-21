@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DadenButtonComponent } from '../../atoms/daden-button/daden-button.component';
+import { DadenButtonComponent } from '../../components/daden-button/daden-button.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { DadenLabelComponent } from '../../atoms/daden-label/daden-label.component';
-import { DadenGroupHeaderComponent } from '../../atoms/daden-group-header/daden-group-header.component';
+import { DadenLabelComponent } from '../../components/daden-label/daden-label.component';
+import { DadenGroupHeaderComponent } from '../../components/daden-group-header/daden-group-header.component';
 
 @Component({
   selector: 'app-daden-login',

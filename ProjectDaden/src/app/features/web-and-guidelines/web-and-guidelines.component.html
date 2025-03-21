@@ -88,6 +88,9 @@
             </daden-input>
         </div>
 
+        <daden-input
+            type="file"></daden-input>
+
         <!-- Select Menu -->
         <div>
             <daden-label
@@ -289,19 +292,33 @@
             <daden-button [disabled]="true" label="Disabled Button"></daden-button>
         </div>
         <h3 class="mb-2">Button with Different Hover Color</h3>
-        <div class="flex flex-wrap gap-4 items-center"> 
+        <div class="flex flex-wrap gap-4 items-center mb-8"> 
             <daden-button variant="primary" label="Accept Button"></daden-button>
             <daden-button variant="secondary" hoverColor="green" label="Parallel Action"></daden-button>
             <daden-button variant="tertiary" hoverColor="red" label="Destructive Button"></daden-button>
         </div>
+        <h3 class="mb-2">Icon buttons</h3>
+        <div class="flex flex-wrap gap-4 items-center"> 
+            <daden-button icon="check" variant="primary" size="medium"></daden-button>
+            <daden-button icon="home" label="button.go-home" variant="secondary" color="green" size="big"></daden-button>
+            <daden-button icon="search" variant="tertiary" color="blue" size="small" label="button.search"></daden-button>
+        </div>
+
+
     </div>
 </section>
 
 <section id="loading">
+    <daden-group-header id="buttons"
+        title="Loading">
+    </daden-group-header>
     <daden-loading></daden-loading>
 </section>
 
 <section id="pagination">
+    <daden-group-header id="buttons"
+        title="Pagination">
+    </daden-group-header>
     <daden-pagination></daden-pagination>
 </section>
 

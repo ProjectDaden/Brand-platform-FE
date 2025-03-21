@@ -1,11 +1,12 @@
 import { Component, Input, Output, HostBinding, EventEmitter } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { DadenIconComponent } from '../daden-icon/daden-icon.component';
 
 @Component({
   selector: 'daden-button',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, DadenIconComponent],
   templateUrl: './daden-button.component.html',
 })
 export class DadenButtonComponent {
@@ -15,7 +16,8 @@ export class DadenButtonComponent {
   @Input() hoverColor: 'blue' | 'red' | 'yellow' | 'green' | null = null;
   @Input() disabled = false;
   @Input() active = false;
-  @Input() label: string = ''; // Added label input
+  @Input() label: string = '';
+  @Input() icon: string = '';
   @Output() buttonClick = new EventEmitter<void>();
 
   onClick() {
@@ -92,6 +94,16 @@ export class DadenButtonComponent {
 
     return `${baseClasses} ${hoverClasses} ${focusActiveClasses}`;
   }
+
+    // Dynamic icon classes based on button size
+    get iconClass(): string {
+      const sizeMap = {
+        big: 'w-6 h-6',
+        medium: 'w-5 h-5',
+        small: 'w-4 h-4',
+      };
+      return `${sizeMap[this.size] || 'w-5 h-5'} ${this.disabled ? 'text-gray-400' : ''}`;
+    }
 
   @HostBinding('class') get classes() {
     return [

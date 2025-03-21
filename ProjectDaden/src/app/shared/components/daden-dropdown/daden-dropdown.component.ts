@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DadenIconComponent } from '../../atoms/daden-icon/daden-icon.component';
+import { DadenIconComponent } from '../../components/daden-icon/daden-icon.component';
 
 @Component({
   selector: 'daden-dropdown',

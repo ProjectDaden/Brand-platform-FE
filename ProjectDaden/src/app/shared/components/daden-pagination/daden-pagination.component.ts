@@ -1,10 +1,11 @@
 import { Component, computed, EventEmitter, Input, input, Output, output, signal, Signal, WritableSignal } from '@angular/core';
-import { DadenButtonComponent } from '../../atoms/daden-button/daden-button.component';
-import { DadenIconComponent } from '../../atoms/daden-icon/daden-icon.component';
+import { DadenButtonComponent } from '../../components/daden-button/daden-button.component';
+import { DadenIconComponent } from '../../components/daden-icon/daden-icon.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'daden-pagination',
-  imports: [DadenButtonComponent, DadenIconComponent],
+  imports: [DadenButtonComponent, DadenIconComponent, TranslateModule],
   templateUrl: './daden-pagination.component.html'
 })
 export class DadenPaginationComponent {

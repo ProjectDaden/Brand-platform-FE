@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
- import { DadenButtonComponent } from '../../atoms/daden-button/daden-button.component';
+ import { DadenButtonComponent } from '../../components/daden-button/daden-button.component';
  
  @Component({
    selector: 'daden-page-footer',

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../../features/nav-sidebar/services/nav-sidebar.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavigationCategory } from '../../../features/nav-sidebar/models/nav-sidebar-interface';
+import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'daden-header',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './daden-header.component.html',
   styleUrl: './daden-header.component.scss'
 })
