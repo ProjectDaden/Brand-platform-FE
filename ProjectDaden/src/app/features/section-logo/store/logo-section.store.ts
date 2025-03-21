@@ -3,7 +3,7 @@ import { LogoSectionCompleted } from './logo-section.model';
 
 type InitialLogoSectionState = LogoSectionCompleted;
 
-const InitialLogoSection: InitialLogoSectionState = {
+export const InitialLogoSection: InitialLogoSectionState = {
     personalities: [],
     selectedPersonality: '',
     primairyLogoPath: '',

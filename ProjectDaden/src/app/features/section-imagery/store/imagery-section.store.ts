@@ -3,7 +3,7 @@ import { ImagerySectionCompleted } from './imagery-section.model';
 
 type ImagerySectionState = ImagerySectionCompleted;
 
-const InitialImagerySection: ImagerySectionState = {
+export const InitialImagerySection: ImagerySectionState = {
     personalities: [],
     selectedPersonality: '',
     imageryStyles: [],

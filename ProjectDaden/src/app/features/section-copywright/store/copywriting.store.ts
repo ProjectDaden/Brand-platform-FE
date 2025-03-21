@@ -3,7 +3,7 @@ import { CopywritingCompleted } from './copywriting.model';
 
 type CopywritingState = CopywritingCompleted;
 
-const initialCopywriting: CopywritingState = {
+export const initialCopywriting: CopywritingState = {
   aboutUsMessage: '',
   productDescription: '',
   callToActionMsg: '',

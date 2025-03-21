@@ -3,7 +3,7 @@ import { ColorPickerThemeCompleted } from './coloringTheme.model';
 
 type ColorPickerThemeState = ColorPickerThemeCompleted;
 
-const initialColorPickerTheme: ColorPickerThemeState = {
+export const initialColorPickerTheme: ColorPickerThemeState = {
     colorIndustries: [],
     selectedColorIndustry: '',
     colorPersonalities: [],

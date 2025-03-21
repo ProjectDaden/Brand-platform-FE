@@ -3,7 +3,7 @@ import { MessagingToneCompleted } from './messaging-tone.model';
 
 type ToneOfVoiceState = MessagingToneCompleted;
 
-const initialMessagingTone: ToneOfVoiceState = {
+export const initialMessagingTone: ToneOfVoiceState = {
     coreMessage: '',
     solutionMessage: '',
     beneficiary: [],

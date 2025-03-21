@@ -1,6 +1,6 @@
 import { BrandNameAndTaglineCompleted } from '../../features/brand-name/store/brandname-tagline.model';
 import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/industry-and-value.model';
-import { MissionVisionComponent } from '../../features/mission-vision/mission-vision.component';
+import { VisionAndMissionsCompleted } from '../../features/mission-vision/store/vision-and-missions.model';
 import { CopywritingCompleted } from '../../features/section-copywright/store/copywriting.model';
 import { ImagerySectionCompleted } from '../../features/section-imagery/store/imagery-section.model';
 import { LogoSectionCompleted } from '../../features/section-logo/store/logo-section.model';
@@ -10,35 +10,34 @@ import { TargetAudienceCompleted } from '../../features/target-audience/store/ta
 import { ColorPickerThemeCompleted } from '../../features/tool-color-picker/store/coloringTheme.model';
 import { ToneOfVoiceCompleted } from '../../features/voice-and-tone/store/tone-of-voice.model';
 
-export type BrandDesignFlow = Partial<
-  BrandNameAndTaglineCompleted &
+export type BrandDesignFlow =
+    BrandNameAndTaglineCompleted &
     IndustryAndValuesCompleted &
     TargetAudienceCompleted &
-    MissionVisionComponent &
+    VisionAndMissionsCompleted &
     ToneOfVoiceCompleted &
     MessagingToneCompleted &
     CopywritingCompleted &
     LogoSectionCompleted &
     ColorPickerThemeCompleted &
     TypographyCompleted &
-    ImagerySectionCompleted
->;
+    ImagerySectionCompleted;
 // Partial<PrintAndOfflineStyleCompleted> &
 // Partial<SocialMediaStyleCompleted> &
 // Partial<WebsiteAndUIStyleCompleted>
 
 export type BrandDesignCompleted = {
-  brandnameAndTagline: Partial<BrandNameAndTaglineCompleted>;
-  industryAndValues: IndustryAndValuesCompleted | {};
-  targetAudience: TargetAudienceCompleted | {};
-  missionAndVision: MissionVisionComponent | {};
-  toneOfVoice: ToneOfVoiceCompleted | {};
-  messagingTone: MessagingToneCompleted| {};
-  copyWriting: CopywritingCompleted | {};
-  logoDesign: LogoSectionCompleted | {};
-  colorPalette: ColorPickerThemeCompleted | {};
-  typography: TypographyCompleted | {};
-  imagery: ImagerySectionCompleted | {};
+  brandnameAndTagline: BrandNameAndTaglineCompleted;
+  industryAndValues: IndustryAndValuesCompleted;
+  targetAudience: TargetAudienceCompleted;
+  missionAndVision: VisionAndMissionsCompleted;
+  toneOfVoice: ToneOfVoiceCompleted;
+  messagingTone: MessagingToneCompleted;
+  copyWriting: CopywritingCompleted;
+  logoDesign: LogoSectionCompleted;
+  colorPalette: ColorPickerThemeCompleted;
+  typography: TypographyCompleted;
+  imagery: ImagerySectionCompleted;
 };
 
 export type TransformToBooleans<T> = {

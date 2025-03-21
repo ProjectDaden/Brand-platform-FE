@@ -10,15 +10,16 @@ import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header
 
 import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
-import { PersonalityOptions } from './store/brandname-tagline.model';
+import { BrandNameAndTaglineCompleted, PersonalityOptions } from './store/brandname-tagline.model';
 import { brandNameTaglineStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
 
 @Component({
   selector: 'app-brand-name-tagline',
   standalone: true,
-  providers: [brandNameTaglineStore],
+  providers: [brandNameTaglineStore, BaseClassGlobalStore],
   imports: [
     FormsModule,
     CommonModule,
@@ -38,6 +39,21 @@ export class BrandNameComponent implements OnInit {
   private readonly brandNameService = inject(BrandNameService);
   private readonly translate = inject(TranslateService);
   brandnameAndTaglineStore = inject(brandNameTaglineStore);
+  globalStateTest = inject(BaseClassGlobalStore);
+
+
+  test1: BrandNameAndTaglineCompleted = {
+    personalities: ["een", "twee"],
+    selectedPersonality: 'twee',
+    personalityOptions: {
+      synonyms: ["Pietje", "Puk"],
+      headingFonts: ["Pietje", "Bel"],
+      bodyFonts: ["Klaartje", "Puk"],
+    },
+    tagLineUsed: 'yes',
+    tagLine: 'This seemts to be working!'
+  }
+
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
@@ -54,6 +70,8 @@ export class BrandNameComponent implements OnInit {
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
+    this.globalStateTest.getStore();
+    // this.globalStateTest.updateGlobalState(this.test1);
     this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
   }
 

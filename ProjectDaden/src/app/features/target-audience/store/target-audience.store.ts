@@ -3,7 +3,7 @@ import { TargetAudienceCompleted } from './target-audience.model';
 
 type TargetAudienceState = TargetAudienceCompleted;
 
-const initialTargetAudienceState: TargetAudienceState = {
+export const initialTargetAudienceState: TargetAudienceState = {
     ageGroups: [],
     selectedAgeGroup: '',
     locations: [],

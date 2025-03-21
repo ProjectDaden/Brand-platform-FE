@@ -5,7 +5,7 @@ import {
 
 type BrandNameState = BrandNameAndTaglineCompleted;
 
-const initialBrandnameAndTagline: BrandNameState = {
+export const initialBrandnameAndTagline: BrandNameState = {
   personalities: [],
   selectedPersonality: '',
   personalityOptions: {
@@ -21,14 +21,13 @@ export const brandNameTaglineStore = signalStore(
   withState<BrandNameState>(initialBrandnameAndTagline),
   withMethods((store) => ({
     updatePersonalityOptionsState(
-      syn: string[],
-      head: string[],
-      body: string[]
+        synonyms: string[],
+        headingFonts: string[],
+        bodyFonts: string[]
     ) {
       patchState(store, (state) => ({
-        personalityOptions: { ...state.personalityOptions, syn, head, body },
-      }));
-      console.log(store.personalityOptions(), "From inside state!!");
+        personalityOptions: { ...state.personalityOptions, synonyms, headingFonts, bodyFonts, hallo: "ites" }}));
+      console.log(store.personalityOptions(), "From inside BrandNameTagline state!!");
     },
     updateSelectedPersonality(personality: string) {
       const curSynonyms = store.personalityOptions().synonyms;
