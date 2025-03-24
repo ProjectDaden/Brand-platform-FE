@@ -3,7 +3,7 @@ import { VisionAndMissionsCompleted } from './vision-and-missions.model';
 
 type VisionAndMissionsState = VisionAndMissionsCompleted;
 
-const initialVisionAndMissions: VisionAndMissionsState = {
+export const initialVisionAndMissions: VisionAndMissionsState = {
     purposes: [],
     selectedPurpose: '',
     audiences: [],

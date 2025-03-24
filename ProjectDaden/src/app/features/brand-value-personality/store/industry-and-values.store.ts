@@ -3,7 +3,7 @@ import { IndustryAndValuesCompleted } from './industry-and-value.model';
 
 type IndustryAndValuesState = IndustryAndValuesCompleted;
 
-const initialIndustryAndValues: IndustryAndValuesState = {
+export const initialIndustryAndValues: IndustryAndValuesState = {
     industries: [],
     selectedIndustry: '',
     traits: [],

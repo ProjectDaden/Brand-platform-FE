@@ -10,17 +10,18 @@ import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-h
 
 import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
-import { PersonalityOptions } from './store/brandname-tagline.model';
-import { BrandNameStore } from './store/brandname-tagline.store';
+import { BrandNameAndTaglineCompleted, PersonalityOptions } from './store/brandname-tagline.model';
+import { brandNameTaglineStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { DadenCheckboxComponent } from '../../shared/components/daden-checkbox/daden-checkbox.component';
+import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
 
 @Component({
   selector: 'app-brand-name-tagline',
   standalone: true,
-  providers: [BrandNameStore],
+  providers: [brandNameTaglineStore, BaseClassGlobalStore],
   imports: [
     FormsModule,
     CommonModule,
@@ -41,7 +42,22 @@ export class BrandNameComponent implements OnInit {
   private readonly renderer = inject(Renderer2);
   private readonly brandNameService = inject(BrandNameService);
   private readonly translate = inject(TranslateService);
-  brandnameAndTaglineStore = inject(BrandNameStore);
+  brandnameAndTaglineStore = inject(brandNameTaglineStore);
+  globalStateTest = inject(BaseClassGlobalStore);
+
+
+  test1: BrandNameAndTaglineCompleted = {
+    personalities: ["een", "twee"],
+    selectedPersonality: 'twee',
+    personalityOptions: {
+      synonyms: ["Pietje", "Puk"],
+      headingFonts: ["Pietje", "Bel"],
+      bodyFonts: ["Klaartje", "Puk"],
+    },
+    tagLineUsed: 'yes',
+    tagLine: 'This seemts to be working!'
+  }
+
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
@@ -58,6 +74,9 @@ export class BrandNameComponent implements OnInit {
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
+    this.globalStateTest.getStore();
+    // this.globalStateTest.updateGlobalState(this.test1);
+    this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
   }
 
   handlePersonalitySelection(personality: string) {

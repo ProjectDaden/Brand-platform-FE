@@ -3,7 +3,7 @@ import { TypographyCompleted } from './typography-section.model';
 
 type TypographySectionState = TypographyCompleted;
 
-const initialTypographySection: TypographySectionState = {
+export const initialTypographySection: TypographySectionState = {
     personalities: [],
     selectedPersonality: '',
     personalityOptions: {

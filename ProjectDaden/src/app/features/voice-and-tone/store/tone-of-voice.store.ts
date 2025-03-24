@@ -3,7 +3,7 @@ import { ToneOfVoiceCompleted } from './tone-of-voice.model';
 
 type ToneOfVoiceState = ToneOfVoiceCompleted;
 
-const initialToneOfVoice: ToneOfVoiceState = {
+export const initialToneOfVoice: ToneOfVoiceState = {
     formalityIndex: 0,
     playfulnessIndex: 0,
     respectIndex: 0,

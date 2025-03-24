@@ -6,7 +6,7 @@
 * */
 export type Personalities = {
   personalities: string[];
-  selectedPersonality: string | undefined;
+  selectedPersonality: string;
 }
 
 /*
