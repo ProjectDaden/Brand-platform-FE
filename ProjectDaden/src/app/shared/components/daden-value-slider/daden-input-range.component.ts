@@ -1,12 +1,12 @@
 import { Component, input, InputSignal, model, output } from '@angular/core';
 
 @Component({
-  selector: 'daden-value-slider',
+  selector: 'daden-input-range',
   imports: [],
-  templateUrl: './daden-value-slider.component.html',
-  styleUrl: './daden-value-slider.component.scss'
+  templateUrl: './daden-input-range.component.html',
+  styleUrl: './daden-input-range.component.scss'
 })
-export class DadenValueSliderComponent {
+export class DadenInputRangeComponent {
 
   min: InputSignal<number> = input<number>(0);
   max: InputSignal<number> = input<number>(100);

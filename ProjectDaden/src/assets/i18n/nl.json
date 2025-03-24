@@ -1,4 +1,8 @@
 {
+    "button": {
+      "save-and-continue": "opslaan & verdergaan",
+      "reset": "wissen"
+    },
     "home-component": {
         "title": "hallo Home"
     },

@@ -9,7 +9,10 @@
   </daden-button>
 
   <p class="text-base font-medium opacity-50 ">
-      Page {{ currentPage() }} of {{ totalPages() }}
+      {{ "general.pagination.page" | translate }}
+      {{ currentPage() }} 
+      {{ "general.pagination.of" | translate }}
+      {{ totalPages() }}
   </p>
     
   <daden-button

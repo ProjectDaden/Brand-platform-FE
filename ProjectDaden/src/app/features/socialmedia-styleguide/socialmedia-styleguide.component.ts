@@ -1,7 +1,7 @@
 import { Component, inject, model, signal } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { BrandColorThemeService } from '../tool-color-picker/services/brand-color-theme.service';
-import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
 
 @Component({
   selector: 'app-socialmedia-styleguide',

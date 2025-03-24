@@ -24,82 +24,97 @@
     <form class="space-y-6">
         <!-- Text Input (Name) -->
         <div>
-        <label for="name" class="block text-sm font-medium text-text-primary">Name</label>
-        <input
-            type="text"
-            id="name"
-            class="mt-1 block w-full px-4 py-2 border border-ui-gray-500 rounded-md text-base text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
-            placeholder="John Doe"
-        />
+            <daden-label 
+                for="name"
+                label="Name">
+            </daden-label>
+            <daden-input
+                type="text"
+                id="name">
+            </daden-input>
         </div>
 
         <!-- Email Input -->
         <div>
-        <label for="email" class="block text-sm font-medium text-text-primary">Email</label>
-        <input
-            type="email"
-            id="email"
-            class="mt-1 block w-full px-4 py-2 border border-ui-gray-500 rounded-md text-base text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
-            placeholder="you@example.com"
-        />
+            <daden-label 
+                for="email"
+                label="Email">
+            </daden-label>
+            <daden-input
+                type="email"
+                id="email"
+                placeholder="you@example.com">
+            </daden-input>
         </div>
 
         <!-- Password Input -->
         <div>
-        <label for="password" class="block text-sm font-medium text-text-primary">Password</label>
-        <input
-            type="password"
-            id="password"
-            class="mt-1 block w-full px-4 py-2 border border-ui-gray-500 rounded-md text-base text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
-            placeholder="••••••••"
-        />
+            <daden-label 
+                for="password"
+                label="Password">
+            </daden-label>
+            <daden-input
+                type="password"
+                id="password"
+                placeholder="••••••••">
+            </daden-input>
         </div>
 
         <!-- Date Input -->
         <div>
-        <label for="date" class="block text-sm font-medium text-text-primary">Date of Birth</label>
-        <input
-            type="date"
-            id="date"
-            class="mt-1 block w-full px-4 py-2 border border-ui-gray-500 rounded-md text-base text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
-        />
+            <daden-label
+                for="date"
+                label="Date of birth">
+            </daden-label>
+            <input
+                type="date"
+                id="date"
+                class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none
+                       focus:outline-0 focus:ring-2 focus:ring-blue-500
+                       disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+            />
         </div>
 
         <!-- Text Area -->
         <div>
-        <label for="message" class="block text-sm font-medium text-text-primary">Message</label>
-        <textarea
-            id="message"
-            rows="4"
-            class="mt-1 block w-full px-4 py-2 border border-ui-gray-500 rounded-md text-base text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
-            placeholder="Your message here..."
-        ></textarea>
+            <daden-label
+                for="message"
+                label="message">
+            </daden-label>
+            <daden-input
+                type="textarea"
+                id="message"
+                placeholder="Your message here...">
+            </daden-input>
         </div>
+
+        <daden-input
+            type="file"></daden-input>
 
         <!-- Select Menu -->
         <div>
-        <label for="topic" class="block text-sm font-medium text-text-primary">Topic</label>
-        <select
-            id="topic"
-            class="mt-1 block w-full px-4 py-2 border border-ui-gray-500 rounded-md text-base text-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent"
-        >
-            <option value="" disabled selected>Select a topic</option>
-            <option value="support">Support</option>
-            <option value="sales">Sales</option>
-            <option value="feedback">Feedback</option>
-        </select>
+            <daden-label
+                for="topic"    
+                label="Topic">
+            </daden-label>
+            <daden-dropdown
+                id="topic"
+                placeholder="placeholder">
+                <option value="" disabled selected>Select a topic</option>
+                <option value="support">Support</option>
+                <option value="sales">Sales</option>
+                <option value="feedback">Feedback</option>
+            </daden-dropdown>
         </div>
 
         <!-- Checkbox -->
         <div class="flex items-center">
-        <input
-            type="checkbox"
-            id="newsletter"
-            class="h-4 w-4 text-brand-blue-500 focus:ring-brand-blue-500 border-ui-gray-500 rounded"
-        />
-        <label for="newsletter" class="ml-2 text-sm text-text-primary">
-            Subscribe to our newsletter
-        </label>
+            <daden-checkbox
+                [id]="'newsletter'"
+                [(ngModel)]="subscribeToNewsletter"
+                [label]="'Subscribe to our newsletter'"
+                (valueChange)="onNewsletterToggle($event)">
+            </daden-checkbox>
         </div>
 
 
@@ -168,23 +183,17 @@
         <!-- Slider -->
         <div>
         <label for="volume" class="block text-sm font-medium text-text-primary">Volume</label>
-        <input
-            type="range"
+        <daden-input-range
             id="volume"
-            min="0"
-            max="100"
-            class="mt-1 w-full h-2 bg-ui-gray-500 rounded-lg appearance-none cursor-pointer accent-brand-blue-500"
-        />
+            class="mt-1 w-full h-2 bg-ui-gray-500 rounded-lg appearance-none cursor-pointer accent-brand-blue-500">
+        </daden-input-range>
         </div>
 
         <!-- Submit Button -->
-        <div>
-        <button
-            type="submit"
-            class="w-full px-6 py-3 bg-brand-blue-500 text-white font-semibold rounded-md hover:bg-brand-blue-700 focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:ring-offset-2 transition-colors"
-        >
-            Submit
-        </button>
+        <div class="w-full flex justify-end">
+            <daden-button
+                label="button.save-and-continue">
+            </daden-button>
         </div>
     </form>
 </section>
@@ -246,56 +255,70 @@
     </daden-group-header>
     
     <div class="flex flex-col flex-wrap items-left">
-        <h3 class=" mb-2">button Hierarchy</h3>
+        <h3 class="mb-2">Button Hierarchy</h3>
         <div class="flex flex-wrap gap-4 items-center mb-8">  
-            <daden-button variant="primary">Primary Button</daden-button>
-            <daden-button variant="secondary">Secondary Button</daden-button>
-            <daden-button variant="tertiary">Tertiary Button</daden-button>
+            <daden-button variant="primary" label="Primary Button"></daden-button>
+            <daden-button variant="secondary" label="Secondary Button"></daden-button>
+            <daden-button variant="tertiary" label="Tertiary Button"></daden-button>
         </div>
-        <h3 class="mb-2">button colors</h3>
-        <h4 class="mb-2">green</h4>
+        <h3 class="mb-2">Button Colors</h3>
+        <h4 class="mb-2">Green</h4>
         <div class="flex flex-wrap gap-4 items-center mb-4">  
-            <daden-button  color="green" variant="primary">Primary Button</daden-button>
-            <daden-button  color="green" variant="secondary">Secondary Button</daden-button>
-            <daden-button  color="green" variant="tertiary">Tertiary Button</daden-button>
+            <daden-button color="green" variant="primary" label="Primary Button"></daden-button>
+            <daden-button color="green" variant="secondary" label="Secondary Button"></daden-button>
+            <daden-button color="green" variant="tertiary" label="Tertiary Button"></daden-button>
         </div>
-        <h4 class="mb-2">yellow</h4>
+        <h4 class="mb-2">Yellow</h4>
         <div class="flex flex-wrap gap-4 items-center mb-4">  
-            <daden-button  color="yellow" variant="primary">Primary Button</daden-button>
-            <daden-button  color="yellow" variant="secondary">Secondary Button</daden-button>
-            <daden-button  color="yellow" variant="tertiary">Tertiary Button</daden-button>
+            <daden-button color="yellow" variant="primary" label="Primary Button"></daden-button>
+            <daden-button color="yellow" variant="secondary" label="Secondary Button"></daden-button>
+            <daden-button color="yellow" variant="tertiary" label="Tertiary Button"></daden-button>
         </div>
-        <h4 class="mb-2">red</h4>
+        <h4 class="mb-2">Red</h4>
         <div class="flex flex-wrap gap-4 items-center mb-8">  
-            <daden-button  color="red" variant="primary">Primary Button</daden-button>
-            <daden-button  color="red" variant="secondary">Secondary Button</daden-button>
-            <daden-button  color="red" variant="tertiary">Tertiary Button</daden-button>
+            <daden-button color="red" variant="primary" label="Primary Button"></daden-button>
+            <daden-button color="red" variant="secondary" label="Secondary Button"></daden-button>
+            <daden-button color="red" variant="tertiary" label="Tertiary Button"></daden-button>
         </div>
-        <h3 class="mb-2">Button size</h3>
+        <h3 class="mb-2">Button Size</h3>
         <div class="flex flex-wrap gap-4 items-center mb-8">  
-            <daden-button variant="primary" size="big">Big Button</daden-button>
-            <daden-button variant="primary">Regular Button</daden-button>
-            <daden-button variant="primary" size="small">Small Button</daden-button>
+            <daden-button variant="primary" size="big" label="Big Button"></daden-button>
+            <daden-button variant="primary" label="Regular Button"></daden-button>
+            <daden-button variant="primary" size="small" label="Small Button"></daden-button>
         </div>
         <h3 class="mb-2">Other</h3>
         <div class="flex flex-wrap gap-4 items-center mb-8">  
-            <daden-button variant="text">Text Link Button</daden-button>
-            <daden-button [disabled]="true">Disabled Button</daden-button>
+            <daden-button variant="text" label="Text Link Button"></daden-button>
+            <daden-button [disabled]="true" label="Disabled Button"></daden-button>
         </div>
-        <h3 class="mb-2">Button with different hover color</h3>
+        <h3 class="mb-2">Button with Different Hover Color</h3>
+        <div class="flex flex-wrap gap-4 items-center mb-8"> 
+            <daden-button variant="primary" label="Accept Button"></daden-button>
+            <daden-button variant="secondary" hoverColor="green" label="Parallel Action"></daden-button>
+            <daden-button variant="tertiary" hoverColor="red" label="Destructive Button"></daden-button>
+        </div>
+        <h3 class="mb-2">Icon buttons</h3>
         <div class="flex flex-wrap gap-4 items-center"> 
-            <daden-button variant="primary">Accept Button</daden-button>
-            <daden-button variant="secondary" hoverColor="green">Parallel action</daden-button>
-            <daden-button variant="tertiary" hoverColor="red">Destructive Button</daden-button>
+            <daden-button icon="check" variant="primary" size="medium"></daden-button>
+            <daden-button icon="home" label="button.go-home" variant="secondary" color="green" size="big"></daden-button>
+            <daden-button icon="search" variant="tertiary" color="blue" size="small" label="button.search"></daden-button>
         </div>
+
+
     </div>
 </section>
 
 <section id="loading">
+    <daden-group-header id="buttons"
+        title="Loading">
+    </daden-group-header>
     <daden-loading></daden-loading>
 </section>
 
 <section id="pagination">
+    <daden-group-header id="buttons"
+        title="Pagination">
+    </daden-group-header>
     <daden-pagination></daden-pagination>
 </section>
 

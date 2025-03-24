@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DadenButtonComponent } from '../../components/daden-button/daden-button.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { DadenLabelComponent } from '../../components/daden-label/daden-label.component';
+import { DadenGroupHeaderComponent } from '../../components/daden-group-header/daden-group-header.component';
 
 @Component({
   selector: 'app-daden-login',
-  imports: [FormsModule],
-  templateUrl: './daden-login.component.html',
-  styleUrl: './daden-login.component.scss'
+  imports: [FormsModule, DadenButtonComponent, TranslateModule,DadenLabelComponent, DadenGroupHeaderComponent],
+  templateUrl: './daden-login.component.html'
 })
 export class DadenLoginComponent {
   username: string = '';

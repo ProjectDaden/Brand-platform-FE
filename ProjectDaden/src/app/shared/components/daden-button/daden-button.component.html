@@ -1,0 +1,13 @@
+<button 
+  (click)="onClick()" 
+  [disabled]="disabled"
+  class="flex items-center justify-center gap-2"
+>
+  @if (icon) {
+    <daden-icon [icon]="icon" [class]="iconClass"></daden-icon>
+  }
+  @if (label) {
+    {{ label | translate }}
+  }
+  <ng-content></ng-content>
+</button>

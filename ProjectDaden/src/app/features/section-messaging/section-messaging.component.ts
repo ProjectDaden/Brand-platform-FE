@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
-import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
-import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
-import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
+import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
+import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-header/daden-group-header.component';
+import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
+import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
+import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 
 @Component({
   selector: 'app-section-messaging',
@@ -17,7 +18,8 @@ import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.
     DadenDropdownComponent,
     DadenGroupHeaderComponent,
     DadenDetailComponent,
-    DadenLabelComponent ],
+    DadenLabelComponent,
+    DadenInputComponent],
 })
 export class SectionMessagingComponent implements OnInit {
   problem: string = '';

@@ -1,17 +1,18 @@
-<daden-header></daden-header>
+<daden-header
+  pageName="asd"
+  categoryDescription="Define Your Brand’s Identity">
+</daden-header>
 
-<section id="tagline">
+<section id="brand-name">
     <daden-group-header
-        title="brand-name-component.form-area.form-title"
-        subtitle="brand-name-component.form-area.form-description">
+        title="Set your Brand name"
+        subtitle="Give you brand a name that people will recognize">
     </daden-group-header>
-
     <div class="flex flex-col gap-6">
         <!-- Personality Dropdown -->
         <div>
             <daden-label for="personality"
-                label="brand-name-component.form-area.form-personality-label"
-                >
+                label="brand-name-component.form-area.form-personality-label">
             </daden-label>
             <daden-dropdown id="personality" class="w-full" 
                 [items]="brandName.genericSignalCollection().personalities"
@@ -23,65 +24,81 @@
                 text="brand-name-component.form-area.form-personality-description">
             </daden-detail>
         </div>
-
-        <!-- Thesaurus Synonyms Dropdown -->
-        <div>
-            <daden-label for="synonyms" 
-                label="brand-name-component.form-area.form-thesaurus-label"
-                >
-            </daden-label>
-            <!-- <label class="block text-sm font-medium mb-2">{{
-                "brand-name-component.form-area.form-thesaurus-label" | translate }}
-            </label> -->
-            <daden-dropdown id="synonyms" class="w-full"
-                [items]="brandName.genericSignalCollection().personalityOptions.synonyms || []"
-                [placeholder]="'Select a synonym...'"
-                [selectedItem]="''">
-            </daden-dropdown>
-            <daden-detail
-                text="brand-name-component.form-area.form-thesaurus-description">
-            </daden-detail>
-        </div>
-
-        <!-- Tagline Usage Radio Buttons -->
         <div>
             <daden-label
-                label="brand-name-component.form-area.form-tagline-radio-label"
-                >
+                label="Brand name">
             </daden-label>
-            <div class="flex flex-col gap-2 sm:flex-row sm:gap-6">
-                <div class="flex items-center">
-                    <input type="radio" name="taglineUsed" [(ngModel)]="brandName.genericSignalCollection().tagLineUsed"
-                    value="yes" class="mr-2 focus:ring-blue-500" />
-                    Yes
-                </div>
-                <div class="flex items-center">
-                    <input type="radio" name="taglineUsed" [(ngModel)]="brandName.genericSignalCollection().tagLineUsed"
-                    value="no" class="mr-2 focus:ring-blue-500" />
-                    No
-                </div>
-            </div>
+            <daden-input
+                type="text">
+            </daden-input>
             <daden-detail
-                text="brand-name-component.form-area.form-tagline-radio-description">
+                text="Make your brand name stand out.">
             </daden-detail>
         </div>
-
-        <!-- Tagline Text Input -->
-        <div>
-            <daden-label
-                label="brand-name-component.form-area.form-tagline-input-label">
-            </daden-label>
-            <input id="tagline" type="text" [(ngModel)]="brandName.genericSignalCollection().tagLine"
-                class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your tagline..." [disabled]="
-                brandName.genericSignalCollection().tagLineUsed === 'no'
-                " />
-            <daden-detail
-                text="brand-name-component.form-area.form-tagline-input-description">
-            </daden-detail>
-        </div>
-    </div>
+    </div>    
 </section>
+
+<section id="tagline">
+    <daden-group-header
+      title="brand-name-component.form-area.form-title"
+      subtitle="brand-name-component.form-area.form-description">
+    </daden-group-header>
+    <div class="flex flex-col gap-6">
+      <!-- Tagline Usage Checkbox -->
+      <div>
+        <daden-label
+          label="brand-name-component.form-area.form-tagline-checkbox-label">
+        </daden-label>
+        <div class="flex items-center">
+          <daden-checkbox
+            [id]="'tagline-used'"
+            [(ngModel)]="useTagline"
+            (valueChange)="onTaglineToggle($event)"
+            [label]="'brand-name-component.form-area.form-tagline-checkbox-text' | translate"
+          ></daden-checkbox>
+        </div>
+        <daden-detail
+          text="brand-name-component.form-area.form-tagline-checkbox-description">
+        </daden-detail>
+      </div>
+  
+      <!-- Thesaurus Synonyms Dropdown -->
+      <div>
+        <daden-label
+          for="synonyms"
+          label="brand-name-component.form-area.form-thesaurus-label">
+        </daden-label>
+        <daden-dropdown
+          id="synonyms"
+          class="w-full"
+          [items]="brandName.genericSignalCollection().personalityOptions.synonyms || []"
+          [placeholder]="'Select a synonym...'"
+          [selectedItem]="''"
+          [disabled]="!useTagline">
+        </daden-dropdown>
+        <daden-detail
+          text="brand-name-component.form-area.form-thesaurus-description">
+        </daden-detail>
+      </div>
+  
+      <!-- Tagline Text Input -->
+      <div>
+        <daden-label
+          label="brand-name-component.form-area.form-tagline-input-label">
+        </daden-label>
+        <daden-input
+          type="text"
+          id="tagline"
+          placeholder="Enter your tagline..."
+          [(ngModel)]="brandName.genericSignalCollection().tagLine"
+          [disabled]="!useTagline">
+        </daden-input>
+        <daden-detail
+          text="brand-name-component.form-area.form-tagline-input-description">
+        </daden-detail>
+      </div>
+    </div>
+  </section>
 
 <section id="tagline-preview">
     <daden-group-header
@@ -92,8 +109,11 @@
         <h1 class="text-4xl font-bold mb-2" [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.headingFonts[0]">
             Your Brand Name
         </h1>
-        <p  class="text-lg italic" [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.bodyFonts[0]" [class.opacity-50]="taglineUsed === 'no' || !tagline">
-            {{ taglineUsed === 'yes' && tagline ? tagline : '' }}
+        <p
+            class="text-lg italic"
+            [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.bodyFonts[0]"
+            [class.opacity-50]="!useTagline || !tagline">
+            {{ useTagline && tagline ? tagline : '' }}
         </p>
     </div>
 </section>

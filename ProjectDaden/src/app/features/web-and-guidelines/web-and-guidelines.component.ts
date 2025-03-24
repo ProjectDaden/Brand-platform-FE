@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenGroupHeaderComponent } from '../../shared/atoms/daden-group-header/daden-group-header.component';
-import { DadenAccordionComponent } from '../../shared/molecules/daden-accordion/daden-accordion.component';
-import { DadenButtonComponent } from '../../shared/atoms/daden-button/daden-button.component';
-import { DadenPageFooterComponent } from '../../shared/organisms/daden-page-footer/daden-page-footer.component';
+import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-header/daden-group-header.component';
+import { DadenAccordionComponent } from '../../shared/components/daden-accordion/daden-accordion.component';
+import { DadenButtonComponent } from '../../shared/components/daden-button/daden-button.component';
+import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
 import { DadenLoadingComponent } from '../../shared/components/daden-loading/daden-loading.component';
 import { DadenPaginationComponent } from '../../shared/components/daden-pagination/daden-pagination.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { DadenLabelComponent } from '../../shared/atoms/daden-label/daden-label.component';
-import { DadenDetailComponent } from '../../shared/atoms/daden-detail/daden-detail.component';
+import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
+import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { DadenModalComponent } from '../../shared/components/daden-modal/daden-modal.component';
+import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
+import { DadenInputRangeComponent } from '../../shared/components/daden-value-slider/daden-input-range.component';
+import { DadenCheckboxComponent } from '../../shared/components/daden-checkbox/daden-checkbox.component';
 
 @Component({
   selector: 'app-web-and-guidelines',
@@ -28,13 +32,20 @@ import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/d
     DadenPaginationComponent,
     DadenLabelComponent,
     DadenDetailComponent,
-    DadenDropdownComponent
+    DadenDropdownComponent,
+    DadenInputComponent,
+    DadenInputRangeComponent,
+    DadenCheckboxComponent
   ],
   templateUrl: './web-and-guidelines.component.html',
-  styleUrl: './web-and-guidelines.component.scss',
   standalone: true
 })
 export class WebAndGuidelinesComponent {
+  subscribeToNewsletter = false;
+
+  onNewsletterToggle(value: boolean) {
+    console.log('Newsletter subscription:', value);
+  }
   faqItems = [
     {
       title: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, eveniet?',
