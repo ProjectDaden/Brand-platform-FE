@@ -2,6 +2,7 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import {
   BrandNameAndTaglineCompleted,
 } from './brandname-tagline.model';
+import { Injectable } from '@angular/core';
 
 type BrandNameState = BrandNameAndTaglineCompleted;
 
@@ -26,7 +27,7 @@ export const brandNameTaglineStore = signalStore(
         bodyFonts: string[]
     ) {
       patchState(store, (state) => ({
-        personalityOptions: { ...state.personalityOptions, synonyms, headingFonts, bodyFonts, hallo: "ites" }}));
+        personalityOptions: { ...state.personalityOptions, synonyms, headingFonts, bodyFonts }}));
       console.log(store.personalityOptions(), "From inside BrandNameTagline state!!");
     },
     updateSelectedPersonality(personality: string) {
@@ -39,3 +40,17 @@ export const brandNameTaglineStore = signalStore(
       },
   }))
 );
+
+@Injectable({ providedIn: 'root' })
+export class BaseClassGlobalStore extends brandNameTaglineStore {
+  constructor() {
+    super();
+  }
+
+override updatePersonalityOptionsState = (synonyms: string[], headingFonts: string[], bodyFonts: string[]): void => 
+    super.updatePersonalityOptionsState(synonyms, headingFonts, bodyFonts);
+
+  getBrandNameTaglineStore(){
+    console.log(initialBrandnameAndTagline, " Current initial BrandNameAndTagline state!");
+  }
+}
