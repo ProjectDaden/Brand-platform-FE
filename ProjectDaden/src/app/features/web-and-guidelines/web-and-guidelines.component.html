@@ -12,7 +12,7 @@
         placeholder="placeholder" >
     </daden-dropdown>
     <daden-detail
-        text="detail"></daden-detail>
+        [text]="'detail'"></daden-detail>
 </section>
 
 <section id="form">
@@ -109,12 +109,9 @@
 
         <!-- Checkbox -->
         <div class="flex items-center">
-            <daden-checkbox
-                [id]="'newsletter'"
-                [(ngModel)]="subscribeToNewsletter"
-                [label]="'Subscribe to our newsletter'"
-                (valueChange)="onNewsletterToggle($event)">
-            </daden-checkbox>
+            <div>
+                <daden-checkbox [checkboxes]="checkboxes"></daden-checkbox>
+              </div>
         </div>
 
 
@@ -157,7 +154,7 @@
 
         <!-- Radio Buttons -->
         <div>
-        <label class="block text-sm font-medium text-text-primary">Preferred Contact Method</label>
+        <label for="contact method" class="block text-sm font-medium text-text-primary">Preferred Contact Method</label>
         <div class="mt-2 space-y-2">
             <div class="flex items-center">
             <input
@@ -257,7 +254,7 @@
     <div class="flex flex-col flex-wrap items-left">
         <h3 class="mb-2">Button Hierarchy</h3>
         <div class="flex flex-wrap gap-4 items-center mb-8">  
-            <daden-button variant="primary" label="Primary Button"></daden-button>
+            <daden-button variant="primary" label="Primary Button" (emitItem)="someMethod($event)"></daden-button>
             <daden-button variant="secondary" label="Secondary Button"></daden-button>
             <daden-button variant="tertiary" label="Tertiary Button"></daden-button>
         </div>
@@ -321,5 +318,9 @@
     </daden-group-header>
     <daden-pagination></daden-pagination>
 </section>
+
+<daden-card
+[dadenCard]="cardConfig"></daden-card>
+
 
 <daden-page-footer></daden-page-footer>

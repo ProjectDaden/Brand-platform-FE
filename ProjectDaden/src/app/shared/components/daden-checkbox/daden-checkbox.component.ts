@@ -1,6 +1,7 @@
-import { Component, input, output, forwardRef, signal, effect } from '@angular/core';
+import { Component, input, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { DadenCheckbox } from './models/daden-checkbox';
 
 @Component({
   selector: 'daden-checkbox',
@@ -8,58 +9,33 @@ import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/f
   imports: [CommonModule, FormsModule],
   templateUrl: './daden-checkbox.component.html',
   styleUrl: './daden-checkbox.component.scss',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DadenCheckboxComponent),
-      multi: true,
-    },
-  ],
 })
-export class DadenCheckboxComponent implements ControlValueAccessor {
-  // Inputs
-  label = input<string>(''); // Custom label text
-  disabledInput = input<boolean>(false);
-  id = input<string>('checkbox-' + Math.random().toString(36).substring(2)); // Unique ID, generated once
+export class DadenCheckboxComponent {
 
-  // Writable signal for disabled state
-  disabled = signal<boolean>(false);
+  checkboxes = input<DadenCheckbox[]>([]);
 
-  // Output for change events
-  valueChange = output<boolean>();
+  allChecked: WritableSignal<boolean> = signal(false);
 
-  // Internal state for ControlValueAccessor
-  internalValue: boolean = false;
-  private onChange: (value: boolean) => void = () => {};
-  private onTouched: () => void = () => {};
-
-  constructor() {
-    effect(() => {
-      this.disabled.set(this.disabledInput());
+  toggleAllCheckboxes(): void {
+    const isAllChecked = this.allChecked();
+    this.checkboxes().forEach((checkbox) => {
+      if (!checkbox.disabled()) {
+        checkbox.state.set(!isAllChecked);
+      }
     });
+    this.allChecked.set(!isAllChecked);
   }
 
-  writeValue(value: boolean): void {
-    this.internalValue = !!value;
+  // Method to check if all checkboxes are disabled
+  areAllDisabled(): boolean {
+    return this.checkboxes().every((checkbox) => checkbox.disabled());
   }
 
-  registerOnChange(fn: (value: boolean) => void): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled.set(isDisabled);
-  }
-
-  onCheckboxChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    this.internalValue = input.checked;
-    this.onChange(this.internalValue);
-    this.onTouched();
-    this.valueChange.emit(this.internalValue);
+  // Method to update the "Select All" checkbox state
+  updateAllCheckedState(): void {
+    const areAllChecked = this.checkboxes().every(
+      (checkbox) => checkbox.state() || checkbox.disabled()
+    );
+    this.allChecked.set(areAllChecked);
   }
 }

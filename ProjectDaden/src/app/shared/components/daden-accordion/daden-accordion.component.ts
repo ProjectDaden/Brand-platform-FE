@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
  import { CommonModule } from '@angular/common';
+import { DadenAccordion } from './models/daden-accordion';
  
  @Component({
    selector: 'daden-accordion',
@@ -10,10 +11,12 @@ import { Component, Input } from '@angular/core';
  })
  export class DadenAccordionComponent {
    // Input for accordion items
-   @Input() items: { title: string; content: string; open?: boolean }[] = [];
+   items = input<DadenAccordion[]>([
+    { title: "", content: "", open: false }
+  ]);
  
    // Toggle the open state of an item
    toggleItem(index: number) {
-     this.items[index].open = !this.items[index].open;
+     this.items()[index].open = !this.items()[index].open;
    }
  }

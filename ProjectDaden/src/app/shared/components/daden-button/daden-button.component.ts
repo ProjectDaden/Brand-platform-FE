@@ -1,4 +1,4 @@
-import { Component, Input, Output, HostBinding, EventEmitter } from '@angular/core';
+import { Component, HostBinding, input, output } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { DadenIconComponent } from '../daden-icon/daden-icon.component';
@@ -10,18 +10,19 @@ import { DadenIconComponent } from '../daden-icon/daden-icon.component';
   templateUrl: './daden-button.component.html',
 })
 export class DadenButtonComponent {
-  @Input() variant: 'primary' | 'secondary' | 'tertiary' | 'text' = 'primary';
-  @Input() size: 'big' | 'medium' | 'small' = 'medium';
-  @Input() color: 'blue' | 'red' | 'yellow' | 'green' = 'blue';
-  @Input() hoverColor: 'blue' | 'red' | 'yellow' | 'green' | null = null;
-  @Input() disabled = false;
-  @Input() active = false;
-  @Input() label: string = '';
-  @Input() icon: string = '';
-  @Output() buttonClick = new EventEmitter<void>();
+  variant = input<'primary' | 'secondary' | 'tertiary' | 'text'>("primary");
+  size = input<'big' | 'medium' | 'small'>("medium");
+  color = input<'blue' | 'red' | 'yellow' | 'green'>("blue");
+  hoverColor = input<'blue' | 'red' | 'yellow' | 'green' | null>(null);
+  disabled = input<boolean>(false);
+  active = input<boolean>(false);
+  label = input<string>("");
+  icon = input<string>("");
+  emitItem = output<string>();
+  // @Output() buttonClick = new EventEmitter<void>();
 
   onClick() {
-    this.buttonClick.emit();
+    this.emitItem.emit("HALLOOO FROM CHILLD");
   }
 
   private getColorClasses() {
@@ -86,35 +87,35 @@ export class DadenButtonComponent {
       green: 'focus:ring-green-500 active:ring-green-500',
     };
 
-    const baseClasses = baseColorMap[this.color][this.variant] || baseColorMap.blue.primary;
-    const hoverClasses = this.hoverColor
-      ? hoverColorMap[this.hoverColor][this.variant]
-      : hoverColorMap[this.color][this.variant];
-    const focusActiveClasses = focusActiveMap[this.color];
+    const baseClasses = baseColorMap[this.color()][this.variant()] || baseColorMap.blue.primary;
+    const hoverClasses = this.hoverColor()
+      ? hoverColorMap[this.hoverColor() ?? 'blue'][this.variant()]
+      : hoverColorMap[this.color()][this.variant()];
+    const focusActiveClasses = focusActiveMap[this.color()];
 
     return `${baseClasses} ${hoverClasses} ${focusActiveClasses}`;
   }
 
-    // Dynamic icon classes based on button size
-    get iconClass(): string {
-      const sizeMap = {
-        big: 'w-6 h-6',
-        medium: 'w-5 h-5',
-        small: 'w-4 h-4',
-      };
-      return `${sizeMap[this.size] || 'w-5 h-5'} ${this.disabled ? 'text-gray-400' : ''}`;
-    }
+  // Dynamic icon classes based on button size
+  get iconClass(): string {
+    const sizeMap = {
+      big: 'w-6 h-6',
+      medium: 'w-5 h-5',
+      small: 'w-4 h-4',
+    };
+    return `${sizeMap[this.size()] || 'w-5 h-5'} ${this.disabled() ? 'text-gray-400' : ''}`;
+  }
 
   @HostBinding('class') get classes() {
     return [
       'inline-flex items-center justify-center rounded-md font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors',
-      this.disabled ? '' : 'cursor-pointer',
+      this.disabled() ? '' : 'cursor-pointer',
       this.getColorClasses(),
-      this.size === 'big' ? 'px-6 py-3 text-lg' :
-      this.size === 'medium' ? 'px-4 py-2 text-md' :
-      this.size === 'small' ? 'px-2 py-1 text-sm' : '',
-      this.disabled ? 'opacity-50 bg-gray-500 hover:bg-gray-500' : '',
-      this.active ? 'ring-2' : '',
+      this.size() === 'big' ? 'px-6 py-3 text-lg' :
+        this.size() === 'medium' ? 'px-4 py-2 text-md' :
+          this.size() === 'small' ? 'px-2 py-1 text-sm' : '',
+      this.disabled() ? 'opacity-50 bg-gray-500 hover:bg-gray-500' : '',
+      this.active() ? 'ring-2' : '',
     ].filter(Boolean).join(' ');
   }
 }

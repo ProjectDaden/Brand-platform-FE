@@ -3,14 +3,14 @@
       class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none
              focus:outline-0 focus:ring-2 focus:ring-blue-500
              disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-600 placeholder-gray-600"
-      [ngModel]="selectedItem()"
+      [ngModel]="dropDownParts().selectedItem"
       (ngModelChange)="onModelChange($event)"
-      [disabled]="disabled()"
+      [disabled]="dropDownParts().disabled"
     >
       <option value="" disabled>
-        {{ placeholder() }}
+        {{ dropDownParts().placeholder }}
       </option>
-      @for (option of items(); track $index) {
+      @for (option of dropDownParts().items; track $index) {
         <option [value]="option" class="hover:bg-blue-500 hover:text-white">
           {{ option }}
         </option>
@@ -19,8 +19,8 @@
     <span
       class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none p-3 rounded-r border-0"
       [ngClass]="{
-        'bg-blue-500 text-white hover:bg-blue-700': !disabled(),
-        'bg-gray-300 text-gray-500 cursor-default': disabled()
+        'bg-blue-500 text-white hover:bg-blue-700': !dropDownParts().disabled,
+        'bg-gray-300 text-gray-500 cursor-default': dropDownParts().disabled
       }"
     >
       <daden-icon icon="arrowDown" [strokeWidth]="2" class="size-4"></daden-icon>

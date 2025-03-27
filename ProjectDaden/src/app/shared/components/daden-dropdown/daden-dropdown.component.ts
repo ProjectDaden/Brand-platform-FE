@@ -2,6 +2,7 @@ import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DadenIconComponent } from '../../components/daden-icon/daden-icon.component';
+import { DadenDropdown } from './models/daden-dropdown';
 
 @Component({
   selector: 'daden-dropdown',
@@ -10,13 +11,16 @@ import { DadenIconComponent } from '../../components/daden-icon/daden-icon.compo
   templateUrl: './daden-dropdown.component.html'
 })
 export class DadenDropdownComponent {
-  items = input<string[]>([]);
-  placeholder = input<string>("");
-  selectedItem = input<string>("");
+  dropDownParts = input<DadenDropdown>({
+    items: [],
+    placeholder: '',
+    selectedItem: '',
+    disabled: false
+  });
   selectedValue = output<string>();
-  disabled = input<boolean>(false);
 
   onModelChange(newValue: string) {
+    console.log(" ---> from dropdown", newValue);
     this.selectedValue.emit(newValue);
   }
 }

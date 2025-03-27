@@ -1,23 +1,23 @@
-<div class="flex items-center">
-	<input
-	  type="checkbox"
-	  [id]="id()"
-	  [checked]="internalValue"
-	  [disabled]="disabled()"
-	  (change)="onCheckboxChange($event)"
-	  class="h-4 w-4 text-blue-500 border-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2
-			 disabled:cursor-default disabled:border-gray-200 disabled:text-gray-600 transition-colors duration-200"
-	  [attr.aria-checked]="internalValue"
-	  [attr.aria-disabled]="disabled()"
-	/>
-	<label
-	  [for]="id()"
-	  class="ml-2 text-blue-950 disabled:text-gray-600 cursor-pointer select-none"
-	  [ngClass]="{
-		'text-gray-900 hover:text-blue-500': !disabled(),
-		'text-gray-600 cursor-default': disabled()
-	  }"
-	>
-	  {{ label() || 'Checkbox' }}
+<div>
+	@if ( checkboxes().length > 1 ) {
+	<label class="ml-2 text-blue-950 disabled:text-gray-600 cursor-pointer select-none">
+		<input class="h-4 w-4 text-blue-500 border-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2
+	  disabled:cursor-default disabled:border-gray-200 disabled:text-gray-600 transition-colors duration-200"
+			type="checkbox" [checked]="allChecked()" [disabled]="areAllDisabled()" (change)="toggleAllCheckboxes()" />
+		Select All
 	</label>
-  </div>
+	}
+
+	@for( checkbox of checkboxes(); track $index){
+	<div>
+		<label class="ml-2 text-blue-950 disabled:text-gray-600 cursor-pointer select-none" [ngClass]="{
+		'text-gray-900 hover:text-blue-500': !checkbox.disabled(),
+		'text-gray-600 cursor-default': checkbox.disabled()
+	  }">
+			<input type="checkbox" [checked]="checkbox.state()" [disabled]="checkbox.disabled()"
+				(change)="updateAllCheckedState()" />
+			{{ checkbox.label }}
+		</label>
+	</div>
+	}
+</div>
