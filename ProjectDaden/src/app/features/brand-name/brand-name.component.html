@@ -15,10 +15,7 @@
                 label="brand-name-component.form-area.form-personality-label">
             </daden-label>
             <daden-dropdown id="personality" class="w-full" 
-                [items]="brandName.genericSignalCollection().personalities"
-                [placeholder]="'Select a personality...'"
-                [selectedItem]="brandName.genericSignalCollection().selectedPersonality || ''"
-                (selectedValue)="handlePersonalitySelection($event)">
+                [dropDownParts]="dropDownConfig">
             </daden-dropdown>
             <daden-detail
                 text="brand-name-component.form-area.form-personality-description">
@@ -68,14 +65,14 @@
           for="synonyms"
           label="brand-name-component.form-area.form-thesaurus-label">
         </daden-label>
-        <daden-dropdown
+        <!-- <daden-dropdown
           id="synonyms"
           class="w-full"
           [items]="brandName.genericSignalCollection().personalityOptions.synonyms || []"
           [placeholder]="'Select a synonym...'"
           [selectedItem]="''"
           [disabled]="!useTagline">
-        </daden-dropdown>
+        </daden-dropdown> -->
         <daden-detail
           text="brand-name-component.form-area.form-thesaurus-description">
         </daden-detail>

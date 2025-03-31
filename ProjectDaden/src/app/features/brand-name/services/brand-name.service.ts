@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { PersonalityOptions } from '../store/personalities-options';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ export class BrandNameService {
   private readonly http = inject(HttpClient);
   private configUrl =
     'assets/tempUsage/brand-name-personality-compositions.json';
+  private personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
 
     private allPersonalities: { [key: string]: PersonalityOptions } = {};
   personalityComposition = signal<PersonalityOptions>({
@@ -20,6 +22,13 @@ export class BrandNameService {
   constructor() {
     this.loadBrandNamePersonaltyOptions();
     this.loadAllPersonalities();
+  }
+
+  getPersonalities() : Observable<string[]> {
+    return this.http.get<{ personalities: { options: string[] }}>(this.personalitiesListPath).pipe(
+      map(response => {
+       return Array.isArray(response.personalities.options) ? response.personalities.options : [];
+  }));
   }
 
   // The api-call to load all existing personalities.

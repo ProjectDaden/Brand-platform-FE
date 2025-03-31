@@ -10,13 +10,13 @@ import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-h
 
 import { BrandNameService } from './services/brand-name.service';
 import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
-import { BrandNameAndTaglineCompleted, PersonalityOptions } from './store/brandname-tagline.model';
+import { PersonalityOptions } from './store/brandname-tagline.model';
 import { brandNameTaglineStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
-import { DadenCheckboxComponent } from '../../shared/components/daden-checkbox/daden-checkbox.component';
 import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
+import { DadenDropdown } from '../../shared/components/daden-dropdown/models/daden-dropdown';
 
 @Component({
   selector: 'app-brand-name-tagline',
@@ -28,12 +28,11 @@ import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store
     TranslateModule,
     DadenHeaderComponent,
     DadenGroupHeaderComponent,
-    DadenDropdownComponent,    
+    DadenDropdownComponent,
     DadenPageFooterComponent,
     DadenLabelComponent,
     DadenDetailComponent,
     DadenInputComponent,
-    DadenCheckboxComponent
   ],
   templateUrl: './brand-name.component.html',
 })
@@ -45,38 +44,30 @@ export class BrandNameComponent implements OnInit {
   brandnameAndTaglineStore = inject(brandNameTaglineStore);
   globalStateTest = inject(BaseClassGlobalStore);
 
-
-  test1: BrandNameAndTaglineCompleted = {
-    personalities: ["een", "twee"],
-    selectedPersonality: 'twee',
-    personalityOptions: {
-      synonyms: ["Pietje", "Puk"],
-      headingFonts: ["Pietje", "Bel"],
-      bodyFonts: ["Klaartje", "Puk"],
-    },
-    tagLineUsed: 'yes',
-    tagLine: 'This seemts to be working!'
-  }
-
-
+  selectOptions: string[] = [];
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
-
   watchBrandName = computed(() => this.brandName.genericSignalCollection());
-
   useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes'; // Replace taglineUsed
   tagline: string = this.brandName.genericSignalCollection().tagLine || ''; // Simplify optional chaining
+
+  dropDownConfig: DadenDropdown = {
+    items: this.brandName.genericSignalCollection().personalities,
+    placeholder: "select an item...",
+    selectedItem: "",
+    disabled: false
+  }
 
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
-
+    this.brandNameService.getPersonalities().subscribe((data) => this.brandName.genericSignalCollection().personalities = data);
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
     this.globalStateTest.getStore();
-    // this.globalStateTest.updateGlobalState(this.test1);
     this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
+
   }
 
   handlePersonalitySelection(personality: string) {

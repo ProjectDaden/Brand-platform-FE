@@ -10,14 +10,19 @@ import { DadenDropdown } from './models/daden-dropdown';
   imports: [CommonModule, FormsModule, DadenIconComponent],
   templateUrl: './daden-dropdown.component.html'
 })
-export class DadenDropdownComponent {
+export class DadenDropdownComponent{
+
+  /**
+   * The items to be displayed in the dropdown.
+   */
   dropDownParts = input<DadenDropdown>({
     items: [],
-    placeholder: '',
+    placeholder: 'select item...',
     selectedItem: '',
     disabled: false
   });
   selectedValue = output<string>();
+
 
   onModelChange(newValue: string) {
     console.log(" ---> from dropdown", newValue);
