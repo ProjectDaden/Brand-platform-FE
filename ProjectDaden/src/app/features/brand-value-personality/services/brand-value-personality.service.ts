@@ -13,7 +13,7 @@ export class BrandValuePersonalityService {
     this.http.get<BrandValuePersonality>('assets/data/brand-value-personality.json').subscribe((data) => {
       this.brandValueCollection.genericSignalCollection.update((current) => ({
         ...current,
-        ...data,
+        data,
       }));
     });
   }
