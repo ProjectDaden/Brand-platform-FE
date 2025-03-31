@@ -1,0 +1,1 @@
+import{I as t,Wa as a,Xa as i,Z as o}from"./chunk-4N3ZHZ5D.js";var r=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-print-offline-material"]],decls:2,vars:0,template:function(e,f){e&1&&o(0,"daden-header")(1,"daden-page-footer")},dependencies:[a,i],encapsulation:2})};export{r as PrintOfflineMaterialComponent};
