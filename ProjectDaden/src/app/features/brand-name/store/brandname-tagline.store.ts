@@ -42,7 +42,7 @@ export const brandNameTaglineStore = signalStore(
 );
 
 @Injectable({ providedIn: 'root' })
-export class BaseClassGlobalStore extends brandNameTaglineStore {
+export class BaseClassBrandNameAndTaglineStore extends brandNameTaglineStore {
   constructor() {
     super();
   }

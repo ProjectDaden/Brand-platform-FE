@@ -44,7 +44,6 @@ export class BrandNameComponent implements OnInit {
   brandnameAndTaglineStore = inject(brandNameTaglineStore);
   globalStateTest = inject(BaseClassGlobalStore);
 
-  selectOptions: string[] = [];
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
   watchBrandName = computed(() => this.brandName.genericSignalCollection());
@@ -61,7 +60,6 @@ export class BrandNameComponent implements OnInit {
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
-    this.brandNameService.getPersonalities().subscribe((data) => this.brandName.genericSignalCollection().personalities = data);
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );

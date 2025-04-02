@@ -25,9 +25,9 @@ export class BrandNameService {
   }
 
   getPersonalities() : Observable<string[]> {
-    return this.http.get<{ personalities: { options: string[] }}>(this.personalitiesListPath).pipe(
+    return this.http.get<{ personalities: string[] }>(this.personalitiesListPath).pipe(
       map(response => {
-       return Array.isArray(response.personalities.options) ? response.personalities.options : [];
+       return Array.isArray(response.personalities) ? response.personalities : [];
   }));
   }
 

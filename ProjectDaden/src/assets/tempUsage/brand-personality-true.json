@@ -1,18 +1,16 @@
 {
-    "personalities": {
-        "options": [
-            "Hero",
-            "Caregiver",
-            "Explorer",
-            "Creator",
-            "Innocent",
-            "Sage",
-            "Jester",
-            "Magician",
-            "Rebel",
-            "Ruler",
-            "Everyman",
-            "Lover"
-        ]
-    }
+    "personalities": [
+        "Hero",
+        "Caregiver",
+        "Explorer",
+        "Creator",
+        "Innocent",
+        "Sage",
+        "Jester",
+        "Magician",
+        "Rebel",
+        "Ruler",
+        "Everyman",
+        "Lover"
+    ]
 }

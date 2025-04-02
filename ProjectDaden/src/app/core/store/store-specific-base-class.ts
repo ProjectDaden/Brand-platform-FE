@@ -1,5 +1,4 @@
 import { Injectable, Signal, signal } from '@angular/core';
-import { signalStore, withState, withMethods } from '@ngrx/signals';
 
 @Injectable()
 export abstract class BaseStore<T extends object> {
