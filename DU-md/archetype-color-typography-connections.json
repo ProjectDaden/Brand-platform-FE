@@ -1,0 +1,100 @@
+{
+  "rules": [
+    {
+      "condition": {
+        "archetype": "ruler"
+      },
+      "colorRange": ["hsl(300, 80%, 50%)", "hsl(330, 80%, 50%)"],
+	  "headingFonts": ["Playfair Display", "Cormorant Garamond", "Old Standard TT"],
+	  "bodyFonts": ["Georgia", "Times New Roman", "Lora"]
+    },
+    {
+      "condition": {
+        "archetype": "creator"
+      },
+      "colorRange": ["hsl(330, 100%, 50%)", "hsl(30, 100%, 50%)"], 
+	  "headingFonts": ["Montserrat", "Playfair Display", "Raleway"],
+	  "bodyFonts": ["Lato", "Source Sans Pro", "Poppins"]
+    },
+    {
+      "condition": {
+        "archetype": "innocent"
+      },
+      "colorRange": ["hsl(60, 60%, 70%)", "hsl(90, 60%, 70%)"],
+	  "headingFonts": ["Pacifico", "Lobster", "Dancing Script"],
+	  "bodyFonts": ["Open Sans", "Lora", "Comic Neue"]
+    },
+    {
+      "condition": {
+        "archetype": "sage"
+      },
+      "colorRange": ["hsl(210, 70%, 50%)", "hsl(240, 70%, 50%)"],
+	  "headingFonts": ["Times New Roman", "Garamond", "Libre Baskerville"],
+	  "bodyFonts": ["Georgia", "Merriweather", "Source Serif Pro"]
+    },
+    {
+      "condition": {
+        "archetype": "explorer"
+      },
+      "colorRange": ["hsl(90, 50%, 40%)", "hsl(120, 50%, 40%)"],
+	  "headingFonts": ["Fjalla One", "Patua One", "Cabin"],
+	  "bodyFonts": ["Lato", "Roboto", "Montserrat"]
+    },
+    {
+      "condition": {
+        "archetype": "rebel"
+      },
+      "colorRange": ["hsl(330, 90%, 45%)", "hsl(30, 90%, 45%)"],
+	  "headingFonts": ["Bebas Neue", "Staatliches", "Oswald"],
+	  "bodyFonts": ["Arial", "Helvetica", "Roboto"]
+    },
+    {
+      "condition": {
+        "archetype": "magician"
+      },
+      "colorRange": ["hsl(270, 80%, 40%)","hsl(300, 80%, 40%)"],
+	  "headingFonts": ["Cinzel", "UnifrakturMaguntia", "Alegreya"],
+	  "bodyFonts": ["Lato", "Roboto", "Poppins"]
+    },
+    {
+      "condition": {
+        "archetype": "hero"
+      },
+      "colorRange": ["hsl(30, 100%, 60%)","hsl(60, 100%, 60%)"],
+	  "headingFonts": ["Oswald", "Anton", "Impact"],
+	  "bodyFonts": ["Roboto", "Arial", "Helvetica"]
+    },
+    {
+      "condition": {
+        "archetype": "lover"
+      },
+      "colorRange": ["hsl(330, 70%, 60%)","hsl(0, 70%, 60%)"],
+	  "headingFonts": ["Great Vibes", "Sacramento", "Parisienne"],
+	  "bodyFonts": ["Lora", "Merriweather", "Open Sans"]
+    },
+    {
+      "condition": {
+        "archetype": "jester"
+      },
+      "colorRange": ["hsl(60, 100%, 50%)", "hsl(90, 100%, 50%)"],
+	  "headingFonts": ["Bangers", "Fredoka One", "Luckiest Guy"],
+	  "bodyFonts": ["Comic Neue", "Roboto", "Open Sans"]
+    },
+    {
+      "condition": {
+        "archetype": "everyman"
+      },
+      "colorRange": ["hsl(120, 40%, 50%)", "hsl(150, 40%, 50%)"],
+	  "headingFonts": ["Roboto Slab", "Bitter", "Arvo"],
+	  "bodyFonts": ["Open Sans", "Lato", "Source Sans Pro"]
+    },
+    {
+      "condition": {
+        "archetype": "caregiver"
+      },
+      "colorRange": ["hsl(150, 60%, 60%)", "hsl(180, 60%, 60%)"],
+	  "headingFonts": ["Lora", "Merriweather", "Georgia"],
+	  "bodyFonts": ["Open Sans", "Poppins", "Source Sans Pro"]
+    }
+  ]
+}
