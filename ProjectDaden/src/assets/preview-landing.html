@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Landing Page Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Individual font imports */
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Impact&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Georgia&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Garamond&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+        /* Fallback styles */
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="font-sans flex flex-row">
+
+    <!-- Controls Section -->
+    <section class="bg-gray-800 text-gray-200 p-6 shadow-md w-1/4 fixed h-full">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-xl font-bold mb-4">Brand Customization</h2>
+            
+            <div class="grid grid-cols-1 gap-4 mb-6">
+                <!-- Archetype Dropdown -->
+                <div class="mb-2">
+                    <label class="block text-sm text-gray-300 mb-2">Brand Archetype:</label>
+                    <select id="archetype" class="w-full p-2 border rounded bg-gray-900 text-white" >
+                        <option value="creator">Creator</option>
+                        <option value="ruler">Ruler</option>
+                        <option value="innocent">Innocent</option>
+                        <option value="sage">Sage</option>
+                        <option value="explorer">Explorer</option>
+                        <option value="outlaw">Outlaw</option>
+                        <option value="magician">Magician</option>
+                        <option value="hero">Hero</option>
+                        <option value="lover">Lover</option>
+                        <option value="jester">Jester</option>
+                        <option value="everyday">Everyday</option>
+                        <option value="caregiver">Caregiver</option>
+                    </select>
+                </div>
+
+                <!-- Color Theory Dropdown -->
+                <div class="mb-2">
+                    <label class="block text-sm text-gray-300 mb-2">Color Theory:</label>
+                    <select id="colorTheory" class="w-full p-2 border rounded bg-gray-900 text-white">
+                        <option value="simple">Simple</option>
+                        <option value="tints">Tints</option>
+                        <option value="shades">Shades</option>
+                        <option value="tones">Tones</option>
+                        <option value="analogous">Analogous</option>
+                        <option value="triad">Triad</option>
+                        <option value="complementary">Complementary</option>
+                    </select>
+                </div>
+
+                <!-- Font Dropdowns -->
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2">Heading Font:</label>
+                    <select id="headingFont" class="w-full p-2 border rounded bg-gray-900 text-white"></select>
+                </div>
+                <div>
+                    <label class="block text-gray-300 text-sm mb-2">Body Font:</label>
+                    <select id="bodyFont" class="w-full p-2 border rounded bg-gray-900 text-white"></select>
+                </div>
+            </div>
+
+            <!-- Voice & Tone Sliders -->
+            <div class="space-y-4">
+                <label class="block text-sm text-gray-300 mb-2">Tone of voice</label>
+
+                <div>
+                    <label class="block text-sm text-gray-300">Formality: <span id="formalityValue">50</span>%</label>
+                    <input type="range" id="formality" min="0" max="100" value="50" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300">Playfulness: <span id="playfulnessValue">50</span>%</label>
+                    <input type="range" id="playfulness" min="0" max="100" value="50" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300">Respect: <span id="respectValue">50</span>%</label>
+                    <input type="range" id="respect" min="0" max="100" value="50" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300">Emotion: <span id="emotionValue">50</span>%</label>
+                    <input type="range" id="emotion" min="0" max="100" value="50" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-3/4 ml-[25%]">
+        <!-- Navigation Bar -->
+        <nav id="navbar" class="bg-white shadow-md p-4 transition-all">
+            <div class="max-w-6xl mx-auto flex justify-between items-center">
+                <h1 id="brandName" class="text-xl font-bold">BrandName</h1>
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="#" class="text-sm hover:text-primary">Home</a></li>
+                    <li><a href="#" class="text-sm hover:text-primary">About</a></li>
+                    <li><a href="#" class="text-sm hover:text-primary">Services</a></li>
+                    <li>
+                        <button id="ctaBtn" href="#" class="text-white px-6 py-3 rounded-lg text-lg font-semibold shadow transition-all">Get Started</button></li>
+                </ul>
+            </div>
+        </nav>
+    
+        <!-- Hero Section -->
+        <section id="hero" class="py-16 transition-all">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 id="heroHeading" class="text-4xl font-bold mb-4">Transform Your Brand with Us</h2>
+                    <p id="heroText" class="text-lg mb-6">We help businesses create a strong brand identity with compelling design and strategy.</p>
+                    <div class="space-x-4">
+                        <a id="primaryBtn" href="#" class=" px-6 py-3 rounded-lg text-lg font-semibold shadow transition-all">Get Started</a>
+                        <a id="secondaryBtn" href="#" class="px-6 py-3 rounded-lg text-lg font-semibold shadow transition-all ">Learn More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
+                    <div id="heroImage" class="bg-white w-80 h-48 rounded-lg shadow-md flex items-center justify-center">
+                        <p id="heroImageText" class="text-lg font-normal bg-white">[Image Placeholder]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Brand Colors Section -->
+        <section id="brandPreview" class="bg-white py-16 transition-all">
+            <div class="max-w-6xl mx-auto px-6 py-12 text-center">
+                <h2 id="previewHeading" class="text-3xl font-bold mb-6">Brand Preview</h2>
+                <p id="previewText" class="mb-8">See how your brand colors and typography affect the design.</p>
+                <div class="flex justify-center gap-4 mb-12">
+                    <div id="color1" class="flex items-center justify-center w-full h-32 py-12 rounded-lg shadow-md text-lg font-bold text-white">Primary</div>
+                    <div id="color2" class="flex items-center justify-center w-full h-32 py-12 rounded-lg shadow-md text-lg font-bold text-white">Secondary</div>
+                    <div id="color3" class="flex items-center justify-center w-full h-32 py-12 rounded-lg shadow-md text-lg font-bold text-white">Tertiary</div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Typography Section -->
+        <section id="typographyPreview" class="py-16 transition-all">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <h2 id="previewHeading" class="text-3xl font-bold mb-6">Typography Preview</h2>
+                <div id="typographyPreview" class="bg-white shadow-md p-6 rounded-lg max-w-3xl mx-auto transition-all">
+                    <h3 id="typographyHeading" class="text-2xl font-bold mb-2">Heading Example</h3>
+                    <p id="typographyText" class="text-lg mb-4">This is a preview of your brand's typography in use.</p>
+                    <p id="typographyQuote" class="text-sm italic">"Typography is the visual voice of your brand."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer id="footer" class="py-8 transition-all">
+            <div class="max-w-6xl mx-auto px-6 text-center">
+                <p class="text-sm">&copy; 2025 BrandName. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const archetypes = {
+            ruler: { hue: 315 },
+            creator: { hue: 0 },
+            innocent: { hue: 75 },
+            sage: { hue: 225 },
+            explorer: { hue: 105 },
+            outlaw: { hue: 0 },
+            magician: { hue: 285 },
+            hero: { hue: 45 },
+            lover: { hue: 345 },
+            jester: { hue: 75 },
+            everyday: { hue: 135 },
+            caregiver: { hue: 165 }
+        };
+
+        const fontOptions = {
+            'Jester': {
+                heading: ['Bangers', 'Fredoka One', 'Luckiest Guy'],
+                body: ['Comic Neue', 'Roboto', 'Open Sans']
+            },
+            'Creator': {
+                heading: ['Montserrat', 'Playfair Display', 'Raleway'],
+                body: ['Lato', 'Source Sans Pro', 'Poppins']
+            },
+            'Hero': {
+                heading: ['Oswald', 'Anton', 'Impact'],
+                body: ['Roboto', 'Arial', 'Helvetica']
+            },
+            'Caregiver': {
+                heading: ['Lora', 'Merriweather', 'Georgia'],
+                body: ['Open Sans', 'Poppins', 'Source Sans Pro']
+            },
+            'Explorer': {
+                heading: ['Fjalla One', 'Patua One', 'Cabin'],
+                body: ['Lato', 'Roboto', 'Montserrat']
+            },
+            'Innocent': {
+                heading: ['Pacifico', 'Lobster', 'Dancing Script'],
+                body: ['Open Sans', 'Lora', 'Comic Neue']
+            },
+            'Sage': {
+                heading: ['Garamond', 'Libre Baskerville'],
+                body: ['Georgia', 'Merriweather', 'Source Serif Pro']
+            },
+            'Magician': {
+                heading: ['Cinzel', 'Alegreya'],
+                body: ['Lato', 'Roboto', 'Poppins']
+            },
+            'Rebel': {
+                heading: ['Bebas Neue', 'Staatliches', 'Oswald'],
+                body: ['Arial', 'Helvetica', 'Roboto']
+            },
+            'Ruler': {
+                heading: ['Playfair Display', 'Cormorant Garamond', 'Old Standard TT'],
+                body: ['Georgia', 'Lora']
+            },
+            'Everyman': {
+                heading: ['Inter', 'Roboto Slab', 'Bitter', 'Arvo'],
+                body: ['Inter', 'Open Sans', 'Lato', 'Source Sans Pro']
+            },
+            'Lover': {
+                heading: ['Great Vibes', 'Sacramento', 'Parisienne'],
+                body: ['Lora', 'Merriweather', 'Open Sans']
+            }
+        };
+
+        // Populate font dropdowns
+        const headingFontSelect = document.getElementById('headingFont');
+        const bodyFontSelect = document.getElementById('bodyFont');
+        
+        function populateFonts(personality) {
+            const fonts = fontOptions[personality] || fontOptions['Creator'];
+            headingFontSelect.innerHTML = fonts.heading.map(f => `<option value="${f}">${f}</option>`).join('');
+            bodyFontSelect.innerHTML = fonts.body.map(f => `<option value="${f}">${f}</option>`).join('');
+        }
+
+        // Initial population
+        populateFonts('Creator');
+
+        // Update styles function
+        function updateStyles() {
+            const archetype = document.getElementById('archetype').value;
+            const colorTheory = document.getElementById('colorTheory').value;
+            const formality = document.getElementById('formality').value;
+            const playfulness = document.getElementById('playfulness').value;
+            const respect = document.getElementById('respect').value;
+            const emotion = document.getElementById('emotion').value;
+            const headingFont = document.getElementById('headingFont').value;
+            const bodyFont = document.getElementById('bodyFont').value;
+
+            // Update value displays
+            document.getElementById('formalityValue').textContent = formality;
+            document.getElementById('playfulnessValue').textContent = playfulness;
+            document.getElementById('respectValue').textContent = respect;
+            document.getElementById('emotionValue').textContent = emotion;
+
+            // Base colors (starting neutral gray)
+            let primaryHue = archetypes[archetype].hue;
+            let primary = `hsl(${primaryHue}, 70%, 50%)`;
+            let secondary = `hsl(0, 0%, 50%)`;  // Neutral gray
+            let tertiary = `hsl(0, 0%, 70%)`;   // Lighter gray
+
+            const color2Div = document.getElementById('color2');
+            const color3Div = document.getElementById('color3');
+
+            // Color theory adjustments
+            switch(colorTheory) {
+                case 'simple':
+                    secondary = primary;
+                    tertiary = primary;
+                    color2Div.style.display = 'none';
+                    color3Div.style.display = 'none';
+                    break;
+                case 'tints':
+                    secondary = `hsl(${primaryHue}, 70%, 70%)`;  // +10% lightness
+                    tertiary = `hsl(${primaryHue}, 70%, 90%)`;   // +20% lightness
+                    color2Div.style.display = 'flex';
+                    color3Div.style.display = 'flex';
+                    break;
+                case 'shades':
+                    secondary = `hsl(${primaryHue}, 70%, 40%)`;  // -10% lightness
+                    tertiary = `hsl(${primaryHue}, 70%, 30%)`;   // -20% lightness
+                    color2Div.style.display = 'flex';
+                    color3Div.style.display = 'flex';
+                    break;
+                case 'tones':
+                    secondary = `hsl(${primaryHue}, 40%, 50%)`;  // -15% saturation
+                    tertiary = `hsl(${primaryHue}, 10%, 50%)`;   // -40% saturation
+                    color2Div.style.display = 'flex';
+                    color3Div.style.display = 'flex';
+                    break;
+                case 'analogous':
+                    secondary = `hsl(${(primaryHue + 30) % 360}, 70%, 50%)`;  // +30 degrees
+                    tertiary = `hsl(${(primaryHue + 60) % 360}, 70%, 50%)`;  // +30 degrees
+                    color2Div.style.display = 'flex';
+                    color3Div.style.display = 'flex';
+                    break;
+                case 'triad':
+                    secondary = `hsl(${(primaryHue - 120 + 360) % 360}, 70%, 50%)`;  // -120 degrees
+                    tertiary = `hsl(${(primaryHue + 120) % 360}, 70%, 50%)`;         // +120 degrees
+                    color2Div.style.display = 'flex';
+                    color3Div.style.display = 'flex';
+                    break;
+                case 'complementary':
+                    secondary = `hsl(${(primaryHue + 180) % 360}, 70%, 50%)`;  // +180 degrees
+                    tertiary = secondary;
+                    color2Div.style.display = 'flex';
+                    color3Div.style.display = 'none';
+                    
+                    break;
+            }
+
+            // Define color variants
+            const primaryDark = `hsl(${primaryHue}, 70%, 40%)`;
+            const primaryLight = `hsl(${primaryHue}, 50%, 95%)`;
+
+            // Apply colors
+            document.getElementById('color1').style.backgroundColor = primary;
+            document.getElementById('color2').style.backgroundColor = secondary;
+            document.getElementById('color3').style.backgroundColor = tertiary;
+            document.getElementById('brandName').style.color = primaryDark;
+            document.getElementById('primaryBtn').style.backgroundColor = primary;
+            document.getElementById('ctaBtn').style.backgroundColor = secondary;
+            document.getElementById('secondaryBtn').style.borderColor = secondary;
+            document.getElementById('secondaryBtn').style.color = primary;
+
+            // Section backgrounds and text
+            document.getElementById('hero').style.backgroundColor = primaryLight;
+            document.getElementById('typographyPreview').style.backgroundColor = primaryLight;
+            // document.getElementById('heroImage').style.backgroundColor = primaryLight;
+            document.getElementById('heroImageText').style.color = primaryDark;
+            document.getElementById('footer').style.backgroundColor = `hsl(${primaryHue}, 70%, 20%)`;  // Dark variant
+            document.getElementById('footer').style.color = tertiary;
+
+            // Headers
+            document.querySelectorAll('h1, h2, h3').forEach(el => {
+                el.style.color = primaryDark;
+                el.style.fontFamily = `"${headingFont}", Arial, sans-serif`;
+            });
+
+            // Body text
+            document.querySelectorAll('p, li, a').forEach(el => {
+                el.style.fontFamily = `"${bodyFont}", Arial, sans-serif`;
+                el.style.color = el.classList.contains('italic') ? secondary : 'inherit';
+            });
+
+            // Navigation links
+            document.querySelectorAll('nav ul li a').forEach(el => {
+                el.style.color = tertiary;
+            });
+            
+
+            // Voice & Tone for buttons
+            const btnStyles = {
+                formality: formality < 33 ? 'rounded-3xl p-6 m-4 font-light' :
+                          formality < 66 ? 'rounded-lg p-4 m-2 font-normal hover:shadow-md' :
+                          'rounded-md p-2 m-1 font-semibold hover:bg-opacity-90',
+                playfulness: playfulness < 33 ? 'rounded-none p-2 m-1 font-medium' :
+                            playfulness < 66 ? 'rounded-lg p-4 m-2 font-normal hover:scale-105' :
+                            'rounded-full p-6 m-4 font-bold hover:rotate-3',
+                respect: respect < 33 ? 'rounded-sm p-3 m-3 font-medium hover:skew-y-2' :
+                        respect < 66 ? 'rounded-lg p-4 m-2 font-normal hover:shadow-lg' :
+                        'rounded-xl p-5 m-1 font-semibold',
+                emotion: emotion < 33 ? 'rounded-md p-2 m-1 font-normal' :
+                        emotion < 66 ? 'rounded-lg p-4 m-2 font-medium hover:bg-opacity-80' :
+                        'rounded-2xl p-6 m-3 font-bold hover:scale-110'
+            };
+
+            const primaryBtn = document.getElementById('primaryBtn');
+            const ctaBtn = document.getElementById('ctaBtn');
+            const secondaryBtn = document.getElementById('secondaryBtn');
+            
+            primaryBtn.className = `text-white px-6 py-3 text-lg font-semibold shadow transition-all ${btnStyles.formality} ${btnStyles.playfulness} ${btnStyles.respect} ${btnStyles.emotion}`;
+            ctaBtn.className = `text-white px-4 py-2 text-md font-semibold shadow transition-all ${btnStyles.formality} ${btnStyles.playfulness} ${btnStyles.respect} ${btnStyles.emotion}`;
+            secondaryBtn.className = `px-6 py-3 text-lg font-semibold shadow transition-all border-2 bg-white ${btnStyles.formality} ${btnStyles.playfulness} ${btnStyles.respect} ${btnStyles.emotion}`;
+        }
+
+        // Event listeners
+        document.getElementById('archetype').addEventListener('change', () => {
+            const personality = document.getElementById('archetype').value.charAt(0).toUpperCase() + document.getElementById('archetype').value.slice(1);
+            populateFonts(personality === 'Everyday' ? 'Everyman' : personality === 'Outlaw' ? 'Rebel' : personality);
+            updateStyles();
+        });
+        document.getElementById('colorTheory').addEventListener('change', updateStyles);
+        document.getElementById('headingFont').addEventListener('change', updateStyles);
+        document.getElementById('bodyFont').addEventListener('change', updateStyles);
+        ['formality', 'playfulness', 'respect', 'emotion'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateStyles);
+        });
+
+        // Initial update
+        updateStyles();
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Brand Identity</title>
+</head>
+<body>
+    <main>
+        <section id="Core Brand Identity">
+            <h1>Core Brand Identity</h1>
+
+            <section id="brand-name-and-tagline">
+                <h1>Brand Name & Tagline</h1>
+
+                <div id="brand-name-and-tagline-brand-name">
+                    <p>Your brand name is the foundation of your identity. A well-chosen name makes your brand memorable and helps people connect with your business.</p>
+                    <label for="BrandName">Brand name</label>
+                    <p>Choose a name that represents your vision or cements your products and services.</p>
+                    <input type="text" id="BrandName" name="BrandName" placeholder="Enter brand name">
+                    <!-- Preview updates: nav.BrandName, Hero.H1 -->
+                </div>
+
+                <div id="brand-name-and-tagline-tagline">
+                    <p>Create a phrase that captures your brand’s essence.</p>
+                    <div>
+                        <label for="UseTagline">Do you want to use a tagline?</label>
+                        <p>A great tagline strengthens your brand by making it more memorable and meaningful.</p>
+                        <input type="checkbox" id="UseTagline" name="UseTagline">
+                    </div>
+                    <div>
+                        <label for="Tagline">Tagline</label>
+                        <p>text that makes users think of how a tagline can create fun or a deeper meaning</p>
+                        <input type="text" id="Tagline" name="Tagline" placeholder="Enter tagline">
+                        <!-- Preview updates: Hero.tagline -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="industry-and-values">
+                <h1>Industry & Values</h1>
+
+                <div id="industry-and-values-industry">
+                    <p>Defining your industry helps shape the overall look and feel of your brand.</p>
+                    <label for="Industry">Industry</label>
+                    <p>select the industry that matches closest</p>
+                    <select id="Industry" name="Industry">
+                        <option value="">Select an industry</option>
+                        <!-- Options populated from brand-industry.json -->
+                    </select>
+                    <!-- Preview updates: order fitting preview (for now only landing is available) -->
+                </div>
+
+                <div id="industry-and-values-values">
+                    <p>explanation about what values could mean for you as a brand</p>
+                    <label for="Values">Values</label>
+                    <p>Select the values you want to express as your brand</p>
+                    <select id="Values" name="Values" multiple>
+                        <option value="">Select values</option>
+                        <!-- Options populated from brand-values.json -->
+                    </select>
+                    <!-- Preview updates: brand-archetype.json chosen, based on industry * values -->
+                </div>
+            </section>
+
+            <section id="target-audience">
+                <h1>Target Audience</h1>
+                <p>Choosing your target audience helps you create a brand that resonates with the right people. While these options are completely optional, they make it easier to attract your ideal customers and find visuals, messaging, and designs that connect with them.</p>
+                <p>Don't worry—this doesn’t mean you’ll exclude other groups! It simply helps you refine your brand’s focus and increase its impact.</p>
+
+                <div id="target-audience-age-range">
+                    <label for="AgeRange">Age range</label>
+                    <p>Defining an age range allows you to tailor your brand to those most likely to engage with your products or services. Think about who makes the decisions—for example, if you're targeting kids or teens, their parents are often the ones making the purchase.</p>
+                    <select id="AgeRange" name="AgeRange">
+                        <option value="">Select age range</option>
+                        <option value="18-24">18-24</option>
+                        <option value="25-34">25-34</option>
+                        <option value="35-44">35-44</option>
+                        <option value="45-65">45-65</option>
+                        <option value="65+">65+</option>
+                    </select>
+                    <!-- Preview updates: #hero.img, varies by option -->
+                </div>
+
+                <div id="target-audience-location">
+                    <label for="Location">Location</label>
+                    <p>Your audience’s location affects their expectations, needs, and cultural preferences. People in different regions search for different styles, colors, and messaging—whether it's local shopping habits, climate-related clothing choices, or even preferred design trends.</p>
+                    <select id="Location" name="Location">
+                        <option value="">Select location</option>
+                        <!-- Options populated from target-audience.json -->
+                    </select>
+                    <!-- Preview updates: #users.img -->
+                </div>
+            </section>
+        </section>
+
+        <section id="Visual Identity">
+            <h1>Visual Identity</h1>
+
+            <section id="color">
+                <p>Text that explains that color conveys emotion and expectations of a brand. Picking a lively or subdued color style says something about your brand, but it could just as easily make you stand out in between competitors.</p>
+                <section id="color-color-theory">
+                    <label for="ColorTheory">Color theory</label>
+                    <p>color harmony is a stylistic choice based on color theory. A brand based on a single, strong color can be just as strong as a brand with two or three colors, but they should fit your brand. The choices below are based upon your earlier choices as the industry your brand will operate in, and the values your brand wants to communicate.</p>
+                    <select id="ColorTheory" name="ColorTheory">
+                        <option value="">Select color theory</option>
+                        <!-- Options populated from color-theory.json -->
+                    </select>
+                    <!-- Preview updates: colored elements (var(--color1), var(--color2), var(--color3)) -->
+                    <div>
+                        <label for="color1">Color 1</label>
+                        <input type="color" id="color1" name="color1">
+                    </div>
+                    <div>
+                        <label for="color2">Color 2</label>
+                        <input type="color" id="color2" name="color2">
+                    </div>
+                    <div>
+                        <label for="color3">Color 3</label>
+                        <input type="color" id="color3" name="color3">
+                    </div>
+                </section>
+            </section>
+
+            <section id="typography">
+                <p>Text that explains why to use typography that fits the industry and values of the brand. Why you would use a different font for headings and body.</p>
+                <div>
+                    <label for="HeadingFont">Heading font</label>
+                    <p>text that explains what a heading is and that it can fit the brand.</p>
+                    <select id="HeadingFont" name="HeadingFont">
+                        <option value="">Select heading font</option>
+                        <!-- Options populated from archetype-color-typography-connections.json -->
+                    </select>
+                </div>
+                <div>
+                    <label for="BodyFont">Body font</label>
+                    <p>text that explains why you should use a different body font from the embellished heading font, because it needs to be legible when user need to read more text</p>
+                    <select id="BodyFont" name="BodyFont">
+                        <option value="">Select body font</option>
+                        <!-- Options populated from archetype-color-typography-connections.json -->
+                    </select>
+                </div>
+                <!-- Preview updates: text elements (var(--ff-heading), var(--ff-body)) -->
+            </section>
+
+            <section id="logo">
+                <p>Text that explains why a logo is the eye catcher of the brand and the website.</p>
+                <div>
+                    <label>Logotype</label>
+                    <p>your brand name, written in your brand heading font</p>
+                </div>
+                <div>
+                    <label for="logomark">Logomark</label>
+                    <p>your full logo, a colorful version of your brand image</p>
+                    <input type="file" id="logomark" name="logomark">
+                    <!-- Preview updates: header>nav.logo>img, footer.logo>img -->
+                </div>
+                <div id="logo-request-form">
+                    <label>Request logo design offer</label>
+                    <p>Designing a logo is hard. Fill out the form below to request an offer on a logo based on your previous brand choices.</p>
+                    <form>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="country" placeholder="Country" required>
+                        <input type="email" name="email" placeholder="Email address" required>
+                        <textarea name="comment" placeholder="Comment"></textarea>
+                        <input type="text" name="brand-choices" placeholder="daden.fun brand choices" readonly>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="imagery">
+                <p>Your industry, brand values and target audience characteristics lead to a set of images that portray your brand, products or services and your users in a way that attracts your future users to your brand.</p>
+                <div>
+                    <label>Brand imagery</label>
+                    <p>based on your industry and values choices these images fit your brand best as an eye catching image on your website</p>
+                    <!-- Picker for 3 images based on archetypes (industry/values) -->
+                    <!-- Preview updates: #hero>img -->
+                </div>
+                <div>
+                    <label>User imagery</label>
+                    <p>based on your target audience choices these images fit closest with your future users</p>
+                    <!-- Picker for 3 images based on archetypes (target audience) -->
+                    <!-- Preview updates: #user>img -->
+                </div>
+                <div>
+                    <label>Product imagery</label>
+                    <p>based on your industry choice these images fit your brand's products and services best</p>
+                    <!-- Picker for 3 images based on archetypes (industry/values) -->
+                    <!-- Preview updates: #product>img -->
+                </div>
+            </section>
+        </section>
+
+        <section id="brand-voice-and-tone">
+            <h1>Brand Voice & Tone</h1>
+
+            <section id="tone-of-voice">
+                <p>Your brand's tone-of-voice informs you how you communicate with your users. Based on your earlier choices, the sliders are already set to a value that should fit your brand.</p>
+                <div>
+                    <label for="Formality">Formality</label>
+                    <p>Text what formality entails, from casual to professional</p>
+                    <input type="range" id="Formality" name="Formality" min="0" max="100">
+                    <!-- Preview updates: #hero>p (tone-of-voice.md) -->
+                </div>
+                <div>
+                    <label for="Playfulness">Playfulness</label>
+                    <p>Text what Playfulness entails, from serious to playful</p>
+                    <input type="range" id="Playfulness" name="Playfulness" min="0" max="100">
+                    <!-- Preview updates: #hero>p (tone-of-voice.md) -->
+                </div>
+                <div>
+                    <label for="Respect">Respect</label>
+                    <p>Text what Respect entails, from irreverent to respectful</p>
+                    <input type="range" id="Respect" name="Respect" min="0" max="100">
+                    <!-- Preview updates: #hero>p (tone-of-voice.md) -->
+                </div>
+                <div>
+                    <label for="Emotion">Emotion</label>
+                    <p>Text what Emotion entails, from matter-of-fact to enthusiastic</p>
+                    <input type="range" id="Emotion" name="Emotion" min="0" max="100">
+                    <!-- Preview updates: #hero>p (tone-of-voice.md) -->
+                </div>
+            </section>
+
+            <section id="copywriting">
+                <p>text that introduced what will be done on the page. To write good texts, also known as 'copy writing', you need to have an engaging text that fits your brand's tone-of-voice.</p>
+                <div>
+                    <label for="CTA">Call to action</label>
+                    <p>A call to action is what you want your users or site's visitors to do first. Adjust the text to fit with what you want your customers to do.</p>
+                    <textarea id="CTA" name="CTA" placeholder="Enter call to action"></textarea>
+                    <!-- Preview updates: #hero>p -->
+                </div>
+                <div>
+                    <label for="strategy">Strategy description</label>
+                    <p>Your brand name and call to action might not fully share with what you want to achieve with your company. What is the problem that you are trying to solve?</p>
+                    <textarea id="strategy" name="strategy" placeholder="Enter strategy description"></textarea>
+                    <!-- Preview updates: #user>p -->
+                </div>
+                <div>
+                    <label for="product">Product description</label>
+                    <p>And lastly, there is something you offer your customers. By writing a good description based on your tone-of-voice, you entice your customers to buy your products, because you solve their problems in a way they want to support.</p>
+                    <textarea id="product" name="product" placeholder="Enter product description"></textarea>
+                    <!-- Preview updates: #product>p -->
+                </div>
+            </section>
+        </section>
+
+        <section id="application">
+            <h1>Application</h1>
+
+            <section id="website-style">
+                <div id="website-request-form">
+                    <label>Request website offer</label>
+                    <p>So you like what you see? Fill out this form to request a quote on a design, development and hosting of your brand page based on your previous brand choices.</p>
+                    <form>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="country" placeholder="Country" required>
+                        <input type="email" name="email" placeholder="Email address" required>
+                        <textarea name="comment" placeholder="Comment"></textarea>
+                        <input type="text" name="brand-choices" placeholder="daden.fun brand choices" readonly>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
