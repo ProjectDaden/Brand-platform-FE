@@ -1,0 +1,76 @@
+{
+	"copywriting": {
+		"Call to Action": {
+			"line1": {
+				"formality": {
+					"0-33": "Let's shake things up!",
+					"34-66": "Join us in making an impact!",
+					"67-100": "We invite you to take the next step."
+				},
+				"playfulness": {
+					"0-33": "Your next big move starts now!",
+					"34-66": "Step into something great.",
+					"67-100": "Embrace excellence with confidence."
+				},
+				"respect": {
+					"0-33": "No nonsense, just results.",
+					"34-66": "Innovation and reliability, your perfect match.",
+					"67-100": "Experience progress through expertise."
+				},
+				"emotion": {
+					"0-33": "Time to take action!",
+					"34-66": "Your future is waiting—let’s make it happen.",
+					"67-100": "Achieve your vision with clarity."
+				}
+			}
+		},
+		"Strategy Description": {
+			"line1": {
+				"formality": {
+					"0-33": "We break barriers!",
+					"34-66": "Balancing innovation and dependability.",
+					"67-100": "A legacy of excellence meets the future."
+				},
+				"playfulness": {
+					"0-33": "Pushing the limits, setting trends!",
+					"34-66": "Fresh perspectives in a trusted field.",
+					"67-100": "Redefining success, one step at a time."
+				},
+				"respect": {
+					"0-33": "Nothing standard here.",
+					"34-66": "Dependable innovation, trusted by many.",
+					"67-100": "Ensuring quality through industry expertise."
+				},
+				"emotion": {
+					"0-33": "Change the game with us!",
+					"34-66": "We shape the future together.",
+					"67-100": "Shaping excellence through dedication."
+				}
+			}
+		},
+		"Product Description": {
+			"line1": {
+				"formality": {
+					"0-33": "Forget the usual!",
+					"34-66": "Designed for creativity and practicality.",
+					"67-100": "Crafted with precision and excellence."
+				},
+				"playfulness": {
+					"0-33": "It's bold, it's fresh, and it works!",
+					"34-66": "A perfect blend of fun and function.",
+					"67-100": "Combining form and function seamlessly."
+				},
+				"respect": {
+					"0-33": "Stand out from the crowd!",
+					"34-66": "Reliability meets modern design.",
+					"67-100": "Meticulously developed for your needs."
+				},
+				"emotion": {
+					"0-33": "Time to upgrade your game!",
+					"34-66": "Experience the next level of performance.",
+					"67-100": "Redefining quality and setting new standards."
+				}
+			}
+		}
+	}
+}
