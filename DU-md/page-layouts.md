@@ -1,17 +1,20 @@
-Core Brand Identity
+"Core Brand Identity"
 
 	Brand Name & Tagline
 
 		Brand name
-			p.intro					(text that introduced naming your brand)
+			p.intro					(Your brand name is the foundation of your identity. A well-chosen name makes your brand memorable and helps people connect with your business.)
 			
 			label					(Brand name)			
-			detail					(a detail that makes it easier for users to find a name for their brand)
+			detail					(Choose a name that represents your vision or cements your products and services.)
 			text input field		BrandName(string)
-				Update Preview			nav.BrandName, Hero.H1
+				Update Preview		nav.BrandName, Hero.H1
 
 		Tagline
-			p.intro					(Explain how a good tagline could keep your band in the user's mind longer)
+			p.intro					(Create a phrase that captures your brand’s essence.)
+
+			label					(Do you want to use a tagline?)
+			detail					(A great tagline strengthens your brand by making it more memorable and meaningful.)
 			checkbox				UseTagline(bool)
 			
 			label					(Tagline)
@@ -22,7 +25,7 @@ Core Brand Identity
 	Industry & values
 
 		Industry
-			p.intro					(text that explains that we need to know the industry to pre-set choices to make the design fit their brand)
+			p.intro					(Your industry helps shape the overall look and feel of your brand fit in.)
 			
 			label					(Industry)
 			detail					(select the industry that matches closest)
@@ -209,7 +212,7 @@ Application
 			
 			export styles / download component kit 
 				deprecated for now
-				
+
 			Website request form
 			label					(Request website offer)
 			detail					(So you like what you see? Fill out this form to request a quote on a design, development and hosting of your brand page based on your previous brand choices.)
