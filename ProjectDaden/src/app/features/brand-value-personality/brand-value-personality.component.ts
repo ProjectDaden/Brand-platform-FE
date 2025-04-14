@@ -1,6 +1,5 @@
-import { Component, inject, Signal, signal } from '@angular/core';
+import { Component, inject, OnInit, Signal, signal } from '@angular/core';
 import { BrandValuePersonalityService } from './services/brand-value-personality.service';
-import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenMultiListSelectionComponent } from '../../shared/components/daden-multi-list-selection/daden-multi-list-selection.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
@@ -10,11 +9,11 @@ import { DadenDetailComponent } from '../../shared/components/daden-detail/daden
 
 @Component({
   selector: 'app-brand-value-personality',
-  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenDropdownComponent, DadenMultiListSelectionComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent],
+  imports: [DadenHeaderComponent, DadenPageFooterComponent, DadenMultiListSelectionComponent, DadenGroupHeaderComponent, DadenLabelComponent, DadenDetailComponent],
   templateUrl: './brand-value-personality.component.html',
   standalone: true
 })
-export class BrandValuePersonalityComponent {
+export class BrandValuePersonalityComponent implements OnInit {
 
   brandValuePersonality = inject(BrandValuePersonalityService);
 
@@ -24,6 +23,9 @@ export class BrandValuePersonalityComponent {
   industriesPlaceholder: Signal<string> = signal('Select your industry...');
   traitsPlaceholder: Signal<string> = signal('Select your traits...');
   personalityPlaceholder: Signal<string> = signal('Select your personality...');
+
+  ngOnInit(): void {
+  }
 
   handleSelection(value: string|null): void {
     console.log('Selection made!', value);

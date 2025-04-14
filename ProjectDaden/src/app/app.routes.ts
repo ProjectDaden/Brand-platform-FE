@@ -19,22 +19,22 @@ export const routes: Routes = [
         path: 'core-brand-identity',
         children: [
           {
-            path: 'name',
+            path: 'brandname-and-tagline',
             loadComponent: () => import('./features/brand-name/brand-name.component')
               .then(m => m.BrandNameComponent)
           },
           {
-            path: 'mission',
+            path: 'vision-and-mission',
             loadComponent: () => import('./features/mission-vision/mission-vision.component')
               .then(m => m.MissionVisionComponent)
           },
           {
-            path: 'values',
+            path: 'industry-and-values',
             loadComponent: () => import('./features/brand-value-personality/brand-value-personality.component')
               .then(m => m.BrandValuePersonalityComponent)
           },
           {
-            path: 'audience',
+            path: 'target-audience',
             loadComponent: () => import('./features/target-audience/target-audience.component')
               .then(m => m.TargetAudienceComponent)
           },
@@ -44,17 +44,17 @@ export const routes: Routes = [
         path: 'brand-voice-and-tone',
         children: [
           {
-            path: 'messaging',
+            path: 'messaging-tone',
             loadComponent: () => import('./features/section-messaging/section-messaging.component')
             .then(m => m.SectionMessagingComponent)
           },
           {
-            path: 'voice-tone',
+            path: 'tone-of-voice',
             loadComponent: () => import('./features/voice-and-tone/voice-and-tone.component')
             .then(m => m.VoiceAndToneComponent)
           },
           {
-            path: 'copywriting',
+            path: 'copywriting-tone',
             loadComponent: () => import('./features/section-copywright/section-copywright.component')
             .then(m => m.SectionCopywrightComponent)
           },
@@ -64,22 +64,22 @@ export const routes: Routes = [
         path: 'visual-identity',
         children: [
           {
-            path: 'logo',
+            path: 'logo-composer',
             loadComponent: () => import('./features/section-logo/section-logo.component')
             .then(m => m.SectionLogoComponent)
           },
           {
-            path: 'color',
+            path: 'color-composer',
             loadComponent: () => import('./features/tool-color-picker/tool-color-picker.component')
             .then(m => m.ToolColorPickerComponent)
           },
           {
-            path: 'typography',
+            path: 'typography-composer',
             loadComponent: () => import('./features/section-typography/section-typography.component')
             .then(m => m.SectionTypographyComponent)
           },
           {
-            path: 'imagery',
+            path: 'imagery-composer',
             loadComponent: () => import('./features/section-imagery/section-imagery.component')
             .then(m => m.SectionImageryComponent)
           },

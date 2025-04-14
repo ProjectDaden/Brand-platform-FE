@@ -17,6 +17,7 @@ import { DadenDetailComponent } from '../../shared/components/daden-detail/daden
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
 import { DadenDropdown } from '../../shared/components/daden-dropdown/models/daden-dropdown';
+import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.service';
 
 @Component({
   selector: 'app-brand-name-tagline',
@@ -43,12 +44,13 @@ export class BrandNameComponent implements OnInit {
   private readonly translate = inject(TranslateService);
   brandnameAndTaglineStore = inject(brandNameTaglineStore);
   globalStateTest = inject(BaseClassGlobalStore);
+  archetypes = inject(ArchetypeSetupService);
 
   brandName = brandNameDefault;
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
   watchBrandName = computed(() => this.brandName.genericSignalCollection());
-  useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes'; // Replace taglineUsed
-  tagline: string = this.brandName.genericSignalCollection().tagLine || ''; // Simplify optional chaining
+  useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes';
+  tagline: string = this.brandName.genericSignalCollection().tagLine || '';
 
   dropDownConfig: DadenDropdown = {
     items: this.brandName.genericSignalCollection().personalities,
@@ -65,7 +67,13 @@ export class BrandNameComponent implements OnInit {
     );
     this.globalStateTest.getStore();
     this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
+    console.log(this.archetypes.getArchetypeSignal()(), " <--- VANUIT COMPONENT ARCHETYPES");
 
+    console.log(this.archetypes.bodyFonts(), " <--- ALL BODYFONTS IN COMP");
+    console.log(this.archetypes.headingFonts(), " <--- ALL HEADINGFONTS IN COMP");
+    console.log(this.archetypes.colorRanges(), " <--- ALL COLORRANGE IN COMP");
+    console.log(this.archetypes.industries(), " <--- ALL INDUSTRIES IN COMP");
+    console.log(this.archetypes.brandvalues(), " <--- ALL BRANDVALUES IN COMP");
   }
 
   handlePersonalitySelection(personality: string) {
@@ -126,7 +134,7 @@ export class BrandNameComponent implements OnInit {
 
   get taglineOutput() {
     return {
-      taglineUsed: this.useTagline, // Updated to use boolean
+      taglineUsed: this.useTagline,
       tagline: this.tagline || '',
     };
   }

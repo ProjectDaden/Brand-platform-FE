@@ -8,9 +8,9 @@ import { map, Observable } from 'rxjs';
 })
 export class BrandNameService {
   private readonly http = inject(HttpClient);
-  private configUrl =
+  private readonly configUrl =
     'assets/tempUsage/brand-name-personality-compositions.json';
-  private personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
+  private readonly personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
 
     private allPersonalities: { [key: string]: PersonalityOptions } = {};
   personalityComposition = signal<PersonalityOptions>({

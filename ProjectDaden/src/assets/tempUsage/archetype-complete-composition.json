@@ -1,0 +1,210 @@
+{
+  "archetype": {
+    "empty": {
+      "colorRange": [],
+      "headingFonts": [],
+      "bodyFonts": [],
+      "industry": [],
+      "value": []
+    },
+    "ruler": {
+      "colorRange": ["hsl(300, 80%, 50%)", "hsl(330, 80%, 50%)"],
+      "headingFonts": [
+        "Playfair Display",
+        "Cormorant Garamond",
+        "Old Standard TT"
+      ],
+      "bodyFonts": ["Georgia", "Times New Roman", "Lora"],
+      "industry": [
+        "luxury goods",
+        "finance",
+        "government",
+        "high-end real estate",
+        "corporate leadership"
+      ],
+      "value": [
+        "authority",
+        "control",
+        "stability",
+        "prestige",
+        "responsibility"
+      ]
+    },
+    "creator": {
+      "colorRange": ["hsl(330, 100%, 50%)", "hsl(30, 100%, 50%)"],
+      "headingFonts": ["Montserrat", "Playfair Display", "Raleway"],
+      "bodyFonts": ["Lato", "Source Sans Pro", "Poppins"],
+      "industry": [
+        "advertising",
+        "design",
+        "arts",
+        "entertainment",
+        "tech innovation",
+        "fashion"
+      ],
+      "value": [
+        "imagination",
+        "innovation",
+        "originality",
+        "vision",
+        "self-expression"
+      ]
+    },
+    "innocent": {
+      "colorRange": ["hsl(60, 60%, 70%)", "hsl(90, 60%, 70%)"],
+      "headingFonts": ["Pacifico", "Lobster", "Dancing Script"],
+      "bodyFonts": ["Open Sans", "Lora", "Comic Neue"],
+      "industry": [
+        "organic food",
+        "children’s products",
+        "wellness",
+        "education",
+        "eco-friendly brands"
+      ],
+      "value": ["purity", "simplicity", "optimism", "trust", "wholesomeness"]
+    },
+    "sage": {
+      "colorRange": ["hsl(210, 70%, 50%)", "hsl(240, 70%, 50%)"],
+      "headingFonts": ["Times New Roman", "Garamond", "Libre Baskerville"],
+      "bodyFonts": ["Georgia", "Merriweather", "Source Serif Pro"],
+      "industry": [
+        "education",
+        "consulting",
+        "publishing",
+        "research",
+        "technology"
+      ],
+      "value": ["wisdom", "knowledge", "clarity", "intellect", "guidance"]
+    },
+    "explorer": {
+      "colorRange": ["hsl(90, 50%, 40%)", "hsl(120, 50%, 40%)"],
+      "headingFonts": ["Fjalla One", "Patua One", "Cabin"],
+      "bodyFonts": ["Lato", "Roboto", "Montserrat"],
+      "industry": [
+        "travel",
+        "outdoor gear",
+        "adventure tourism",
+        "off-road cars",
+        "experiential tech"
+      ],
+      "value": [
+        "freedom",
+        "adventure",
+        "discovery",
+        "authenticity",
+        "curiosity"
+      ]
+    },
+    "rebel": {
+      "colorRange": ["hsl(330, 90%, 45%)", "hsl(30, 90%, 45%)"],
+      "headingFonts": ["Bebas Neue", "Staatliches", "Oswald"],
+      "bodyFonts": ["Arial", "Helvetica", "Roboto"],
+      "industry": [
+        "alternative fashion",
+        "music",
+        "extreme sports",
+        "craft beer",
+        "disruptive tech"
+      ],
+      "value": [
+        "rebellion",
+        "boldness",
+        "liberation",
+        "disruption",
+        "individuality"
+      ]
+    },
+    "magician": {
+      "colorRange": ["hsl(270, 80%, 40%)", "hsl(300, 80%, 40%)"],
+      "headingFonts": ["Cinzel", "UnifrakturMaguntia", "Alegreya"],
+      "bodyFonts": ["Lato", "Roboto", "Poppins"],
+      "industry": [
+        "cutting-edge tech",
+        "cosmetics",
+        "film",
+        "theater",
+        "spirituality"
+      ],
+      "value": ["transformation", "vision", "charisma", "mystery", "wonder"]
+    },
+    "hero": {
+      "colorRange": ["hsl(30, 100%, 60%)", "hsl(60, 100%, 60%)"],
+      "headingFonts": ["Oswald", "Anton", "Impact"],
+      "bodyFonts": ["Roboto", "Arial", "Helvetica"],
+      "industry": [
+        "fitness",
+        "military",
+        "sports apparel",
+        "emergency services",
+        "performance cars"
+      ],
+      "value": ["courage", "strength", "determination", "honor", "triumph"]
+    },
+    "lover": {
+      "colorRange": ["hsl(330, 70%, 60%)", "hsl(0, 70%, 60%)"],
+      "headingFonts": ["Great Vibes", "Sacramento", "Parisienne"],
+      "bodyFonts": ["Lora", "Merriweather", "Open Sans"],
+      "industry": [
+        "beauty",
+        "jewelry",
+        "luxury hotels",
+        "wine",
+        "chocolate",
+        "dating"
+      ],
+      "value": ["passion", "intimacy", "beauty", "sensuality", "connection"]
+    },
+    "jester": {
+      "colorRange": ["hsl(60, 100%, 50%)", "hsl(90, 100%, 50%)"],
+      "headingFonts": ["Bangers", "Fredoka One", "Luckiest Guy"],
+      "bodyFonts": ["Comic Neue", "Roboto", "Open Sans"],
+      "industry": ["comedy", "toys", "fast food", "gaming", "quirky retail"],
+      "value": ["joy", "humor", "spontaneity", "playfulness", "irreverence"]
+    },
+    "everyman": {
+      "colorRange": ["hsl(120, 40%, 50%)", "hsl(150, 40%, 50%)"],
+      "headingFonts": ["Roboto Slab", "Bitter", "Arvo"],
+      "bodyFonts": ["Open Sans", "Lato", "Source Sans Pro"],
+      "industry": [
+        "casual apparel",
+        "home goods",
+        "grocery",
+        "family cars",
+        "community services"
+      ],
+      "value": [
+        "relatability",
+        "honesty",
+        "belonging",
+        "hard work",
+        "friendliness"
+      ]
+    },
+    "caregiver": {
+      "colorRange": ["hsl(150, 60%, 60%)", "hsl(180, 60%, 60%)"],
+      "headingFonts": ["Lora", "Merriweather", "Georgia"],
+      "bodyFonts": ["Open Sans", "Poppins", "Source Sans Pro"],
+      "industry": [
+        "healthcare",
+        "childcare",
+        "nonprofits",
+        "pet care",
+        "senior living"
+      ],
+      "value": [
+        "compassion",
+        "nurturing",
+        "generosity",
+        "protection",
+        "empathy"
+      ]
+    },
+    "default": {
+      "headingFonts": ["Roboto", "Arial", "Helvetica"],
+      "bodyFonts": ["Open Sans", "Lora", "Merriweather"],
+      "colorRange": [],
+      "industry": [],
+      "value": []
+    }
+  }
+}

@@ -13,7 +13,7 @@ export class NavigationService {
   loadNavigation() {
     this.http.get<Navigation>('assets/tempUsage/nav-side-bar.json')
       .subscribe(data => {
-        console.log(data);
+        console.log(data, "Data here");
         this.navigation.set(data['nav-side-bar'].categories);
       });
   }

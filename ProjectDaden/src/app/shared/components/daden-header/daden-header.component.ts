@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { UrlTrackerService } from './../../navigation-url-helper/generic-navigation-location-data';
+import { Component, inject, OnInit } from '@angular/core';
 import { NavigationService } from '../../../features/nav-sidebar/services/nav-sidebar.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavigationCategory } from '../../../features/nav-sidebar/models/nav-sidebar-interface';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,35 +12,40 @@ import { CommonModule } from '@angular/common';
   styleUrl: './daden-header.component.scss'
 })
 export class DadenHeaderComponent implements OnInit {
+
+  private readonly navTrack = inject(UrlTrackerService); 
+
   pageName: string = '';
   categoryDescription: string = '';
 
   constructor(
-    private navigationService: NavigationService,
-    private router: Router,
-    private route: ActivatedRoute
+    private readonly navigationService: NavigationService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.setHeaderInfo();
+    const segments = this.navTrack.getAllSegments();
+    console.log(segments, "<---- All URL segments here to interact with");
   }
 
   private setHeaderInfo() {
     // Get current route segments
-    const urlSegments = this.router.url.split('/'); // e.g., ['', 'v1', 'visual-identity', 'imagery']
-    const categoryId = urlSegments[2]; // e.g., 'visual-identity'
-    const pageKey = urlSegments[3]; // e.g., 'imagery'
+    const urlSegments = this.router.url.split('/');
+    const categoryId = urlSegments[2];
+    const pageKey = urlSegments[3];
 
     // Get navigation data from service
     const navigation = this.navigationService.navigation();
     if (!navigation || !categoryId || !pageKey) return;
 
     // Find page name and category description
-    const categories = navigation as NavigationCategory;
+    const categories = navigation;
     const category = categories[categoryId];
-    if (category && category[pageKey]) {
-      this.pageName = this.formatTitle(category[pageKey]); // e.g., "Imagery"
-      this.categoryDescription = this.getCategoryDescription(categoryId); // Custom logic for description
+    if (category?.[pageKey]) {
+      this.pageName = this.formatTitle(category[pageKey]); 
+      this.categoryDescription = this.getCategoryDescription(categoryId);
     }
   }
 
