@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickGig Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">QuickGig</h1>
+    <nav class="space-x-4">
+      <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600">Jobs</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600">Profiles</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600">Login</a>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto py-8 px-4">
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">Last-minute Jobs</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="text-lg font-bold">Bartender @ Club 88</h3>
+          <p class="text-sm text-gray-600">Tonight, 20:00 - 03:00</p>
+          <p class="mt-2 text-sm">Location: Amsterdam</p>
+          <p class="text-sm">Pay: €120</p>
+          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply</button>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="text-lg font-bold">Security Guard @ EventX</h3>
+          <p class="text-sm text-gray-600">Saturday, 18:00 - 01:00</p>
+          <p class="mt-2 text-sm">Location: Rotterdam</p>
+          <p class="text-sm">Pay: €100</p>
+          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply</button>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h3 class="text-lg font-bold">Care Assistant @ ZorgWijs</h3>
+          <p class="text-sm text-gray-600">Tomorrow, 08:00 - 14:00</p>
+          <p class="mt-2 text-sm">Location: Utrecht</p>
+          <p class="text-sm">Pay: €85</p>
+          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Featured Freelancers</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-xl shadow text-center">
+          <img class="w-24 h-24 rounded-full mx-auto mb-2" src="https://i.pravatar.cc/100?img=5" alt="Profile" />
+          <h3 class="font-bold">Lisa Jansen</h3>
+          <p class="text-sm text-gray-600">Bartender | 4.8⭐</p>
+          <p class="text-xs mt-1">Based in Amsterdam</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow text-center">
+          <img class="w-24 h-24 rounded-full mx-auto mb-2" src="https://i.pravatar.cc/100?img=3" alt="Profile" />
+          <h3 class="font-bold">Mohamed El Amrani</h3>
+          <p class="text-sm text-gray-600">Security | 4.9⭐</p>
+          <p class="text-xs mt-1">Based in Rotterdam</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow text-center">
+          <img class="w-24 h-24 rounded-full mx-auto mb-2" src="https://i.pravatar.cc/100?img=1" alt="Profile" />
+          <h3 class="font-bold">Anna de Vries</h3>
+          <p class="text-sm text-gray-600">Healthcare | 4.7⭐</p>
+          <p class="text-xs mt-1">Based in Utrecht</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white mt-12 p-4 text-center text-sm text-gray-500 border-t">
+    &copy; 2025 QuickGig. All rights reserved.
+  </footer>
+</body>
+
+</html>
