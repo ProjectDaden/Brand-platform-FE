@@ -8,17 +8,25 @@
     <style>
       :root{
 
-        --primary-hue: 250;
-        --secondary-hue: 70;
+        --primary-hue: 0;
+        --secondary-hue: calc(var(--primary-hue) + 30);
+        --tertiary-hue: calc(var(--primary-hue) + 60);
         
         --primary-color-100:hsl(var(--primary-hue), 50%, 50%);
         --primary-color-075:hsl(var(--primary-hue), 50%, 62.5%);
         --primary-color-050:hsl(var(--primary-hue), 50%, 75%);
+        --primary-color-025:hsl(var(--primary-hue), 50%, 82.5%);
         --primary-color-010:hsl(var(--primary-hue), 50%, 90%);
         --primary-color-005:hsl(var(--primary-hue), 50%, 95%);
         --primary-color-150:hsl(var(--primary-hue), 50%, 25%);
-        --primary-color-200:hsl(250, 50%, 2.5%);
-        --secondary-color-100: hsl(var(--secondary-hue), 50%, 50%, 1);
+        --primary-color-200:hsl(var(--primary-hue), 50%, 2.5%);
+
+        --secondary-color-100: hsl(var(--secondary-hue), 50%, 50%);
+        --secondary-color-050: hsl(var(--secondary-hue), 50%, 75%);
+        --secondary-color-025: hsl(var(--secondary-hue), 50%, 82.5%);
+        --secondary-color-005:hsl(var(--secondary-hue), 50%, 95%);
+
+        --tertiary-color-100: hsl(var(--tertiary-hue), 50%, 50%);
         
 
         --border-radius: 0.5rem;
@@ -31,7 +39,7 @@
     }
     </style>
 </head>
-<body class="antialiased text-[color:--primary-color-200] bg-gray-50">
+<body class="antialiased text-[color:--primary-color-200]">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm">
         <div class="container mx-auto px-[--padding-x] py-4 flex items-center justify-between">
@@ -50,23 +58,26 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="py-24 min-h-[75dvh] flex align-middle bg-gradient-to-r from-[--primary-color-100] to-[--secondary-color-100] text-white">
-        <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-5xl md:text-6xl font-semibold mb-4 leading-tight">Brand Name</h1>
-                <p class="text-xl mb-4">Empowering Your Future</p>
-                <p class="mb-6 opacity-75">Innovative solutions for the modern tech industry, delivering cutting-edge performance and reliability.</p>
-                <div class="space-x-4"> 
-                    <button class="border-2 border-white bg-white text-[color:--primary-color-100] px-[--padding-x] py-[--padding-y] rounded-[--border-radius] font-semibold hover:bg-[color:--primary-color-010] hover:border-[color:--primary-color-010] transition-all duration-300 shadow-lg hover:scale-105">
-                        Get Started
-                    </button>
-                    <button class="border-2 border-white text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] font-semibold hover:bg-white hover:text-[color:--primary-color-100] transition-all duration-300 shadow-lg hover:scale-105">
-                        Learn More
-                    </button>
+    <section class="bg-cover bg-center bg-no-repeat object-top" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="py-24 min-h-[75dvh] flex items-center w-full relative">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[--primary-color-025] to-[--secondary-color-025] mix-blend-multiply"></div>
+            <!-- Content -->
+            <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row items-center relative z-10">
+                <div class="md:w-1/2 mb-10 md:mb-0 text-white">
+                    <h1 class="text-5xl md:text-6xl font-semibold mb-4 leading-tight">Brand Name</h1>
+                    <p class="text-xl mb-4">Empowering Your Future</p>
+                    <p class="mb-6 opacity-75">Innovative solutions for the modern tech industry, delivering cutting-edge performance and reliability.</p>
+                    <div class="space-x-4"> 
+                        <button class="border-2 border-white bg-white text-[color:--primary-color-100] px-[--padding-x] py-[--padding-y] rounded-[--border-radius] font-semibold hover:bg-[color:--primary-color-010] hover:border-[color:--primary-color-010] transition-all duration-300 shadow-lg hover:scale-105">
+                            Get Started
+                        </button>
+                        <button class="border-2 border-white text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] font-semibold hover:bg-white hover:text-[color:--primary-color-100] transition-all duration-300 shadow-lg hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hero" class="max-h-120 w-full rounded-[--border-radius] shadow-md object-cover">
+                <div class="md:w-1/2"></div>
             </div>
         </div>
     </section>
@@ -85,7 +96,7 @@
     </section>
 
     <!-- Products Section -->
-    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--primary-color-005]">
+    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005]">
         <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row-reverse items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 md:pl-8">
                 <img src="https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Products" class="max-h-80 w-full rounded-[--border-radius] shadow-md object-cover">
@@ -116,7 +127,7 @@
                     <p class=" text-[color:--primary-color-200] opacity-75">#9333EA</p>
                 </div>
                 <div class="text-center">
-                    <div class="h-32 w-full bg-gray-200 rounded-[--border-radius] shadow-md mb-4"></div>
+                    <div class="h-32 w-full bg-[color:--tertiary-color-100] rounded-[--border-radius] shadow-md mb-4"></div>
                     <p class="font-semibold">Tertiary color</p>
                     <p class=" text-[color:--primary-color-200] opacity-75">#E5E7EB</p>
                 </div>
@@ -125,7 +136,7 @@
     </section>
 
     <!-- Typography Section -->
-    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--primary-color-005]">
+    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005]">
 		<div class="container mx-auto px-[--padding-x]">
 			<h3 class="text-3xl font-semibold text-center mb-12 text-[color:--primary-color-100]">Typography</h3>
 			<div class=" flex flex-col md:flex-row items-start text-center">
