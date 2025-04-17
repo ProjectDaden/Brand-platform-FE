@@ -17,7 +17,6 @@ export class DadenDropdownComponent{
    */
   dropDownParts = input<DadenDropdown>({
     items: [],
-    placeholder: 'select item...',
     selectedItem: '',
     disabled: false
   });

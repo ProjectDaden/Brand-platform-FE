@@ -8,11 +8,6 @@ export const routes: Routes = [
   { path: 'color-picker', component: ToolColorPickerComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'color-picker',
-    loadComponent: () => import('./features/tool-color-picker/tool-color-picker.component')
-      .then(m => m.ToolColorPickerComponent)
-  },
-  {
     path: 'v1',
     children: [
       {

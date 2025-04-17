@@ -17,7 +17,9 @@ export class ArchetypeSetupService {
   colorRanges = signal<string[]>([]);
   industries = signal<string[]>([]);
   brandvalues = signal<string[]>([]);
-  
+
+  constructor() {}
+
   async init(): Promise<void> {
     await this.initializeData();
   }

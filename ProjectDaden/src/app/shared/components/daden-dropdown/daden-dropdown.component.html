@@ -7,7 +7,7 @@
       (ngModelChange)="onModelChange($event)"
       [disabled]="dropDownParts().disabled"
     >
-      <option value="" disabled>
+      <option value="" disabled selected="{{ dropDownParts().placeholder}}">
         {{ dropDownParts().placeholder }}
       </option>
       @for (option of dropDownParts().items; track $index) {

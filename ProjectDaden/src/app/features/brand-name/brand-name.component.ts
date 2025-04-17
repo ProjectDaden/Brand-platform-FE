@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, computed, Renderer2 } from '@angular/core';
+import { Component, OnInit, inject, computed, Renderer2, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -33,11 +33,12 @@ import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.
     DadenPageFooterComponent,
     DadenLabelComponent,
     DadenDetailComponent,
-    DadenInputComponent,
-  ],
+    DadenInputComponent
+],
   templateUrl: './brand-name.component.html',
 })
 export class BrandNameComponent implements OnInit {
+
   private readonly document = inject(DOCUMENT);
   private readonly renderer = inject(Renderer2);
   private readonly brandNameService = inject(BrandNameService);
@@ -45,12 +46,13 @@ export class BrandNameComponent implements OnInit {
   brandnameAndTaglineStore = inject(brandNameTaglineStore);
   globalStateTest = inject(BaseClassGlobalStore);
   archetypes = inject(ArchetypeSetupService);
+  brandNameInput = signal<string>("");
 
   brandName = brandNameDefault;
-  personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
-  watchBrandName = computed(() => this.brandName.genericSignalCollection());
-  useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes';
-  tagline: string = this.brandName.genericSignalCollection().tagLine || '';
+
+  groupHeaderTitle: string = "";
+  groupHeaderSubTitle: string = "";
+  detailText: string = "Craft a tagline that reflects your brand’s essence.";
 
   dropDownConfig: DadenDropdown = {
     items: this.brandName.genericSignalCollection().personalities,
@@ -59,7 +61,17 @@ export class BrandNameComponent implements OnInit {
     disabled: false
   }
 
+  personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
+  watchBrandName = computed(() => this.brandName.genericSignalCollection());
+  useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes';
+  tagline: string = this.brandName.genericSignalCollection().tagLine || '';
+
   ngOnInit() {
+    this.groupHeaderTitle = "Set your brand name";
+    this.groupHeaderSubTitle = "Give your brand a name that people will recognize";
+    console.log(this.dropDownConfig.selectedItem, " <<<--- dropdown FROM BRANDAME");
+
+
     this.translate.setDefaultLang('en');
     this.translate.use('en');
     this.loadSynonymsBasedOnPersonality(
@@ -77,10 +89,11 @@ export class BrandNameComponent implements OnInit {
   }
 
   handlePersonalitySelection(personality: string) {
-    const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
-    this.brandNameService.setPersonality(personality, associatedPersonalityOptions);
-    this.loadSynonymsBasedOnPersonality(personality);
-    this.updateBrandNameCollection({ selectedPersonality: personality });
+    // const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
+    // this.brandNameService.setPersonality(personality, associatedPersonalityOptions);
+    // this.loadSynonymsBasedOnPersonality(personality);
+    // this.updateBrandNameCollection({ selectedPersonality: personality });
+    console.log(personality, " <<<--- Reflected in the BrandName component");
   }
 
   updateBrandNameCollection(updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>) {
