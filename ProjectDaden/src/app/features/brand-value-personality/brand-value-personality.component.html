@@ -2,16 +2,22 @@
 
 <section id="tone-of-voice">
     <daden-group-header
-        title="Define Your Brand"
-        subtitle="Choose your industry, traits, and personality to build your brand’s identity.">
+        [title] = "groupHeaderTitleIndustry"
+        [subtitle] ="groupHeaderSubTitleIndustry">
     </daden-group-header>
     
     <div class="flex flex-col gap-6">
         <!-- Industry Dropdown -->
         <div>
+            <daden-label>{{ "brand-name-component.form-area"| translate }}</daden-label>
+            <daden-detail>{{ "brand-name-component.form-area" | translate }}</daden-detail>
+      <daden-label>{{ "brand-name-component.form-area"| translate }}</daden-label>
+      <daden-detail>{{ "brand-name-component.form-area" | translate }}
+      </daden-detail>
+<!-- 
             <daden-label
                 label="Industry">
-            </daden-label>
+            </daden-label> -->
             <!-- <daden-dropdown
                 class="w-full" 
                 [items]="brandPersonalityValues.industries"

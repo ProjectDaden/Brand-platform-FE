@@ -8,6 +8,5 @@ import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
   templateUrl: './daden-detail.component.html',
 })
 export class DadenDetailComponent {
-  text = input<string>('');
 
 }

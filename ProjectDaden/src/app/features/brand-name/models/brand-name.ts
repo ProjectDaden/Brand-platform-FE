@@ -22,3 +22,17 @@ export const DEFAULT_BRAND_NAME_VALUES: BrandName = {
 export const brandNameDefault: SignalCollection<BrandName> = {
   genericSignalCollection: signal(DEFAULT_BRAND_NAME_VALUES),
 };
+
+export interface NEWBrandname {
+  brandname: string;
+  taglineDescription: string;
+}
+
+export const NEW_BRANDNAME_DEFAULT: NEWBrandname = {
+  brandname: '',
+  taglineDescription: ''
+}
+
+export const NEWBrandnameDefault: SignalCollection<NEWBrandname> = {
+  genericSignalCollection: signal(NEW_BRANDNAME_DEFAULT)
+}

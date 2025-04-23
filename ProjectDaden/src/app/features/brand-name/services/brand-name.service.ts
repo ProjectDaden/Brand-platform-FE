@@ -11,7 +11,6 @@ export class BrandNameService {
   private readonly configUrl =
     'assets/tempUsage/brand-name-personality-compositions.json';
   private readonly personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
-
     private allPersonalities: { [key: string]: PersonalityOptions } = {};
   personalityComposition = signal<PersonalityOptions>({
     synonyms: [],
@@ -38,6 +37,8 @@ export class BrandNameService {
       this.setPersonality('default', this.allPersonalities);
     });
   }
+
+
 
   // Expose all personalities to interested consumers.
   getAllPersonalities(): { [key: string]: PersonalityOptions } {

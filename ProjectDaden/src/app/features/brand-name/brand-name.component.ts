@@ -1,22 +1,20 @@
-import { Component, OnInit, inject, computed, Renderer2, signal } from '@angular/core';
+import { Component, OnInit, inject, computed, Renderer2, signal, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
-import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-header/daden-group-header.component';
 
 import { BrandNameService } from './services/brand-name.service';
-import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES } from './models/brand-name';
+import { brandNameDefault, DEFAULT_BRAND_NAME_VALUES, NEWBrandname, NEWBrandnameDefault } from './models/brand-name';
 import { PersonalityOptions } from './store/brandname-tagline.model';
 import { brandNameTaglineStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
-import { DadenDropdown } from '../../shared/components/daden-dropdown/models/daden-dropdown';
 import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.service';
 
 @Component({
@@ -29,16 +27,18 @@ import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.
     TranslateModule,
     DadenHeaderComponent,
     DadenGroupHeaderComponent,
-    DadenDropdownComponent,
     DadenPageFooterComponent,
     DadenLabelComponent,
     DadenDetailComponent,
-    DadenInputComponent
+    DadenInputComponent,
 ],
   templateUrl: './brand-name.component.html',
 })
 export class BrandNameComponent implements OnInit {
 
+  /**
+   * Injecting the relevant Angular services for this component.
+   */
   private readonly document = inject(DOCUMENT);
   private readonly renderer = inject(Renderer2);
   private readonly brandNameService = inject(BrandNameService);
@@ -46,34 +46,47 @@ export class BrandNameComponent implements OnInit {
   brandnameAndTaglineStore = inject(brandNameTaglineStore);
   globalStateTest = inject(BaseClassGlobalStore);
   archetypes = inject(ArchetypeSetupService);
-  brandNameInput = signal<string>("");
 
+  /**
+   * Starting position (default) for the brandname component. (DTO)
+   */
   brandName = brandNameDefault;
+  newBrandName = NEWBrandnameDefault;
 
-  groupHeaderTitle: string = "";
-  groupHeaderSubTitle: string = "";
-  detailText: string = "Craft a tagline that reflects your brand’s essence.";
+  /**
+   * the group headers and texts for indicating the form-context attached to i8n.
+   */
+  groupHeaderTitleBrandname: string = "";
+  groupHeaderSubTitleBrandname: string = "";
+  groupHeaderTitleTagline: string = "";
+  groupHeaderSubTitleTagline: string = "";
+  detailText: string = "";
 
-  dropDownConfig: DadenDropdown = {
-    items: this.brandName.genericSignalCollection().personalities,
-    placeholder: "select an item...",
-    selectedItem: "",
-    disabled: false
-  }
+  brandNameInput = signal<string>("");
+  taglineInput = signal<string>("Your tagline here...");
+  isDisabled = signal<boolean>(false);
+
+  // dropDownConfig: DadenDropdown = {
+  //   items: this.brandName.genericSignalCollection().personalities,
+  //   placeholder: "select an item...",
+  //   selectedItem: "",
+  //   disabled: false
+  // }
 
   personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
   watchBrandName = computed(() => this.brandName.genericSignalCollection());
+  watchNEWBrandName = computed(() => this.newBrandName.genericSignalCollection());
+
   useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes';
   tagline: string = this.brandName.genericSignalCollection().tagLine || '';
 
   ngOnInit() {
-    this.groupHeaderTitle = "Set your brand name";
-    this.groupHeaderSubTitle = "Give your brand a name that people will recognize";
-    console.log(this.dropDownConfig.selectedItem, " <<<--- dropdown FROM BRANDAME");
+    this.groupHeaderTitleBrandname = this.translate.instant("brandname.form-area.group-title-brandName");
+    this.groupHeaderSubTitleBrandname = this.translate.instant("brandname.form-area.group-subTitle-brandName");
+    this.groupHeaderTitleTagline = this.translate.instant("brandname.preview-area.group-title-tagline");
+    this.groupHeaderSubTitleTagline =this.translate.instant("brandname.preview-area.group-subTitle-tagline");
+    this.detailText = "Craft a tagline that reflects your brand’s essence.";
 
-
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
     this.loadSynonymsBasedOnPersonality(
       this.brandName.genericSignalCollection().selectedPersonality
     );
@@ -100,6 +113,23 @@ export class BrandNameComponent implements OnInit {
     this.brandName.genericSignalCollection.update(current => ({ ...current, ...updates }));
     this.tagline = this.brandName.genericSignalCollection().tagLine || '';
     console.log('UPDATES', this.brandName.genericSignalCollection());
+  }
+
+  triggerTaglineReview(event: string | undefined, prop: keyof NEWBrandname) {
+    if (event) {
+      const iets: Partial<NEWBrandname> = {};
+      iets[prop] = event;
+      this.updateNEWBrandnameCollection(iets);
+    }
+  }
+
+  updateNEWBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>){
+    // TODO if(){} toevoegen op tagline. Laatste letter blijft hangen. of "set()" gebruiken ipv update.
+    this.brandNameInput.set(this.newBrandName.genericSignalCollection().brandname);
+    this.taglineInput.set(this.newBrandName.genericSignalCollection().taglineDescription);
+    this.newBrandName.genericSignalCollection.update(curr => ({...curr, ...updates}));
+    console.log(updates, " hier moet ik generic updaten!!");
+    // this.newBrandName.genericSignalCollection()
   }
 
   onTaglineToggle(value: boolean) {

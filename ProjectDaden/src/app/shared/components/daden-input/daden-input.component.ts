@@ -14,10 +14,11 @@ export class DadenInputComponent {
   id = input('input-field');
   type = input('text');
   placeholder = input('Enter value...');
-  disabled = input(false);
+  isDisabled = input<boolean>(false);
   accept = input('');
   rows = input(4);
   value = model<string>();
+  chechkValue = model<boolean>(true);
 
   constructor() {
     this.inputSubject.pipe(debounceTime(300)).subscribe((debouncedValue) => {
@@ -38,6 +39,13 @@ export class DadenInputComponent {
       this.value.set(file.name);
     }
   }
+
+  onCheckboxChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.chechkValue.set(target.checked);
+  }
+
+  
 
   //  // Input signals
   //  id = input('input-field');
