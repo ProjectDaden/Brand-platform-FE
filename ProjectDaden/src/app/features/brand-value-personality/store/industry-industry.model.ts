@@ -6,7 +6,6 @@
 * */
 export type Industry = {
     industries: string[];
-    selectedIndustry: string | undefined;
   }
   
   /*
@@ -14,8 +13,8 @@ export type Industry = {
   * This is the Type for the traits Options.
   * @param traits: string[] - The list of traits
   * */
-  export type IndustryTraits = {
-      traits: string[];
+  export type IndustryValues = {
+      values: string[];
     }
   
   
@@ -35,4 +34,4 @@ export type Personalities = {
   * This is the Type for the Industry & Values Complete Type.
   * @param Industry & IndustryTraits & Personalities - The Industry, IndustryTraits and Personalities
   * */
-  export type IndustryAndValuesCompleted = Industry & IndustryTraits & Personalities;
+  export type IndustryAndValuesCompleted = Industry & IndustryValues;

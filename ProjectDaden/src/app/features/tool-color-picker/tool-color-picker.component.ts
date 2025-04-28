@@ -22,6 +22,7 @@ import { DadenLabelComponent } from '../../shared/components/daden-label/daden-l
 export class ToolColorPickerComponent {
 
   brandColorThemeService = inject(BrandColorThemeService);
+    // private readonly colorTheoryPath = 'assets/tempUsage/color-theory-categories.json';
 
   themes = this.brandColorThemeService.getBrandColorTheme();
 
@@ -33,6 +34,15 @@ export class ToolColorPickerComponent {
   handleSelection(value: string|null): void {
     console.log('Selection made!', value);
   }
+
+    // this.loadColorTheory();
+
+    // private loadColorTheory() {
+  //   this.http.get<any>(this.colorTheoryPath).subscribe((data) => {
+  //     this.colorTheoryData.set(data);
+  //     console.log(data, ' <<< data colorTheory!');
+  //   });
+  // }
 
   private initializeSignal<T>(value: T): T {
     return value;

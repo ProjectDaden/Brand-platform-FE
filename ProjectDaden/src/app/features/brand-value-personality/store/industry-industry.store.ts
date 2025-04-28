@@ -1,14 +1,11 @@
 import { signalStore, withState } from '@ngrx/signals';
-import { IndustryAndValuesCompleted } from './industry-and-value.model';
+import { IndustryAndValuesCompleted } from './industry-industry.model';
 
 type IndustryAndValuesState = IndustryAndValuesCompleted;
 
 export const initialIndustryAndValues: IndustryAndValuesState = {
     industries: [],
-    selectedIndustry: '',
-    traits: [],
-    personalities: [],
-    selectedPersonality: '',
+    values: []
 }
 
 export const IndustryAndValuesStore = signalStore(

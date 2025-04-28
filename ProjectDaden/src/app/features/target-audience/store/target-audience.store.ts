@@ -18,6 +18,6 @@ export const initialTargetAudienceState: TargetAudienceState = {
     selectedIndustry: '',
 }
 
-export const IndustryAndValuesStore = signalStore(
+export const TargetAudienceStore = signalStore(
     withState(initialTargetAudienceState)
 );

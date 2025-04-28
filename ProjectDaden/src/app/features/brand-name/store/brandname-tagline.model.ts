@@ -51,6 +51,12 @@ export type Tagline = {
     tagLine: string;
 }
 
+export type newBrandname = {
+  brandname: string;
+  tagline: string;
+  taglineUsed: boolean;
+}
+
 /*
 * @description
 * This is the Type for the BrandName & tagline Complete Type.

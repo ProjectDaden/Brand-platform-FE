@@ -25,8 +25,8 @@ export const routes: Routes = [
           },
           {
             path: 'industry-and-values',
-            loadComponent: () => import('./features/brand-value-personality/brand-value-personality.component')
-              .then(m => m.BrandValuePersonalityComponent)
+            loadComponent: () => import('./features/brand-value-personality/brand-industry.component')
+              .then(m => m.BrandIndustryComponent)
           },
           {
             path: 'target-audience',
