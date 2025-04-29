@@ -5,8 +5,9 @@
   [disabled]="isDisabled()"
   [placeholder]="placeholder()"
   (input)="onInputChange($event)"
-  class="w-full rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+  class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
 />
+
 } @case('number'){
 <input
   [id]="id()"
@@ -31,12 +32,7 @@
   [disabled]="isDisabled()"
   [attr.accept]="accept()"
   (change)="onFileChange($event)"
-  class="w-full rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
-  [ngClass]="{
-    'cursor-pointer file:py-2 file:px-4 file:border-collapse file:mr-4 file:cursor-pointer file:border-0 file:font-normal file:bg-blue-500 file:text-white file:hover:bg-blue-700 file:disabled:bg-gray-300 file:disabled:text-gray-600 file:disabled:cursor-default':
-      type() === 'file',
-    'px-4 py-2': ['text', 'name', 'password', 'email'].includes(type())
-  }"
+  class="w-full rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400 cursor-pointer file:py-2 file:px-4 file:border-collapse file:mr-4 file:cursor-pointer file:border-0 file:font-normal file:bg-blue-500 file:text-white file:hover:bg-blue-700 file:disabled:bg-gray-300 file:disabled:text-gray-600 file:disabled:cursor-default"
 />
 } @case('textarea') {
 <textarea
@@ -55,6 +51,7 @@
     [disabled]="isDisabled()"
     [placeholder]="placeholder()"
     (input)="onInputChange($event)"
+    class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
   />
 }
 @case('password') {
@@ -64,6 +61,7 @@
     [disabled]="isDisabled()"
     [placeholder]="placeholder()"
     (input)="onInputChange($event)"
+    class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
   />
 }
 @case('checkbox') {
