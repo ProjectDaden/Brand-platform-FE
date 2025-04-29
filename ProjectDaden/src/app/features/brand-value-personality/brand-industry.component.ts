@@ -77,8 +77,8 @@ export class BrandIndustryComponent implements OnInit {
   personalityPlaceholder: Signal<string> = signal('Select your personality...');
 
   ngOnInit(): void {
-    this.groupHeaderTitleBrandname = this.translate.instant("industry-and-values.preview-area.preview-title");
-    this.groupHeaderSubTitleBrandname = this.translate.instant("industry-and-values.preview-area.preview-description");
+    this.groupHeaderTitleIndustry = this.translate.instant("industry-and-values.preview-area.preview-title");
+    this.groupHeaderSubTitleIndustry = this.translate.instant("industry-and-values.preview-area.preview-description");
     this.groupHeaderTitleIndustry = this.translate.instant('industry-and-values.form-area.group-title-industry');
     this.groupHeaderSubTitleIndustry = this.translate.instant('industry-and-values.form-area.group-subTitle-industry');
     this.brandIndustryService.loadBrandIndustry().subscribe((data) => {
