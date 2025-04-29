@@ -6,7 +6,6 @@
         "type-something": "Type something...",
         "pagination.page": "page",
         "pagination.of": "of"
-
     },
     "button": {
       "save-and-continue": "save & continue",
@@ -27,25 +26,39 @@
     "preview-component": {
         "title": "hallo preview"
     },
-    "brand-name-component": {
+    "brandname": {
         "title": "Brand Name and Tagline",
         "subtitle": "Define Your Brand’s Identity",
         "form-area": {
-            "form-title": "Set Your Tagline",
-            "form-description": "Craft a tagline that reflects your brand’s essence.",
-            "form-personality-label": "Personality",
-            "form-personality-description": "Your brand name and tagline should fit your personality.",
-            "form-thesaurus-label": "Thesaurus",
-            "form-thesaurus-description": "Pick a keyword to inspire your tagline.",
-            "form-tagline-checkbox-label": "Tagline",
-            "form-tagline-checkbox-text": "Do you want to use a tagline?",
-            "form-tagline-checkbox-description": "Decide if your brand will use a tagline.",
-            "form-tagline-input-label": "Tagline",
-            "form-tagline-input-description": "Write a concise phrase that sums up your brand."
+            "group-title-brandName": "Set your brand name",
+            "group-subTitle-brandName":"Give your brand a name that people will recognize.",
+            "description":"Your brand name is the foundation of your identity. A well-chosen name makes your brand memorable and helps people connect with your business.",
+            "description-follow":"Choose a name that represents your vision or cements your products and services.",
+            "brandname-tagline-description":"Create a phrase that captures your brand’s essence.",
+            "inputlabel":"Brand name",
+            "tagline-inputlabel":"Do you want to use a tagline?",
+            "tagline-inputfield-description":"A great tagline strengthens your brand by making it more memorable and meaningful."
         },
         "preview-area": {
-            "preview-title": "Tagline Preview",
-            "preview-description": "See how your tagline looks in action."
+            "group-title-tagline":"Tagline Preview",
+            "group-subTitle-tagline":"See how your tagline looks in action."
+        }
+    },
+    "industry-and-values": {
+        "title": "Brand Name and Tagline",
+        "subtitle": "Define Your Brand’s Identity",
+        "form-area": {
+            "group-title-industry": "Industry & Values",
+            "group-subTitle-industry":"Defining your industry helps shape the overall look and feel of your brand.",
+            "inputlabel": "Industry",
+            "description-follow":"select the industry that matches closest",
+            "values-description": "explanation about what values could mean for you as a brand",
+            "values-label":"Values",
+            "values-description-2": "Select the values you want to express as your brand (hold 'Control' or 'Command' on Mac)"
+        },
+        "preview-area": {
+            "preview-title": "Brand Character Preview",
+            "preview-description": "A snapshot of your brand’s identity based on your choices."
         }
     }
 }

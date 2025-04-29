@@ -1,0 +1,84 @@
+{   
+    "general": {
+        "loading": "loading",
+        "username": "Username",
+        "password": "Password",
+        "type-something": "Type something...",
+        "pagination.page": "page",
+        "pagination.of": "of"
+
+    },
+    "button": {
+      "save-and-continue": "save & continue",
+      "reset": "reset",
+      "clear": "clear",
+      "previous": "previous",
+      "next": "next",
+      "login": "Login",
+      "go-home": "go home",
+      "search": "search"
+    },
+    "home-component": {
+        "title": "hallo Home"
+    },
+    "sidebar-component": {
+        "title": "hallo sidebar"
+    },
+    "preview-component": {
+        "title": "hallo preview"
+    },
+    "brand-name-component": {
+        "title": "Brand Name and Tagline",
+        "subtitle": "Define Your Brand’s Identity",
+        "form-area": {
+            "form-brand-name-description":"Your brand name is the foundation of your identity. A well-chosen name makes your brand memorable and helps people connect with your business.",
+            "form-brand-name-description-follow":"Choose a name that represents your vision or cements your products and services.",
+            "form-brand-name-tagline-description":"Create a phrase that captures your brand’s essence.",
+            "form-brand-name-inputlabel":"Brand name",
+            "form-tagline-inputlabel":"Do you want to use a tagline?",
+            "form-tagline-inputfield-description":"A great tagline strengthens your brand by making it more memorable and meaningful.",
+            "form-title": "Set Your Tagline",
+            "form-description": "Craft a tagline that reflects your brand’s essence.",
+            "form-personality-label": "Personality",
+            "form-personality-description": "Your brand name and tagline should fit your personality.",
+            "form-thesaurus-label": "Thesaurus",
+            "form-thesaurus-description": "Pick a keyword to inspire your tagline.",
+            "form-tagline-checkbox-label": "Tagline",
+            "form-tagline-checkbox-text": "Do you want to use a tagline?",
+            "form-tagline-checkbox-description": "Decide if your brand will use a tagline.",
+            "form-tagline-input-label": "Tagline",
+            "form-tagline-input-description": "Write a concise phrase that sums up your brand."
+        },
+        "preview-area": {
+            "preview-title": "Tagline Preview",
+            "preview-description": "See how your tagline looks in action."
+        }
+    },
+    "industry-and-values": {
+        "title": "Brand Name and Tagline",
+        "subtitle": "Define Your Brand’s Identity",
+        "form-area": {
+            "form-brand-name-description":"Your brand name is the foundation of your identity. A well-chosen name makes your brand memorable and helps people connect with your business.",
+            "form-brand-name-description-follow":"Choose a name that represents your vision or cements your products and services.",
+            "form-brand-name-tagline-description":"Create a phrase that captures your brand’s essence.",
+            "form-brand-name-inputlabel":"Brand name",
+            "form-tagline-inputlabel":"Do you want to use a tagline?",
+            "form-tagline-inputfield-description":"A great tagline strengthens your brand by making it more memorable and meaningful.",
+            "form-title": "Set Your Tagline",
+            "form-description": "Craft a tagline that reflects your brand’s essence.",
+            "form-personality-label": "Personality",
+            "form-personality-description": "Your brand name and tagline should fit your personality.",
+            "form-thesaurus-label": "Thesaurus",
+            "form-thesaurus-description": "Pick a keyword to inspire your tagline.",
+            "form-tagline-checkbox-label": "Tagline",
+            "form-tagline-checkbox-text": "Do you want to use a tagline?",
+            "form-tagline-checkbox-description": "Decide if your brand will use a tagline.",
+            "form-tagline-input-label": "Tagline",
+            "form-tagline-input-description": "Write a concise phrase that sums up your brand."
+        },
+        "preview-area": {
+            "preview-title": "Tagline Preview",
+            "preview-description": "See how your tagline looks in action."
+        }
+    }
+}
