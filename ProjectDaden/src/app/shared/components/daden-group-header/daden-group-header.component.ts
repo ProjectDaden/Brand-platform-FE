@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
 
 @Component({
@@ -9,6 +9,6 @@ import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
 })
 
 export class DadenGroupHeaderComponent {
-  @Input() title: string = '';
-  @Input() subtitle: string = '';
+  title = input<string>("");
+  subtitle = input<string>("");
 }

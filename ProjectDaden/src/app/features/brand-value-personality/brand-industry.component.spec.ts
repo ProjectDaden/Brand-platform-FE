@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrandValuePersonalityComponent } from './brand-value-personality.component';
+import { BrandIndustryComponent } from './brand-industry.component';
 
 describe('BrandValuePersonalityComponent', () => {
-  let component: BrandValuePersonalityComponent;
-  let fixture: ComponentFixture<BrandValuePersonalityComponent>;
+  let component: BrandIndustryComponent;
+  let fixture: ComponentFixture<BrandIndustryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BrandValuePersonalityComponent]
+      imports: [BrandIndustryComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BrandValuePersonalityComponent);
+    fixture = TestBed.createComponent(BrandIndustryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

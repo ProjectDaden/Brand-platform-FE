@@ -1,0 +1,54 @@
+{
+	"color_theory": {
+	  	"description": "The color picker selects a base hue from the archetype, then adjusts based on the Stability-Vitality axis influenced by user-selected brand values.",
+		"DefaultColor": {
+			"color": "hue, 70% saturation, 50% lightness"
+		},
+		"schemes": {
+			"Simple": {
+				"description": "Single HSL value", 
+				"Color": "archetypeHue, 70%, 50%"
+			},
+			"Tints": {
+				"description": "HSL + lightness", 
+				"adjustment": "+10-20% lightness",
+				"Color1": "archetypeHue, 70%, 50%",
+				"Color2": "archetypeHue, 70%, 70%",
+				"Color3": "archetypeHue, 70%, 90%"
+			},
+			"Shades": {
+				"description": "HSL - lightness", 
+				"adjustment": "-10-20% lightness",
+				"Color1": "archetypeHue, 70%, 50%",
+				"Color2": "archetypeHue, 70%, 40%",
+				"Color3": "archetypeHue, 70%, 30%"
+			},
+			"Tones": {
+				"description": "HSL - saturation", 
+				"adjustment": "-15-40% saturation",
+				"Color1": "archetypeHue, 70%, 50%",
+				"Color2": "archetypeHue, 30%, 50%",
+				"Color3": "archetypeHue, 10%, 50%"
+			},
+			"Analogous": {
+				"description": "HSL + adjacent hue", 
+				"adjustment": "+30-60 degrees",
+				"Color1": "archetypeHue,    70%, 50%",
+				"Color2": "archetypeHue+60, 70%, 50%"
+			},
+			"Complementary": {
+				"description": "HSL + opposite hue", 
+				"adjustment": "+180 degrees",
+				"Color1": "archetypeHue,     70%, 50%",
+				"Color2": "archetypeHue+180, 70%, 50%"
+			},
+			"Triad": {
+				"description": "HSL + two evenly spaced hues", 
+				"adjustment": "+120 degrees/-120 degrees", 
+				"Color1": "archetypeHue,     70%, 50%",
+				"Color2": "archetypeHue+120, 70%, 50%",
+				"Color3": "archetypeHue-120, 70%, 50%"
+			}
+	  	}
+	}
+}

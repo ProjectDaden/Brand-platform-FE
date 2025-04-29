@@ -1,3 +1,4 @@
+
 import { Component, computed, inject } from '@angular/core';
 import { NavigationService } from './services/nav-sidebar.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -11,24 +12,21 @@ import { DadenIconComponent } from '../../shared/components/daden-icon/daden-ico
   templateUrl: './nav-sidebar.component.html'
 })
 export class NavSidebarComponent {
-  private navigationService = inject(NavigationService);
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private readonly navigationService = inject(NavigationService);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
-  // Computed signal for categories
-  categories = computed(() => 
-    Object.entries(this.navigationService.navigation())
-  );
 
   // Toggle state for mobile menu
   isMenuOpen = false;
 
-  ngOnInit() {
-    this.navigationService.loadNavigation();
-  }
+  // Computed signal for categories
+  categories = computed(() =>
+    Object.entries(this.navigationService.navigation())
+  );
 
   formatTitle(title: string): string {
-    return title.split('-').map(word => 
+    return title.split('-').map(word =>
       word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
   }

@@ -1,5 +1,5 @@
 import { BrandNameAndTaglineCompleted } from '../../features/brand-name/store/brandname-tagline.model';
-import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/industry-and-value.model';
+import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/industry-industry.model';
 import { VisionAndMissionsCompleted } from '../../features/mission-vision/store/vision-and-missions.model';
 import { CopywritingCompleted } from '../../features/section-copywright/store/copywriting.model';
 import { ImagerySectionCompleted } from '../../features/section-imagery/store/imagery-section.model';

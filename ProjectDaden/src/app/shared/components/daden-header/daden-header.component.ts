@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '../../../features/nav-sidebar/services/nav-sidebar.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { NavigationCategory } from '../../../features/nav-sidebar/models/nav-sidebar-interface';
+import { UrlTrackerService } from './../../navigation-url-helper/generic-navigation-location-data';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,54 +10,75 @@ import { CommonModule } from '@angular/common';
   styleUrl: './daden-header.component.scss'
 })
 export class DadenHeaderComponent implements OnInit {
-  pageName: string = '';
-  categoryDescription: string = '';
+
+  private readonly navTrack = inject(UrlTrackerService); 
+
+  title = signal<string>("");
+  subTitle = signal<string>("");
+
+  // pageName: string = '';
+  // categoryDescription: string = '';
 
   constructor(
-    private navigationService: NavigationService,
-    private router: Router,
-    private route: ActivatedRoute
+    // private readonly navigationService: NavigationService,
+    // private readonly router: Router,
+    // private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.setHeaderInfo();
+    // this.setHeaderInfo();
+    const segments = this.navTrack.getAllSegments();
+    this.setHeaderTitles();
+    console.log(segments, "<---- All URL segments here to interact with");
   }
 
-  private setHeaderInfo() {
-    // Get current route segments
-    const urlSegments = this.router.url.split('/'); // e.g., ['', 'v1', 'visual-identity', 'imagery']
-    const categoryId = urlSegments[2]; // e.g., 'visual-identity'
-    const pageKey = urlSegments[3]; // e.g., 'imagery'
-
-    // Get navigation data from service
-    const navigation = this.navigationService.navigation();
-    if (!navigation || !categoryId || !pageKey) return;
-
-    // Find page name and category description
-    const categories = navigation as NavigationCategory;
-    const category = categories[categoryId];
-    if (category && category[pageKey]) {
-      this.pageName = this.formatTitle(category[pageKey]); // e.g., "Imagery"
-      this.categoryDescription = this.getCategoryDescription(categoryId); // Custom logic for description
-    }
+  public setHeaderTitles() {
+    const title = this.navTrack.getSegment(1);
+    this.title.set(title?.replace(/-/g, ' ') ?? "");
+    const subTitle = this.navTrack.getSegment(2);
+    this.subTitle.set(subTitle?.replace(/-/g, ' ') ?? "");
   }
+
+  // public setHeaderSubTitle() {
+
+  // }
+
+
+  // private setHeaderInfo() {
+  //   // Get current route segments
+  //   const urlSegments = this.router.url.split('/');
+  //   const categoryId = urlSegments[2];
+  //   const pageKey = urlSegments[3];
+
+  //   // Get navigation data from service
+  //   const navigation = this.navigationService.navigation();
+  //   if (!navigation || !categoryId || !pageKey) return;
+
+  //   // Find page name and category description
+  //   const categories = navigation;
+  //   const category = categories[categoryId];
+  //   if (category?.[pageKey]) {
+  //     this.pageName = this.formatTitle(category[pageKey]); 
+  //     this.categoryDescription = this.getCategoryDescription(categoryId);
+  //   }
+  // }
 
   // Format title (e.g., "mission-vision" -> "Mission & Vision")
-  private formatTitle(value: string): string {
-    return value
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  }
+  // private formatTitle(value: string): string {
+  //   return value
+  //     .split('-')
+  //     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  //     .join(' ');
+  // }
 
-  // Placeholder for category description (customize as needed)
-  private getCategoryDescription(categoryId: string): string {
-    const descriptions: { [key: string]: string } = {
-      'core-brand-identity': 'Defining Your Brand’s Purpose',
-      'brand-voice-and-tone': 'Shaping Your Brand’s Voice',
-      'visual-identity': 'Defining Your Brand’s Face',
-      'application-and-implementation': 'Applying Your Brand Guidelines'
-    };
-    return descriptions[categoryId] || 'Category Description';
-  }
+  // // Placeholder for category description (customize as needed)
+  // private getCategoryDescription(categoryId: string): string {
+  //   const descriptions: { [key: string]: string } = {
+  //     'core-brand-identity': 'Defining Your Brand’s Purpose',
+  //     'brand-voice-and-tone': 'Shaping Your Brand’s Voice',
+  //     'visual-identity': 'Defining Your Brand’s Face',
+  //     'application-and-implementation': 'Applying Your Brand Guidelines'
+  //   };
+  //   return descriptions[categoryId] || 'Category Description';
+  // }
 }

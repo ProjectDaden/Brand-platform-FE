@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BrandValuePersonalityService } from './brand-value-personality.service';
+import { BrandValuePersonalityService } from './brand-industry.service';
 
 describe('BrandValuePersonalityService', () => {
   let service: BrandValuePersonalityService;

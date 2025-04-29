@@ -8,10 +8,9 @@ import { map, Observable } from 'rxjs';
 })
 export class BrandNameService {
   private readonly http = inject(HttpClient);
-  private configUrl =
+  private readonly configUrl =
     'assets/tempUsage/brand-name-personality-compositions.json';
-  private personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
-
+  private readonly personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
     private allPersonalities: { [key: string]: PersonalityOptions } = {};
   personalityComposition = signal<PersonalityOptions>({
     synonyms: [],
@@ -25,9 +24,9 @@ export class BrandNameService {
   }
 
   getPersonalities() : Observable<string[]> {
-    return this.http.get<{ personalities: { options: string[] }}>(this.personalitiesListPath).pipe(
+    return this.http.get<{ personalities: string[] }>(this.personalitiesListPath).pipe(
       map(response => {
-       return Array.isArray(response.personalities.options) ? response.personalities.options : [];
+       return Array.isArray(response.personalities) ? response.personalities : [];
   }));
   }
 
@@ -38,6 +37,8 @@ export class BrandNameService {
       this.setPersonality('default', this.allPersonalities);
     });
   }
+
+
 
   // Expose all personalities to interested consumers.
   getAllPersonalities(): { [key: string]: PersonalityOptions } {

@@ -8,6 +8,5 @@ import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
   templateUrl: './daden-label.component.html',
 })
 export class DadenLabelComponent {
-  @Input() label: string = '';
 
 }

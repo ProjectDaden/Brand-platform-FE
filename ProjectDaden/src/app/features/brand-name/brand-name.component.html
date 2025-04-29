@@ -1,118 +1,39 @@
-<daden-header
-  pageName="asd"
-  categoryDescription="Define Your Brand’s Identity">
-</daden-header>
+<!-- TODO : Hier een documentatie van maken hoe te gebruiken. de config is abstract gemaakt.
+      <daden-dropdown id="personality" class="w-full" [dropDownParts]="dropDownConfig"
+        (selectedValue)="handlePersonalitySelection($event)" /> -->
 
-<section id="brand-name">
-    <daden-group-header
-        title="Set your Brand name"
-        subtitle="Give you brand a name that people will recognize">
-    </daden-group-header>
-    <div class="flex flex-col gap-6">
-        <!-- Personality Dropdown -->
-        <div>
-            <daden-label for="personality"
-                label="brand-name-component.form-area.form-personality-label">
-            </daden-label>
-            <daden-dropdown id="personality" class="w-full" 
-                [dropDownParts]="dropDownConfig">
-            </daden-dropdown>
-            <daden-detail
-                text="brand-name-component.form-area.form-personality-description">
-            </daden-detail>
-        </div>
-        <div>
-            <daden-label
-                label="Brand name">
-            </daden-label>
-            <daden-input
-                type="text">
-            </daden-input>
-            <daden-detail
-                text="Make your brand name stand out.">
-            </daden-detail>
-        </div>
-    </div>    
-</section>
-
-<section id="tagline">
-    <daden-group-header
-      title="brand-name-component.form-area.form-title"
-      subtitle="brand-name-component.form-area.form-description">
-    </daden-group-header>
-    <div class="flex flex-col gap-6">
-      <!-- Tagline Usage Checkbox -->
-      <div>
-        <daden-label
-          label="brand-name-component.form-area.form-tagline-checkbox-label">
-        </daden-label>
-        <div class="flex items-center">
-          <!-- <daden-checkbox
-            [id]="'tagline-used'"
-            [(ngModel)]="useTagline"
-            (valueChange)="onTaglineToggle($event)"
-            [label]="'brand-name-component.form-area.form-tagline-checkbox-text' | translate"
-          ></daden-checkbox> -->
-        </div>
-        <daden-detail
-          text="brand-name-component.form-area.form-tagline-checkbox-description">
-        </daden-detail>
-      </div>
-  
-      <!-- Thesaurus Synonyms Dropdown -->
-      <div>
-        <daden-label
-          for="synonyms"
-          label="brand-name-component.form-area.form-thesaurus-label">
-        </daden-label>
-        <!-- <daden-dropdown
-          id="synonyms"
-          class="w-full"
-          [items]="brandName.genericSignalCollection().personalityOptions.synonyms || []"
-          [placeholder]="'Select a synonym...'"
-          [selectedItem]="''"
-          [disabled]="!useTagline">
-        </daden-dropdown> -->
-        <daden-detail
-          text="brand-name-component.form-area.form-thesaurus-description">
-        </daden-detail>
-      </div>
-  
-      <!-- Tagline Text Input -->
-      <div>
-        <daden-label
-          label="brand-name-component.form-area.form-tagline-input-label">
-        </daden-label>
-        <daden-input
-          type="text"
-          id="tagline"
-          placeholder="Enter your tagline..."
-          [(ngModel)]="brandName.genericSignalCollection().tagLine"
-          [disabled]="!useTagline">
-        </daden-input>
-        <daden-detail
-          text="brand-name-component.form-area.form-tagline-input-description">
-        </daden-detail>
-      </div>
+<daden-header />
+<section id="Core Brand Identity">
+  <daden-group-header [title]="groupHeaderTitleBrandname" [subtitle]="groupHeaderSubTitleBrandname" />
+  <div class="flex flex-col gap-6">
+    <div>
+      <daden-detail>{{ "brandname.form-area.description" | translate }}</daden-detail>
+      <daden-label>{{ "brandname.form-area.inputlabel"| translate }}</daden-label>
+      <daden-detail>{{ "brandname.form-area.description-follow" | translate }}
+      </daden-detail>
+      <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false" [(value)]="brandNameInput" (valueChange)="triggerTaglineReview($event, 'brandname')" />
     </div>
-  </section>
+    <div>
+      <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
+      <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
+      <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled" />
+      <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
+      <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()" [(value)]="taglineInput" (valueChange)="triggerTaglineReview($event, 'taglineDescription')" />
+    </div>
+  </div>
+</section>
 
 <section id="tagline-preview">
-    <daden-group-header
-        title="Tagline Preview"
-        subtitle="See how your tagline looks in action.">
-    </daden-group-header>
-    <div class="p-4 bg-blue-50 rounded-lg text-center">
-        <h1 class="text-4xl font-bold mb-2" [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.headingFonts[0]">
-            Your Brand Name
-        </h1>
-        <p
-            class="text-lg italic"
-            [style.fontFamily]="brandName.genericSignalCollection().personalityOptions.bodyFonts[0]"
-            [class.opacity-50]="!useTagline || !tagline">
-            {{ useTagline && tagline ? tagline : '' }}
-        </p>
-    </div>
+  <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline">
+  </daden-group-header>
+  <div class="p-4 bg-blue-50 rounded-lg text-center">
+    <h1 class="text-4xl font-bold mb-2">{{ newBrandName.genericSignalCollection().taglineDescription }}</h1>
+    <p class="text-lg italic" [class.opacity-50]="isDisabled">
+      {{ taglineInput() ? taglineInput() : "" }}
+    </p>
+  </div>
 </section>
+
+<div>{{ watchNEWBrandName() | json }}</div>
 
 <daden-page-footer></daden-page-footer>

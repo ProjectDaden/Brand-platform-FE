@@ -2,21 +2,21 @@
     "nav-side-bar": {
         "categories": {
             "core-brand-identity": {
-                "name": "Brand Name & Tagline",
-                "values": "Industry & Values",
-                "audience": "Target Audience",
-                "mission" : "Mission & Vision"
+                "brandname-and-tagline": "Brand Name & Tagline",
+                "industry-and-values": "Industry & Values",
+                "target-audience": "Target Audience",
+                "vision-and-mission" : "Mission & Vision"
             },
             "brand-voice-and-tone": {
-                "voice-tone":"Tone-of-Voice",
-                "messaging":"Messaging",
-                "copywriting":"Copywriting"
+                "tone-of-voice":"Tone-of-Voice",
+                "messaging-tone":"Messaging",
+                "copywriting-tone":"Copywriting"
             },
             "visual-identity": {
-                "color":"Color",
-                "typography":"Typography",
-                "logo":"Logo",
-                "imagery":"Imagery"
+                "color-composer":"Color",
+                "typography-composer":"Typography",
+                "logo-composer":"Logo",
+                "imagery-composer":"Imagery"
             },
             "application-and-implementation": {
                 "print-offline-material":"Print & Offline Style",
