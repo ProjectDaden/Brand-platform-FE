@@ -1,4 +1,38 @@
-<daden-header></daden-header>
+<daden-header />
+<section id="target-audience">
+    <daden-group-header [title]="groupHeaderTitleTargetAudience" [subtitle]="groupHeaderSubTitleargetAudience" />
+    <daden-detail>{{ "target-audience.form-area.notification-one" | translate }}</daden-detail>
+    <div id="target-audience-age-range">
+        <daden-label>{{ "target-audience.form-area.age-range-input" | translate }}</daden-label>
+        <daden-detail>{{ "target-audience.form-area.age-range-description" | translate }}</daden-detail>
+        <daden-dropdown
+        [dropDownParts]="dropDownAgeGroupsConfig"
+        (selectedValue)="handleAgeGroups($event)"
+        />
+
+
+
+        <daden-dropdown
+        [dropDownParts]="dropDownLocationConfig"
+        (selectedValue)="handleLocation($event)"
+        />
+
+    </div>
+</section>
+
+
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <section id="audience">
     <daden-group-header

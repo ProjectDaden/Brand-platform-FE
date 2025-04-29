@@ -8,14 +8,6 @@ export const initialTargetAudienceState: TargetAudienceState = {
     selectedAgeGroup: '',
     locations: [],
     selectedLocation: '',
-    interests: [],
-    selectedInterest: '',
-    behaviors: [],
-    selectedBehavior: '',
-    goalsAndAspirations: [],
-    selectedGoal: '',
-    fearsAndFrustrations: [],
-    selectedIndustry: '',
 }
 
 export const TargetAudienceStore = signalStore(
