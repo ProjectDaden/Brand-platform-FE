@@ -3,27 +3,29 @@
         (selectedValue)="handlePersonalitySelection($event)" /> -->
 
 <daden-header />
-<section id="Core Brand Identity">
+<section id="brand-name">
   <daden-group-header [title]="groupHeaderTitleBrandname" [subtitle]="groupHeaderSubTitleBrandname" />
   <div class="flex flex-col gap-6">
     <div>
       <daden-detail>{{ "brandname.form-area.description" | translate }}</daden-detail>
       <daden-label>{{ "brandname.form-area.inputlabel"| translate }}</daden-label>
-      <daden-detail>{{ "brandname.form-area.description-follow" | translate }}
-      </daden-detail>
+      <daden-detail>{{ "brandname.form-area.description-follow" | translate }}</daden-detail>
       <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false" [(value)]="brandNameInput" (valueChange)="triggerTaglineReview($event, 'brandname')" />
     </div>
+  </div>
+  </section>
+  <section id="tagline">
     <div>
+      <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline" />
       <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
       <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
       <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled" />
       <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
       <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()" [(value)]="taglineInput" (valueChange)="triggerTaglineReview($event, 'taglineDescription')" />
     </div>
-  </div>
 </section>
 
-<section id="tagline-preview">
+<section id="preview">
   <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline">
   </daden-group-header>
   <div class="p-4 bg-blue-50 rounded-lg text-center">

@@ -1,111 +1,119 @@
-
-  <div class="flex items-start justify-between mb-8">
-    <div class="flex flex-col justify-between">
-      <h3 class="text-white">Live Previews</h3>
-      <p class="text-sm opacity-50">Preview your design in different contexts.</p>
-    </div>
-    <div>
-      <button class="hidden lg:block -m-1 p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all">
-        <daden-icon icon="filter" [strokeWidth]="1.5" [class]="'size-6 text-white'"></daden-icon>
-      </button>
+<div class="flex items-start justify-between mb-8">
+  <div class="flex flex-col justify-between">
+    <h3 class="text-white">Live Preview</h3>
+    <p class="text-sm opacity-50">Preview your design in different contexts.</p>
+  </div>
+  <div>
+    <button class="hidden lg:block -m-1 p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all">
+      <daden-icon icon="filter" [strokeWidth]="1.5" [class]="'size-6 text-white'"></daden-icon>
+    </button>
+  </div>
+</div>
+<div class="flex-1 flex flex-col h-full">
+  <div class="bg-white rounded-lg shadow-lg flex-1 flex flex-col">
+    <div class="bg-gray-200 rounded relative h-[90dvh] lg:h-full overflow-hidden">
+      <iframe 
+        src="/assets/landing.html" 
+        frameborder="0"
+        class="lg:absolute top-0 left-0 w-full h-full origin-top"
+      ></iframe>
     </div>
   </div>
-  <div class="space-y-4">
-      <!-- Dashboard Preview -->
-      <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
-        <h4 class="font-bold mb-2">Dashboard</h4>
-        <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
-          <iframe 
-            src="/assets/preview-dashboard.html" 
-            frameborder="0"
-            class="absolute top-0 left-0"
-            style="
-              width: 960px; 
-              height: 540px; 
-              transform: scale(0.3);
-              transform-origin: top left;"
-          ></iframe>
-        </div>
-      </div> -->
-      
-      <!-- Landing Page Preview -->
-      <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
-        <h4 class="font-bold mb-2">Landing Page</h4>
-        <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
-          <iframe 
-            src="/assets/preview-landing-page.html" 
-            frameborder="0"
-            class="absolute top-0 left-0"
-            style="
-              width: 1200px; 
-              height: 1080px; 
-              transform: scale(0.25);
-              transform-origin: top left;"
-          ></iframe>
-        </div>
-      </div> -->
-      <!-- Mobile App Preview -->
-      <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
-        <h4 class="font-bold mb-2">Mobile App Page</h4>
-        <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
-          <iframe 
-            src="/assets/preview-mobile.html" 
-            frameborder="0"
-            class="absolute top-0 left-0"
-            style="
-              width: 540px; 
-              height: 540px; 
-              transform: scale(0.25);
-              transform-origin: top left;"
-          ></iframe>
-        </div>
-      </div> -->
-      <!-- Blog Preview -->
-      <div class="bg-white text-black p-4 rounded-lg shadow">
-        <h4 class="font-bold mb-2">Blog</h4>
-        <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
-          <iframe 
-            src="/assets/preview-blog.html" 
-            frameborder="0"
-            class="absolute top-0 left-0"
-            style="
-              width: 960px; 
-              height: 540px; 
-              transform: scale(0.3);
-              transform-origin: top left;"
-          ></iframe>
-        </div>
+    <!-- Dashboard Preview -->
+    <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
+      <h4 class="font-bold mb-2">Dashboard</h4>
+      <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
+        <iframe 
+          src="/assets/preview-dashboard.html" 
+          frameborder="0"
+          class="absolute top-0 left-0"
+          style="
+            width: 960px; 
+            height: 540px; 
+            transform: scale(0.3);
+            transform-origin: top left;"
+        ></iframe>
       </div>
-      <!-- Webshop Preview -->
-      <div class="bg-white text-black p-4 rounded-lg shadow">
-        <h4 class="font-bold mb-2">Webshop</h4>
-        <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
-          <iframe 
-            src="/assets/preview-webshop.html" 
-            frameborder="0"
-            class="absolute top-0 left-0"
-            style="
-              width: 960px; 
-              height: 540px; 
-              transform: scale(0.3);
-              transform-origin: top left;"
-          ></iframe>
-        </div>
+    </div> -->
+    
+    <!-- Landing Page Preview -->
+    <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
+      <h4 class="font-bold mb-2">Landing Page</h4>
+      <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
+        <iframe 
+          src="/assets/preview-landing-page.html" 
+          frameborder="0"
+          class="absolute top-0 left-0"
+          style="
+            width: 1200px; 
+            height: 1080px; 
+            transform: scale(0.25);
+            transform-origin: top left;"
+        ></iframe>
       </div>
-      <!-- Print Preview -->
-      <div class="bg-white text-black p-4 rounded-lg shadow">
-        <h4 class="font-bold mb-2">Print</h4>
-        <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
-          <iframe 
-            src="/assets/preview-print.html" 
-            frameborder="0"
-            class="absolute top-0 left-0"
-            style="
-              width: 960px; 
-              height: 1920px; 
-              transform: scale(0.1);
-              transform-origin: top left;"
-          ></iframe>
-        </div>
+    </div> -->
+    <!-- Mobile App Preview -->
+    <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
+      <h4 class="font-bold mb-2">Mobile App Page</h4>
+      <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
+        <iframe 
+          src="/assets/preview-mobile.html" 
+          frameborder="0"
+          class="absolute top-0 left-0"
+          style="
+            width: 540px; 
+            height: 540px; 
+            transform: scale(0.25);
+            transform-origin: top left;"
+        ></iframe>
       </div>
-  </div>
+    </div> -->
+    <!-- Blog Preview -->
+    <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
+      <h4 class="font-bold mb-2">Blog</h4>
+      <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
+        <iframe 
+          src="/assets/preview-blog.html" 
+          frameborder="0"
+          class="absolute top-0 left-0"
+          style="
+            width: 960px; 
+            height: 540px; 
+            transform: scale(0.3);
+            transform-origin: top left;"
+        ></iframe>
+      </div>
+    </div> -->
+    <!-- Webshop Preview -->
+    <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
+      <h4 class="font-bold mb-2">Webshop</h4>
+      <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
+        <iframe 
+          src="/assets/preview-webshop.html" 
+          frameborder="0"
+          class="absolute top-0 left-0"
+          style="
+            width: 960px; 
+            height: 540px; 
+            transform: scale(0.3);
+            transform-origin: top left;"
+        ></iframe>
+      </div>
+    </div> -->
+    <!-- Print Preview -->
+    <!-- <div class="bg-white text-black p-4 rounded-lg shadow">
+      <h4 class="font-bold mb-2">Print</h4>
+      <div class="w-full bg-gray-200 rounded overflow-hidden relative" style="padding-top: 56.25%;"> 
+        <iframe 
+          src="/assets/preview-print.html" 
+          frameborder="0"
+          class="absolute top-0 left-0"
+          style="
+            width: 960px; 
+            height: 1920px; 
+            transform: scale(0.1);
+            transform-origin: top left;"
+        ></iframe>
+      </div>
+    </div> -->
+</div>
