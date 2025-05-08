@@ -10,19 +10,19 @@ import { DadenIconComponent } from '../daden-icon/daden-icon.component';
   templateUrl: './daden-button.component.html',
 })
 export class DadenButtonComponent {
-  variant = input<'primary' | 'secondary' | 'tertiary' | 'text'>("primary");
-  size = input<'big' | 'medium' | 'small'>("medium");
-  color = input<'blue' | 'red' | 'yellow' | 'green'>("blue");
+  variant = input<'primary' | 'secondary' | 'tertiary' | 'text'>('primary');
+  size = input<'big' | 'medium' | 'small'>('medium');
+  color = input<'blue' | 'red' | 'yellow' | 'green'>('blue');
   hoverColor = input<'blue' | 'red' | 'yellow' | 'green' | null>(null);
   disabled = input<boolean>(false);
   active = input<boolean>(false);
-  label = input<string>("");
-  icon = input<string>("");
+  label = input<string>('');
+  icon = input<string>('');
   emitItem = output<string>();
   // @Output() buttonClick = new EventEmitter<void>();
 
   onClick() {
-    this.emitItem.emit("HALLOOO FROM CHILLD");
+    this.emitItem.emit('HALLOOO FROM CHILLD');
   }
 
   private getColorClasses() {
@@ -68,7 +68,8 @@ export class DadenButtonComponent {
       },
       yellow: {
         primary: 'hover:bg-yellow-700 hover:text-white',
-        secondary: 'hover:bg-yellow-700 hover:border-yellow-700 hover:text-white',
+        secondary:
+          'hover:bg-yellow-700 hover:border-yellow-700 hover:text-white',
         tertiary: 'hover:bg-yellow-700 hover:text-white',
         text: 'hover:text-yellow-700 hover:underline',
       },
@@ -87,7 +88,8 @@ export class DadenButtonComponent {
       green: 'focus:ring-green-500 active:ring-green-500',
     };
 
-    const baseClasses = baseColorMap[this.color()][this.variant()] || baseColorMap.blue.primary;
+    const baseClasses =
+      baseColorMap[this.color()][this.variant()] || baseColorMap.blue.primary;
     const hoverClasses = this.hoverColor()
       ? hoverColorMap[this.hoverColor() ?? 'blue'][this.variant()]
       : hoverColorMap[this.color()][this.variant()];
@@ -103,19 +105,31 @@ export class DadenButtonComponent {
       medium: 'w-5 h-5',
       small: 'w-4 h-4',
     };
-    return `${sizeMap[this.size()] || 'w-5 h-5'} ${this.disabled() ? 'text-gray-400' : ''}`;
+    return `${sizeMap[this.size()] || 'w-5 h-5'} ${this.disabled() ? 'text-gray-400' : ''
+      }`;
+  }
+
+  private getCursorClass(): string {
+    return this.disabled() ? '' : 'cursor-pointer';
+  }
+
+  private getSizeClass(): string {
+    if (this.size() === 'big') return 'px-6 py-3 text-lg';
+    if (this.size() === 'medium') return 'px-4 py-2 text-md';
+    if (this.size() === 'small') return 'px-2 py-1 text-sm';
+    return '';
   }
 
   @HostBinding('class') get classes() {
     return [
       'inline-flex items-center justify-center rounded-md font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors',
-      this.disabled() ? '' : 'cursor-pointer',
+      this.getCursorClass(),
       this.getColorClasses(),
-      this.size() === 'big' ? 'px-6 py-3 text-lg' :
-        this.size() === 'medium' ? 'px-4 py-2 text-md' :
-          this.size() === 'small' ? 'px-2 py-1 text-sm' : '',
+      this.getSizeClass(),
       this.disabled() ? 'opacity-50 bg-gray-500 hover:bg-gray-500' : '',
       this.active() ? 'ring-2' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
 }

@@ -20,6 +20,13 @@ export type Location = {
     selectedLocation: string | undefined;
   }
 
+    /*
+  * @description
+  * This is the Type for the Target Audiences complete Type.
+  * @param IndustryAndValuesCompleted - The partial of the Personality Associated Options and Tagline
+  * */
+    export type TargetAudienceCompleted = AgeGroup & Location;
+
 //   /*
 // * @description
 // * This is the Type for interests.
@@ -60,9 +67,3 @@ export type Location = {
 //     selectedIndustry: string | undefined;
 //   }
   
-  /*
-  * @description
-  * This is the Type for the Target Audiences complete Type.
-  * @param IndustryAndValuesCompleted - The partial of the Personality Associated Options and Tagline
-  * */
-  export type TargetAudienceCompleted = AgeGroup & Location;

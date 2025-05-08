@@ -1,4 +1,28 @@
 <daden-header></daden-header>
+<daden-detail>{{ "brand-color-section.form-area.group-title-color-theory" | translate}}</daden-detail>
+
+<section id="color">
+    <daden-label>{{ "brand-color-section.form-area.color-theory-label" | translate}}</daden-label>
+    <daden-detail>{{ "brand-color-section.form-area.color-theory-description" | translate}}</daden-detail>
+    <daden-dropdown id="ColorTheory" name="ColorTheory"
+    [dropDownParts]="dropDownColorTheoryConfig"
+    (selectedValue)="handleColorTheorySelection($event)"
+    ></daden-dropdown>
+
+
+
+</section>
+
+<div>{{ colorTheoryWatch() | json }}</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <section id="color">
     <daden-group-header

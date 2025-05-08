@@ -5,7 +5,7 @@
 * @param selectedindustry: string | undefined - The selected industry.
 * */
 export type Industry = {
-    industries: string[];
+    industry: string;
   }
   
   /*

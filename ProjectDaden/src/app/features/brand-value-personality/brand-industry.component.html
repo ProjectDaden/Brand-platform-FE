@@ -1,16 +1,17 @@
 <daden-header />
 
-<section id="industry-and-values">
+<section id="industry">
     <div id="industry-and-values-industry">
         <daden-group-header [title]="groupHeaderTitleIndustry" [subtitle]="groupHeaderSubTitleIndustry" />
         <daden-label>{{ "industry-and-values.form-area.inputlabel"| translate }}</daden-label>
         <daden-detail>{{ "industry-and-values.form-area.description-follow" | translate }}</daden-detail>
         <daden-dropdown id="Industry" name="Industry"
         [dropDownParts]="dropDownIndustryConfig"
-        (selectedValue)="handleDropdownSelection($event)"
+        (selectedValue)="handleDropdownIndustry($event)"
         ></daden-dropdown>
     </div>
-    <br />
+</section>
+<section id= value>
     <div id="industry-and-values-values">
         <daden-detail>{{ "industry-and-values.form-area.values-description" | translate }}</daden-detail>
         <daden-label>{{"industry-and-values.form-area.values-label" | translate }}</daden-label>
@@ -19,7 +20,6 @@
         [options]="industryValues"
         (selectionChange)="handleMultipleValues($event)"
         ></daden-multi-list-selection>
-
     </div>
 </section>
 
@@ -30,10 +30,10 @@
     </daden-group-header>
     <div class="p-4 bg-blue-50 rounded-lg">
         <p class="text-lg font-medium italic">“A 
-            <span class="text-blue-700">{{ brandIndustry.genericSignalCollection().industry }}</span> brand that’s 
-            <span class="text-blue-700">{{ brandIndustry.genericSignalCollection().values[0]}}</span> and 
-            <span class="text-blue-700">{{ brandIndustry.genericSignalCollection().values[1] }}</span>, with a 
-            <span class="text-blue-700">{{ brandIndustry.genericSignalCollection().values[2] }}</span> 
+            <span class="text-blue-700">{{ brandIndustry().industry }}</span> brand that’s 
+            <span class="text-blue-700">{{ brandIndustry().values[0]}}</span> and 
+            <span class="text-blue-700">{{ brandIndustry().values[1] }}</span>, with a 
+            <span class="text-blue-700">{{ brandIndustry().values[2] }}</span> 
             personality.”
         </p>
     </div>

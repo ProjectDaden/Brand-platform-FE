@@ -44,6 +44,7 @@ export class BrandNameComponent implements OnInit {
 
   /**
    * Starting position (default) for the brandname component. (DTO)
+   * TODO: create loadBrandname instance from service and populate property here. See: brandIndustry component as exaample. 
    */
   newBrandName = BrandnameDefault;
 
@@ -83,19 +84,15 @@ export class BrandNameComponent implements OnInit {
 
   triggerTaglineReview(event: string | undefined, prop: keyof Brandname) {
     if (event) {
-      const iets: Partial<Brandname> = {};
-      iets[prop] = event;
-      this.updateNEWBrandnameCollection(iets);
+      const brandNameProp: Partial<Brandname> = {};
+      brandNameProp[prop] = event;
+      this.updateNEWBrandnameCollection(brandNameProp);
     }
   }
 
   updateNEWBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>){
-    // TODO if(){} toevoegen op tagline. Laatste letter blijft hangen. of "set()" gebruiken ipv update.
-    this.brandNameInput.set(this.newBrandName.genericSignalCollection().brandname);
-    this.taglineInput.set(this.newBrandName.genericSignalCollection().taglineDescription);
     this.newBrandName.genericSignalCollection.update(curr => ({...curr, ...updates}));
     console.log(updates, " hier moet ik generic updaten!!");
-    // this.newBrandName.genericSignalCollection()
   }
 
   onReset() {
