@@ -50,8 +50,19 @@ export class BrandIndustryComponent implements OnInit {
   groupHeaderSubTitleIndustry: string = '';
   brandIndustryList = signal<any>([]);
   selectedArchetype = signal<string[]>([]);
+  selectedArchetypeFromMulti = signal<string[]>([]);
   rules = signal<BrandIndustryRules>({
     rules: []
+  });
+
+  selectedIndustryArchetype = signal<string | null>(null);
+  selectedValueArchetypes = signal<string[]>([]);
+  combinedSelectedArchetypes = computed(() => {
+    const iets = this.selectedIndustryArchetype() 
+    ? [this.selectedIndustryArchetype(), ...this.selectedValueArchetypes()] 
+    : [...this.selectedValueArchetypes()];
+    console.log(this.calculateRoundedPercentages(this.selectedValueArchetypes()));
+    return iets;
   });
 
   groupHeaderTitleBrandname: string = "";
@@ -70,7 +81,6 @@ export class BrandIndustryComponent implements OnInit {
   traitsPlaceholder: Signal<string> = signal('Select your traits...');
   personalityPlaceholder: Signal<string> = signal('Select your personality...');
 
-
   ngOnInit(): void {
     this.groupHeaderTitleIndustry = this.translate.instant("industry-and-values.preview-area.preview-title");
     this.groupHeaderSubTitleIndustry = this.translate.instant("industry-and-values.preview-area.preview-description");
@@ -87,22 +97,15 @@ export class BrandIndustryComponent implements OnInit {
     this.brandIndustryService.loadBrandIndustryValueConnections();
   }
 
-  private previousIndustryArchetype: string | null = null;
-
   /**
    * @description Method to handle the industry value of the user. This is also the selection of the associated archetype.
    * @param industry The selected industry the user has positioned himself in.
    */
   handleDropdownIndustry(industry: string) {
     const foundArchetype = this.findArchetypeFromIndustry(industry);
+  if (!foundArchetype) return;
 
-    if (foundArchetype) {
-      this.selectedArchetype.update(curr => {
-        const filteredArchetypes = curr.filter(archetype => archetype !== this.previousIndustryArchetype);
-        this.previousIndustryArchetype = foundArchetype;
-        return [...filteredArchetypes, foundArchetype];
-      });
-    }
+  this.selectedIndustryArchetype.set(foundArchetype);
     this.brandIndustryStore.updateIndustrtyState(industry);
     this.brandIndustry.update(curr => ({ ...curr, industry }));
     console.log(this.selectedArchetype(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ????");
@@ -113,13 +116,11 @@ export class BrandIndustryComponent implements OnInit {
    * @param values The selected values from brandindustry - values.
    */
   handleMultipleValues(values: string[]) {
-    const foundArchetypes = values.map(value => this.findArchetypeFromValues(value)).filter((found): found is string => !!found);
-    // this.selectedArchetype.set(foundArchetypes);
-    this.selectedArchetype.update((curr) => [...curr, ...foundArchetypes]);
-    this.brandIndustryStore.updateValueState(values);
-    this.brandIndustry.update(curr => ({ ...curr, values }));
-    // console.log(this.brandIndustryService.industryValuesConnections, " <--- COMPLETE JSON CONNECTIONS BUT HERE IN SERVICE");
-    // console.log(this.selectedArchetype(), " <---- ARCHETYPES SELECTED!!!");
+    const foundArchetypes = values
+    .map(value => this.findArchetypeFromValues(value))
+    .filter((found): found is string => !!found);
+
+  this.selectedValueArchetypes.set(foundArchetypes);
     console.log(this.selectedArchetype(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ IN MULTI????");
   }
 
@@ -138,13 +139,34 @@ export class BrandIndustryComponent implements OnInit {
     * @param industryValue The selected Brandindustry for finding archetype.
     * @returns string archetype or undesined.
     */
-  findArchetypeFromIndustry(industryValue: string): string | undefined {
+  findArchetypeFromIndustry(industry: string): string | undefined {
     return this.brandIndustryService.industryValuesConnections.rules
-      .find((rule: Rule) => rule.condition.industry?.includes(industryValue))?.archetype;
+      .find((rule: Rule) => rule.condition.industry?.includes(industry))?.archetype;
   }
 
-  isIndustryBased(archetype: string): boolean {
-    return ["Hero", "Caregiver", "Explorer", "Creator", "Innocent", "Sage", "Jester", "Magician", "Rebel", "Ruler", "Everyman", "Lover"]
-      .includes(archetype);
+
+  topThreeArchetypes: Record<string, number> = {};
+  
+  calculateRoundedPercentages(arr: string[]): Record<string, number> {
+    const total = arr.length;
+    const counts: Record<string, number> = {};
+  
+    arr.forEach(value => {
+      counts[value] = (counts[value] || 0) + 1;
+    });
+  
+    const percentages: Record<string, number> = {};
+    for (const key in counts) {
+      percentages[key] = Math.ceil((counts[key] / total) * 100);
+    }
+
+    const sortedEntries = Object.entries(percentages)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+  
+    this.topThreeArchetypes = Object.fromEntries(sortedEntries);
+  
+    console.log("Top 3 Archetypes:", this.topThreeArchetypes); // Debugging output
+    return this.topThreeArchetypes;
   }
 }
