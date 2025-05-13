@@ -44,6 +44,7 @@ export class BrandNameComponent implements OnInit {
 
   /**
    * Starting position (default) for the brandname component. (DTO)
+   * TODO: create loadBrandname instance from service and populate property here. See: brandIndustry component as exaample. 
    */
   newBrandName = BrandnameDefault;
 
@@ -71,7 +72,7 @@ export class BrandNameComponent implements OnInit {
     this.detailText = "Craft a tagline that reflects your brand’s essence.";
 
     this.globalStateTest.getStore();
-    this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
+    // this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
     console.log(this.archetypes.getArchetypeSignal()(), " <--- VANUIT COMPONENT ARCHETYPES");
 
     console.log(this.archetypes.bodyFonts(), " <--- ALL BODYFONTS IN COMP");
@@ -83,19 +84,15 @@ export class BrandNameComponent implements OnInit {
 
   triggerTaglineReview(event: string | undefined, prop: keyof Brandname) {
     if (event) {
-      const iets: Partial<Brandname> = {};
-      iets[prop] = event;
-      this.updateNEWBrandnameCollection(iets);
+      const brandNameProp: Partial<Brandname> = {};
+      brandNameProp[prop] = event;
+      this.updateNEWBrandnameCollection(brandNameProp);
     }
   }
 
   updateNEWBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>){
-    // TODO if(){} toevoegen op tagline. Laatste letter blijft hangen. of "set()" gebruiken ipv update.
-    this.brandNameInput.set(this.newBrandName.genericSignalCollection().brandname);
-    this.taglineInput.set(this.newBrandName.genericSignalCollection().taglineDescription);
     this.newBrandName.genericSignalCollection.update(curr => ({...curr, ...updates}));
     console.log(updates, " hier moet ik generic updaten!!");
-    // this.newBrandName.genericSignalCollection()
   }
 
   onReset() {
@@ -106,89 +103,3 @@ export class BrandNameComponent implements OnInit {
     // console.log('RESET');
   }
 }
-
-
-
-  // dropDownConfig: DadenDropdown = {
-  //   items: this.brandName.genericSignalCollection().personalities,
-  //   placeholder: "select an item...",
-  //   selectedItem: "",
-  //   disabled: false
-  // }
-
-  // brandName = brandNameDefault;
-
-  
-  // useTagline: boolean = this.brandName.genericSignalCollection().tagLineUsed === 'yes';
-  // tagline: string = this.brandName.genericSignalCollection().tagLine || '';
-
-    // watchBrandName = computed(() => this.brandName.genericSignalCollection());
-
-  
-    // this.loadSynonymsBasedOnPersonality(
-    //   this.brandName.genericSignalCollection().selectedPersonality
-    // );
-
-    // handlePersonalitySelection(personality: string) {
-    // const associatedPersonalityOptions = this.brandNameService.getAllPersonalities();
-    // this.brandNameService.setPersonality(personality, associatedPersonalityOptions);
-    // this.loadSynonymsBasedOnPersonality(personality);
-    // this.updateBrandNameCollection({ selectedPersonality: personality });
-    // console.log(personality, " <<<--- Reflected in the BrandName component");
-  // }
-
-  // updateBrandNameCollection(updates: Partial<ReturnType<typeof this.brandName.genericSignalCollection>>) {
-  //   this.brandName.genericSignalCollection.update(current => ({ ...current, ...updates }));
-  //   this.tagline = this.brandName.genericSignalCollection().tagLine || '';
-  //   console.log('UPDATES', this.brandName.genericSignalCollection());
-  // }
-
-  // onTaglineToggle(value: boolean) {
-  //   this.useTagline = value;
-  //   this.updateBrandNameCollection({ tagLineUsed: value ? 'yes' : 'no' });
-  //   console.log('Tagline enabled:', value);
-  // }
-
-  // private loadSynonymsBasedOnPersonality(personality: string) {
-  //   const allPersonalities = this.brandNameService.getAllPersonalities();
-  //   if (!(personality in allPersonalities)) {
-  //     this.brandName.genericSignalCollection.update(current => ({
-  //       ...current,
-  //       personalityOptions: { synonyms: [], headingFonts: [], bodyFonts: [] } as PersonalityOptions,
-  //     }));
-  //     return;
-  //   }
-
-  //   const personalityOpts = this.brandNameService.personalityComposition();
-  //   this.brandName.genericSignalCollection.update(current => ({
-  //     ...current,
-  //     personalityOptions: personalityOpts,
-  //   }));
-
-  //   this.loadGoogleFonts([...new Set([...personalityOpts.headingFonts, ...personalityOpts.bodyFonts])]);
-  // }
-
-  // private loadGoogleFonts(fonts: string[]) {
-  //   if (!fonts.length) return;
-
-  //   const existingLink = this.document.getElementById('google-fonts-link');
-  //   const formattedFonts = fonts.map(font => `family=${encodeURIComponent(font)}:wght@400;700`).join('&');
-  //   const fontUrl = `https://fonts.googleapis.com/css2?${formattedFonts}&display=swap`;
-
-  //   if (existingLink?.getAttribute('href') === fontUrl) return;
-
-  //   const link = this.renderer.createElement('link');
-  //   this.renderer.setAttribute(link, 'id', 'google-fonts-link');
-  //   this.renderer.setAttribute(link, 'rel', 'stylesheet');
-  //   this.renderer.setAttribute(link, 'href', fontUrl);
-
-  //   existingLink && this.renderer.removeChild(this.document.head, existingLink);
-  //   this.renderer.appendChild(this.document.head, link);
-  // }
-
-  // get taglineOutput() {
-  //   return {
-  //     taglineUsed: this.useTagline,
-  //     tagline: this.tagline || '',
-  //   };
-  // }

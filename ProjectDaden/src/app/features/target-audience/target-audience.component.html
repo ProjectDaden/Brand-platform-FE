@@ -1,129 +1,31 @@
-<daden-header></daden-header>
-
-<section id="audience">
-    <daden-group-header
-        title="Audience Profile"
-        subtitle="Define your audience’s demographics, interests, goals, and challenges.">
-    </daden-group-header>
-    
-    <div class="flex flex-col gap-6">
-        <!-- Demographic: Age -->
-        <div>
-            <daden-label
-                label="Age Group">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select an age group...</option>
-                <option value="18-24">18-24</option>
-                <option value="25-34">25-34</option>
-                <option value="35-44">35-44</option>
-                <option value="45-64">45-64</option>
-                <option value="65+">65+</option>
-            </select>
-            <daden-detail
-                text="Select an age group...">
-            </daden-detail>
-        </div>
-        
-        <!-- Demographic: Location -->
-        <div>
-            <daden-label
-                label="Location">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select a location...</option>
-                <option value="urban">Urban</option>
-                <option value="suburban">Suburban</option>
-                <option value="rural">Rural</option>
-                <option value="global">Global</option>
-            </select>
-            <daden-detail
-                text="Select a location...">
-            </daden-detail>
-        </div>
-        
-        <!-- Psychographic: Interests -->
-        <div>
-            <daden-label 
-                label="Interests">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select an interest...</option>
-                <option value="technology">Technology</option>
-                <option value="wellness">Wellness</option>
-                <option value="travel">Travel</option>
-                <option value="education">Education</option>
-                <option value="entertainment">Entertainment</option>
-            </select>
-            <daden-detail
-                text="Select an interest...">
-            </daden-detail>
-        </div>
-        
-        <!-- Psychographic: Behaviors -->
-        <div>
-            <daden-label 
-                label="Behaviors">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select a behavior...</option>
-                <option value="early-adopter">Early Adopter</option>
-                <option value="value-driven">Value-Driven</option>
-                <option value="community-focused">Community-Focused</option>
-                <option value="trend-follower">Trend Follower</option>
-            </select>
-            <daden-detail
-                text="Select a behavior...">
-            </daden-detail>
-        </div>
-        
-        <!-- Gains -->
-        <div>
-            <daden-label 
-                label="Goals & Aspirations">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select a goal...</option>
-                <option value="success">Achieve Success</option>
-                <option value="connection">Build Connections</option>
-                <option value="growth">Personal Growth</option>
-                <option value="security">Financial Security</option>
-            </select>
-            <daden-detail
-                text="Select a goal...">
-            </daden-detail>
-        </div>
-        
-        <!-- Pains -->
-        <div>
-            <daden-label 
-                label="Fears & Frustrations">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select a challenge...</option>
-                <option value="uncertainty">Uncertainty</option>
-                <option value="cost">High Costs</option>
-                <option value="complexity">Complexity</option>
-                <option value="isolation">Isolation</option>
-            </select>
-            <daden-detail
-                text="Select a challenge...">
-            </daden-detail>
-        </div>
+<daden-header />
+<section id="target-audience">
+    <daden-group-header [title]="groupHeaderTitleTargetAudience" [subtitle]="groupHeaderSubTitleargetAudience" />
+    <daden-detail>{{ "target-audience.form-area.notification-one" | translate }}</daden-detail>
+    <div id="target-audience-age-range">
+        <daden-label>{{ "target-audience.form-area.age-range-input" | translate }}</daden-label>
+        <daden-detail>{{ "target-audience.form-area.age-range-description" | translate }}</daden-detail>
+        <daden-dropdown [dropDownParts]="dropDownAgeGroupsConfig" (selectedValue)="triggerAudiencePreview($event, 'selectedAge')" />
     </div>
-    <daden-detail
-        text="These choices will shape your brand’s imagery, messaging, and story.">
-    </daden-detail>
 </section>
-
+<section>
+    <div id="target-audience-location">
+        <daden-label>{{ "target-audience.form-area.location-label" | translate }}</daden-label>
+        <daden-detail>{{ "target-audience.form-area.location-description" | translate}}</daden-detail>
+        <daden-dropdown [dropDownParts]="dropDownLocationConfig" (selectedValue)="triggerAudiencePreview($event, 'selectedLocation')" />
+    </div>
+</section>
 <section id="audience-preview">
-    <daden-group-header
-        title="Audience Snapshot"
-        subtitle="A preview of your target audience based on your selections."
-    ></daden-group-header>
+    <daden-group-header [title]="groupHeaderTitlePreview" [subtitle]="groupHeaderSubTitlePreview" />
     <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-lg font-medium italic">“<span class="text-blue-700">25-34</span> year-olds in <span class="text-blue-700">urban</span> areas, interested in <span class="text-blue-700">technology</span>, behaving as <span class="text-blue-700">early adopters</span>, seeking <span class="text-blue-700">success</span>, and avoiding <span class="text-blue-700">uncertainty</span>.”</p>
+        <p class="text-lg font-medium italic">“
+            <span class="text-blue-700">{{ targetAudience().selectedAge }}</span> year-olds in 
+            <span class="text-blue-700">{{ targetAudience().selectedLocation }}</span> areas.
+        </p>
     </div>
 </section>
 
 <daden-page-footer></daden-page-footer>
+
+<div>{{ targetAudienceWatch() | json }}</div>
+

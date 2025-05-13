@@ -45,8 +45,8 @@
         }
     },
     "industry-and-values": {
-        "title": "Brand Name and Tagline",
-        "subtitle": "Define Your Brand’s Identity",
+        "title": "Industry-and-values",
+        "subtitle": "Define Your Brand’s Industry",
         "form-area": {
             "group-title-industry": "Industry & Values",
             "group-subTitle-industry":"Defining your industry helps shape the overall look and feel of your brand.",
@@ -59,6 +59,38 @@
         "preview-area": {
             "preview-title": "Brand Character Preview",
             "preview-description": "A snapshot of your brand’s identity based on your choices."
+        }
+    },
+    "target-audience": {
+        "title": "Target audience",
+        "subtitle": "Define Your Brand’s audience",
+        "form-area": {
+            "group-title-audience": "Target Audience",
+            "group-subTitle-audience":"Choosing your target audience helps you create a brand that resonates with the right people. While these options are completely optional, they make it easier to attract your ideal customers and find visuals, messaging, and designs that connect with them.",
+            "notification-one":"Don't worry—this doesn’t mean you’ll exclude other groups! It simply helps you refine your brand’s focus and increase its impact.",
+            "age-range-input":"Age range",
+            "age-range-description": "Defining an age range allows you to tailor your brand to those most likely to engage with your products or services. Think about who makes the decisions—for example, if you're targeting kids or teens, their parents are often the ones making the purchase.",
+            "location-label":"Location",
+            "location-description":"Your audience’s location affects their expectations, needs, and cultural preferences. People in different regions search for different styles, colors, and messaging—whether it's local shopping habits, climate-related clothing choices, or even preferred design trends."
+        },
+        "preview-area": {
+            "preview-title": "Audience Snapshot",
+            "preview-description": "A preview of your target audience based on your selections."
+        }
+    },
+    "brand-color-section": {
+        "title": "Brand color",
+        "subtitle": "Define Your brand's color",
+        "form-area": {
+            "group-title-color-theory": "Text that explains that color conveys emotion and expectations of a brand. Picking a lively or subdued color style says something about your brand, but it could just as easily make you stand out in between competitors.",
+            "group-subTitle-color-theory":"",
+            "color-theory-label":"Color theory",
+            "color-theory-description":"color harmony is a stylistic choice based on color theory. A brand based on a single, strong color can be just as strong as a brand with two or three colors, but they should fit your brand. The choices below are based upon your earlier choices as the industry your brand will operate in, and the values your brand wants to communicate."
+
+        },
+        "preview-area": {
+            "preview-title": "Audience Snapshot",
+            "preview-description": "A preview of your target audience based on your selections."
         }
     }
 }
