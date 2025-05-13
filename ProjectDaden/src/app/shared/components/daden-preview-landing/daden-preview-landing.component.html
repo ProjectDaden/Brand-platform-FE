@@ -1,0 +1,181 @@
+<div class="body">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-[--padding-x] py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Logo" class="h-10 w-10 bg-[color:--primary-color-150] rounded-full">
+                <h2 class="text-2xl font-semibold text-[color:--primary-color-150]">{{ brandnamePreview().brandname }}</h2>
+            </div>
+            <nav class="flex items-center gap-4 space-x-8">
+                <a href="#" class="font-semibold text-[color:--primary-color-200] hover:text-[color:--primary-color-100] transition-colors">Products</a>
+                <a href="#" class="font-semibold text-[color:--primary-color-200] hover:text-[color:--primary-color-100] transition-colors">About</a>
+                <button class="bg-[color:--primary-color-100] text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] hover:bg-[color:--primary-color-150] hover:scale-105 transition-all shadow-lg">
+                    Contact
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center bg-no-repeat object-top" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="py-24 min-h-[75dvh] flex items-center w-full relative">
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-[-24px] bg-gradient-to-r from-[--primary-color-025] to-[--secondary-color-025] mix-blend-multiply"></div>
+            <!-- Content -->
+            <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row items-center relative z-10">
+                <div class="md:w-1/2 mb-10 md:mb-0 text-white">
+                    <h1 class="text-5xl md:text-6xl font-semibold mb-4 leading-tight text-white">{{ brandnamePreview().brandname }}</h1>
+          			<p class="text-xl mb-4">{{ brandnamePreview().tagline || 'Empowering Your Future' }}</p>
+                    <p class="mb-6 opacity-75">Innovative solutions for the modern tech industry, delivering cutting-edge performance and reliability.</p>
+                    <div class="space-x-4"> 
+                        <button class="border-2 border-white bg-white text-[color:--primary-color-100] px-[--padding-x] py-[--padding-y] rounded-[--border-radius] font-semibold hover:bg-[color:--primary-color-010] hover:border-[color:--primary-color-010] transition-all duration-300 shadow-lg hover:scale-105">
+                            Get Started
+                        </button>
+                        <button class="border-2 border-white text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] font-semibold hover:bg-white hover:text-[color:--primary-color-100] transition-all duration-300 shadow-lg hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Users Section -->
+    <section class="py-24 min-h-[50vh] flex align-middle">
+        <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                <img src="https://plus.unsplash.com/premium_photo-1742926577675-ca7ae7ac39b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Users" class="max-h-80 w-full rounded-[--border-radius] shadow-md object-cover">
+            </div>
+            <div class="md:w-1/2">
+                <h3 class="text-3xl font-semibold mb-4 text-[color:--primary-color-100]">Solving Your Challenges</h3>
+                <p class="text-[color:--primary-color-200] opacity-75 leading-relaxed">We understand the struggles of staying ahead in a fast-paced digital world. Our solutions tackle inefficiencies, boost productivity, and help businesses thrive in competitive markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005]">
+        <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row-reverse items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pl-8">
+                <img src="https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Products" class="max-h-80 w-full rounded-[--border-radius] shadow-md object-cover">
+            </div>
+            <div class="md:w-1/2">
+                <h3 class="text-3xl font-semibold mb-4 text-[color:--primary-color-100]">Our Products</h3>
+                <p class="text-[color:--primary-color-200] opacity-75 mb-6">Discover our range of innovative tools and services designed to streamline your workflow and enhance your business performance.</p>
+                <button class="bg-[color:--primary-color-100] text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] hover:bg-[color:--primary-color-150] hover:scale-105 transition-all shadow-lg">
+                    Explore Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Section -->
+    <section class="py-24 flex align-middle">
+        <div class="container min-h-80 mx-auto px-[--padding-x] ">
+            <h3 class="text-3xl font-semibold text-center mb-12 text-[color:--primary-color-100]">Our Brand Colors</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="h-32 w-full bg-[color:--primary-color-100] rounded-[--border-radius] shadow-md mb-4"></div>
+                    <p class="font-semibold">Primary color</p>
+                    <p class=" text-[color:--primary-color-200] opacity-75">#4F46E5</p>
+                </div>
+                <div class="text-center">
+                    <div class="h-32 w-full bg-[color:--secondary-color-100] rounded-[--border-radius] shadow-md mb-4"></div>
+                    <p class="font-semibold">Secondary color</p>
+                    <p class=" text-[color:--primary-color-200] opacity-75">#9333EA</p>
+                </div>
+                <div class="text-center">
+                    <div class="h-32 w-full bg-[color:--tertiary-color-100] rounded-[--border-radius] shadow-md mb-4"></div>
+                    <p class="font-semibold">Tertiary color</p>
+                    <p class=" text-[color:--primary-color-200] opacity-75">#E5E7EB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005]">
+		<div class="container mx-auto px-[--padding-x]">
+			<h3 class="text-3xl font-semibold text-center mb-12 text-[color:--primary-color-100]">Typography</h3>
+			<div class=" flex flex-col md:flex-row items-start text-center">
+				<div class="md:w-1/2 mb-10 md:mb-0">
+					<div class="space-y-8">
+						<div>
+							<h4 class="text-4xl font-semibold mb-2 text-[color:--primary-color-100]">Heading 1 - 36px</h4>
+							<p class="text-sm text-[color:--primary-color-200] opacity-75 ">Used for main titles and hero sections</p>
+						</div>
+						<div>
+							<h5 class="text-2xl font-semibold mb-2 text-[color:--primary-color-100]">Heading 2 - 24px</h5>
+							<p class="text-sm text-[color:--primary-color-200] opacity-75 ">Used for section titles</p>
+						</div>
+						<div>
+							<h6 class="text-xl font-bold mb-2 text-[color:--primary-color-100]">Heading 3 - 18px</h6>
+							<p class="text-sm text-[color:--primary-color-200] opacity-75 ">Used for section titles</p>
+						</div>
+					</div>
+	        	</div>
+				<div class="md:w-1/2">
+					<div class="space-y-8">
+						<div>
+							<p class="text font-bold mb-2">Bold Text - 16px</p>
+							<p class="text-sm text-[color:--primary-color-200] opacity-75">Bold primary text for extra attention</p>
+						</div>
+						<div>
+							<p class="text mb-2">Body Text - 16px</p>
+							<p class="text-sm text-[color:--primary-color-200] opacity-75">Primary content text for readability</p>
+						</div>
+						<div>
+							<p class="text-sm mb-2">Small Text - 14px</p>
+							<p class="text-sm text-[color:--primary-color-200] opacity-75">Smaller text for details</p>
+						</div>
+					</div>
+	        	</div>
+			</div>
+		</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 bg-[color:--primary-color-150] text-white">
+        <div class="container mx-auto px-[--padding-x]">
+            <div class="flex md:flex-row justify-between flex-col gap-16">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="logo.png" alt="Logo" class="h-10 w-10 bg-[color:--primary-color-200] rounded-full">
+                        <h2 class="text-xl font-semibold text-white">{{ brandnamePreview().brandname }}</h2>
+                    </div>
+                    <p class="text-white opacity-50">Agatha Dekenstraat 121</p>
+                    <p class="text-white opacity-50">1053 AN Amsterdam</p>
+                    <p class="text-white opacity-50">010 - 353 63 63</p>
+                </div>
+                <div class="flex flex-col gap-16 md:flex-row md:gap-32">
+                    <div>
+                        <h4 class="font-semibold mb-4 text-white">Products</h4>
+                        <ul class="space-y-2 text-white">
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Features</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Pricing</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Integrations</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4 text-white">Company</h4>
+                        <ul class="space-y-2 text-white">
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">About</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Contact</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4 text-white">Resources</h4>
+                        <ul class="space-y-2 text-white">
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Blog</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Support</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="container text-white opacity-25 mx-auto mt-16 text-sm text-center">© 2025 BrandName. All rights reserved.</p>
+    </footer>
+</div>
