@@ -1,4 +1,4 @@
-import { Condition, Rule } from './../../shared/models/industry-values-connections';
+import { Rule } from './../../shared/models/industry-values-connections';
 import {
   Component,
   computed,
@@ -54,13 +54,14 @@ export class BrandIndustryComponent implements OnInit {
   rules = signal<BrandIndustryRules>({
     rules: []
   });
+  topThreeArchetypes: Record<string, number> = {};
 
   selectedIndustryArchetype = signal<string | null>(null);
   selectedValueArchetypes = signal<string[]>([]);
   combinedSelectedArchetypes = computed(() => {
-    const iets = this.selectedIndustryArchetype() 
-    ? [this.selectedIndustryArchetype(), ...this.selectedValueArchetypes()] 
-    : [...this.selectedValueArchetypes()];
+    const iets = this.selectedIndustryArchetype()
+      ? [this.selectedIndustryArchetype(), ...this.selectedValueArchetypes()]
+      : [...this.selectedValueArchetypes()];
     console.log(this.calculateRoundedPercentages(this.selectedValueArchetypes()));
     return iets;
   });
@@ -103,9 +104,9 @@ export class BrandIndustryComponent implements OnInit {
    */
   handleDropdownIndustry(industry: string) {
     const foundArchetype = this.findArchetypeFromIndustry(industry);
-  if (!foundArchetype) return;
+    if (!foundArchetype) return;
 
-  this.selectedIndustryArchetype.set(foundArchetype);
+    this.selectedIndustryArchetype.set(foundArchetype);
     this.brandIndustryStore.updateIndustrtyState(industry);
     this.brandIndustry.update(curr => ({ ...curr, industry }));
     console.log(this.selectedArchetype(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ????");
@@ -117,10 +118,10 @@ export class BrandIndustryComponent implements OnInit {
    */
   handleMultipleValues(values: string[]) {
     const foundArchetypes = values
-    .map(value => this.findArchetypeFromValues(value))
-    .filter((found): found is string => !!found);
+      .map(value => this.findArchetypeFromValues(value))
+      .filter((found): found is string => !!found);
 
-  this.selectedValueArchetypes.set(foundArchetypes);
+    this.selectedValueArchetypes.set(foundArchetypes);
     console.log(this.selectedArchetype(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ IN MULTI????");
   }
 
@@ -144,17 +145,14 @@ export class BrandIndustryComponent implements OnInit {
       .find((rule: Rule) => rule.condition.industry?.includes(industry))?.archetype;
   }
 
-
-  topThreeArchetypes: Record<string, number> = {};
-  
   calculateRoundedPercentages(arr: string[]): Record<string, number> {
     const total = arr.length;
     const counts: Record<string, number> = {};
-  
+
     arr.forEach(value => {
       counts[value] = (counts[value] || 0) + 1;
     });
-  
+
     const percentages: Record<string, number> = {};
     for (const key in counts) {
       percentages[key] = Math.ceil((counts[key] / total) * 100);
@@ -163,9 +161,9 @@ export class BrandIndustryComponent implements OnInit {
     const sortedEntries = Object.entries(percentages)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 10);
-  
+
     this.topThreeArchetypes = Object.fromEntries(sortedEntries);
-  
+
     console.log("Top 3 Archetypes:", this.topThreeArchetypes); // Debugging output
     return this.topThreeArchetypes;
   }

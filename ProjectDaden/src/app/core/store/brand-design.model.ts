@@ -1,4 +1,4 @@
-import { BrandNameAndTaglineCompleted } from '../../features/brand-name/store/brandname-tagline.model';
+import { BrandNameAndTaglineCompleted, newBrandname } from '../../features/brand-name/store/brandname-tagline.model';
 import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/industry-industry.model';
 import { VisionAndMissionsCompleted } from '../../features/mission-vision/store/vision-and-missions.model';
 import { CopywritingCompleted } from '../../features/section-copywright/store/copywriting.model';
@@ -27,7 +27,7 @@ export type BrandDesignFlow =
 // Partial<WebsiteAndUIStyleCompleted>
 
 export type BrandDesignCompleted = {
-  brandnameAndTagline: BrandNameAndTaglineCompleted;
+  brandnameAndTagline: newBrandname;
   industryAndValues: IndustryAndValuesCompleted;
   targetAudience: TargetAudienceCompleted;
   missionAndVision: VisionAndMissionsCompleted;

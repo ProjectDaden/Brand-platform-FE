@@ -1,43 +1,29 @@
+import { Brandname } from './../models/brand-name';
+import { IndustryAndValuesStore } from './../../brand-value-personality/store/industry-industry.store';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import {
   BrandNameAndTaglineCompleted,
+  newBrandname,
 } from './brandname-tagline.model';
-import { Injectable } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 
-type BrandNameState = BrandNameAndTaglineCompleted;
+type BrandNameState = newBrandname;
 
 export const initialBrandnameAndTagline: BrandNameState = {
-  personalities: [],
-  selectedPersonality: '',
-  personalityOptions: {
-    synonyms: [],
-    headingFonts: [],
-    bodyFonts: [],
-  },
-  tagLineUsed: 'no',
-  tagLine: '',
+  brandname: "PLACEHOLDER...",
+  tagline: "",
+  taglineUsed: false
 };
 
 export const brandNameTaglineStore = signalStore(
   withState<BrandNameState>(initialBrandnameAndTagline),
   withMethods((store) => ({
-    updatePersonalityOptionsState(
-        synonyms: string[],
-        headingFonts: string[],
-        bodyFonts: string[]
-    ) {
-      patchState(store, (state) => ({
-        personalityOptions: { ...state.personalityOptions, synonyms, headingFonts, bodyFonts }}));
-      console.log(store.personalityOptions(), "From inside BrandNameTagline state!!");
-    },
-    updateSelectedPersonality(personality: string) {
-      const curSynonyms = store.personalityOptions().synonyms;
-      patchState<BrandNameState>(store, { selectedPersonality: personality });
+    updateBrandname(brandname: string) {
+      patchState<BrandNameState>(store, { brandname: brandname });
     },
     updateTagline(tagline: string) {
-        const curTagline = store.tagLine;
-        patchState<BrandNameState>(store, { tagLine: tagline });
-      },
+      patchState<BrandNameState>(store, { tagline: tagline });
+    },
   }))
 );
 
@@ -47,10 +33,19 @@ export class BaseClassBrandNameAndTaglineStore extends brandNameTaglineStore {
     super();
   }
 
-override updatePersonalityOptionsState = (synonyms: string[], headingFonts: string[], bodyFonts: string[]): void => 
-    super.updatePersonalityOptionsState(synonyms, headingFonts, bodyFonts);
+  readonly brandnameTaginleState = computed(() => ({
+    brandname: this.brandname(),
+    tagline: this.tagline(),
+    taglineUsed: this.taglineUsed(),
+  }));
 
-  getBrandNameTaglineStore(){
+  override updateBrandname = (brandname: string): void => super.updateBrandname(brandname);
+  override updateTagline = (tagline: string): void => super.updateTagline(tagline);
+
+  // override updatePersonalityOptionsState = (synonyms: string[], headingFonts: string[], bodyFonts: string[]): void =>
+  //   super.updatePersonalityOptionsState(synonyms, headingFonts, bodyFonts);
+
+  getBrandNameTaglineStore() {
     console.log(initialBrandnameAndTagline, " Current initial BrandNameAndTagline state!");
   }
 }

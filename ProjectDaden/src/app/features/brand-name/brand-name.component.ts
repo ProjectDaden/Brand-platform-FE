@@ -72,7 +72,7 @@ export class BrandNameComponent implements OnInit {
     this.detailText = "Craft a tagline that reflects your brand’s essence.";
 
     this.globalStateTest.getStore();
-    this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
+    // this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
     console.log(this.archetypes.getArchetypeSignal()(), " <--- VANUIT COMPONENT ARCHETYPES");
 
     console.log(this.archetypes.bodyFonts(), " <--- ALL BODYFONTS IN COMP");
