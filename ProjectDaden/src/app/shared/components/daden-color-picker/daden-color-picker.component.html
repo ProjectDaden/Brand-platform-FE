@@ -1,0 +1,16 @@
+<div class="flex flex-col items-center gap-6 p-5 w-full h-full">
+  <canvas #colorWheelCanvas 
+          class="w-full max-w-[min(100%,100vh)] aspect-square rounded-full overflow-hidden"
+          [attr.width]="canvasSize" 
+          [attr.height]="canvasSize"></canvas>
+  <div class="relative w-full h-40 rounded-xl border border-gray-200 shadow-md transition-transform hover:-translate-y-1"
+       [style.backgroundColor]="selectedColor.rgb">
+    <h3 class="absolute top-2 left-2 font-bold text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]">
+      Primary
+    </h3>
+    <span class="absolute bottom-2 left-2 max-w-[75%] text-sm sm:text-xs font-medium text-white bg-black/20 p-2 rounded-md break-all drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]">
+		<p>{{ selectedColor.hsl }}</p>    
+		<p>{{ selectedColor.rgb }}</p>
+    </span>
+  </div>
+</div>

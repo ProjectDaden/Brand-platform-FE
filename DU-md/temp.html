@@ -1,15 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Brand 2025</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="font-serif antialiased text-white bg-black w-80 mx-auto h-screen">
-    <div class="flex justify-center flex-col align-middle h-full gap-8">
-        <button class="flex p-12 align-middle justify-center font-semibold italic rounded-md hover:bg-gray-950 transition-all duration-1000">Save & Continue</button>
-        <button class="flex p-12 align-middle justify-center font-semibold italic rounded-md hover:bg-gray-950 transition-all duration-1000">Save & Quit</button>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Brand Style Generator</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+			body{
+				font-family: Inter, sans-serif;
+			}
+			/* Custom slider styling */
+			.slider-container {
+				position: relative;
+			}
+			input[type="range"] {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 100%;
+				height: 40px;
+				border-radius: 6px;
+				outline: none;
+				background-clip: content-box;
+			}
+			input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 4px;
+			height: 36px;
+			background: #FFFFFF;
+			border-radius: 2px;
+			cursor: pointer;
+			}
+			input[type="range"]::-moz-range-thumb {
+			width: 4px;
+			height: 36px;
+			background: #FFFFFF;
+			border-radius: 2px;
+			cursor: pointer;
+			}
+			/* Hue sliders: Full color wheel */
+			#hueSlider, #secondaryHueSlider {
+			background: linear-gradient(to right,
+				hsl(0, 100%, 50%),
+				hsl(60, 100%, 50%),
+				hsl(120, 100%, 50%),
+				hsl(180, 100%, 50%),
+				hsl(240, 100%, 50%),
+				hsl(300, 100%, 50%),
+				hsl(360, 100%, 50%));
+			}
+			/* Saturation slider */
+			#satSlider {
+			background: linear-gradient(to right,
+				hsl(var(--current-hue), 0%, var(--current-lightness)),
+				hsl(var(--current-hue), 100%, var(--current-lightness)));
+			}
+			/* Lightness slider */
+			#lightSlider {
+			background: linear-gradient(to right,
+				hsl(var(--current-hue), var(--current-sat), 10%),
+				hsl(var(--current-hue), var(--current-sat), 90%));
+			}
+			/* Indicator styling */
+			.slider-indicators {
+			position: relative;
+			height: 8px;
+			width: 100%;
+			margin-top: 4px;
+			}
+			.recommended-range {
+			position: absolute;
+			height: 6px;
+			background: rgba(50, 50, 50, 0.5);
+			border-radius: 6px;
+			}
+			.standard-value {
+			position: absolute;
+			bottom: 0;
+			border: 4px solid transparent;
+			border-top: 4px solid #fff;
+			transform: translateX(-50%);
+			}
+			/* Value under thumb */
+			.slider-value {
+			position: absolute;
+			bottom: -20px;
+			transform: translateX(-50%);
+			font-size: 0.875rem;
+			color: #4B5563;
+			}
+        </style>
+    </head>
+    <body class="bg-blue-50 text-blue-950 flex flex-col items-center min-h-screen p-4 space-y-6">
+        <!-- Peset Card -->
+        <div class="w-full max-w-lg bg-white  p-6 rounded-xl shadow-md mb-12">
+            <h2 class="font-bold capitalize text-blue-900 text-3xl">Archetypes</h2>
+            <!-- Archetype Inputs -->
+            <div class="mb-4">
+                <label for="archetype1" class="block text-sm font-bold text-blue-700 mb-2">Primary Archetype (Required)</label>
+                <div class="relative w-full">
+                    <span class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none p-[11px] rounded-r border-0 bg-blue-500 text-white hover:bg-blue-700">
+                        <daden-icon icon="arrowDown" class="size-4">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                class="size-4"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+                            </svg>
+                        </daden-icon>
+                    </span>
+                    <select id="archetype1" class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-600 placeholder-gray-600 ng-pristine ng-valid ng-touched">
+                        <option value="" disabled selected>Select Archetype</option>
+                        <option value="Rebel">Rebel (0–30°)</option>
+                        <option value="Hero">Hero (30–60°)</option>
+                        <option value="Innocent">Innocent (60–90°)</option>
+                        <option value="Explorer">Explorer (90–120°)</option>
+                        <option value="Everyman">Everyman (120–150°)</option>
+                        <option value="Caregiver">Caregiver (150–180°)</option>
+                        <option value="Sage">Sage (180–210°)</option>
+                        <option value="Creator">Creator (210–240°)</option>
+                        <option value="Magician">Magician (240–270°)</option>
+                        <option value="Ruler">Ruler (270–300°)</option>
+                        <option value="Lover">Lover (300–330°)</option>
+                        <option value="Jester">Jester (330–360°)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="archetype2" class="block text-sm font-bold text-blue-700 mb-2">Secondary Archetype (Optional)</label>
+                <div class="relative w-full">
+                    <span class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none p-[11px] rounded-r border-0 bg-blue-500 text-white hover:bg-blue-700">
+                        <daden-icon icon="arrowDown" class="size-4">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                class="size-4"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
+                            </svg>
+                        </daden-icon>
+                    </span>
+                    <select id="archetype2" class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-600 placeholder-gray-600 ng-pristine ng-valid ng-touched">
+                        <option value="" selected>None</option>
+                        <option value="Rebel">Rebel (0–30°)</option>
+                        <option value="Hero">Hero (30–60°)</option>
+                        <option value="Innocent">Innocent (60–90°)</option>
+                        <option value="Explorer">Explorer (90–120°)</option>
+                        <option value="Everyman">Everyman (120–150°)</option>
+                        <option value="Caregiver">Caregiver (150–180°)</option>
+                        <option value="Sage">Sage (180–210°)</option>
+                        <option value="Creator">Creator (210–240°)</option>
+                        <option value="Magician">Magician (240–270°)</option>
+                        <option value="Ruler">Ruler (270–300°)</option>
+                        <option value="Lover">Lover (300–330°)</option>
+                        <option value="Jester">Jester (330–360°)</option>
+                    </select>
+                </div>
+            </div>
+        </div>       
+		<!-- Input Card -->
+        <div class="w-full max-w-lg bg-white  p-6 rounded-xl shadow-md mb-12">
+            <h2 class="font-bold capitalize text-blue-900 text-3xl">Color pickers</h2>
+            <!-- Color Sliders -->
+            <div class="mb-4">
+                <label class="block text-sm font-bold text-blue-700 mb-2">Primary Color</label>
+                <div class="mt-2 mb-6 slider-container">
+                    <label id="hueLabel" for="hueSlider" class="block text-xs text-gray-600">Primary Hue (Recommended: Select an archetype)</label>
+                    <input
+                        type="range"
+                        id="hueSlider"
+                        min="0"
+                        max="360"
+                        value="0"
+                        class="mt-1 w-full"
+                    >
+                    <span id="hueValue" class="slider-value">0°</span>
+                    <div id="hueIndicators" class="slider-indicators">
+                        <div class="recommended-range"></div>
+                        <div class="standard-value"></div>
+                    </div>
+                </div>
+                <div class="mt-2 mb-6 slider-container">
+                    <label for="satSlider" class="block text-xs text-gray-600">Saturation (Recommended: 40–80%)</label>
+                    <input
+                        type="range"
+                        id="satSlider"
+                        min="0"
+                        max="100"
+                        value="60"
+                        class="mt-1 w-full"
+                    >
+                    <span id="satValue" class="slider-value">60%</span>
+                    <div class="slider-indicators">
+                        <div class="recommended-range" style="left: 40%; width: 40%;"></div>
+                        <div class="standard-value" style="left: 60%;"></div>
+                    </div>
+                </div>
+                <div class="mt-2 mb-6 slider-container">
+                    <label for="lightSlider" class="block text-xs text-gray-600">Lightness (Recommended: 30–70%)</label>
+                    <input
+                        type="range"
+                        id="lightSlider"
+                        min="10"
+                        max="90"
+                        value="50"
+                        class="mt-1 w-full"
+                    >
+                    <span id="lightValue" class="slider-value">50%</span>
+                    <div class="slider-indicators">
+                        <div class="recommended-range" style="left: 25%; width: 50%;"></div>
+                        <div class="standard-value" style="left: 50%;"></div>
+                    </div>
+                </div>
+                <div id="secondaryColorContainer" class="mt-4 hidden">
+                    <label class="block text-sm font-medium text-gray-700">Secondary Color</label>
+                    <div class="mt-2 mb-6 slider-container">
+                        <label id="secondaryHueLabel" for="secondaryHueSlider" class="block text-xs text-gray-600">Secondary Hue (Recommended: Select an archetype)</label>
+                        <input
+                            type="range"
+                            id="secondaryHueSlider"
+                            min="0"
+                            max="360"
+                            value="0"
+                            class="mt-1 w-full"
+                        >
+                        <span id="secondaryHueValue" class="slider-value">0°</span>
+                        <div id="secondaryHueIndicators" class="slider-indicators">
+                            <div class="recommended-range"></div>
+                            <div class="standard-value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div id="colorPreview" class="w-full h-24 rounded flex items-center justify-center text-white relative" style="background-color: hsl(0, 60%, 50%);">
+                        <span class="text-base font-medium">Primary Preview</span>
+                    </div>
+                </div>
+                <div id="secondaryColorPreviewContainer" class="mt-2 hidden">
+                    <div id="secondaryColorPreview" class="w-full h-24 rounded flex items-center justify-center text-white relative" style="background-color: hsl(0, 60%, 50%);">
+                        <span class="text-base font-medium">Secondary Preview</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Results Output Card -->
+        <div id="resultsOutput" class="w-full max-w-lg bg-white  p-6 rounded-xl shadow-md mb-12">
+            <h2 class="font-bold capitalize text-blue-900 text-3xl">Color Results</h2>
+            <div id="tintsContainer" class="grid grid-cols-1 gap-4">
+                <!-- Tints will be dynamically inserted here --></div>
+        </div>
+        <script>
+			const archetypes = {
+			Rebel: { hueMin: 0, hueMax: 30, center: 0 },
+			Hero: { hueMin: 30, hueMax: 60, center: 30 },
+			Innocent: { hueMin: 60, hueMax: 90, center: 60 },
+			Explorer: { hueMin: 90, hueMax: 120, center: 90 },
+			Everyman: { hueMin: 120, hueMax: 150, center: 120 },
+			Caregiver: { hueMin: 150, hueMax: 180, center: 150 },
+			Sage: { hueMin: 180, hueMax: 210, center: 180 },
+			Creator: { hueMin: 210, hueMax: 240, center: 210 },
+			Magician: { hueMin: 240, hueMax: 270, center: 240 },
+			Ruler: { hueMin: 270, hueMax: 300, center: 270 },
+			Lover: { hueMin: 300, hueMax: 330, center: 300 },
+			Jester: { hueMin: 330, hueMax: 360, center: 330 }
+			};
+
+			const archetype1Select = document.getElementById('archetype1');
+			const archetype2Select = document.getElementById('archetype2');
+			const hueSlider = document.getElementById('hueSlider');
+			const hueLabel = document.getElementById('hueLabel');
+			const hueValue = document.getElementById('hueValue');
+			const satSlider = document.getElementById('satSlider');
+			const satValue = document.getElementById('satValue');
+			const lightSlider = document.getElementById('lightSlider');
+			const lightValue = document.getElementById('lightValue');
+			const secondaryHueSlider = document.getElementById('secondaryHueSlider');
+			const secondaryHueLabel = document.getElementById('secondaryHueLabel');
+			const secondaryHueValue = document.getElementById('secondaryHueValue');
+			const colorPreview = document.getElementById('colorPreview');
+			const secondaryColorPreview = document.getElementById('secondaryColorPreview');
+			const secondaryColorContainer = document.getElementById('secondaryColorContainer');
+			const secondaryColorPreviewContainer = document.getElementById('secondaryColorPreviewContainer');
+			const tintsContainer = document.getElementById('tintsContainer');
+			const hueIndicators = document.getElementById('hueIndicators');
+			const secondaryHueIndicators = document.getElementById('secondaryHueIndicators');
+
+			function animateSlider(slider, targetValue, duration = 500) {
+			const startValue = parseFloat(slider.value);
+			const startTime = performance.now();
+
+			function update(time) {
+				const elapsed = time - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				const easedProgress = progress * (2 - progress); // Ease-in-out
+				const newValue = startValue + (targetValue - startValue) * easedProgress;
+				slider.value = newValue;
+				slider.dispatchEvent(new Event('input'));
+				if (progress < 1) {
+				requestAnimationFrame(update);
+				}
+			}
+
+			requestAnimationFrame(update);
+			}
+
+			function hslToRgb(h, s, l) {
+			s /= 100;
+			l /= 100;
+			const c = (1 - Math.abs(2 * l - 1)) * s;
+			const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+			const m = l - c / 2;
+			let r = 0, g = 0, b = 0;
+
+			if (0 <= h && h < 60) { r = c; g = x; b = 0; }
+			else if (60 <= h && h < 120) { r = x; g = c; b = 0; }
+			else if (120 <= h && h < 180) { r = 0; g = c; b = x; }
+			else if (180 <= h && h < 240) { r = 0; g = x; b = c; }
+			else if (240 <= h && h < 300) { r = x; g = 0; b = c; }
+			else if (300 <= h && h < 360) { r = c; g = 0; b = x; }
+
+			r = Math.round((r + m) * 255);
+			g = Math.round((g + m) * 255);
+			b = Math.round((b + m) * 255);
+			return [r, g, b];
+			}
+
+			function getContrastTextColor(l) {
+			return l > 50 ? '#000000' : '#FFFFFF';
+			}
+
+			function updateSliderValuePosition(slider, valueElement) {
+			const min = parseFloat(slider.min);
+			const max = parseFloat(slider.max);
+			const value = parseFloat(slider.value);
+			const percentage = (value - min) / (max - min) * 100;
+			valueElement.style.left = `${percentage}%`;
+			}
+
+			function updateHSLSliders() {
+			const arch1 = archetype1Select.value;
+			const arch2 = archetype2Select.value;
+
+			if (arch1) {
+				const { hueMin, hueMax, center } = archetypes[arch1];
+				animateSlider(hueSlider, center);
+				hueLabel.textContent = `Primary Hue (Recommended: ${hueMin}–${hueMax}°)`;
+				hueIndicators.querySelector('.recommended-range').style.left = `${(hueMin / 360) * 100}%`;
+				hueIndicators.querySelector('.recommended-range').style.width = `${((hueMax - hueMin) / 360) * 100}%`;
+				hueIndicators.querySelector('.standard-value').style.left = `${(center / 360) * 100}%`;
+			} else {
+				hueSlider.value = 0;
+				hueLabel.textContent = 'Primary Hue (Recommended: Select an archetype)';
+				hueIndicators.querySelector('.recommended-range').style.left = '0%';
+				hueIndicators.querySelector('.recommended-range').style.width = '0%';
+				hueIndicators.querySelector('.standard-value').style.left = '0%';
+			}
+
+			if (arch2) {
+				const { hueMin, hueMax, center } = archetypes[arch2];
+				animateSlider(secondaryHueSlider, center);
+				secondaryHueLabel.textContent = `Secondary Hue (Recommended: ${hueMin}–${hueMax}°)`;
+				secondaryHueIndicators.querySelector('.recommended-range').style.left = `${(hueMin / 360) * 100}%`;
+				secondaryHueIndicators.querySelector('.recommended-range').style.width = `${((hueMax - hueMin) / 360) * 100}%`;
+				secondaryHueIndicators.querySelector('.standard-value').style.left = `${(center / 360) * 100}%`;
+				secondaryColorContainer.classList.remove('hidden');
+				secondaryColorPreviewContainer.classList.remove('hidden');
+			} else {
+				secondaryColorContainer.classList.add('hidden');
+				secondaryColorPreviewContainer.classList.add('hidden');
+				secondaryHueIndicators.querySelector('.recommended-range').style.left = '0%';
+				secondaryHueIndicators.querySelector('.recommended-range').style.width = '0%';
+				secondaryHueIndicators.querySelector('.standard-value').style.left = '0%';
+			}
+
+			updateSliderGradients();
+			updateColorPreview();
+			generateColors();
+			}
+
+			function updateSliderGradients() {
+			const h = hueSlider.value;
+			const s = satSlider.value;
+			const l = lightSlider.value;
+			satSlider.style.setProperty('--current-hue', h);
+			satSlider.style.setProperty('--current-lightness', `${l}%`);
+			lightSlider.style.setProperty('--current-hue', h);
+			lightSlider.style.setProperty('--current-sat', `${s}%`);
+			}
+
+			function updateColorPreview() {
+			const h = hueSlider.value;
+			const s = satSlider.value;
+			const l = lightSlider.value;
+			const h2 = secondaryHueSlider.value;
+			colorPreview.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+			colorPreview.querySelector('span').style.color = getContrastTextColor(l);
+			if (archetype2Select.value) {
+				secondaryColorPreview.style.backgroundColor = `hsl(${h2}, ${s}%, ${l}%)`;
+				secondaryColorPreview.querySelector('span').style.color = getContrastTextColor(l);
+			}
+			hueValue.textContent = `${Math.round(h)}°`;
+			satValue.textContent = `${s}%`;
+			lightValue.textContent = `${Math.round(l)}%`;
+			secondaryHueValue.textContent = `${Math.round(h2)}°`;
+			updateSliderValuePosition(hueSlider, hueValue);
+			updateSliderValuePosition(satSlider, satValue);
+			updateSliderValuePosition(lightSlider, lightValue);
+			updateSliderValuePosition(secondaryHueSlider, secondaryHueValue);
+			updateSliderGradients();
+			generateColors();
+			}
+
+			function generateTints(color, prefix) {
+			const userLightness = parseFloat(lightSlider.value);
+			const tints = [];
+			const names = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
+
+			const lightnessLevels = [];
+			const lowerStep = (userLightness - 5) / 4;
+			for (let i = 0; i < 4; i++) {
+				lightnessLevels.push(5 + i * lowerStep);
+			}
+			lightnessLevels.push(userLightness);
+			const upperStep = (95 - userLightness) / 4;
+			for (let i = 1; i <= 4; i++) {
+				lightnessLevels.push(userLightness + i * upperStep);
+			}
+
+			lightnessLevels.forEach((l, i) => {
+				tints.push({
+				name: `${prefix}-${names[i]}`,
+				h: color.h,
+				s: color.s,
+				l: l
+				});
+			});
+			return tints;
+			}
+
+			function generateColors() {
+			const arch1 = archetype1Select.value;
+			const arch2 = archetype2Select.value;
+
+			if (!arch1) {
+				tintsContainer.innerHTML = '';
+				tintsContainer.classList.remove('grid-cols-2');
+				tintsContainer.classList.add('grid-cols-1');
+				return;
+			}
+
+			const primary = {
+				h: parseFloat(hueSlider.value),
+				s: parseFloat(satSlider.value),
+				l: parseFloat(lightSlider.value)
+			};
+			let secondary = null;
+
+			if (arch2) {
+				secondary = {
+				h: parseFloat(secondaryHueSlider.value),
+				s: primary.s,
+				l: primary.l
+				};
+				tintsContainer.classList.remove('grid-cols-1');
+				tintsContainer.classList.add('grid-cols-2');
+			} else {
+				tintsContainer.classList.remove('grid-cols-2');
+				tintsContainer.classList.add('grid-cols-1');
+			}
+
+			// Generate tints
+			tintsContainer.innerHTML = '';
+			const primaryTints = generateTints(primary, 'primary');
+			const secondaryTints = secondary ? generateTints(secondary, 'secondary') : [];
+
+			// Create columns
+			const primaryColumn = document.createElement('div');
+			primaryColumn.className = 'flex flex-col gap-6';
+			primaryTints.forEach(tint => {
+				const [r, g, b] = hslToRgb(tint.h, tint.s, tint.l);
+				const tintDiv = document.createElement('div');
+				tintDiv.className = 'flex items-center';
+				tintDiv.innerHTML = `
+				<div class="w-12 h-12 rounded mr-4" style="background-color: hsl(${tint.h}, ${tint.s}%, ${tint.l}%);"></div>
+				<div>
+					<span class="font-medium text-base text-gray-800">${tint.name}</span>
+					<p class="text-sm text-gray-600">HSL(${Math.round(tint.h)}, ${tint.s}%, ${tint.l}%)</p>
+					<p class="text-sm text-gray-600">RGB(${r}, ${g}, ${b})</p>
+				</div>
+				`;
+				primaryColumn.appendChild(tintDiv);
+			});
+
+			tintsContainer.appendChild(primaryColumn);
+
+			if (secondary) {
+				const secondaryColumn = document.createElement('div');
+				secondaryColumn.className = 'flex flex-col gap-6';
+				secondaryTints.forEach(tint => {
+				const [r, g, b] = hslToRgb(tint.h, tint.s, tint.l);
+				const tintDiv = document.createElement('div');
+				tintDiv.className = 'flex items-center';
+				tintDiv.innerHTML = `
+					<div class="w-12 h-12 rounded mr-4" style="background-color: hsl(${tint.h}, ${tint.s}%, ${tint.l}%);"></div>
+					<div>
+					<span class="font-medium text-base text-gray-800">${tint.name}</span>
+					<p class="text-sm text-gray-600">HSL(${Math.round(tint.h)}, ${tint.s}%, ${tint.l}%)</p>
+					<p class="text-sm text-gray-600">RGB(${r}, ${g}, ${b})</p>
+					</div>
+				`;
+				secondaryColumn.appendChild(tintDiv);
+				});
+				tintsContainer.appendChild(secondaryColumn);
+			}
+			}
+
+			function handleSliderClick(e, slider) {
+			const rect = slider.getBoundingClientRect();
+			const min = parseFloat(slider.min);
+			const max = parseFloat(slider.max);
+			const range = max - min;
+			const position = (e.clientX - rect.left) / rect.width;
+			const targetValue = min + position * range;
+			animateSlider(slider, Math.min(max, Math.max(min, targetValue)));
+			}
+
+			archetype1Select.addEventListener('change', updateHSLSliders);
+			archetype2Select.addEventListener('change', updateHSLSliders);
+			hueSlider.addEventListener('input', updateColorPreview);
+			satSlider.addEventListener('input', updateColorPreview);
+			lightSlider.addEventListener('input', updateColorPreview);
+			secondaryHueSlider.addEventListener('input', updateColorPreview);
+			hueSlider.addEventListener('mousedown', e => handleSliderClick(e, hueSlider));
+			satSlider.addEventListener('mousedown', e => handleSliderClick(e, satSlider));
+			lightSlider.addEventListener('mousedown', e => handleSliderClick(e, lightSlider));
+			secondaryHueSlider.addEventListener('mousedown', e => handleSliderClick(e, secondaryHueSlider));
+
+			// Initialize
+			updateHSLSliders();
+        </script>
+    </body>
 </html>
