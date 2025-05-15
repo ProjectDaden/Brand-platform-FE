@@ -21,7 +21,7 @@ export class DadenInputComponent {
   accept = input('');
   rows = input(4);
   value = model<string>();
-  chechkValue = model<boolean>(true);
+  chechkValue = model<boolean>(false);
   minValue = input<number>(0);
   maxValue = input<number>(0);
   stepValue = input<number>(0);

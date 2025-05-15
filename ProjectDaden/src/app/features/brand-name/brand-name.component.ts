@@ -7,7 +7,7 @@ import { DadenPageFooterComponent } from '../../shared/components/daden-page-foo
 import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-header/daden-group-header.component';
 import { BrandNameService } from './services/brand-name.service';
 import { Brandname, BrandnameDefault } from './models/brand-name';
-import { brandNameTaglineStore } from './store/brandname-tagline.store';
+import { BaseClassBrandNameAndTaglineStore, BrandNameTaglineStore } from './store/brandname-tagline.store';
 import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
@@ -17,7 +17,7 @@ import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.
 @Component({
   selector: 'app-brand-name-tagline',
   standalone: true,
-  providers: [brandNameTaglineStore, BaseClassGlobalStore],
+  providers: [BaseClassBrandNameAndTaglineStore, BaseClassGlobalStore],
   imports: [
     FormsModule,
     CommonModule,
@@ -28,7 +28,7 @@ import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.
     DadenLabelComponent,
     DadenDetailComponent,
     DadenInputComponent,
-],
+  ],
   templateUrl: './brand-name.component.html',
 })
 export class BrandNameComponent implements OnInit {
@@ -38,7 +38,7 @@ export class BrandNameComponent implements OnInit {
    */
   private readonly brandNameService = inject(BrandNameService);
   private readonly translate = inject(TranslateService);
-  brandnameAndTaglineStore = inject(brandNameTaglineStore);
+  brandnameAndTaglineStore = inject(BaseClassBrandNameAndTaglineStore);
   globalStateTest = inject(BaseClassGlobalStore);
   archetypes = inject(ArchetypeSetupService);
 
@@ -61,45 +61,55 @@ export class BrandNameComponent implements OnInit {
   taglineInput = signal<string>("Your tagline here...");
   isDisabled = signal<boolean>(false);
 
-  personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
+  // personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
   watchNEWBrandName = computed(() => this.newBrandName.genericSignalCollection());
 
   ngOnInit() {
     this.groupHeaderTitleBrandname = this.translate.instant("brandname.form-area.group-title-brandName");
     this.groupHeaderSubTitleBrandname = this.translate.instant("brandname.form-area.group-subTitle-brandName");
     this.groupHeaderTitleTagline = this.translate.instant("brandname.preview-area.group-title-tagline");
-    this.groupHeaderSubTitleTagline =this.translate.instant("brandname.preview-area.group-subTitle-tagline");
+    this.groupHeaderSubTitleTagline = this.translate.instant("brandname.preview-area.group-subTitle-tagline");
     this.detailText = "Craft a tagline that reflects your brand’s essence.";
 
     this.globalStateTest.getStore();
-    // this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
-    console.log(this.archetypes.getArchetypeSignal()(), " <--- VANUIT COMPONENT ARCHETYPES");
 
-    console.log(this.archetypes.bodyFonts(), " <--- ALL BODYFONTS IN COMP");
-    console.log(this.archetypes.headingFonts(), " <--- ALL HEADINGFONTS IN COMP");
-    console.log(this.archetypes.colorRanges(), " <--- ALL COLORRANGE IN COMP");
-    console.log(this.archetypes.industries(), " <--- ALL INDUSTRIES IN COMP");
-    console.log(this.archetypes.brandvalues(), " <--- ALL BRANDVALUES IN COMP");
   }
 
-  triggerTaglineReview(event: string | undefined, prop: keyof Brandname) {
-    if (event) {
-      const brandNameProp: Partial<Brandname> = {};
-      brandNameProp[prop] = event;
-      this.updateNEWBrandnameCollection(brandNameProp);
+  triggerTaglineReview(event: string | boolean, prop: keyof Brandname) {
+    if (event !== undefined) {
+      this.updateNEWBrandnameCollection({ [prop]: event });
     }
   }
 
-  updateNEWBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>){
-    this.newBrandName.genericSignalCollection.update(curr => ({...curr, ...updates}));
+  onToggle(val: boolean) {
+    this.isDisabled.set(val);
+  }
+
+  // explicitly use : "!== undefined" for falsy checks. else stale data might be passed to the store.
+  updateNEWBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>) {
+    console.log(updates, " <--- MAGWEG UPDATES CHECK");
+    if (updates.brandname !== undefined) this.brandnameAndTaglineStore.updateBrandname(updates.brandname);
+    if (updates.taglineDescription !== undefined) this.brandnameAndTaglineStore.updateTagline(updates.taglineDescription);
+    this.newBrandName.genericSignalCollection.update(curr => ({ ...curr, ...updates }));
     console.log(updates, " hier moet ik generic updaten!!");
   }
 
-  onReset() {
-    // this.newBrandName.genericSignalCollection.set(BRANDNAME_DEFAULT);
-    // this.handlePersonalitySelection('');
-    // this.useTagline = BRANDNAME_DEFAULT.tagLineUsed === 'yes';
-    // this.tagline = BRANDNAME_DEFAULT.tagLine || '';
-    // console.log('RESET');
-  }
+  onReset() { }
 }
+
+
+// this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
+// console.log(this.archetypes.getArchetypeSignal()(), " <--- VANUIT COMPONENT ARCHETYPES");
+
+// console.log(this.archetypes.bodyFonts(), " <--- ALL BODYFONTS IN COMP");
+// console.log(this.archetypes.headingFonts(), " <--- ALL HEADINGFONTS IN COMP");
+// console.log(this.archetypes.colorRanges(), " <--- ALL COLORRANGE IN COMP");
+// console.log(this.archetypes.industries(), " <--- ALL INDUSTRIES IN COMP");
+// console.log(this.archetypes.brandvalues(), " <--- ALL BRANDVALUES IN COMP");
+
+// onReset() {
+// this.newBrandName.genericSignalCollection.set(BRANDNAME_DEFAULT);
+// this.handlePersonalitySelection('');
+// this.useTagline = BRANDNAME_DEFAULT.tagLineUsed === 'yes';
+// this.tagline = BRANDNAME_DEFAULT.tagLine || '';
+// console.log('RESET');
