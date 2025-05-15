@@ -1,23 +1,33 @@
-<div class="body">
+<div class="body bg-white">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm">
         <div class="container mx-auto px-[--padding-x] py-4 flex items-center justify-between">
+            <!-- Logo and Brand Name -->
             <div class="flex items-center space-x-3">
-                <img src="logo.png" alt="Logo" class="h-10 w-10 bg-[color:--primary-color-150] rounded-full">
-                <h2 class="text-2xl font-semibold text-[color:--primary-color-150]">{{ brandnamePreview().brandname }}</h2>
+            <img src="logo.png" alt="Logo" class="h-10 w-10 bg-[color:--primary-color-150] rounded-full">
+            <h2 class="text-2xl font-semibold text-[color:--primary-color-150]">{{ brandnamePreview().brandname }}</h2>
             </div>
-            <nav class="flex items-center gap-4 space-x-8">
-                <a href="#" class="font-semibold text-[color:--primary-color-200] hover:text-[color:--primary-color-100] transition-colors">Products</a>
-                <a href="#" class="font-semibold text-[color:--primary-color-200] hover:text-[color:--primary-color-100] transition-colors">About</a>
-                <button class="bg-[color:--primary-color-100] text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] hover:bg-[color:--primary-color-150] hover:scale-105 transition-all shadow-lg">
-                    Contact
-                </button>
+
+            <!-- Hamburger Button (Visible on Mobile) -->
+            <button id="hamburger-btn" class="md:hidden text-[color:--primary-color-200] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d inco="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+            </button>
+
+            <!-- Navigation (Hidden on Mobile, Visible on Desktop) -->
+            <nav id="nav-menu" class="hidden md:flex md:items-center md:gap-4 md:space-x-8 absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none p-4 md:p-0 transition-all duration-300">
+            <a href="#" class="block md:inline font-semibold text-[color:--primary-color-200] hover:text-[color:--primary-color-100] transition-colors py-2 md:py-0">Products</a>
+            <a href="#" class="block md:inline font-semibold text-[color:--primary-color-200] hover:text-[color:--primary-color-100] transition-colors py-2 md:py-0">About</a>
+            <button class="block md:inline bg-[color:--primary-color-100] text-white px-[--padding-x] py-[--padding-y] rounded-[--border-radius] hover:bg-[color:--primary-color-150] hover:scale-105 transition-all shadow-lg w-full md:w-auto text-left">
+                Contact
+            </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-cover bg-center bg-no-repeat object-top" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <section class="bg-cover bg-center bg-no-repeat object-top shadow-none rounded-none" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
         <div class="py-24 min-h-[75dvh] flex items-center w-full relative">
             <!-- Gradient Overlay -->
             <div class="absolute inset-[-24px] bg-gradient-to-r from-[--primary-color-025] to-[--secondary-color-025] mix-blend-multiply"></div>
@@ -42,7 +52,7 @@
     </section>
 
     <!-- Users Section -->
-    <section class="py-24 min-h-[50vh] flex align-middle">
+    <section class="py-24 min-h-[50vh] flex align-middle shadow-none rounded-none">
         <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
                 <img src="https://plus.unsplash.com/premium_photo-1742926577675-ca7ae7ac39b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Users" class="max-h-80 w-full rounded-[--border-radius] shadow-md object-cover">
@@ -55,7 +65,7 @@
     </section>
 
     <!-- Products Section -->
-    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005]">
+    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005] shadow-none rounded-none">
         <div class="container mx-auto px-[--padding-x] flex flex-col md:flex-row-reverse items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 md:pl-8">
                 <img src="https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Products" class="max-h-80 w-full rounded-[--border-radius] shadow-md object-cover">
@@ -71,8 +81,8 @@
     </section>
 
     <!-- Color Section -->
-    <section class="py-24 flex align-middle">
-        <div class="container min-h-80 mx-auto px-[--padding-x] ">
+    <section class="py-24 flex align-middle shadow-none rounded-none">
+        <div class="container min-h-80 mx-auto px-[--padding-x] shadow-none rounded-none">
             <h3 class="text-3xl font-semibold text-center mb-12 text-[color:--primary-color-100]">Our Brand Colors</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center">
@@ -95,7 +105,7 @@
     </section>
 
     <!-- Typography Section -->
-    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005]">
+    <section class="py-24 min-h-[50vh] flex align-middle bg-[color:--secondary-color-005] shadow-none mb-0">
 		<div class="container mx-auto px-[--padding-x]">
 			<h3 class="text-3xl font-semibold text-center mb-12 text-[color:--primary-color-100]">Typography</h3>
 			<div class=" flex flex-col md:flex-row items-start text-center">
@@ -170,7 +180,7 @@
                         <ul class="space-y-2 text-white">
                             <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Blog</a></li>
                             <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Support</a></li>
-                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Privacy Policy</a></li>
+                            <li><a href="#" class="opacity-50 hover:opacity-100 transition-all">Privacy</a></li>
                         </ul>
                     </div>
                 </div>

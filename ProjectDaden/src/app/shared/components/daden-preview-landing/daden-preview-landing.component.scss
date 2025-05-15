@@ -39,10 +39,11 @@
 
 .preview-container {
   width: 450px; 
-  max-height: calc(50dvh / 0.5);
+  max-height: calc(100% / 0.5);
   overflow-y: auto; 
   display: flex;
   justify-content: center; 
   align-items: flex-start; 
   background: #fff; 
 }
+
