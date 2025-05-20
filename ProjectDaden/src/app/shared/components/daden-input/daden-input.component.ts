@@ -30,10 +30,10 @@ export class DadenInputComponent {
   selectedColor = signal<string>(this.defaultColor());
 
   constructor() {
-    this.inputSubject.pipe(debounceTime(300)).subscribe((debouncedValue) => {
-      this.value.set(debouncedValue);
-      console.log(this.value(), " <<< Input GENERIC Working in Generic input");
-    });
+    // this.inputSubject.pipe(debounceTime(300)).subscribe((debouncedValue) => {
+    //   this.value.set(debouncedValue);
+    //   console.log(this.value(), " <<< Input GENERIC Working in Generic input");
+    // });
     this.rangeChangeSubject.pipe(debounceTime(300)).subscribe(value => {
       this.onRangeChange(value);
       console.log(this.value(), " <<< Input RANGE INPUT Working in Generic input");
@@ -42,7 +42,8 @@ export class DadenInputComponent {
 
   onInputChange(event: Event): void {
     const target = event.target as HTMLInputElement | HTMLTextAreaElement;
-    this.inputSubject.next(target.value);
+    // this.inputSubject.next(target.value);
+    this.value.set(target.value);
   }
 
   onFileChange(event: Event): void {
@@ -73,6 +74,7 @@ export class DadenInputComponent {
     this.selectedColor.set(inputElement.value);
     console.log('Selected Color:', this.selectedColor);
   }
+}
   
 
   //  // Input signals
@@ -160,4 +162,3 @@ export class DadenInputComponent {
   //     this.fileChange.emit({ event, type: this.type });
   //   }
   // }
-}

@@ -1,23 +1,21 @@
-import { Component, OnInit, inject, computed, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-header/daden-group-header.component';
-import { BrandNameService } from './services/brand-name.service';
-import { Brandname, BrandnameDefault } from './models/brand-name';
-import { BaseClassBrandNameAndTaglineStore, BrandNameTaglineStore } from './store/brandname-tagline.store';
+import { Brandname } from './models/brand-name';
 import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
 import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
 import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.service';
+import { BrandNameService } from './services/brand-name.service';
 
 @Component({
   selector: 'app-brand-name-tagline',
   standalone: true,
-  providers: [BaseClassBrandNameAndTaglineStore, BaseClassGlobalStore],
   imports: [
     FormsModule,
     CommonModule,
@@ -36,17 +34,10 @@ export class BrandNameComponent implements OnInit {
   /**
    * Injecting the relevant Angular services for this component.
    */
-  private readonly brandNameService = inject(BrandNameService);
   private readonly translate = inject(TranslateService);
-  brandnameAndTaglineStore = inject(BaseClassBrandNameAndTaglineStore);
-  globalStateTest = inject(BaseClassGlobalStore);
-  archetypes = inject(ArchetypeSetupService);
-
-  /**
-   * Starting position (default) for the brandname component. (DTO)
-   * TODO: create loadBrandname instance from service and populate property here. See: brandIndustry component as exaample. 
-   */
-  newBrandName = BrandnameDefault;
+  private readonly brandnameService = inject(BrandNameService);
+  private readonly globalStateTest = inject(BaseClassGlobalStore);
+  private readonly archetypes = inject(ArchetypeSetupService);
 
   /**
    * the group headers and texts for indicating the form-context attached to i18n.
@@ -55,29 +46,24 @@ export class BrandNameComponent implements OnInit {
   groupHeaderSubTitleBrandname: string = "";
   groupHeaderTitleTagline: string = "";
   groupHeaderSubTitleTagline: string = "";
-  detailText: string = "";
-
-  brandNameInput = signal<string>("");
-  taglineInput = signal<string>("Your tagline here...");
   isDisabled = signal<boolean>(false);
-
-  // personalityOptions = this.brandNameService.loadBrandNamePersonaltyOptions();
-  watchNEWBrandName = computed(() => this.newBrandName.genericSignalCollection());
 
   ngOnInit() {
     this.groupHeaderTitleBrandname = this.translate.instant("brandname.form-area.group-title-brandName");
     this.groupHeaderSubTitleBrandname = this.translate.instant("brandname.form-area.group-subTitle-brandName");
     this.groupHeaderTitleTagline = this.translate.instant("brandname.preview-area.group-title-tagline");
     this.groupHeaderSubTitleTagline = this.translate.instant("brandname.preview-area.group-subTitle-tagline");
-    this.detailText = "Craft a tagline that reflects your brand’s essence.";
 
     this.globalStateTest.getStore();
-
   }
 
-  triggerTaglineReview(event: string | boolean, prop: keyof Brandname) {
+  get brandCollectionComputed() {
+    return this.brandnameService.completeBrandnameCollectionState();
+  }
+
+  triggerUpdateBrandnameTagline(event: string | boolean, prop: keyof Brandname) {
     if (event !== undefined) {
-      this.updateNEWBrandnameCollection({ [prop]: event });
+      this.brandnameService.updateBrandnameCollection({ [prop]: event });
     }
   }
 
@@ -85,31 +71,5 @@ export class BrandNameComponent implements OnInit {
     this.isDisabled.set(val);
   }
 
-  // explicitly use : "!== undefined" for falsy checks. else stale data might be passed to the store.
-  updateNEWBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>) {
-    console.log(updates, " <--- MAGWEG UPDATES CHECK");
-    if (updates.brandname !== undefined) this.brandnameAndTaglineStore.updateBrandname(updates.brandname);
-    if (updates.taglineDescription !== undefined) this.brandnameAndTaglineStore.updateTagline(updates.taglineDescription);
-    this.newBrandName.genericSignalCollection.update(curr => ({ ...curr, ...updates }));
-    console.log(updates, " hier moet ik generic updaten!!");
-  }
-
   onReset() { }
 }
-
-
-// this.brandnameAndTaglineStore.updatePersonalityOptionsState(["This"], ["from"], ["BrandNameStore!!"]);
-// console.log(this.archetypes.getArchetypeSignal()(), " <--- VANUIT COMPONENT ARCHETYPES");
-
-// console.log(this.archetypes.bodyFonts(), " <--- ALL BODYFONTS IN COMP");
-// console.log(this.archetypes.headingFonts(), " <--- ALL HEADINGFONTS IN COMP");
-// console.log(this.archetypes.colorRanges(), " <--- ALL COLORRANGE IN COMP");
-// console.log(this.archetypes.industries(), " <--- ALL INDUSTRIES IN COMP");
-// console.log(this.archetypes.brandvalues(), " <--- ALL BRANDVALUES IN COMP");
-
-// onReset() {
-// this.newBrandName.genericSignalCollection.set(BRANDNAME_DEFAULT);
-// this.handlePersonalitySelection('');
-// this.useTagline = BRANDNAME_DEFAULT.tagLineUsed === 'yes';
-// this.tagline = BRANDNAME_DEFAULT.tagLine || '';
-// console.log('RESET');

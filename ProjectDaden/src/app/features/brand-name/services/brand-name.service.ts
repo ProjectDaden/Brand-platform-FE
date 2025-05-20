@@ -1,69 +1,28 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { PersonalityOptions } from '../store/personalities-options';
-import { map, Observable } from 'rxjs';
+import { inject, Injectable, Signal } from '@angular/core';
+import { BaseClassBrandNameAndTaglineStore } from '../store/brandname-tagline.store';
+import { BrandnameDefault } from '../models/brand-name';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BrandNameService {
-  // private readonly http = inject(HttpClient);
-  // private readonly configUrl = 'assets/tempUsage/brand-name-personality-compositions.json';
-  // private readonly personalitiesListPath = "assets/tempUsage/brand-personality-true.json";
-  // private allPersonalities: { [key: string]: PersonalityOptions } = {};
-  // personalityComposition = signal<PersonalityOptions>({
-  //   synonyms: [],
-  //   headingFonts: [],
-  //   bodyFonts: [],
-  // });
 
-  constructor() {
-    // this.loadBrandNamePersonaltyOptions();
-    // this.loadAllPersonalities();
+  private readonly brandnameAndTaglineStore = inject(BaseClassBrandNameAndTaglineStore);
+
+  /**
+   * Starting position (default) for the brandname component. (DTO)
+   * TODO: create loadBrandname instance from service and populate property here. See: brandIndustry component as example. 
+   */
+  newBrandName = BrandnameDefault;
+
+  get completeBrandnameCollectionState(): Signal<{ brandname: string, tagline: string }> {
+    return this.brandnameAndTaglineStore.brandnameCollectionStates;
   }
 
-  // getPersonalities(): Observable<string[]> {
-  //   return this.http.get<{ personalities: string[] }>(this.personalitiesListPath).pipe(
-  //     map(response => {
-  //       return Array.isArray(response.personalities) ? response.personalities : [];
-  //     }));
-  // }
-
-  // The api-call to load all existing personalities.
-  // private loadAllPersonalities() {
-  //   this.http.get<{ [key: string]: PersonalityOptions }>(this.configUrl).subscribe((data) => {
-  //     this.allPersonalities = data;
-  //     this.setPersonality('default', this.allPersonalities);
-  //   });
-  // }
-
-  // Expose all personalities to interested consumers.
-  // getAllPersonalities(): { [key: string]: PersonalityOptions } {
-  //   return this.allPersonalities;
-  // }
-
-  // The api-call to load the default personality.
-  // loadBrandNamePersonaltyOptions() {
-  //   this.http.get<{ [key: string]: PersonalityOptions }>(this.configUrl).subscribe((data) => {
-  //     // console.log(data, "DATA IN THE BRANDNAME SERVICE!!");
-  //     this.setPersonality('default', data);
-  //   });
-  // }
-
-  // Set the personality composition.
-  // setPersonality(personalityKey: string, personalities: { [key: string]: PersonalityOptions }) {
-  //   if (personalities[personalityKey]) {
-  //     // console.log(personalities[personalityKey], "PERSONALITIES KEY!!");
-  //     this.personalityComposition.set(personalities[personalityKey]);
-  //   } else {
-  //     console.error(`Personality option "${personalityKey}" not found.`);
-  //   }
-  // }
-
-  // // The api-call to change the personality.
-  // changePersonality(personalityKey: string) {
-  //   this.http.get<{ [key: string]: PersonalityOptions }>(this.configUrl).subscribe((data) => {
-  //     this.setPersonality(personalityKey, data);
-  //   });
-  // }
+  // explicitly use : "!== undefined" for falsy checks. else stale data might be passed to the store.
+  updateBrandnameCollection(updates: Partial<ReturnType<typeof this.newBrandName.genericSignalCollection>>) {
+    if (updates.brandname !== undefined) this.brandnameAndTaglineStore.updateBrandname(updates.brandname);
+    if (updates.taglineDescription !== undefined) this.brandnameAndTaglineStore.updateTagline(updates.taglineDescription);
+    this.newBrandName.genericSignalCollection.update(curr => ({ ...curr, ...updates }));
+  }
 }

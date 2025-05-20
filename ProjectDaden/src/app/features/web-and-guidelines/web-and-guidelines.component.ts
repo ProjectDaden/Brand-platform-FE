@@ -18,6 +18,7 @@ import { DadenCheckboxComponent } from '../../shared/components/daden-checkbox/d
 import { DadenCardComponent } from "../../shared/components/daden-card/daden-card.component";
 import { DadenCard } from '../../shared/components/daden-card/models/daden-card';
 import { DadenCheckbox } from '../../shared/components/daden-checkbox/models/daden-checkbox';
+import { DadenColorPickerComponent } from '../../shared/components/daden-color-picker/daden-color-picker.component';
 
 @Component({
   selector: 'app-web-and-guidelines',
@@ -39,6 +40,7 @@ import { DadenCheckbox } from '../../shared/components/daden-checkbox/models/dad
     DadenInputRangeComponent,
     DadenCheckboxComponent,
     DadenCardComponent,
+    DadenColorPickerComponent
 ],
   templateUrl: './web-and-guidelines.component.html',
   standalone: true

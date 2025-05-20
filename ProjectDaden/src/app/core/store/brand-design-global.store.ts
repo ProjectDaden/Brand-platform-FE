@@ -165,6 +165,6 @@ export class BaseClassGlobalStore extends globalStore {
   override updateGlobalImageryState = (newState: ImagerySectionCompleted): void => super.updateGlobalImageryState(newState);
 
   getStore(){
-    console.log(initialBrandDesignGlobalFlowState, " Current initial global state!");
+    // console.log(initialBrandDesignGlobalFlowState, " Current initial global state!");
   }
 }

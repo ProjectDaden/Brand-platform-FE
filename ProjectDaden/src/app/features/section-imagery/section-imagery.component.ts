@@ -2,7 +2,6 @@ import { Component, Renderer2, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
@@ -16,7 +15,6 @@ import { DadenLabelComponent } from '../../shared/components/daden-label/daden-l
   imports: [
     DadenHeaderComponent, 
     DadenPageFooterComponent,
-    DadenDropdownComponent,
     DadenGroupHeaderComponent,
     DadenDetailComponent,
     DadenLabelComponent,

@@ -56,13 +56,13 @@ export class BrandIndustryComponent implements OnInit {
   });
   topThreeArchetypes: Record<string, number> = {};
 
-  selectedIndustryArchetype = signal<string | null>(null);
+  selectedIndustryArchetype = signal<string>("");
   selectedValueArchetypes = signal<string[]>([]);
   combinedSelectedArchetypes = computed(() => {
     const iets = this.selectedIndustryArchetype()
       ? [this.selectedIndustryArchetype(), ...this.selectedValueArchetypes()]
       : [...this.selectedValueArchetypes()];
-    console.log(this.calculateRoundedPercentages(this.selectedValueArchetypes()));
+    console.log(this.calculateRoundedPercentages(iets), " <--- iets");
     return iets;
   });
 
@@ -109,7 +109,7 @@ export class BrandIndustryComponent implements OnInit {
     this.selectedIndustryArchetype.set(foundArchetype);
     this.brandIndustryStore.updateIndustrtyState(industry);
     this.brandIndustry.update(curr => ({ ...curr, industry }));
-    console.log(this.selectedArchetype(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ????");
+    console.log(this.combinedSelectedArchetypes(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ????");
   }
 
   /**

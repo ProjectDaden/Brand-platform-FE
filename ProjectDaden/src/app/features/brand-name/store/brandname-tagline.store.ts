@@ -1,14 +1,13 @@
 
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
 import { newBrandname } from './brandname-tagline.model';
 import { computed, inject, Injectable } from '@angular/core';
 
 type BrandNameState = newBrandname;
 
 export const initialBrandnameAndTagline: BrandNameState = {
-  brandname: "Please select...",
+  brandname: "",
   tagline: "",
-  taglineUsed: false
 };
 
 export const BrandNameTaglineStore = signalStore(
@@ -22,6 +21,12 @@ export const BrandNameTaglineStore = signalStore(
     updateTagline(tagline: string) {
       patchState<BrandNameState>(store, { tagline: tagline });
     }
+  })),
+  withComputed((store) => ({
+    brandnameCollectionState: computed(() => ({
+      brandname: store.brandname(),
+      tagline: store.tagline()
+    }))
   }))
 );
 
@@ -30,10 +35,14 @@ export class BaseClassBrandNameAndTaglineStore {
 
   brandnameTaglineStoreFlow = inject(BrandNameTaglineStore);
 
+  get brandnameCollectionStates() {
+    console.log("HIER STORE STATE UPDATES ---> ", this.brandnameTaglineStoreFlow.brandnameCollectionState() );
+    return this.brandnameTaglineStoreFlow.brandnameCollectionState
+  }
+
   readonly brandnameTaglineState = computed(() => ({
     brandname: this.brandnameTaglineStoreFlow.brandname(),
     tagline: this.brandnameTaglineStoreFlow.tagline(),
-    taglineUsed: this.brandnameTaglineStoreFlow.taglineUsed(),
   }));
 
   updateBrandname(brandname: string) {
