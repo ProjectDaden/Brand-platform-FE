@@ -1,51 +1,55 @@
-import { Brandname } from './../models/brand-name';
-import { IndustryAndValuesStore } from './../../brand-value-personality/store/industry-industry.store';
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import {
-  BrandNameAndTaglineCompleted,
-  newBrandname,
-} from './brandname-tagline.model';
-import { computed, Injectable } from '@angular/core';
+
+import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
+import { newBrandname } from './brandname-tagline.model';
+import { computed, inject, Injectable } from '@angular/core';
+import { Brandname } from '../models/brand-name';
 
 type BrandNameState = newBrandname;
 
 export const initialBrandnameAndTagline: BrandNameState = {
-  brandname: "PLACEHOLDER...",
+  brandname: "",
   tagline: "",
-  taglineUsed: false
 };
 
-export const brandNameTaglineStore = signalStore(
+export const BrandNameTaglineStore = signalStore(
+  { providedIn: "root" },
   withState<BrandNameState>(initialBrandnameAndTagline),
   withMethods((store) => ({
     updateBrandname(brandname: string) {
+      console.log("BRANDNAME GETS TRIGGRERED", brandname);
       patchState<BrandNameState>(store, { brandname: brandname });
     },
     updateTagline(tagline: string) {
       patchState<BrandNameState>(store, { tagline: tagline });
-    },
+    }
+  })),
+  withComputed((store) => ({
+    brandnameCollectionState: computed<Brandname>(() => ({
+      brandname: store.brandname(),
+      taglineDescription: store.tagline()
+    }))
   }))
 );
 
 @Injectable({ providedIn: 'root' })
-export class BaseClassBrandNameAndTaglineStore extends brandNameTaglineStore {
-  constructor() {
-    super();
+export class BaseClassBrandNameAndTaglineStore {
+
+  brandnameTaglineStoreFlow = inject(BrandNameTaglineStore);
+
+  get brandnameCollectionStates() {
+    return this.brandnameTaglineStoreFlow.brandnameCollectionState
   }
 
-  readonly brandnameTaginleState = computed(() => ({
-    brandname: this.brandname(),
-    tagline: this.tagline(),
-    taglineUsed: this.taglineUsed(),
+  readonly brandnameTaglineState = computed(() => ({
+    brandname: this.brandnameTaglineStoreFlow.brandname(),
+    tagline: this.brandnameTaglineStoreFlow.tagline(),
   }));
 
-  override updateBrandname = (brandname: string): void => super.updateBrandname(brandname);
-  override updateTagline = (tagline: string): void => super.updateTagline(tagline);
+  updateBrandname(brandname: string) {
+    this.brandnameTaglineStoreFlow.updateBrandname(brandname);
+  }
 
-  // override updatePersonalityOptionsState = (synonyms: string[], headingFonts: string[], bodyFonts: string[]): void =>
-  //   super.updatePersonalityOptionsState(synonyms, headingFonts, bodyFonts);
-
-  getBrandNameTaglineStore() {
-    console.log(initialBrandnameAndTagline, " Current initial BrandNameAndTagline state!");
+  updateTagline(tagline: string) {
+    this.brandnameTaglineStoreFlow.updateTagline(tagline);
   }
 }

@@ -5,7 +5,7 @@
 * @param selectedindustry: string | undefined - The selected industry.
 * */
 export type Industry = {
-    industry: string;
+    brandIndustry: string;
   }
   
   /*
@@ -14,24 +14,12 @@ export type Industry = {
   * @param traits: string[] - The list of traits
   * */
   export type IndustryValues = {
-      values: string[];
+      brandValues: string[];
     }
-  
-  
-/*
-* @description
-* This is the Type for the Personalities.
-* @param personalities: string[] - The list of personalities
-* @param selectedPersonality: string | undefined - The selected personality
-* */
-export type Personalities = {
-    personalities: string[];
-    selectedPersonality: string | undefined;
-  }
   
   /*
   * @description
   * This is the Type for the Industry & Values Complete Type.
-  * @param Industry & IndustryTraits & Personalities - The Industry, IndustryTraits and Personalities
+  * @param Industry & IndustryTraits - The Industry and IndustryTraits.
   * */
   export type IndustryAndValuesCompleted = Industry & IndustryValues;

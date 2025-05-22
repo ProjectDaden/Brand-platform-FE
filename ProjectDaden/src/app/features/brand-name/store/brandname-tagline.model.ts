@@ -54,7 +54,6 @@ export type Tagline = {
 export type newBrandname = {
   brandname: string;
   tagline: string;
-  taglineUsed: boolean;
 }
 
 /*

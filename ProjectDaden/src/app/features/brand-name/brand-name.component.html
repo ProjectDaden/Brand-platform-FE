@@ -1,7 +1,3 @@
-<!-- TODO : Hier een documentatie van maken hoe te gebruiken. de config is abstract gemaakt.
-      <daden-dropdown id="personality" class="w-full" [dropDownParts]="dropDownConfig"
-        (selectedValue)="handlePersonalitySelection($event)" /> -->
-
 <daden-header />
 <section id="brand-name">
   <daden-group-header [title]="groupHeaderTitleBrandname" [subtitle]="groupHeaderSubTitleBrandname" />
@@ -10,32 +6,35 @@
       <daden-detail>{{ "brandname.form-area.description" | translate }}</daden-detail>
       <daden-label>{{ "brandname.form-area.inputlabel"| translate }}</daden-label>
       <daden-detail>{{ "brandname.form-area.description-follow" | translate }}</daden-detail>
-      <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false" [(value)]="brandNameInput" (valueChange)="triggerTaglineReview($event, 'brandname')" />
+      <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false"
+        [(value)]="brandCollectionComputed.brandname"
+        (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'brandname')" />
     </div>
   </div>
-  </section>
-  <section id="tagline">
-    <div>
-      <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline" />
-      <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
-      <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
-      <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled" />
-      <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
-      <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()" [(value)]="taglineInput" (valueChange)="triggerTaglineReview($event, 'taglineDescription')" />
-    </div>
+</section>
+<section id="tagline">
+  <div>
+    <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline" />
+    <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
+    <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
+    <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled"
+      (chechkValueChange)="onToggle($event)" />
+    <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
+    <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()"
+      [(value)]="brandCollectionComputed.taglineDescription"
+      (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'taglineDescription')" />
+  </div>
 </section>
 
 <section id="preview">
   <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline">
   </daden-group-header>
   <div class="p-4 bg-blue-50 rounded-lg text-center">
-    <h1 class="text-4xl font-bold mb-2">{{ newBrandName.genericSignalCollection().taglineDescription }}</h1>
+    <h1 class="text-4xl font-bold mb-2">{{ brandCollectionComputed.brandname }}</h1>
     <p class="text-lg italic" [class.opacity-50]="isDisabled()">
-      {{ taglineInput() ? taglineInput() : "" }}
+      {{ brandCollectionComputed.taglineDescription ? brandCollectionComputed.taglineDescription : "" }}
     </p>
   </div>
 </section>
-
-<div>{{ watchNEWBrandName() | json }}</div>
 
 <daden-page-footer></daden-page-footer>
