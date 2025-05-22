@@ -3,7 +3,7 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { BrandDesignCompleted } from './brand-design.model';
 import { initialColorPickerTheme } from '../../features/tool-color-picker/store/coloringTheme.store';
 import { initialBrandnameAndTagline } from '../../features/brand-name/store/brandname-tagline.store';
-import { initialIndustryAndValues } from '../../features/brand-value-personality/store/industry-industry.store';
+import { initialIndustryAndValues } from '../../features/brand-value-personality/store/brand-industry.store';
 import { initialTargetAudienceState } from '../../features/target-audience/store/target-audience.store';
 import { initialVisionAndMissions } from '../../features/mission-vision/store/vision-and-missions.store';
 import { initialToneOfVoice } from '../../features/voice-and-tone/store/tone-of-voice.store';
@@ -13,7 +13,7 @@ import { InitialLogoSection } from '../../features/section-logo/store/logo-secti
 import { initialTypographySection } from '../../features/section-typography/store/typography-section.store';
 import { InitialImagerySection } from '../../features/section-imagery/store/imagery-section.store';
 import { Injectable } from '@angular/core';
-import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/industry-industry.model';
+import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/brand-industry.model';
 import { TargetAudienceCompleted } from '../../features/target-audience/store/target-audience.model';
 import { VisionAndMissionsCompleted } from '../../features/mission-vision/store/vision-and-missions.model';
 import { ToneOfVoiceCompleted } from '../../features/voice-and-tone/store/tone-of-voice.model';

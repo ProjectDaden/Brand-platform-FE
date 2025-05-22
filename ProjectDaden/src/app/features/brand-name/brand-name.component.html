@@ -6,19 +6,24 @@
       <daden-detail>{{ "brandname.form-area.description" | translate }}</daden-detail>
       <daden-label>{{ "brandname.form-area.inputlabel"| translate }}</daden-label>
       <daden-detail>{{ "brandname.form-area.description-follow" | translate }}</daden-detail>
-      <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false" [(value)]="brandCollectionComputed.brandname" (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'brandname')" />
+      <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false"
+        [(value)]="brandCollectionComputed.brandname"
+        (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'brandname')" />
     </div>
   </div>
-  </section>
-  <section id="tagline">
-    <div>
-      <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline" />
-      <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
-      <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
-      <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled" (chechkValueChange)="onToggle($event)" />
-      <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
-      <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()" [(value)]="brandCollectionComputed.tagline" (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'taglineDescription')" />
-    </div>
+</section>
+<section id="tagline">
+  <div>
+    <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline" />
+    <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
+    <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
+    <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled"
+      (chechkValueChange)="onToggle($event)" />
+    <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
+    <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()"
+      [(value)]="brandCollectionComputed.taglineDescription"
+      (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'taglineDescription')" />
+  </div>
 </section>
 
 <section id="preview">
@@ -27,7 +32,7 @@
   <div class="p-4 bg-blue-50 rounded-lg text-center">
     <h1 class="text-4xl font-bold mb-2">{{ brandCollectionComputed.brandname }}</h1>
     <p class="text-lg italic" [class.opacity-50]="isDisabled()">
-      {{ brandCollectionComputed.tagline ? brandCollectionComputed.tagline : "" }}
+      {{ brandCollectionComputed.taglineDescription ? brandCollectionComputed.taglineDescription : "" }}
     </p>
   </div>
 </section>

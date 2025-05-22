@@ -10,10 +10,9 @@ import { DadenLabelComponent } from '../../shared/components/daden-label/daden-l
 import { DadenDetailComponent } from '../../shared/components/daden-detail/daden-detail.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
 import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
-import { ArchetypeSetupService } from '../../services/archetype/archetype-setup.service';
 import { BrandNameService } from './services/brand-name.service';
 
-@Component({
+@Component({  
   selector: 'app-brand-name-tagline',
   standalone: true,
   imports: [
@@ -37,7 +36,6 @@ export class BrandNameComponent implements OnInit {
   private readonly translate = inject(TranslateService);
   private readonly brandnameService = inject(BrandNameService);
   private readonly globalStateTest = inject(BaseClassGlobalStore);
-  private readonly archetypes = inject(ArchetypeSetupService);
 
   /**
    * the group headers and texts for indicating the form-context attached to i18n.

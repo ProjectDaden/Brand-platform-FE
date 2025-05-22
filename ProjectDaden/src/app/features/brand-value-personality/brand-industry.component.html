@@ -18,6 +18,7 @@
         <daden-detail>{{ "industry-and-values.form-area.values-description-2" | translate }}</daden-detail>
         <daden-multi-list-selection
         [options]="industryValues"
+        [selectedOptionsState]="brandIndustryCollectionComputed.values"
         (selectionChange)="handleMultipleValues($event)"
         ></daden-multi-list-selection>
     </div>
@@ -30,17 +31,16 @@
     </daden-group-header>
     <div class="p-4 bg-blue-50 rounded-lg">
         <p class="text-lg font-medium italic">“A 
-            <span class="text-blue-700">{{ brandIndustry().industry }}</span> brand that’s 
-            <span class="text-blue-700">{{ brandIndustry().values[0]}}</span> and 
-            <span class="text-blue-700">{{ brandIndustry().values[1] }}</span>, with a 
-            <span class="text-blue-700">{{ brandIndustry().values[2] }}</span> 
+            <span class="text-blue-700">{{ brandIndustryCollectionComputed.industry }}</span> brand that’s 
+            <span class="text-blue-700">{{ brandIndustryCollectionComputed.values[0] }}</span> and 
+            <span class="text-blue-700">{{ brandIndustryCollectionComputed.values[1] }}</span>, with a 
+            <span class="text-blue-700">{{ brandIndustryCollectionComputed.values[2] }}</span> 
             personality.”
         </p>
     </div>
 </section>
 
-<div>{{ combinedSelectedArchetypes() | json }}</div>
+<div>COMBINED ARCHETYPES : {{ combinedSelectedArchetypes() | json }}</div>
+<div>COMPUTED STATE IN STORE : {{ brandIndustryCollectionComputed | json }}</div>
 
 <daden-page-footer></daden-page-footer>
-
-<div>{{ brandIndustryWatch() | json }}</div>

@@ -1,10 +1,7 @@
 <div>
-    <!-- <label class="block text-sm font-medium mb-2">Traits</label> -->
     <select multiple (change)="onSelectionChange($event)"
         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all h-32">
         @for (option of options(); track $index) {
-        <option>{{ option }}</option>
-        }
+<option [value]="option" [selected]="isSelected(option)">{{ option }}</option>        }
     </select>
-    <!-- <p class="text-sm opacity-50 mt-1">Hold Ctrl (or Cmd) to select multiple traits.</p> -->
 </div>

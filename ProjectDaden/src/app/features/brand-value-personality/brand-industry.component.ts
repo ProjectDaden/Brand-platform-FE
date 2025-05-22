@@ -1,7 +1,5 @@
-import { Rule } from './../../shared/models/industry-values-connections';
 import {
   Component,
-  computed,
   inject,
   OnInit,
   Signal,
@@ -18,12 +16,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenDropdown } from '../../shared/components/daden-dropdown/models/daden-dropdown';
 import { CommonModule } from '@angular/common';
-import { IndustryAndValuesStore } from './store/industry-industry.store';
-import { BrandIndustryRules } from '../../shared/models/industry-values-connections';
 
 @Component({
   selector: 'app-brand-industry',
-  providers: [IndustryAndValuesStore],
   imports: [
     DadenHeaderComponent,
     TranslateModule,
@@ -40,31 +35,12 @@ import { BrandIndustryRules } from '../../shared/models/industry-values-connecti
 })
 export class BrandIndustryComponent implements OnInit {
   private readonly brandIndustryService = inject(BrandIndustryService);
-  private readonly brandIndustryStore = inject(IndustryAndValuesStore);
-  private readonly translate = inject(TranslateService);
 
-  brandIndustry = this.brandIndustryService.getBrandIndustry();
-  brandIndustryWatch = computed(() => this.brandIndustry());
+  private readonly translate = inject(TranslateService);
 
   groupHeaderTitleIndustry: string = '';
   groupHeaderSubTitleIndustry: string = '';
-  brandIndustryList = signal<any>([]);
-  selectedArchetype = signal<string[]>([]);
-  selectedArchetypeFromMulti = signal<string[]>([]);
-  rules = signal<BrandIndustryRules>({
-    rules: []
-  });
-  topThreeArchetypes: Record<string, number> = {};
-
-  selectedIndustryArchetype = signal<string>("");
-  selectedValueArchetypes = signal<string[]>([]);
-  combinedSelectedArchetypes = computed(() => {
-    const iets = this.selectedIndustryArchetype()
-      ? [this.selectedIndustryArchetype(), ...this.selectedValueArchetypes()]
-      : [...this.selectedValueArchetypes()];
-    console.log(this.calculateRoundedPercentages(iets), " <--- iets");
-    return iets;
-  });
+  combinedSelectedArchetypes = this.brandIndustryService.combinedSelectedArchetypes;
 
   groupHeaderTitleBrandname: string = "";
   groupHeaderSubTitleBrandname: string = "";
@@ -73,7 +49,7 @@ export class BrandIndustryComponent implements OnInit {
   dropDownIndustryConfig: DadenDropdown = {
     placeholder: "Select your industry...",
     items: [],
-    selectedItem: '',
+    selectedItem: this.brandIndustryCollectionComputed.industry,
     disabled: false,
   };
 
@@ -94,8 +70,11 @@ export class BrandIndustryComponent implements OnInit {
     this.brandIndustryService.loadIndustryValues().subscribe((data) => {
       this.industryValues = data.valueOptions;
     });
-
     this.brandIndustryService.loadBrandIndustryValueConnections();
+  }
+
+  get brandIndustryCollectionComputed() {
+    return this.brandIndustryService.completeBrandIndustryCollectionState();
   }
 
   /**
@@ -103,13 +82,12 @@ export class BrandIndustryComponent implements OnInit {
    * @param industry The selected industry the user has positioned himself in.
    */
   handleDropdownIndustry(industry: string) {
-    const foundArchetype = this.findArchetypeFromIndustry(industry);
+    const foundArchetype = this.brandIndustryService.findArchetypeFromIndustry(industry);
     if (!foundArchetype) return;
 
-    this.selectedIndustryArchetype.set(foundArchetype);
-    this.brandIndustryStore.updateIndustrtyState(industry);
-    this.brandIndustry.update(curr => ({ ...curr, industry }));
-    console.log(this.combinedSelectedArchetypes(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ????");
+    this.brandIndustryService.selectedIndustryArchetype.set(foundArchetype);
+    console.log("TRIGGERING INDUSTRY COMPONENT WITH FOUNDARCHETYPE ---> ", foundArchetype);
+    this.brandIndustryService.updateBrandIndustryCollection({ industry });
   }
 
   /**
@@ -117,54 +95,10 @@ export class BrandIndustryComponent implements OnInit {
    * @param values The selected values from brandindustry - values.
    */
   handleMultipleValues(values: string[]) {
+    this.brandIndustryService.updateBrandIndustryCollection({values});
     const foundArchetypes = values
-      .map(value => this.findArchetypeFromValues(value))
+      .map(value => this.brandIndustryService.findArchetypeFromValues(value))
       .filter((found): found is string => !!found);
-
-    this.selectedValueArchetypes.set(foundArchetypes);
-    console.log(this.selectedArchetype(), " <--- HOUDT DIE ALLE ARCHETYPES BIJ IN MULTI????");
-  }
-
-  /**
-   * @description Method to traverse the brandValue Connections object to find archetypes associated with the brandindustry value.
-   * @param industryValue The selected Brandindustry value for finding archetype.
-   * @returns string archetype or undesined.
-   */
-  findArchetypeFromValues(industryValue: string): string | undefined {
-    return this.brandIndustryService.industryValuesConnections.rules
-      .find((rule: Rule) => rule.condition.value?.includes(industryValue))?.archetype;
-  }
-
-  /**
-    * @description Method to traverse the brandIndustry Connections object to find archetypes associated with the brandindustry industry.
-    * @param industryValue The selected Brandindustry for finding archetype.
-    * @returns string archetype or undesined.
-    */
-  findArchetypeFromIndustry(industry: string): string | undefined {
-    return this.brandIndustryService.industryValuesConnections.rules
-      .find((rule: Rule) => rule.condition.industry?.includes(industry))?.archetype;
-  }
-
-  calculateRoundedPercentages(arr: string[]): Record<string, number> {
-    const total = arr.length;
-    const counts: Record<string, number> = {};
-
-    arr.forEach(value => {
-      counts[value] = (counts[value] || 0) + 1;
-    });
-
-    const percentages: Record<string, number> = {};
-    for (const key in counts) {
-      percentages[key] = Math.ceil((counts[key] / total) * 100);
-    }
-
-    const sortedEntries = Object.entries(percentages)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 10);
-
-    this.topThreeArchetypes = Object.fromEntries(sortedEntries);
-
-    console.log("Top 3 Archetypes:", this.topThreeArchetypes); // Debugging output
-    return this.topThreeArchetypes;
+    this.brandIndustryService.selectedValueArchetypes.set(foundArchetypes);
   }
 }
