@@ -1,0 +1,48 @@
+<!-- <div class="slider-container">
+  <input type="range" [min]="minVal()" [max]="maxVal()" [value]="colorDegrees()" (input)="updateValue($event)">
+  <div class="thumb" #thumb></div>
+</div> -->
+
+
+
+@switch(whichSlider()) {
+@case('hue'){
+<div class="slider-hue">
+    <input #hueSlider type="range" [min]="hueMinVal()" [max]="hueMaxVal()" [value]="colorDegrees()"
+        (input)="updateHueValue($event)">
+    <div class="hueThumb" #hueThumb></div>
+</div>
+<div class="slider-indicators">
+    <div class="recommended-range" style="left: 50%; width: 40%;"></div>
+    <div class="standard-value" style="left: 70%;"></div>
+</div>
+<p>Current Value: {{ colorDegrees() + "°" }}</p>
+}
+@case('saturation'){
+<div class="slider-sat">
+    <input #satSlider type="range" [min]="satMinVal()" [max]="satMaxVal()" [value]="satColorDegrees()"
+        (input)="updateSatValue($event)">
+    <div class="satThumb" #satThumb></div>
+</div>
+<div class="slider-indicators">
+    <div class="recommended-range" style="left: 50%; width: 40%;"></div>
+    <div class="standard-value" style="left: 70%;"></div>
+</div>
+<p>Current satValue: {{ satColorDegrees() + "°" }}</p>
+}
+@case('lightness'){
+<div class="slider-tint">
+    <input #tintSlider type="range" [min]="tintMinVal()" [max]="tintMaxVal()" [value]="tintColorDegrees()"
+        (input)="updateTintValue($event)">
+    <div class="tintThumb" #tintThumb></div>
+</div>
+<div class="slider-indicators">
+    <div class="recommended-range" style="left: 50%; width: 40%;"></div>
+    <div class="standard-value" style="left: 70%;"></div>
+</div>
+<p>Current satValue: {{ tintColorDegrees() + "°" }}</p>
+}
+@default {
+<p>No valid slider selected.</p>
+}
+}

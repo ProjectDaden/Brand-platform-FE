@@ -1,0 +1,64 @@
+{
+    "archetypesColorInformation": {
+        "rebel": {
+            "hueMin": 0,
+            "hueMax": 30,
+            "center": 0
+        },
+        "hero": {
+            "hueMin": 30,
+            "hueMax": 60,
+            "center": 30
+        },
+        "innocent": {
+            "hueMin": 60,
+            "hueMax": 90,
+            "center": 60
+        },
+        "explorer": {
+            "hueMin": 90,
+            "hueMax": 120,
+            "center": 90
+        },
+        "everyman": {
+            "hueMin": 120,
+            "hueMax": 150,
+            "center": 120
+        },
+        "caregiver": {
+            "hueMin": 150,
+            "hueMax": 180,
+            "center": 150
+        },
+        "sage": {
+            "hueMin": 180,
+            "hueMax": 210,
+            "center": 180
+        },
+        "creator": {
+            "hueMin": 210,
+            "hueMax": 240,
+            "center": 210
+        },
+        "magician": {
+            "hueMin": 240,
+            "hueMax": 270,
+            "center": 240
+        },
+        "ruler": {
+            "hueMin": 270,
+            "hueMax": 300,
+            "center": 270
+        },
+        "lover": {
+            "hueMin": 300,
+            "hueMax": 330,
+            "center": 300
+        },
+        "jester": {
+            "hueMin": 330,
+            "hueMax": 360,
+            "center": 330
+        }
+    }
+}

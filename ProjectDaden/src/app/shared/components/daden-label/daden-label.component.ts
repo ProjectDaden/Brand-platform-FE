@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
 
 @Component({
@@ -8,5 +8,7 @@ import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
   templateUrl: './daden-label.component.html',
 })
 export class DadenLabelComponent {
+
+  labelText = input<string>("Default label text... override this in parent");
 
 }

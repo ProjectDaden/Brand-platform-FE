@@ -64,9 +64,9 @@ export const routes: Routes = [
             .then(m => m.SectionLogoComponent)
           },
           {
-            path: 'color-composer',
-            loadComponent: () => import('./features/tool-color-picker/tool-color-picker.component')
-            .then(m => m.ToolColorPickerComponent)
+            path: 'color-theory',
+            loadComponent: () => import('./features/section-colortheory/section-colortheory.component')
+            .then(m => m.SectionColortheoryComponent)
           },
           {
             path: 'typography-composer',
