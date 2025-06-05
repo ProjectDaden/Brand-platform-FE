@@ -1,7 +1,7 @@
-<button (click)="check()">CHECK</button>
+<!-- <button (click)="check()">CHECK</button> -->
 
 <daden-header />
-<section class="w-full max-w-lg bg-white  p-6 rounded-xl shadow-md mb-12">
+<section>
     <h2 class="font-bold capitalize text-blue-900 text-3xl">Archetypes</h2>
     <!-- Archetype Inputs -->
     <div class="mb-4">
@@ -9,36 +9,9 @@
         <div class="relative w-full">
             <span
                 class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none p-[11px] rounded-r border-0 bg-blue-500 text-white hover:bg-blue-700">
-                <!-- <daden-icon icon="arrowDown" class="size-4">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                class="size-4"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                            </svg>
-                        </daden-icon> -->
             </span>
             <daden-dropdown [dropDownParts]="dropDownArchetypeConfig"
                 (selectedValue)="handleDropdownArchetype($event)"></daden-dropdown>
-            <!-- <select id="archetype1" class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-600 placeholder-gray-600 ng-pristine ng-valid ng-touched">
-                        <option value="" disabled>Select Archetype</option>
-                        <option value="Rebel" >Rebel (0–30°)</option>
-                        <option value="Hero">Hero (30–60°)</option>
-                        <option value="Innocent">Innocent (60–90°)</option>
-                        <option value="Explorer">Explorer (90–120°)</option>
-                        <option value="Everyman">Everyman (120–150°)</option>
-                        <option value="Caregiver">Caregiver (150–180°)</option>
-                        <option value="Sage">Sage (180–210°)</option>
-                        <option value="Creator" selected>Creator (210–240°)</option>
-                        <option value="Magician">Magician (240–270°)</option>
-                        <option value="Ruler">Ruler (270–300°)</option>
-                        <option value="Lover">Lover (300–330°)</option>
-                        <option value="Jester">Jester (330–360°)</option>
-                    </select> -->
         </div>
     </div>
     <div class="mb-4">
@@ -47,73 +20,24 @@
         <div class="relative w-full">
             <span
                 class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none p-[11px] rounded-r border-0 bg-blue-500 text-white hover:bg-blue-700">
-                <!-- <daden-icon icon="arrowDown" class="size-4">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                class="size-4"
-                            >
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
-                            </svg>
-                        </daden-icon> -->
             </span>
             <daden-dropdown [dropDownParts]="dropDownArchetypeConfig"
                 (selectedValue)="handleDropdownSecundaryArchetype($event)"></daden-dropdown>
-            <!-- <select id="archetype2" class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-600 placeholder-gray-600 ng-pristine ng-valid ng-touched">
-                        <option value="" selected>None</option>
-                        <option value="Rebel">Rebel (0–30°)</option>
-                        <option value="Hero">Hero (30–60°)</option>
-                        <option value="Innocent">Innocent (60–90°)</option>
-                        <option value="Explorer">Explorer (90–120°)</option>
-                        <option value="Everyman">Everyman (120–150°)</option>
-                        <option value="Caregiver">Caregiver (150–180°)</option>
-                        <option value="Sage">Sage (180–210°)</option>
-                        <option value="Creator">Creator (210–240°)</option>
-                        <option value="Magician">Magician (240–270°)</option>
-                        <option value="Ruler">Ruler (270–300°)</option>
-                        <option value="Lover">Lover (300–330°)</option>
-                        <option value="Jester">Jester (330–360°)</option>
-                    </select> -->
         </div>
     </div>
 </section>
 <!-- Input Card -->
-<section class="w-full max-w-lg bg-white  p-6 rounded-xl shadow-md mb-12">
+<section>
     <h2 class="font-bold capitalize text-blue-900 text-3xl">Color pickers</h2>
     <!-- Color Sliders -->
     <div class="mb-4">
         <label class="block text-sm font-bold text-blue-700 mb-2">Primary Color</label>
         <div class="mt-2 mb-6 slider-container">
-            <label id="hueLabel" for="hueSlider" class="block text-xs text-gray-600">{{ labelHue() }}</label>
-            <daden-input-colorspectrum [hueMinVal]="hueMinValue()" [hueMaxVal]="hueMaxValue()" [whichSlider]="hueSlider"
-                [(colorDegrees)]="hueColorGraden">
-            </daden-input-colorspectrum>
-
-        </div>
-
-
-        <div class="mt-2 mb-6 slider-container">
-            <label for="satSlider" class="block text-xs text-gray-600">Saturation (Recommended: 50-90%)</label>
-            <daden-input-colorspectrum  [satMinVal]="satMinValue()" [satMaxVal]="satMaxValue()" [whichSlider]="satSlider"
-                [(satColorDegrees)]="satColorGraden"></daden-input-colorspectrum>
-            <!-- <span id="satValue" class="slider-value">60%</span> -->
-            <!-- <div class="slider-indicators">
-                <div class="recommended-range" style="left: 50%; width: 40%;"></div>
-                <div class="standard-value" style="left: 70%;"></div>
-            </div> -->
-        </div>
-        <div class="mt-2 mb-6 slider-container">
-            <label for="lightSlider" class="block text-xs text-gray-600">Lightness (Recommended: 30–70%)</label>
-            <daden-input-colorspectrum [tintMinVal]="tintMinValue()" [tintMaxVal]="tintMaxValue()"
-                [whichSlider]="tintSlider" [(tintColorDegrees)]="tintColorGraden"></daden-input-colorspectrum>
-            <!-- <span id="lightValue" class="slider-value">50%</span> -->
-            <div class="slider-indicators">
-                <div class="recommended-range" style="left: 25%; width: 50%;"></div>
-                <div class="standard-value" style="left: 50%;"></div>
-            </div>
+            <daden-input-colorspectrum 
+            [(hue)]="hueVal" 
+            [(saturation)]="satVal" 
+            [(lightness)]="tintVal" 
+            [hueLabel]="labelHue()"></daden-input-colorspectrum>
         </div>
         <div id="secondaryColorContainer" class="mt-4 hidden">
             <label class="block text-sm font-medium text-gray-700">Secondary Color</label>
@@ -126,12 +50,6 @@
                     <div class="recommended-range"></div>
                     <div class="standard-value"></div>
                 </div>
-            </div>
-        </div>
-        <div class="mt-4">
-            <div id="colorPreview" class="w-full h-24 rounded flex items-center justify-center text-white relative"
-                style="background-color: hsl(0, 60%, 50%);">
-                <span class="text-base font-medium">Primary Preview</span>
             </div>
         </div>
         <div id="secondaryColorPreviewContainer" class="mt-2 hidden">
