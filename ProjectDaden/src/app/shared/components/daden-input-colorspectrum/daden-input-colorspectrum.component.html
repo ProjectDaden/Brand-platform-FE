@@ -15,10 +15,10 @@
     (input)="saturation.set($any($event.target).valueAsNumber)" [style.background]="saturationGradient()">
 </div>
 <span>{{ saturation() }}%</span>
-<!-- <div class="slider-indicators">
+<div class="slider-indicators">
       <div class="recommended-range" style="left: 50%; width: 40%;"></div>
       <div class="standard-value" style="left: 70%;"></div>
-    </div> -->
+    </div>
 <label>Lightness</label>
 <div class="slider-tint">
   <input type="range" min="0" max="100" [value]="lightness()" (input)="lightness.set($any($event.target).valueAsNumber)"
@@ -30,10 +30,18 @@
       <div class="standard-value" style="left: 70%;"></div>
     </div> -->
 
-<div class="mt-4">
-  <div id="colorPreview" class="w-full h-24 rounded flex items-center justify-center text-white relative">
-    <div class="color-preview" [style.background]="currentColor()">
-      <span class="text-base font-medium">Primary Preview</span>
+<section id="resultsOutput" class="w-full max-w-lg bg-white  p-6 rounded-xl shadow-md mb-12">
+  <h2 class="font-bold capitalize text-blue-900 text-3xl">Color Results</h2>
+    <div class="color-list">
+    @for(block of colorBlocks(); track block.label) {
+      <div class="color-row">
+     <div class="color-box" [style.background]="block.hex"></div>
+    <div class="color-info">
+      <div class="label">{{ block.label }}</div>
+      <div class="hex">{{ block.hex }}</div>
+      <div class="hsl">{{ block.hsl }}</div>
     </div>
+    </div>
+    }
   </div>
-</div>
+</section>

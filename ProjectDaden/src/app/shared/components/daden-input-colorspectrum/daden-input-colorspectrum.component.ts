@@ -52,29 +52,7 @@ export class DadenInputColorspectrumComponent {
     });
   }
 
-    // Setter methods for external components
-  // setHue(value: number) {
-  //   this.hue.set(value);
-  // }
-
-  // setSaturation(value: number) {
-  //   this.saturation.set(value);
-  // }
-
-  // setLightness(value: number) {
-  //   this.lightness.set(value);
-  // }
-
-  // // Get current color as hex
-  // getColorAsHex(): string {
-  //   return this.hslToHex(
-  //     this.hue(), 
-  //     this.saturation(), 
-  //     this.lightness()
-  //   );
-  // }
-
-  // Update animation
+    // Update animation
   animateColorChange() {
     gsap.fromTo('.color-preview',
       { opacity: 0.8, scale: 0.98 },
@@ -99,6 +77,44 @@ export class DadenInputColorspectrumComponent {
     return `#${f(0)}${f(8)}${f(4)}`;
   }
 
+
+  colorBlocks = computed(() => {
+  const h = this.hue();
+  const s = this.saturation();
+  const baseL = this.lightness();
+
+  return Array.from({ length: 9 }, (_, i) => {
+    const stepL = Math.min(baseL + i * 5, 100);
+    return {
+      hsl: `hsl(${h}, ${s}%, ${stepL}%)`,
+      hex: this.hslToHex(h, s, stepL),
+      label: `primary-${(i + 1) * 100}`,
+    };
+  });
+});
+
+
+    // Setter methods for external components
+  // setHue(value: number) {
+  //   this.hue.set(value);
+  // }
+
+  // setSaturation(value: number) {
+  //   this.saturation.set(value);
+  // }
+
+  // setLightness(value: number) {
+  //   this.lightness.set(value);
+  // }
+
+  // // Get current color as hex
+  // getColorAsHex(): string {
+  //   return this.hslToHex(
+  //     this.hue(), 
+  //     this.saturation(), 
+  //     this.lightness()
+  //   );
+  // }
 
   // use in parent:
   // parent.component.ts
