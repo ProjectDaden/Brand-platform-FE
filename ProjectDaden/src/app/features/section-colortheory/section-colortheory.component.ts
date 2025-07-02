@@ -20,6 +20,10 @@ export class SectionColortheoryComponent implements OnInit {
 
   colorTheoryService = inject(ColorTheoryService);
 
+  hueMaxVal = signal<number>(0);
+  hueMinVal = signal<number>(0);
+  hueCenterVal = signal<number>(0);
+
   hueVal = signal<number>(40);
   satVal = signal<number>(50);
   tintVal = signal<number>(55);
@@ -62,6 +66,9 @@ export class SectionColortheoryComponent implements OnInit {
       const archetypeData = this.getArchetypeColorinformation()?.archetypesColorInformation[mappedKey];
       if (archetypeData) {
         const { hueMin, hueMax, center } = archetypeData;
+        this.hueMaxVal.set(hueMax);
+        this.hueMinVal.set(hueMin);
+        this.hueCenterVal.set(center);
         this.labelHue.set(`Primary Hue (Recommended: ${hueMin}-${hueMax}% )`);
        this.hueVal.set(center);
       }

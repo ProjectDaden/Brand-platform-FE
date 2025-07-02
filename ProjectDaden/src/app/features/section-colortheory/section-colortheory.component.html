@@ -37,7 +37,10 @@
             [(hue)]="hueVal" 
             [(saturation)]="satVal" 
             [(lightness)]="tintVal" 
-            [hueLabel]="labelHue()"></daden-input-colorspectrum>
+            [hueLabel]="labelHue()"
+            [hueMax]="hueMaxVal()"
+            [hueMin]="hueMinVal()"
+            [center]="hueCenterVal()"></daden-input-colorspectrum>
         </div>
         <div id="secondaryColorContainer" class="mt-4 hidden">
             <label class="block text-sm font-medium text-gray-700">Secondary Color</label>
