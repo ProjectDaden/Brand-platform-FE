@@ -18,7 +18,8 @@
                 "logo-composer":"Logo",
                 "imagery-composer":"Imagery"
             },
-            "application-and-implementation": {
+            "application": {
+                "brand-style-guide": "Brand Style Guide",
                 "print-offline-material":"Print & Offline Style",
                 "socialmedia-styleguide":"Social Media Style",
                 "web-and-guidelines":"Website & App UI Style"
