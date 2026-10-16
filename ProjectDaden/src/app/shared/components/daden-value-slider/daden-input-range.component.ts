@@ -1,4 +1,4 @@
-import { Component, input, InputSignal, model, output } from '@angular/core';
+import { Component, computed, input, InputSignal, model } from '@angular/core';
 
 @Component({
   selector: 'daden-input-range',
@@ -12,13 +12,18 @@ export class DadenInputRangeComponent {
   max: InputSignal<number> = input<number>(100);
   step: InputSignal<number> = input<number>(1);
   value = model<number>(50);
-  valueChange = output<number>();
+
+  fillPercent = computed(() => {
+    const span = this.max() - this.min();
+    if (span <= 0) {
+      return 0;
+    }
+    return ((this.value() - this.min()) / span) * 100;
+  });
 
   onSliderChange(event: Event) {
     const target = event.target as HTMLInputElement;
-    const numValue = parseFloat(target.value);
-    this.value.set(numValue);
-    this.valueChange.emit(this.value());
+    this.value.set(parseFloat(target.value));
   }
 
 }

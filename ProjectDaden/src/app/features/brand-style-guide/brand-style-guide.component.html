@@ -1,0 +1,118 @@
+<daden-header></daden-header>
+
+<div class="print-document">
+<section>
+    <div class="flex items-center gap-4 mb-6">
+        @if (session.logoPrimary()) {
+            <img [src]="session.logoPrimary()" alt="" class="h-16 w-16 rounded-lg object-cover">
+        } @else {
+            <div class="h-16 w-16 rounded-lg bg-neutral-900 text-white flex items-center justify-center text-2xl font-semibold">
+                {{ (session.brandname() || 'D').charAt(0) }}
+            </div>
+        }
+        <div>
+            <h2 class="mb-1">{{ session.brandname() || 'Untitled brand' }}</h2>
+            @if (session.useTagline() && session.tagline()) {
+                <p class="text-neutral-500">{{ session.tagline() }}</p>
+            }
+        </div>
+    </div>
+    @if (session.archetype()) {
+        <p class="inline-flex rounded-full bg-neutral-100 text-neutral-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide">{{ session.archetype() }}</p>
+    }
+    <p class="mt-4 leading-relaxed text-neutral-700">{{ story() }}</p>
+</section>
+
+<section>
+    <h2 class="mb-4">Audience</h2>
+    <p>Age range: {{ session.ageRange() || 'Not set' }}</p>
+    <p>Location: {{ session.location() || 'Not set' }}</p>
+    <p class="mt-3">We exist to {{ session.purpose() || '…' }} for {{ session.audience() || '…' }}.</p>
+</section>
+
+<section>
+    <h2 class="mb-4">Tone of voice</h2>
+    <div class="flex flex-col gap-5">
+        @for (tone of toneAxes(); track tone.key) {
+            <div>
+                <div class="flex justify-between text-sm mb-1">
+                    <span>{{ tone.label }}</span>
+                    <span class="tabular-nums">{{ tone.value }}%</span>
+                </div>
+                <div class="h-1.5 rounded-full bg-neutral-100">
+                    <div class="h-1.5 rounded-full bg-neutral-900" [style.width.%]="tone.value"></div>
+                </div>
+                <div class="flex justify-between text-xs text-neutral-400 mt-1">
+                    <span>{{ tone.left }}</span>
+                    <span>{{ tone.right }}</span>
+                </div>
+                <p class="mt-2 text-sm text-neutral-600">{{ tone.sample }}</p>
+            </div>
+        }
+    </div>
+    <div class="mt-6 p-4 rounded-md border border-neutral-200 bg-neutral-50">
+        <p class="text-xs font-semibold uppercase tracking-wide text-neutral-400 mb-2">Voice in the UI</p>
+        <p class="text-sm leading-relaxed text-neutral-700 mb-4">{{ voiceLine() }}</p>
+        <span
+            class="inline-flex items-center bg-neutral-900 text-white text-sm"
+            [ngStyle]="sampleButtonStyle()">
+            {{ copy().cta || 'Try ' + (session.brandname() || 'the brand') }}
+        </span>
+    </div>
+</section>
+
+<section>
+    <h2 class="mb-4">Color</h2>
+    <p class="text-sm text-neutral-500 mb-4">{{ session.colorTheory() }}{{ session.colorCustomized() ? ' · adjusted by hand' : '' }}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @for (swatch of swatches(); track swatch.name) {
+            <div class="rounded-lg border border-neutral-200 overflow-hidden">
+                <div class="h-24" [style.background-color]="swatch.hex"></div>
+                <div class="p-4 text-sm">
+                    <p class="font-semibold">{{ swatch.name }}</p>
+                    <p>{{ swatch.hex }}</p>
+                    <p class="text-neutral-500">RGB {{ swatch.rgb }}</p>
+                    <p class="text-neutral-500">{{ swatch.onWhite }}:1 on white</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section>
+    <h2 class="mb-4">Typography</h2>
+    <p class="text-sm text-neutral-500 mb-4">{{ session.typeScaleName() }}</p>
+    <p class="text-4xl mb-3" [style.fontFamily]="session.headingFont()">{{ session.headingFont() }}</p>
+    <p class="text-lg leading-relaxed" [style.fontFamily]="session.bodyFont()">{{ session.bodyFont() }} is the body face. {{ copy().aboutUs }}</p>
+</section>
+
+<section>
+    <h2 class="mb-4">Words</h2>
+    <p class="mb-3"><span class="font-semibold">Problem.</span> {{ session.problem() || 'Not set' }}</p>
+    <p class="mb-3"><span class="font-semibold">Solution.</span> {{ session.solution() || 'Not set' }}</p>
+    <p class="mb-3"><span class="font-semibold">Benefit.</span> {{ session.benefit() || 'Not set' }}</p>
+    <p class="mb-3"><span class="font-semibold">Call to action.</span> {{ copy().cta || 'Not set' }}</p>
+    <p class="leading-relaxed">{{ copy().productDescription }}</p>
+</section>
+
+@if (session.logoSecondary() || session.logoIcon()) {
+    <section>
+        <h2 class="mb-4">Logo files</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            @if (session.logoPrimary()) {
+                <img [src]="session.logoPrimary()" alt="Primary logo" class="max-h-28 object-contain">
+            }
+            @if (session.logoSecondary()) {
+                <img [src]="session.logoSecondary()" alt="Secondary logo" class="max-h-28 object-contain">
+            }
+            @if (session.logoIcon()) {
+                <img [src]="session.logoIcon()" alt="Icon logo" class="max-h-28 object-contain">
+            }
+        </div>
+    </section>
+}
+</div>
+
+<div class="no-print mt-8 flex justify-end">
+    <daden-button label="button.print-guide" (emitItem)="printGuide()"></daden-button>
+</div>

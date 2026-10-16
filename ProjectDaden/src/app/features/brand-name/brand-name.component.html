@@ -7,8 +7,8 @@
       <daden-label>{{ "brandname.form-area.inputlabel"| translate }}</daden-label>
       <daden-detail>{{ "brandname.form-area.description-follow" | translate }}</daden-detail>
       <daden-input [id]="'brandname-input-text'" [type]="'text'" [isDisabled]="false"
-        [(value)]="brandCollectionComputed.brandname"
-        (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'brandname')" />
+        [value]="session.brandname()"
+        (valueChange)="updateBrandname($event)" />
     </div>
   </div>
 </section>
@@ -17,22 +17,22 @@
     <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline" />
     <daden-detail>{{ "brandname.form-area.brandname-tagline-description" | translate }}</daden-detail>
     <daden-label>{{ "brandname.form-area.tagline-inputlabel" | translate }}</daden-label>
-    <daden-input [id]="'use-tagline'" [type]="'checkbox'" [(chechkValue)]="isDisabled"
+    <daden-input [id]="'use-tagline'" [type]="'checkbox'" [chechkValue]="session.useTagline()"
       (chechkValueChange)="onToggle($event)" />
     <daden-detail>{{ "brandname.form-area.tagline-inputfield-description" | translate }} </daden-detail>
-    <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!isDisabled()"
-      [(value)]="brandCollectionComputed.taglineDescription"
-      (valueChange)="triggerUpdateBrandnameTagline($event ?? '', 'taglineDescription')" />
+    <daden-input [id]="'tagline-input-text'" [type]="'text'" [isDisabled]="!session.useTagline()"
+      [value]="session.tagline()"
+      (valueChange)="updateTagline($event)" />
   </div>
 </section>
 
 <section id="preview">
   <daden-group-header [title]="groupHeaderTitleTagline" [subtitle]="groupHeaderSubTitleTagline">
   </daden-group-header>
-  <div class="p-4 bg-blue-50 rounded-lg text-center">
-    <h1 class="text-4xl font-bold mb-2">{{ brandCollectionComputed.brandname }}</h1>
-    <p class="text-lg italic" [class.opacity-50]="isDisabled()">
-      {{ brandCollectionComputed.taglineDescription ? brandCollectionComputed.taglineDescription : "" }}
+  <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200 text-center">
+    <h1 class="text-4xl font-bold mb-2">{{ session.brandname() || 'Your brand' }}</h1>
+    <p class="text-lg italic" [class.opacity-40]="!session.useTagline()">
+      {{ session.useTagline() ? (session.tagline() || 'Your tagline') : 'Tagline is off' }}
     </p>
   </div>
 </section>

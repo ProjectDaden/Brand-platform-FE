@@ -16,6 +16,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
 import { DadenDropdown } from '../../shared/components/daden-dropdown/models/daden-dropdown';
 import { CommonModule } from '@angular/common';
+import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
+import { titleCaseArchetype } from '../../core/brand/brand-presets';
 
 @Component({
   selector: 'app-brand-industry',
@@ -35,12 +37,12 @@ import { CommonModule } from '@angular/common';
 })
 export class BrandIndustryComponent implements OnInit {
   private readonly brandIndustryService = inject(BrandIndustryService);
+  protected readonly session = inject(BaseClassGlobalStore);
 
   private readonly translate = inject(TranslateService);
 
   groupHeaderTitleIndustry: string = '';
   groupHeaderSubTitleIndustry: string = '';
-  combinedSelectedArchetypes = this.brandIndustryService.combinedSelectedArchetypes;
 
   groupHeaderTitleBrandname: string = "";
   groupHeaderSubTitleBrandname: string = "";
@@ -49,7 +51,7 @@ export class BrandIndustryComponent implements OnInit {
   dropDownIndustryConfig: DadenDropdown = {
     placeholder: "Select your industry...",
     items: [],
-    selectedItem: this.brandIndustryCollectionComputed.industry,
+    selectedItem: this.session.industry(),
     disabled: false,
   };
 
@@ -65,7 +67,11 @@ export class BrandIndustryComponent implements OnInit {
     this.groupHeaderSubTitleIndustry = this.translate.instant('industry-and-values.form-area.group-subTitle-industry');
 
     this.brandIndustryService.loadBrandIndustry().subscribe((data) => {
-      this.dropDownIndustryConfig.items = data.industryOptions;
+      this.dropDownIndustryConfig = {
+        ...this.dropDownIndustryConfig,
+        items: data.industryOptions,
+        selectedItem: this.session.industry(),
+      };
     });
     this.brandIndustryService.loadIndustryValues().subscribe((data) => {
       this.industryValues = data.valueOptions;
@@ -73,21 +79,16 @@ export class BrandIndustryComponent implements OnInit {
     this.brandIndustryService.loadBrandIndustryValueConnections();
   }
 
-  get brandIndustryCollectionComputed() {
-    return this.brandIndustryService.completeBrandIndustryCollectionState();
-  }
-
   /**
    * @description Method to handle the industry value of the user. This is also the selection of the associated archetype.
    * @param industry The selected industry the user has positioned himself in.
    */
   handleDropdownIndustry(industry: string) {
-    const foundArchetype = this.brandIndustryService.findArchetypeFromIndustry(industry);
-    if (!foundArchetype) return;
-
-    this.brandIndustryService.selectedIndustryArchetype.set(foundArchetype);
-    console.log("TRIGGERING INDUSTRY COMPONENT WITH FOUNDARCHETYPE ---> ", foundArchetype);
+    this.session.update({ industry });
     this.brandIndustryService.updateBrandIndustryCollection({ industry });
+    const foundArchetype = this.brandIndustryService.findArchetypeFromIndustry(industry) ?? '';
+    this.brandIndustryService.selectedIndustryArchetype.set(foundArchetype);
+    this.publishArchetype();
   }
 
   /**
@@ -95,10 +96,32 @@ export class BrandIndustryComponent implements OnInit {
    * @param values The selected values from brandindustry - values.
    */
   handleMultipleValues(values: string[]) {
-    this.brandIndustryService.updateBrandIndustryCollection({values});
+    this.session.update({ values });
+    this.brandIndustryService.updateBrandIndustryCollection({ values });
     const foundArchetypes = values
       .map(value => this.brandIndustryService.findArchetypeFromValues(value))
       .filter((found): found is string => !!found);
     this.brandIndustryService.selectedValueArchetypes.set(foundArchetypes);
+    this.publishArchetype();
+  }
+
+  private publishArchetype(): void {
+    const names = this.brandIndustryService.combinedSelectedArchetypes();
+    if (!names.length) {
+      this.session.update({ archetype: '' });
+      return;
+    }
+
+    const counts = new Map<string, number>();
+    for (const name of names) {
+      counts.set(name, (counts.get(name) ?? 0) + 1);
+    }
+
+    const primary = [...counts.entries()].sort((left, right) => right[1] - left[1])[0]?.[0];
+    if (!primary) {
+      return;
+    }
+
+    this.session.update({ archetype: titleCaseArchetype(primary) });
   }
 }

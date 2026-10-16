@@ -9,7 +9,9 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'v1',
+    canActivate: [AuthGuard],
     children: [
+      { path: '', redirectTo: 'core-brand-identity/brandname-and-tagline', pathMatch: 'full' },
       {
         path: 'core-brand-identity',
         children: [
@@ -81,26 +83,43 @@ export const routes: Routes = [
         ]
       },
       {
-        path: 'application-and-implementation',
+        path: 'application',
         children: [
+          {
+            path: 'brand-style-guide',
+            loadComponent: () => import('./features/brand-style-guide/brand-style-guide.component')
+              .then(m => m.BrandStyleGuideComponent)
+          },
           {
             path: 'web-and-guidelines',
             loadComponent: () => import('./features/web-and-guidelines/web-and-guidelines.component')
-            .then(m => m.WebAndGuidelinesComponent)
+              .then(m => m.WebAndGuidelinesComponent)
           },
           {
             path: 'socialmedia-styleguide',
             loadComponent: () => import('./features/socialmedia-styleguide/socialmedia-styleguide.component')
-            .then(m => m.SocialmediaStyleguideComponent)
+              .then(m => m.SocialmediaStyleguideComponent)
           },
           {
             path: 'print-offline-material',
             loadComponent: () => import('./features/print-offline-material/print-offline-material.component')
-            .then(m => m.PrintOfflineMaterialComponent)
+              .then(m => m.PrintOfflineMaterialComponent)
           }
         ]
       },
+      {
+        path: 'deliverables',
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: '/v1/application/brand-style-guide' },
+          { path: 'brand-style-guide', redirectTo: '/v1/application/brand-style-guide' }
+        ]
+      },
+      {
+        path: 'application-and-implementation',
+        redirectTo: 'application',
+        pathMatch: 'prefix'
+      },
     ]
   },
-  { path: '**', redirectTo: '/color-picker' },
+  { path: '**', redirectTo: '/login' },
 ];

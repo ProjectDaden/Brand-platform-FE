@@ -18,7 +18,7 @@
         <daden-detail>{{ "industry-and-values.form-area.values-description-2" | translate }}</daden-detail>
         <daden-multi-list-selection
         [options]="industryValues"
-        [selectedOptionsState]="brandIndustryCollectionComputed.values"
+        [selectedOptionsState]="session.values()"
         (selectionChange)="handleMultipleValues($event)"
         ></daden-multi-list-selection>
     </div>
@@ -26,21 +26,14 @@
 
 <section id="tone-of-voice-preview">
     <daden-group-header
-        [title]="groupHeaderTitleBrandname"
-        [subtitle]="groupHeaderSubTitleBrandname">
+        title="Brand character"
+        subtitle="Industry and values pick the archetype that drives tone, color, and type.">
     </daden-group-header>
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-lg font-medium italic">“A 
-            <span class="text-blue-700">{{ brandIndustryCollectionComputed.industry }}</span> brand that’s 
-            <span class="text-blue-700">{{ brandIndustryCollectionComputed.values[0] }}</span> and 
-            <span class="text-blue-700">{{ brandIndustryCollectionComputed.values[1] }}</span>, with a 
-            <span class="text-blue-700">{{ brandIndustryCollectionComputed.values[2] }}</span> 
-            personality.”
+    <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200">
+        <p class="text-base font-medium">A
+            <span class="font-semibold text-neutral-900">{{ session.industry() || '…' }}</span> brand@if (session.values().length) { that’s <span class="font-semibold text-neutral-900">{{ session.values().join(', ') }}</span>}@if (session.archetype()) {, with a <span class="font-semibold text-neutral-900">{{ session.archetype() }}</span> personality}.
         </p>
     </div>
 </section>
-
-<div>COMBINED ARCHETYPES : {{ combinedSelectedArchetypes() | json }}</div>
-<div>COMPUTED STATE IN STORE : {{ brandIndustryCollectionComputed | json }}</div>
 
 <daden-page-footer></daden-page-footer>

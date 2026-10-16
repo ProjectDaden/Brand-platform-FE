@@ -1,9 +1,9 @@
-<div class="flex flex-col lg:flex-row lg:max-h-screen ">
+<div class="app-shell flex flex-col lg:flex-row h-screen max-h-screen overflow-hidden bg-white text-neutral-900">
   @if(this.isLoggedIn()) {
-  <nav-sidebar class="flex"></nav-sidebar>
+  <nav-sidebar class="flex lg:w-72 lg:shrink-0 lg:h-screen lg:overflow-hidden"></nav-sidebar>
   }
-  <div class="flex-1 min-h-screen bg-blue-50 text-blue-950  overflow-y-auto">
-    <div class="m-auto max-w-screen-md p-16">
+  <div class="app-main flex-1 min-h-0 overflow-y-auto bg-[#f7f6f3] text-neutral-900">
+    <div class="mx-auto max-w-3xl px-6 py-8 lg:px-12 lg:py-12">
       @if( isLoading ) {
         <daden-loading></daden-loading>
       } @else {
@@ -12,8 +12,6 @@
       </div>
   </div>
   @if(this.isLoggedIn()) {
-  <aside-previews class="flex flex-col bg-blue-950 text-white p-6 lg:w-1/3"></aside-previews>
+  <aside-previews class="flex flex-col border-t lg:border-t-0 lg:border-l border-neutral-200 bg-white px-4 py-5 lg:w-[420px] lg:shrink-0 lg:h-screen"></aside-previews>
   }
 </div>
-
-

@@ -17,15 +17,13 @@
 </section>
 <section id="audience-preview">
     <daden-group-header [title]="groupHeaderTitlePreview" [subtitle]="groupHeaderSubTitlePreview" />
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-lg font-medium italic">“
-            <span class="text-blue-700">{{ targetAudience().selectedAge }}</span> year-olds in 
-            <span class="text-blue-700">{{ targetAudience().selectedLocation }}</span> areas.
+    <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200">
+        <p class="text-base font-medium">
+            <span class="font-semibold text-neutral-900">{{ session.ageRange() || '…' }}</span> year-olds in 
+            <span class="font-semibold text-neutral-900">{{ session.location() || '…' }}</span> areas.
         </p>
     </div>
 </section>
 
 <daden-page-footer></daden-page-footer>
-
-<div>{{ targetAudienceWatch() | json }}</div>
 

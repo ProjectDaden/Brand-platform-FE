@@ -3,72 +3,57 @@
 <section id="copywriting">
     <daden-group-header
         title="Edit Your Copy"
-        subtitle="Customize these templates to reflect your brand’s voice and messaging.">
+        subtitle="These drafts start from your name, message, and tone. Edit them when you want the words to stay put.">
     </daden-group-header>
 
     <div class="flex flex-col gap-6">
-        <!-- About Us Template -->
         <div>
+            <daden-label>About us</daden-label>
             <daden-input
                 type="textarea"
                 [rows]="4"
-                [(ngModel)]="aboutUsText"
-                (input)="updateCopy()"
-            ></daden-input>
-            <daden-detail
-                text="Tell your brand’s story in your unique voice.">
-            </daden-detail>
+                [value]="session.aboutUs()"
+                (valueChange)="updateAbout($event)">
+            </daden-input>
+            <daden-detail>Tell your brand’s story in your own voice.</daden-detail>
         </div>
 
-        <!-- Product Description Template -->
         <div>
-            <daden-label
-                label="Product Description">
-            </daden-label>
+            <daden-label>Product description</daden-label>
             <daden-input
                 type="textarea"
                 [rows]="4"
-                [(ngModel)]="productDescriptionText"
-                (input)="updateCopy()"
-            ></daden-input>
-            <daden-detail
-                text="Describe your product with flair and precision.">
-            </daden-detail>
+                [value]="session.productDescription()"
+                (valueChange)="updateProduct($event)">
+            </daden-input>
+            <daden-detail>Describe what you offer and why it matters.</daden-detail>
         </div>
 
-        <!-- Call to Action Template -->
         <div>
-            <daden-label
-                label="Call to Action">
-            </daden-label>
+            <daden-label>Call to action</daden-label>
             <daden-input
                 type="textarea"
                 [rows]="2"
-                [(ngModel)]="ctaText"
-                (input)="updateCopy()"
-            ></daden-input>
-            <daden-detail
-                text="Motivate your audience to take action.">
-            </daden-detail>
+                [value]="session.cta()"
+                (valueChange)="updateCta($event)">
+            </daden-input>
+            <daden-detail>This line is the button in the live preview.</daden-detail>
         </div>
     </div>
-    <daden-detail
-        text="These templates are pre-populated based on your brand inputs and tone settings.">
-    </daden-detail>
 </section>
 
 <section id="copywriting-preview">
     <daden-group-header
         title="Copywriting Preview"
-        subtitle="See how your copy looks in different contexts.">
+        subtitle="The same words feed the landing page preview.">
     </daden-group-header>
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <h3 class="text-lg font-semibold mb-2">Website Homepage</h3>
-        <p class="text-base leading-relaxed mb-4">{{ aboutUsText }}</p>
-        <h3 class="text-lg font-semibold mb-2">Product Page</h3>
-        <p class="text-base leading-relaxed mb-4">{{ productDescriptionText }}</p>
-        <h3 class="text-lg font-semibold mb-2">Social Media Post</h3>
-        <p class="text-base leading-relaxed">{{ ctaText }}</p>
+    <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200">
+        <h3 class="text-lg font-semibold mb-2">About</h3>
+        <p class="text-base leading-relaxed mb-4">{{ session.aboutUs() }}</p>
+        <h3 class="text-lg font-semibold mb-2">Product</h3>
+        <p class="text-base leading-relaxed mb-4">{{ session.productDescription() }}</p>
+        <h3 class="text-lg font-semibold mb-2">Call to action</h3>
+        <p class="text-base leading-relaxed">{{ session.cta() }}</p>
     </div>
 </section>
 

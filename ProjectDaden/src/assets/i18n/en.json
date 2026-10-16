@@ -14,8 +14,10 @@
       "previous": "previous",
       "next": "next",
       "login": "Login",
+      "continue-as-guest": "Continue as guest",
       "go-home": "go home",
-      "search": "search"
+      "search": "search",
+      "print-guide": "Print / Save PDF"
     },
     "home-component": {
         "title": "hallo Home"

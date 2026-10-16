@@ -6,7 +6,7 @@
   [value]="value()"
   [placeholder]="placeholder()"
   (input)="onInputChange($event)"
-  class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+  class="daden-field"
 />
 
 } @case('number'){
@@ -16,7 +16,7 @@
   [disabled]="isDisabled()"
   [placeholder]="placeholder()"
   (input)="onInputChange($event)"
-  class="w-full rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+  class="daden-field"
 />
 } @case('date') {
 <input
@@ -24,7 +24,7 @@
   [type]="'date'"
   [disabled]="isDisabled()"
   (input)="onInputChange($event)"
-  class="w-full rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+  class="daden-field"
 />
 } @case('file') {
 <input
@@ -33,7 +33,7 @@
   [disabled]="isDisabled()"
   [attr.accept]="accept()"
   (change)="onFileChange($event)"
-  class="w-full rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400 cursor-pointer file:py-2 file:px-4 file:border-collapse file:mr-4 file:cursor-pointer file:border-0 file:font-normal file:bg-blue-500 file:text-white file:hover:bg-blue-700 file:disabled:bg-gray-300 file:disabled:text-gray-600 file:disabled:cursor-default"
+  class="daden-field cursor-pointer file:mr-4 file:rounded file:border-0 file:bg-neutral-900 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-white hover:file:bg-neutral-800 file:disabled:bg-neutral-300 file:disabled:text-neutral-500"
 />
 } @case('textarea') {
 <textarea
@@ -41,8 +41,9 @@
   [rows]="rows()"
   [disabled]="isDisabled()"
   [placeholder]="placeholder()"
+  [value]="value()"
   (input)="onInputChange($event)"
-  class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-600"
+  class="daden-field min-h-[6rem] resize-y"
 ></textarea>
 }
 @case('email') {
@@ -52,7 +53,7 @@
     [disabled]="isDisabled()"
     [placeholder]="placeholder()"
     (input)="onInputChange($event)"
-    class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+    class="daden-field"
   />
 }
 @case('password') {
@@ -62,7 +63,7 @@
     [disabled]="isDisabled()"
     [placeholder]="placeholder()"
     (input)="onInputChange($event)"
-    class="w-full px-4 py-2 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+    class="daden-field"
   />
 }
 @case('checkbox') {
@@ -70,8 +71,7 @@
     [id]="id()"
     [type]="'checkbox'"
     [checked]="chechkValue()"
-    class="h-4 w-4 text-blue-500 border-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2
-	  disabled:cursor-default disabled:border-gray-200 disabled:text-gray-600 transition-colors duration-200"
+    class="h-4 w-4 rounded border-neutral-300 text-neutral-900 accent-neutral-900 focus:ring-neutral-900/20"
     (change)="onCheckboxChange($event)"
   />
 } 
@@ -85,7 +85,7 @@
     [value]="defaultValue()"
     [disabled]="isDisabled()"
     (input)="debouncedOnRangeChange($event)"
-    class="mt-1 w-full h-2 bg-ui-gray-500 rounded-lg appearance-none cursor-pointer accent-brand-blue-500"
+    class="mt-1 w-full h-1.5 bg-neutral-200 rounded-full appearance-none cursor-pointer accent-neutral-900"
   />
 }
 @case('color') {
@@ -95,7 +95,7 @@
     [value]="selectedColor()"
     [disabled]="isDisabled()"
     (input)="onColorChange($event)"
-    class="w-full h-10 p-1 rounded-md border-[1px] border-stroke border-blue-500 outline-none focus:outline-0 focus:ring-2 focus:ring-blue-500 disabled:cursor-default disabled:bg-gray-200 disabled:border-gray-200 disabled:text-gray-400"
+    class="daden-field h-10 p-1 cursor-pointer"
   />
 }
 @default {

@@ -1,8 +1,4 @@
-import { Component, Renderer2, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { DadenDropdownComponent } from '../../shared/components/daden-dropdown/daden-dropdown.component';
+import { Component, inject } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
 import { DadenGroupHeaderComponent } from '../../shared/components/daden-group-header/daden-group-header.component';
@@ -10,92 +6,57 @@ import { DadenDetailComponent } from '../../shared/components/daden-detail/daden
 import { DadenLabelComponent } from '../../shared/components/daden-label/daden-label.component';
 import { DadenButtonComponent } from '../../shared/components/daden-button/daden-button.component';
 import { DadenInputComponent } from '../../shared/components/daden-input/daden-input.component';
-
-
-// Define a specific type for logos
-interface LogoVariations {
-  primary: string | null;
-  secondary: string | null;
-  icon: string | null;
-}
+import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
 
 @Component({
   selector: 'app-section-logo',
   imports: [
-    DadenHeaderComponent, 
+    DadenHeaderComponent,
     DadenInputComponent,
     DadenPageFooterComponent,
-    DadenDropdownComponent,
     DadenGroupHeaderComponent,
     DadenDetailComponent,
     DadenLabelComponent,
-    FormsModule,
-    CommonModule,
     DadenButtonComponent
   ],
   templateUrl: './section-logo.component.html',
   standalone: true,
 })
-export class SectionLogoComponent implements OnInit {
-  constructor(
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
+export class SectionLogoComponent {
+  protected readonly session = inject(BaseClassGlobalStore);
 
-  ngOnInit() {
-    this.selectedPersonality = this.getPersonalityFromBrandValues();
-  }
-
-  // Personality (for context, though not directly used for logos)
-  personalityOptions: string[] = [
-    'Hero', 'Caregiver', 'Explorer', 'Creator', 'Innocent', 'Sage', 'Jester',
-    'Magician', 'Rebel', 'Ruler', 'Everyman', 'Lover',
-  ];
-  selectedPersonality: string = '';
-
-  // Logo Variations with specific type
-  logos: LogoVariations = {
-    primary: null,
-    secondary: null,
-    icon: null,
-  };
-
-  // Handle Personality Selection (optional context)
-  handlePersonalitySelection(personality: string) {
-    this.selectedPersonality = personality;
-    // Could influence logo maker suggestions if implemented
-  }
-
-  // Handle File Upload
   onFileChange(event: Event, type: 'primary' | 'secondary' | 'icon') {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.logos[type] = reader.result as string; // Base64 string
-      };
-      reader.readAsDataURL(file);
+    const file = input.files?.[0];
+    if (!file) {
+      return;
     }
-  }
 
-  // Clear Logo
-  clearLogo(type: 'primary' | 'secondary' | 'icon') {
-    this.logos[type] = null;
-    const input = this.document.getElementById(`${type}-upload`) as HTMLInputElement;
-    if (input) input.value = ''; // Reset file input
-  }
-
-  private getPersonalityFromBrandValues(): string {
-    return 'Jester'; // Mocked; replace with actual logic
-  }
-
-  // Output for connections
-  get logoOutput(): { primary: string | null; secondary: string | null; icon: string | null } {
-    return {
-      primary: this.logos.primary,
-      secondary: this.logos.secondary,
-      icon: this.logos.icon,
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === 'string' ? reader.result : null;
+      if (type === 'primary') {
+        this.session.update({ logoPrimary: result });
+      } else if (type === 'secondary') {
+        this.session.update({ logoSecondary: result });
+      } else {
+        this.session.update({ logoIcon: result });
+      }
     };
+    reader.readAsDataURL(file);
+  }
+
+  clearLogo(type: 'primary' | 'secondary' | 'icon') {
+    if (type === 'primary') {
+      this.session.update({ logoPrimary: null });
+    } else if (type === 'secondary') {
+      this.session.update({ logoSecondary: null });
+    } else {
+      this.session.update({ logoIcon: null });
+    }
+    const input = document.getElementById(`${type}-upload`) as HTMLInputElement | null;
+    if (input) {
+      input.value = '';
+    }
   }
 }

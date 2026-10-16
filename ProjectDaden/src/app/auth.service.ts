@@ -11,25 +11,15 @@ import {
 })
 export class AuthService {
   private readonly LOCAL_STORAGE_KEY = 'login-app';
-  private users = [
-    { username: 'danny_karouw', password: 'Ciella2014' },
-    { username: 'dennis_ulijn', password: 'password2' },
-  ];
 
   constructor(private router: Router) {}
 
-  login(username: string, password: string): boolean {
-    const user = this.users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) {
-      localStorage.setItem(
-        this.LOCAL_STORAGE_KEY,
-        JSON.stringify({ username })
-      );
-      return true;
-    }
+  login(_username: string, _password: string): boolean {
     return false;
+  }
+
+  loginAsGuest(): void {
+    localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify({ username: 'guest' }));
   }
 
   logout() {

@@ -4,63 +4,66 @@
 @tailwind utilities;
 
 @layer components {
+	.daden-field {
+		@apply w-full px-3 py-2 text-sm rounded-md border border-neutral-300 bg-white text-neutral-900
+			placeholder:text-neutral-400 outline-none
+			focus:border-neutral-900 focus:ring-2 focus:ring-neutral-900/10
+			disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed disabled:border-neutral-200;
+	}
+
 	input[type='range']::-webkit-slider-thumb {
-	  @apply appearance-none w-6 h-6 bg-white outline outline-4 outline-blue-500 rounded-full cursor-grab transition-shadow hover:drop-shadow-lg ease-in-out;
+	  @apply appearance-none w-4 h-4 bg-white outline outline-2 outline-neutral-900 rounded-full cursor-grab transition-shadow hover:drop-shadow-md ease-in-out;
 	}
   
 	input[type=range] {
-	  @apply appearance-none h-[10px] border-slate-200 border-y-2 bg-indigo-500 rounded-full;
+	  @apply appearance-none h-1.5 border-0 bg-neutral-200 rounded-full;
 	}
 
-  	h1,h2,h3,h4,h5,h6{
-		@apply font-bold capitalize text-blue-900;
-	}
-	h1 {
-		@apply text-6xl font-bold;
-	}
-
-	h2 {
-		@apply text-3xl;
-	}
-
-	h3 {
-		@apply text-xl;
-	}
-
-	h4 {
-		@apply text-base font-normal;
+	.app-main {
+		h1, h2, h3, h4, h5, h6 {
+			@apply font-semibold text-neutral-900;
+			text-transform: none;
 		}
-	h5 {
-		@apply text-base font-normal italic;
+		h1 {
+			@apply text-3xl tracking-tight;
+		}
+		h2 {
+			@apply text-lg;
+		}
+		h3 {
+			@apply text-base;
+		}
+		h4 {
+			@apply text-sm font-medium;
+		}
+		h5 {
+			@apply text-sm font-medium italic;
+		}
+		h6 {
+			@apply text-xs font-medium uppercase tracking-wide text-neutral-500;
+		}
 	}
-	h6 {
-		@apply text-sm font-normal uppercase;
-	}
+
 	.small{
 		@apply text-xs;
 	}
-	// a {
-	// 	@apply underline hover:opacity-75;
-	// }
-	// ul {
-	// 	@apply list-disc list-inside text-base;
-	// }
+
 	ol {
 		@apply  list-decimal list-inside text-base;
 	}	
 	blockquote {
-		@apply border-l-4 border-blue-500 pl-4 italic;
+		@apply border-l-4 border-neutral-300 pl-4 italic;
 	}
 
 	.code-block{
 		@apply  p-6 rounded-md text-sm font-mono;
 	}
 	code {
-		@apply bg-blue-50 p-4 my-8 rounded-md font-mono font-bold;
+		@apply bg-neutral-100 p-4 my-8 rounded-md font-mono font-bold;
 	}
 
-	section {
-		@apply bg-white  p-6 rounded-xl shadow-md mb-12;
+	.app-main section {
+		@apply bg-white p-6 rounded-lg border border-neutral-200 shadow-none mb-6;
 	}
 
 	.lazy-load{
@@ -71,22 +74,80 @@
 		@apply opacity-100;
 	}
 
-	img {
-		@apply opacity-100 transition-opacity;
-	}
-
-	img {
-		@apply hover:opacity-90;
-	}
-
 	daden-input {
 		@apply block w-full;
 	}
-	select {
-		option {
-			&:hover {
-				background-color: #dbeafe;
-				}
-		  	}
-		}	
+}
+
+@media print {
+	@page {
+		size: A4;
+		margin: 14mm;
+	}
+
+	html, body {
+		background: #fff !important;
+		height: auto !important;
+		overflow: visible !important;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+
+	nav-sidebar,
+	aside-previews,
+	daden-preview-landing,
+	daden-page-footer,
+	daden-header,
+	.no-print {
+		display: none !important;
+	}
+
+	.app-shell,
+	.app-main,
+	.app-main > div {
+		display: block !important;
+		max-height: none !important;
+		height: auto !important;
+		overflow: visible !important;
+		background: white !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		max-width: none !important;
+		width: 100% !important;
+	}
+
+	.print-document {
+		display: block !important;
+		width: 100% !important;
+	}
+
+	.print-document section {
+		box-shadow: none !important;
+		border: 1px solid #e5e5e5 !important;
+		break-inside: auto;
+		page-break-inside: auto;
+		margin-bottom: 10px !important;
+		padding: 12px !important;
+	}
+
+	.print-document h1 {
+		font-size: 20pt !important;
+		line-height: 1.2 !important;
+	}
+
+	.print-document h2 {
+		font-size: 13pt !important;
+		line-height: 1.3 !important;
+	}
+
+	.print-document img {
+		max-height: 72px !important;
+		max-width: 160px !important;
+		object-fit: contain !important;
+	}
+}
+
+body {
+	@apply text-neutral-900 antialiased;
+	background: #f7f6f3;
 }

@@ -6,6 +6,7 @@ import { DadenButtonComponent } from '../../components/daden-button/daden-button
 import { TranslateModule } from '@ngx-translate/core';
 import { DadenLabelComponent } from '../../components/daden-label/daden-label.component';
 import { DadenGroupHeaderComponent } from '../../components/daden-group-header/daden-group-header.component';
+import { BRAND_START_PATH } from '../../../core/brand/brand-steps';
 
 @Component({
   selector: 'app-daden-login',
@@ -15,15 +16,23 @@ import { DadenGroupHeaderComponent } from '../../components/daden-group-header/d
 export class DadenLoginComponent {
   username: string = '';
   password: string = '';
+  error = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
     if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/color-picker']);
-    } else {
-      alert('Login failed');
+      this.error = '';
+      void this.router.navigateByUrl(BRAND_START_PATH);
+      return;
     }
+    this.error = "Username/password doesn't exist";
+  }
+
+  continueAsGuest(): void {
+    this.error = '';
+    this.authService.loginAsGuest();
+    void this.router.navigateByUrl(BRAND_START_PATH);
   }
 
 }

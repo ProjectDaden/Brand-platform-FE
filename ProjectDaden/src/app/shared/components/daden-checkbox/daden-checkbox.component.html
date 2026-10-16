@@ -1,8 +1,8 @@
 <div>
 	@if ( checkboxes().length > 1 ) {
-	<label class="ml-2 text-blue-950 disabled:text-gray-600 cursor-pointer select-none">
-		<input class="h-4 w-4 text-blue-500 border-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2
-	  disabled:cursor-default disabled:border-gray-200 disabled:text-gray-600 transition-colors duration-200"
+	<label class="ml-2 text-neutral-800 disabled:text-neutral-400 cursor-pointer select-none">
+		<input class="h-4 w-4 rounded border-neutral-300 text-neutral-900 accent-neutral-900 focus:ring-neutral-900/20
+	  disabled:cursor-default disabled:border-neutral-200 disabled:text-neutral-400"
 			type="checkbox" [checked]="allChecked()" [disabled]="areAllDisabled()" (change)="toggleAllCheckboxes()" />
 		Select All
 	</label>
@@ -10,9 +10,9 @@
 
 	@for( checkbox of checkboxes(); track $index){
 	<div>
-		<label class="ml-2 text-blue-950 disabled:text-gray-600 cursor-pointer select-none" [ngClass]="{
-		'text-gray-900 hover:text-blue-500': !checkbox.disabled(),
-		'text-gray-600 cursor-default': checkbox.disabled()
+		<label class="ml-2 text-neutral-800 disabled:text-neutral-400 cursor-pointer select-none" [ngClass]="{
+		'text-neutral-800 hover:text-neutral-950': !checkbox.disabled(),
+		'text-neutral-400 cursor-default': checkbox.disabled()
 	  }">
 			<input type="checkbox" [checked]="checkbox.state()" [disabled]="checkbox.disabled()"
 				(change)="updateAllCheckedState()" />

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
+import { Component, input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'daden-label',
@@ -8,5 +8,5 @@ import { TranslateModule } from '@ngx-translate/core'; // Import TranslateModule
   templateUrl: './daden-label.component.html',
 })
 export class DadenLabelComponent {
-
+  label = input('');
 }

@@ -1,170 +1,300 @@
-import { BrandNameAndTaglineCompleted } from './../../features/brand-name/store/brandname-tagline.model';
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { BrandDesignCompleted } from './brand-design.model';
-import { initialColorPickerTheme } from '../../features/tool-color-picker/store/coloringTheme.store';
-import { initialBrandnameAndTagline } from '../../features/brand-name/store/brandname-tagline.store';
-import { initialIndustryAndValues } from '../../features/brand-value-personality/store/brand-industry.store';
-import { initialTargetAudienceState } from '../../features/target-audience/store/target-audience.store';
-import { initialVisionAndMissions } from '../../features/mission-vision/store/vision-and-missions.store';
-import { initialToneOfVoice } from '../../features/voice-and-tone/store/tone-of-voice.store';
-import { initialMessagingTone } from '../../features/section-messaging/store/messaging-tone.store';
-import { initialCopywriting } from '../../features/section-copywright/store/copywriting.store';
-import { InitialLogoSection } from '../../features/section-logo/store/logo-section.store';
-import { initialTypographySection } from '../../features/section-typography/store/typography-section.store';
-import { InitialImagerySection } from '../../features/section-imagery/store/imagery-section.store';
-import { Injectable } from '@angular/core';
-import { IndustryAndValuesCompleted } from '../../features/brand-value-personality/store/brand-industry.model';
-import { TargetAudienceCompleted } from '../../features/target-audience/store/target-audience.model';
-import { VisionAndMissionsCompleted } from '../../features/mission-vision/store/vision-and-missions.model';
-import { ToneOfVoiceCompleted } from '../../features/voice-and-tone/store/tone-of-voice.model';
-import { MessagingToneCompleted } from '../../features/section-messaging/store/messaging-tone.model';
-import { CopywritingCompleted } from '../../features/section-copywright/store/copywriting.model';
-import { LogoSectionCompleted } from '../../features/section-logo/store/logo-section.model';
-import { ColorPickerThemeCompleted } from '../../features/tool-color-picker/store/coloringTheme.model';
-import { TypographyCompleted } from '../../features/section-typography/store/typography-section.model';
-import { ImagerySectionCompleted } from '../../features/section-imagery/store/imagery-section.model';
+import { computed, effect } from '@angular/core';
+import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from '@ngrx/signals';
+import {
+  BRAND_SESSION_STORAGE_KEY,
+  BrandSession,
+  initialBrandSession,
+} from '../brand/brand-session.model';
+import {
+  fontsForArchetype,
+  generatedCopy,
+  hexToHsl,
+  hueForArchetype,
+  paletteForTheory,
+  toneForArchetype,
+} from '../brand/brand-presets';
 
-type GlobalFlowState = BrandDesignCompleted;
+function asString(value: unknown, fallback = ''): string {
+  return typeof value === 'string' ? value : fallback;
+}
 
-export const initialBrandDesignGlobalFlowState: GlobalFlowState = {
-  brandnameAndTagline: initialBrandnameAndTagline,
-  industryAndValues: initialIndustryAndValues,
-  targetAudience: initialTargetAudienceState,
-  missionAndVision: initialVisionAndMissions,
-  toneOfVoice: initialToneOfVoice,
-  messagingTone: initialMessagingTone,
-  copyWriting: initialCopywriting,
-  logoDesign: InitialLogoSection,
-  colorPalette: initialColorPickerTheme,
-  typography: initialTypographySection,
-  imagery: InitialImagerySection,
-};
+function asBoolean(value: unknown, fallback = false): boolean {
+  return typeof value === 'boolean' ? value : fallback;
+}
 
-export const globalStore = signalStore(
-  { providedIn: 'root' },
-  withState<GlobalFlowState>(initialBrandDesignGlobalFlowState),
-  withMethods((store) => ({
-    updateGlobalBrandnameTaglineState(newState: BrandNameAndTaglineCompleted) {
-      patchState(store, (state) => ({
-        brandnameAndTagline: {
-          ...state.brandnameAndTagline,
-          brandnameAndTagline: newState,
-        },
-      }));
-      console.log('GlobalStore!!', store.brandnameAndTagline());
-    },
-    updateGlobalIndustryAndValuesState(newState: IndustryAndValuesCompleted) {
-        patchState(store, (state) => ({
-          industryAndValues: {
-            ...state.industryAndValues,
-            industryAndValues: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.industryAndValues());
-      },
-      updateGlobalTargetAudienceState(newState: TargetAudienceCompleted) {
-        patchState(store, (state) => ({
-          targetAudience: {
-            ...state.targetAudience,
-            targetAudience: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.targetAudience());
-      },
-      updateGlobalVisionAndMissionState(newState: VisionAndMissionsCompleted) {
-        patchState(store, (state) => ({
-            missionAndVision: {
-            ...state.missionAndVision,
-            missionAndVision: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.missionAndVision());
-      },
-      updateGlobalToneOfVoiceState(newState: ToneOfVoiceCompleted) {
-        patchState(store, (state) => ({
-            toneOfVoice: {
-            ...state.toneOfVoice,
-            toneOfVoice: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.toneOfVoice());
-      },
-      updateGlobalMessagingToneState(newState: MessagingToneCompleted) {
-        patchState(store, (state) => ({
-            messagingTone: {
-            ...state.messagingTone,
-            messagingTone: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.messagingTone());
-      },
-      updateGlobalCopyWritingState(newState: CopywritingCompleted) {
-        patchState(store, (state) => ({
-            copyWriting: {
-            ...state.copyWriting,
-            copyWriting: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.copyWriting());
-      },
-      updateGlobalLogoDesignState(newState: LogoSectionCompleted) {
-        patchState(store, (state) => ({
-            logoDesign: {
-            ...state.logoDesign,
-            logoDesign: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.logoDesign());
-      },
-      updateGlobalColorPaletteState(newState: ColorPickerThemeCompleted) {
-        patchState(store, (state) => ({
-            colorPalette: {
-            ...state.colorPalette,
-            colorPalette: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.colorPalette());
-      },
-      updateGlobalTypographyState(newState: TypographyCompleted) {
-        patchState(store, (state) => ({
-            typography: {
-            ...state.typography,
-            typography: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.typography());
-      },
-      updateGlobalImageryState(newState: ImagerySectionCompleted) {
-        patchState(store, (state) => ({
-            imagery: {
-            ...state.imagery,
-            imagery: newState,
-          },
-        }));
-        console.log('GlobalStore!!', store.imagery());
-      },
-  }))
-);
+function asNumber(value: unknown, fallback: number): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+}
 
-@Injectable({ providedIn: 'root' })
-export class BaseClassGlobalStore extends globalStore {
-  constructor() {
-    super();
+function asStringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+}
+
+function asNullableString(value: unknown): string | null {
+  return typeof value === 'string' && value.length > 0 ? value : null;
+}
+
+function readStoredSession(): BrandSession | null {
+  if (typeof localStorage === 'undefined') {
+    return null;
   }
 
-  override updateGlobalBrandnameTaglineState = (newState: BrandNameAndTaglineCompleted): void => super.updateGlobalBrandnameTaglineState(newState);
-  override updateGlobalIndustryAndValuesState = (newState: IndustryAndValuesCompleted): void => super.updateGlobalIndustryAndValuesState(newState);
-  override updateGlobalTargetAudienceState = (newState: TargetAudienceCompleted): void => super.updateGlobalTargetAudienceState(newState);
-  override updateGlobalVisionAndMissionState = (newState: VisionAndMissionsCompleted): void => super.updateGlobalVisionAndMissionState(newState);
-  override updateGlobalToneOfVoiceState = (newState: ToneOfVoiceCompleted): void => super.updateGlobalToneOfVoiceState(newState);
-  override updateGlobalMessagingToneState = (newState: MessagingToneCompleted): void => super.updateGlobalMessagingToneState(newState);
-  override updateGlobalCopyWritingState = (newState: CopywritingCompleted): void => super.updateGlobalCopyWritingState(newState);
-  override updateGlobalLogoDesignState = (newState: LogoSectionCompleted): void => super.updateGlobalLogoDesignState(newState);
-  override updateGlobalColorPaletteState = (newState: ColorPickerThemeCompleted): void => super.updateGlobalColorPaletteState(newState);
-  override updateGlobalTypographyState = (newState: TypographyCompleted): void => super.updateGlobalTypographyState(newState);
-  override updateGlobalImageryState = (newState: ImagerySectionCompleted): void => super.updateGlobalImageryState(newState);
+  try {
+    const raw = localStorage.getItem(BRAND_SESSION_STORAGE_KEY);
+    if (!raw) {
+      return null;
+    }
+    const parsed = JSON.parse(raw) as Partial<BrandSession>;
+    if (!parsed || typeof parsed !== 'object') {
+      return null;
+    }
 
-  getStore(){
-    // console.log(initialBrandDesignGlobalFlowState, " Current initial global state!");
+    return {
+      brandname: asString(parsed.brandname),
+      useTagline: asBoolean(parsed.useTagline),
+      tagline: asString(parsed.tagline),
+      industry: asString(parsed.industry),
+      values: asStringArray(parsed.values),
+      archetype: asString(parsed.archetype),
+      ageRange: asString(parsed.ageRange),
+      location: asString(parsed.location),
+      purpose: asString(parsed.purpose),
+      audience: asString(parsed.audience),
+      formality: asNumber(parsed.formality, 50),
+      playfulness: asNumber(parsed.playfulness, 50),
+      respect: asNumber(parsed.respect, 50),
+      emotion: asNumber(parsed.emotion, 50),
+      toneCustomized: asBoolean(parsed.toneCustomized),
+      problem: asString(parsed.problem),
+      solution: asString(parsed.solution),
+      benefit: asString(parsed.benefit),
+      aboutUs: asString(parsed.aboutUs),
+      productDescription: asString(parsed.productDescription),
+      cta: asString(parsed.cta),
+      copyCustomized: asBoolean(parsed.copyCustomized),
+      colorTheory: asString(parsed.colorTheory, initialBrandSession.colorTheory),
+      primaryColor: asString(parsed.primaryColor, initialBrandSession.primaryColor),
+      secondaryColor: asString(parsed.secondaryColor, initialBrandSession.secondaryColor),
+      tertiaryColor: asString(parsed.tertiaryColor, initialBrandSession.tertiaryColor),
+      colorCustomized: asBoolean(parsed.colorCustomized),
+      headingFont: asString(parsed.headingFont, initialBrandSession.headingFont),
+      bodyFont: asString(parsed.bodyFont, initialBrandSession.bodyFont),
+      typeScaleName: asString(parsed.typeScaleName, initialBrandSession.typeScaleName),
+      typeCustomized: asBoolean(parsed.typeCustomized),
+      logoPrimary: asNullableString(parsed.logoPrimary),
+      logoSecondary: asNullableString(parsed.logoSecondary),
+      logoIcon: asNullableString(parsed.logoIcon),
+      completedSteps: asStringArray(parsed.completedSteps),
+    };
+  } catch {
+    return null;
   }
 }
+
+function persistSession(snapshot: BrandSession): void {
+  if (typeof localStorage === 'undefined') {
+    return;
+  }
+
+  try {
+    localStorage.setItem(BRAND_SESSION_STORAGE_KEY, JSON.stringify(snapshot));
+  } catch {
+    const withoutLogos: BrandSession = {
+      ...snapshot,
+      logoPrimary: null,
+      logoSecondary: null,
+      logoIcon: null,
+    };
+    try {
+      localStorage.setItem(BRAND_SESSION_STORAGE_KEY, JSON.stringify(withoutLogos));
+    } catch {
+      // Private mode or a full quota should not block the in-memory session.
+    }
+  }
+}
+
+export const BaseClassGlobalStore = signalStore(
+  { providedIn: 'root' },
+  withState<BrandSession>(initialBrandSession),
+  withComputed((store) => ({
+    snapshot: computed<BrandSession>(() => ({
+      brandname: store.brandname(),
+      useTagline: store.useTagline(),
+      tagline: store.tagline(),
+      industry: store.industry(),
+      values: store.values(),
+      archetype: store.archetype(),
+      ageRange: store.ageRange(),
+      location: store.location(),
+      purpose: store.purpose(),
+      audience: store.audience(),
+      formality: store.formality(),
+      playfulness: store.playfulness(),
+      respect: store.respect(),
+      emotion: store.emotion(),
+      toneCustomized: store.toneCustomized(),
+      problem: store.problem(),
+      solution: store.solution(),
+      benefit: store.benefit(),
+      aboutUs: store.aboutUs(),
+      productDescription: store.productDescription(),
+      cta: store.cta(),
+      copyCustomized: store.copyCustomized(),
+      colorTheory: store.colorTheory(),
+      primaryColor: store.primaryColor(),
+      secondaryColor: store.secondaryColor(),
+      tertiaryColor: store.tertiaryColor(),
+      colorCustomized: store.colorCustomized(),
+      headingFont: store.headingFont(),
+      bodyFont: store.bodyFont(),
+      typeScaleName: store.typeScaleName(),
+      typeCustomized: store.typeCustomized(),
+      logoPrimary: store.logoPrimary(),
+      logoSecondary: store.logoSecondary(),
+      logoIcon: store.logoIcon(),
+      completedSteps: store.completedSteps(),
+    })),
+  })),
+  withMethods((store) => ({
+    update(partial: Partial<BrandSession>): void {
+      patchState(store, partial);
+    },
+    markStepComplete(key: string): void {
+      const current = store.completedSteps();
+      if (!key || current.includes(key)) {
+        return;
+      }
+      patchState(store, { completedSteps: [...current, key] });
+    },
+    unmarkStep(key: string): void {
+      patchState(store, {
+        completedSteps: store.completedSteps().filter((step) => step !== key),
+      });
+    },
+    resetStep(key: string): void {
+      const current = store.snapshot();
+      switch (key) {
+        case 'brandname-and-tagline':
+          patchState(store, { brandname: '', tagline: '', useTagline: false });
+          break;
+        case 'industry-and-values':
+          patchState(store, {
+            industry: '',
+            values: [],
+            archetype: '',
+            ...(current.toneCustomized ? {} : { formality: 50, playfulness: 50, respect: 50, emotion: 50 }),
+            ...(current.colorCustomized
+              ? {}
+              : {
+                  colorTheory: initialBrandSession.colorTheory,
+                  primaryColor: initialBrandSession.primaryColor,
+                  secondaryColor: initialBrandSession.secondaryColor,
+                  tertiaryColor: initialBrandSession.tertiaryColor,
+                }),
+            ...(current.typeCustomized
+              ? {}
+              : {
+                  headingFont: initialBrandSession.headingFont,
+                  bodyFont: initialBrandSession.bodyFont,
+                }),
+          });
+          break;
+        case 'target-audience':
+          patchState(store, { ageRange: '', location: '' });
+          break;
+        case 'vision-and-mission':
+          patchState(store, { purpose: '', audience: '' });
+          break;
+        case 'tone-of-voice':
+          patchState(store, { formality: 50, playfulness: 50, respect: 50, emotion: 50, toneCustomized: false });
+          break;
+        case 'messaging-tone':
+          patchState(store, { problem: '', solution: '', benefit: '' });
+          break;
+        case 'copywriting-tone':
+          patchState(store, {
+            ...generatedCopy({ ...current, copyCustomized: false }),
+            copyCustomized: false,
+          });
+          break;
+        case 'color-composer':
+          patchState(store, { colorTheory: initialBrandSession.colorTheory, colorCustomized: false });
+          break;
+        case 'typography-composer':
+          patchState(store, { typeScaleName: initialBrandSession.typeScaleName, typeCustomized: false });
+          break;
+        case 'logo-composer':
+          patchState(store, { logoPrimary: null, logoSecondary: null, logoIcon: null });
+          break;
+        default:
+          break;
+      }
+      patchState(store, {
+        completedSteps: store.completedSteps().filter((step) => step !== key),
+      });
+    },
+    resetAll(): void {
+      patchState(store, {
+        ...initialBrandSession,
+        values: [],
+        completedSteps: [],
+      });
+    },
+  })),
+  withHooks({
+    onInit(store) {
+      const saved = readStoredSession();
+      if (saved) {
+        patchState(store, saved);
+      }
+
+      effect(() => {
+        persistSession(store.snapshot());
+      });
+
+      effect(() => {
+        if (store.toneCustomized()) {
+          return;
+        }
+        const archetype = store.archetype();
+        if (!archetype) {
+          return;
+        }
+        patchState(store, toneForArchetype(archetype));
+      });
+
+      effect(() => {
+        if (store.colorCustomized()) {
+          return;
+        }
+        const theory = store.colorTheory();
+        const archetype = store.archetype();
+        if (!archetype && theory === initialBrandSession.colorTheory) {
+          return;
+        }
+        const hue = archetype ? hueForArchetype(archetype) : hexToHsl(initialBrandSession.primaryColor).h;
+        const palette = paletteForTheory(theory || 'Analogous', hue);
+        patchState(store, {
+          primaryColor: palette.primary,
+          secondaryColor: palette.secondary,
+          tertiaryColor: palette.tertiary,
+        });
+      });
+
+      effect(() => {
+        if (store.typeCustomized()) {
+          return;
+        }
+        const archetype = store.archetype();
+        if (!archetype) {
+          return;
+        }
+        const fonts = fontsForArchetype(archetype);
+        patchState(store, {
+          headingFont: fonts.heading[0] ?? initialBrandSession.headingFont,
+          bodyFont: fonts.body[0] ?? initialBrandSession.bodyFont,
+        });
+      });
+    },
+  }),
+);

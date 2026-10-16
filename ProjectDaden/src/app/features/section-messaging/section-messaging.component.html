@@ -8,45 +8,34 @@
 
     <div class="flex flex-col gap-6">
         <div>
-            <daden-label
-                label="What do you solve?">
-            </daden-label>
+            <daden-label>What do you solve?</daden-label>
             <daden-input
                 type="text"
-                placeholder="e.g., boring days">
+                placeholder="e.g. boring days"
+                [value]="session.problem()"
+                (valueChange)="updateProblem($event)">
             </daden-input>
-            <daden-detail
-                text="Define the problem you address.">
-            </daden-detail>
+            <daden-detail>Name the problem your customer already feels.</daden-detail>
         </div>
         <div>
-            <daden-label
-                label="How do you solve it?">
-            </daden-label>
+            <daden-label>How do you solve it?</daden-label>
             <daden-input
                 type="text"
-                placeholder="Define the solution your product offers."
-                (input)="updateMessaging()">
+                placeholder="e.g. a simpler way to get started"
+                [value]="session.solution()"
+                (valueChange)="updateSolution($event)">
             </daden-input>
-            <daden-detail
-                text="Define the problem you address and your solution.">
-            </daden-detail>
+            <daden-detail>Describe the offer in plain language.</daden-detail>
         </div>
         <div>
-            <daden-label
-                label="Why do you do it that way?">
-            </daden-label>
-        <!-- <daden-dropdown
-            class="w-full"
-            [items]="benefitOptions"
-            [placeholder]="'Select a benefit...'"
-            (selectedValue)="handleBenefitSelection($event)"
-        ></daden-dropdown> -->
-            <daden-detail
-                text="Choose what sets your brand apart.">
-            </daden-detail>
+            <daden-label>What do they get?</daden-label>
+            <daden-dropdown
+                [dropDownParts]="benefitDropdown()"
+                (selectedValue)="updateBenefit($event)">
+            </daden-dropdown>
+            <daden-detail>Choose what sets your brand apart.</daden-detail>
         </div>
-    </div> 
+    </div>
 </section>
 
 <section id="messaging-preview">
@@ -54,11 +43,11 @@
         title="Messaging Preview"
         subtitle="See how your message comes together.">
     </daden-group-header>
-    <div class="p-4 bg-blue-50 rounded-lg">
+    <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200">
         <p class="text-base leading-relaxed">
-        We solve <span class="font-bold">{{ problem || '[problem]' }}</span> with
-        <span class="font-bold">{{ solution || '[solution]' }}</span>, delivering
-        <span class="font-bold">{{ selectedBenefit || '[benefit]' }}</span>.
+        We solve <span class="font-bold">{{ session.problem() || '[problem]' }}</span> with
+        <span class="font-bold">{{ session.solution() || '[solution]' }}</span>, delivering
+        <span class="font-bold">{{ session.benefit() || '[benefit]' }}</span>.
         </p>
     </div>
 </section>

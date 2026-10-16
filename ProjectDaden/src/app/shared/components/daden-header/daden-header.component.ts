@@ -34,9 +34,20 @@ export class DadenHeaderComponent implements OnInit {
 
   public setHeaderTitles() {
     const title = this.navTrack.getSegment(1);
-    this.title.set(title?.replace(/-/g, ' ') ?? "");
+    this.title.set(this.toTitle(title));
     const subTitle = this.navTrack.getSegment(2);
-    this.subTitle.set(subTitle?.replace(/-/g, ' ') ?? "");
+    if (subTitle === 'brand-style-guide') {
+      this.title.set('Brand style guide');
+      this.subTitle.set('The brand you just built, ready to review or print');
+      return;
+    }
+    this.subTitle.set(this.toTitle(subTitle));
+  }
+
+  private toTitle(value: string | undefined): string {
+    return (value ?? '')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (char) => char.toUpperCase());
   }
 
   // public setHeaderSubTitle() {

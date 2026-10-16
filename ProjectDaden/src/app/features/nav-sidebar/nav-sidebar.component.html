@@ -1,72 +1,72 @@
-<div class="bg-blue-950 text-white p-6 pb-6 flex flex-col w-full lg:h-full lg:min-h-screen">
-  <!-- Top Bar (always visible, contains logo and hamburger on mobile) -->
-  <div class="flex flex-row justify-between items-center">
-    <!-- Logo and Name -->
-    <div class="flex items-center">
-      <svg class="w-6 h-6 ml-2 mr-2" viewBox="0 0 360 360" style="fill:white" xmlns="http://www.w3.org/2000/svg">
+<div class="bg-[#191919] text-neutral-300 px-3 py-4 flex flex-col w-full lg:h-full lg:min-h-screen">
+  <div class="flex flex-row justify-between items-center px-2">
+    <div class="flex items-center gap-2 min-w-0">
+      <svg class="w-5 h-5 shrink-0" viewBox="0 0 360 360" style="fill:white" xmlns="http://www.w3.org/2000/svg">
         <path class="bg-white"
           d="M197.802 229.09L156.175 240.173L123.445 118.802L165.072 107.719C178.198 104.225 190.221 103.721 201.141 106.209C212.199 108.46 221.584 113.455 229.298 121.193C237.149 128.694 242.759 138.69 246.127 151.181C249.446 163.486 249.618 174.93 246.643 185.514C243.857 196.047 238.267 205.128 229.874 212.758C221.618 220.152 210.927 225.596 197.802 229.09Z" />
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M123.886 339.499L218.716 314.251C250.511 305.786 276.936 292.371 297.991 274.007C318.971 255.366 333.383 233.43 341.227 208.198C348.996 182.69 348.924 155.264 341.011 125.919C333.023 96.2984 319.284 72.5108 299.795 54.5565C280.306 36.6022 256.823 24.9034 229.348 19.46C201.799 13.7397 172.126 15.1123 140.331 23.5776L45.5008 48.8254C32.1265 52.3862 25.4393 54.1667 21.0284 58.113C17.1485 61.5842 14.4741 66.1869 13.3886 71.2612C12.1546 77.03 13.9464 83.6746 17.5301 96.9638L75.4388 311.706C79.0225 324.995 80.8143 331.64 84.7859 336.023C88.2794 339.878 92.9115 342.535 98.0184 343.614C103.824 344.84 110.511 343.06 123.886 339.499ZM67.8505 93.7391L120.64 289.499L210.082 265.686C231.458 259.994 249.222 250.969 263.373 238.609C277.474 226.062 287.158 211.295 292.424 194.306C297.64 177.131 297.584 158.663 292.254 138.9C286.875 118.952 277.63 102.929 264.521 90.8332C251.412 78.7373 235.619 70.8526 217.144 67.179C198.619 63.3191 178.668 64.2347 157.292 69.9259L67.8505 93.7391Z" />
       </svg>
-      <span class="text-xl font-bold">Daden Platform</span>
+      <span class="text-[15px] font-semibold text-white truncate">Daden</span>
     </div>
 
-    <!-- Hamburger Menu (visible on mobile/tablet) -->
-    <button class="lg:hidden p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all" (click)="toggleMenu()">
-      <daden-icon icon="hamburger" [strokeWidth]="1.5" [class]="'size-6 text-white'"></daden-icon>
+    <button class="lg:hidden p-1.5 rounded-md hover:bg-white/10 transition-colors" (click)="toggleMenu()">
+      <daden-icon icon="hamburger" [strokeWidth]="1.5" [class]="'size-5 text-white'"></daden-icon>
     </button>
 
-    <!-- Login button (visible on desktop) -->
-    <button class="hidden lg:block -m-1 p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all" (click)="logout()">
-      <daden-icon icon="logout" [strokeWidth]="1.5" [class]="'size-6 text-white'"></daden-icon>
+    <button class="hidden lg:block p-1.5 rounded-md hover:bg-white/10 transition-colors" (click)="logout()">
+      <daden-icon icon="logout" [strokeWidth]="1.5" [class]="'size-5 text-neutral-400'"></daden-icon>
     </button>
   </div>
 
-  <!-- Navigation Menu (hidden on mobile/tablet by default, toggled by hamburger) -->
-  <div [class.hidden]="!isMenuOpen" class="lg:flex flex-col overflow-y-auto pt-6 h-full">
+  <div [class.hidden]="!isMenuOpen" class="lg:flex flex-col overflow-y-auto pt-5 h-full">
     <nav>
       <ul class="my-0">
         @for (category of categories(); track $index) {
-          <li class="mb-4">
-            <div class="flex items-center gap-3 p-2 rounded w-full opacity-75 select-none">
+          <li class="mb-5">
+            <div class="flex items-center gap-2 px-2 py-1 w-full text-[11px] font-medium uppercase tracking-wider text-neutral-500 select-none">
                 @switch (category[0]) {
                   @case ('core-brand-identity') {
-                    <daden-icon icon="coreBrand" [strokeWidth]="1.5" [class]="'size-4'"></daden-icon>
+                    <daden-icon icon="coreBrand" [strokeWidth]="1.5" [class]="'size-3.5'"></daden-icon>
                   }
                   @case ('brand-voice-and-tone') {
-                    <daden-icon icon="brandVoice" [strokeWidth]="1.5" [class]="'size-4'"></daden-icon>
+                    <daden-icon icon="brandVoice" [strokeWidth]="1.5" [class]="'size-3.5'"></daden-icon>
                   }
                   @case ('visual-identity') {
-                    <daden-icon icon="visualIdentity" [strokeWidth]="1.5" [class]="'size-4'"></daden-icon>
+                    <daden-icon icon="visualIdentity" [strokeWidth]="1.5" [class]="'size-3.5'"></daden-icon>
                   }
-                  @case ('application-and-implementation') {
-                    <daden-icon icon="appImpl" [strokeWidth]="1.5" [class]="'size-4'"></daden-icon>
+                  @case ('application') {
+                    <daden-icon icon="appImpl" [strokeWidth]="1.5" [class]="'size-3.5'"></daden-icon>
                   }
                 }
               {{ formatTitle(category[0]) }}
             </div>
   
-            <ul class="pl-7 mt-0">
+            <ul class="mt-1">
               @for (item of getMenuItems(category[1]); track $index) {
                 <li>
-                  <a [routerLink]="['/v1', category[0], item.key]" 
-                      routerLinkActive="font-bold" 
-                      (click)="closeMenu()" 
-                      class="flex items-center p-2 rounded w-full text-sm opacity-50 select-none hover:bg-blue-900 hover:opacity-100 transition-all">
-                    <div class="flex w-full align-middle justify-between">
-                      <span>{{ item.value }}</span>
-                      @if (item.key === 'logo') {
-                        <daden-icon icon="check" [strokeWidth]="1.5" [class]="'size-6 bg-green-500 rounded-full p-1'"></daden-icon>
-
-                      }
-                    </div>
-                    @if (item.key === 'typography') {
-                      <div class="-m-1 font-medium py-2 px-2 rounded-full text-white border border-white opacity-50 w-36">
-                        <div class="text-xs font-normal leading-none flex-initial">coming soon</div>
+                  @if (comingSoon(item.key)) {
+                    <div class="flex items-center px-2 py-1.5 rounded-md w-full text-[13px] text-neutral-500 cursor-not-allowed select-none">
+                      <div class="flex w-full items-center justify-between gap-2">
+                        <span>{{ item.value }}</span>
+                        <span class="shrink-0 rounded px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider bg-white/10 text-neutral-400">Coming soon</span>
                       </div>
-                    }
-                  </a>
+                    </div>
+                  } @else {
+                    <a [routerLink]="['/v1', category[0], item.key]"
+                        routerLinkActive="bg-white/10 text-white"
+                        (click)="closeMenu()"
+                        class="flex items-center px-2 py-1.5 rounded-md w-full text-[13px] text-neutral-400 select-none hover:bg-white/5 hover:text-white transition-colors">
+                      <div class="flex w-full items-center justify-between gap-2">
+                        <span>{{ item.value }}</span>
+                        @if (isComplete(item.key)) {
+                          <span class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500">
+                            <daden-icon icon="check" [strokeWidth]="3" [class]="'size-3 text-white'"></daden-icon>
+                          </span>
+                        }
+                      </div>
+                    </a>
+                  }
                 </li>
               }
             </ul>
@@ -75,12 +75,29 @@
       </ul>
     </nav>
 
-    <!-- Settings -->
-    <div class="flex flex-col gap-1 mt-auto">
-      <div class="border-t-2 opacity-25"></div>
-      <button class="flex items-center gap-2 p-1 rounded w-full opacity-75 select-none hover:bg-blue-900 hover:opacity-100 transition-all">
-        <daden-icon icon="settings" [strokeWidth]="1.5" [class]="'size-4 mx-1'"></daden-icon>
-        <p>Settings</p>
-      </button>
+    <div class="flex flex-col gap-1 mt-auto px-1">
+      <div class="border-t border-white/10 mb-2"></div>
+      <div class="relative">
+        <button
+          type="button"
+          class="flex items-center gap-2 px-2 py-1.5 rounded-md w-full text-[13px] text-neutral-500 select-none hover:bg-white/5 hover:text-white transition-colors"
+          (click)="toggleSettings($event)">
+          <daden-icon icon="settings" [strokeWidth]="1.5" [class]="'size-3.5'"></daden-icon>
+          <p>Settings</p>
+        </button>
+        @if (settingsOpen) {
+          <div
+            class="absolute bottom-full left-0 mb-2 w-56 rounded-md border border-white/10 bg-[#111] p-1 shadow-lg"
+            (click)="$event.stopPropagation()">
+            <button
+              type="button"
+              class="w-full rounded px-2 py-2 text-left text-[13px] text-red-400 hover:bg-white/5"
+              (click)="resetAll()">
+              Reset all pages
+            </button>
+            <p class="px-2 pb-2 pt-1 text-[11px] leading-snug text-neutral-500">Clears the brand stored on this device.</p>
+          </div>
+        }
+      </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DadenHeaderComponent } from '../../shared/components/daden-header/daden-header.component';
 import { DadenPageFooterComponent } from '../../shared/components/daden-page-footer/daden-page-footer.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -8,14 +8,13 @@ import { DadenLabelComponent } from '../../shared/components/daden-label/daden-l
 import { DadenDropdownComponent } from "../../shared/components/daden-dropdown/daden-dropdown.component";
 import { TargetAudienceService } from './services/target-audience.service';
 import { DadenDropdown } from '../../shared/components/daden-dropdown/models/daden-dropdown';
-import { CommonModule } from '@angular/common';
 import { TargetAudience } from './models/target-audience-interface';
+import { BaseClassGlobalStore } from '../../core/store/brand-design-global.store';
 
 @Component({
   selector: 'app-target-audience',
   imports: [
     DadenHeaderComponent,
-    CommonModule,
     DadenPageFooterComponent,
     TranslateModule,
     DadenGroupHeaderComponent,
@@ -30,9 +29,9 @@ import { TargetAudience } from './models/target-audience-interface';
 export class TargetAudienceComponent implements OnInit {
   private readonly translate = inject(TranslateService);
   private readonly targetAudienceService = inject(TargetAudienceService);
+  protected readonly session = inject(BaseClassGlobalStore);
 
   targetAudience = this.targetAudienceService.getTargetAudience();
-  targetAudienceWatch = computed(() => this.targetAudience());
 
   groupHeaderTitleTargetAudience: string = "";
   groupHeaderSubTitleargetAudience: string = "";
@@ -60,26 +59,34 @@ export class TargetAudienceComponent implements OnInit {
     this.groupHeaderSubTitlePreview = this.translate.instant("target-audience.preview-area.preview-description");
 
     this.targetAudienceService.loadAgeGroups().subscribe((data) => {
-      console.log(data.ageGroups, " <--- AgeGroups GET PARENT");
-      this.dropDownAgeGroupsConfig.items = data.ageGroups;
+      this.dropDownAgeGroupsConfig = {
+        ...this.dropDownAgeGroupsConfig,
+        items: data.ageGroups,
+        selectedItem: this.session.ageRange(),
+      };
+      this.targetAudience.update((current) => ({ ...current, selectedAge: this.session.ageRange() }));
     });
 
     this.targetAudienceService.loadLocations().subscribe((data) => {
-      console.log(data.locations, " <--- Locations GET PARENT");
-      this.dropDownLocationConfig.items = data.locations;
+      this.dropDownLocationConfig = {
+        ...this.dropDownLocationConfig,
+        items: data.locations,
+        selectedItem: this.session.location(),
+      };
+      this.targetAudience.update((current) => ({ ...current, selectedLocation: this.session.location() }));
     });
   }
 
     triggerAudiencePreview(event: string | undefined, prop: keyof TargetAudience) {
-      if (event) {
-        const audienceProp: Partial<TargetAudience> = {};
-        audienceProp[prop] = [event] as any;
-        this.updateTargetAudienceCollection(audienceProp);
+      if (!event) {
+        return;
       }
-    }
-  
-    updateTargetAudienceCollection(updates: Partial<ReturnType<typeof this.targetAudience>>){
-      this.targetAudience.update(curr => ({...curr, ...updates}));
-      console.log(updates, " hier moet ik generic updaten!!");
+      this.targetAudience.update((current) => ({ ...current, [prop]: event }));
+      if (prop === 'selectedAge') {
+        this.session.update({ ageRange: event });
+      }
+      if (prop === 'selectedLocation') {
+        this.session.update({ location: event });
+      }
     }
 }

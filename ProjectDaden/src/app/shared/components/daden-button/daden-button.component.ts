@@ -28,64 +28,63 @@ export class DadenButtonComponent {
   private getColorClasses() {
     const baseColorMap = {
       blue: {
-        primary: 'bg-blue-500 text-white',
-        secondary: 'border border-blue-500 text-blue-500',
-        tertiary: 'text-blue-500',
-        text: 'text-blue-500',
+        primary: 'bg-blue-600 text-white',
+        secondary: 'border border-blue-600 text-blue-700 bg-white',
+        tertiary: 'text-blue-600',
+        text: 'text-blue-600',
       },
       red: {
-        primary: 'bg-red-500 text-white',
-        secondary: 'border border-red-500 text-red-500',
-        tertiary: 'text-red-500',
-        text: 'text-red-500',
+        primary: 'bg-red-600 text-white',
+        secondary: 'border border-red-300 text-red-700',
+        tertiary: 'text-red-600',
+        text: 'text-red-600',
       },
       yellow: {
-        primary: 'bg-yellow-500 text-white',
-        secondary: 'border border-yellow-500 text-yellow-500',
-        tertiary: 'text-yellow-500',
-        text: 'text-yellow-500',
+        primary: 'bg-amber-500 text-white',
+        secondary: 'border border-amber-400 text-amber-700',
+        tertiary: 'text-amber-600',
+        text: 'text-amber-600',
       },
       green: {
-        primary: 'bg-green-500 text-white',
-        secondary: 'border border-green-500 text-green-500',
-        tertiary: 'text-green-500',
-        text: 'text-green-500',
+        primary: 'bg-emerald-600 text-white',
+        secondary: 'border border-emerald-400 text-emerald-700',
+        tertiary: 'text-emerald-600',
+        text: 'text-emerald-600',
       },
     };
 
     const hoverColorMap = {
       blue: {
         primary: 'hover:bg-blue-700 hover:text-white',
-        secondary: 'hover:bg-blue-700 hover:border-blue-700 hover:text-white',
-        tertiary: 'hover:bg-blue-700 hover:text-white',
-        text: 'hover:text-blue-700 hover:underline',
+        secondary: 'hover:bg-blue-50 hover:border-blue-700',
+        tertiary: 'hover:bg-blue-50 hover:text-blue-800',
+        text: 'hover:text-blue-800 hover:underline',
       },
       red: {
         primary: 'hover:bg-red-700 hover:text-white',
-        secondary: 'hover:bg-red-700 hover:border-red-700 hover:text-white',
-        tertiary: 'hover:bg-red-700 hover:text-white',
+        secondary: 'hover:bg-red-50 hover:border-red-400',
+        tertiary: 'hover:bg-red-50 hover:text-red-700',
         text: 'hover:text-red-700 hover:underline',
       },
       yellow: {
-        primary: 'hover:bg-yellow-700 hover:text-white',
-        secondary:
-          'hover:bg-yellow-700 hover:border-yellow-700 hover:text-white',
-        tertiary: 'hover:bg-yellow-700 hover:text-white',
-        text: 'hover:text-yellow-700 hover:underline',
+        primary: 'hover:bg-amber-600 hover:text-white',
+        secondary: 'hover:bg-amber-50 hover:border-amber-500',
+        tertiary: 'hover:bg-amber-50 hover:text-amber-700',
+        text: 'hover:text-amber-700 hover:underline',
       },
       green: {
-        primary: 'hover:bg-green-700 hover:text-white',
-        secondary: 'hover:bg-green-700 hover:border-green-700 hover:text-white',
-        tertiary: 'hover:bg-green-700 hover:text-white',
-        text: 'hover:text-green-700 hover:underline',
+        primary: 'hover:bg-emerald-700 hover:text-white',
+        secondary: 'hover:bg-emerald-50 hover:border-emerald-500',
+        tertiary: 'hover:bg-emerald-50 hover:text-emerald-700',
+        text: 'hover:text-emerald-700 hover:underline',
       },
     };
 
     const focusActiveMap = {
-      blue: 'focus:ring-blue-500 active:ring-blue-500',
-      red: 'focus:ring-red-500 active:ring-red-500',
-      yellow: 'focus:ring-yellow-500 active:ring-yellow-500',
-      green: 'focus:ring-green-500 active:ring-green-500',
+      blue: 'focus:ring-blue-500/40 active:ring-blue-500/40',
+      red: 'focus:ring-red-500/30 active:ring-red-500/30',
+      yellow: 'focus:ring-amber-500/30 active:ring-amber-500/30',
+      green: 'focus:ring-emerald-500/30 active:ring-emerald-500/30',
     };
 
     const baseClasses =
@@ -122,7 +121,7 @@ export class DadenButtonComponent {
 
   @HostBinding('class') get classes() {
     return [
-      'inline-flex items-center justify-center rounded-md font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors',
+      'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
       this.getCursorClass(),
       this.getColorClasses(),
       this.getSizeClass(),

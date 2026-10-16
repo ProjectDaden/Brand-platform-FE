@@ -1,31 +1,60 @@
-<div class="flex items-start justify-between mb-8">
-  <div class="flex flex-col justify-between">
-    <h3 class="text-white">Live Preview</h3>
-    <p class="text-sm opacity-50">Preview your design in different contexts.</p>
+<div class="flex items-start justify-between mb-4">
+  <div class="flex flex-col gap-0.5">
+    <h3 class="text-sm font-semibold text-neutral-900">Live preview</h3>
+    <p class="text-xs text-neutral-500">Phone (360px)</p>
   </div>
-  <div>
-    <button class="hidden lg:block -m-1 p-2 rounded h-min hover:bg-blue-900 opacity-75 hover:opacity-100 transition-all">
-      <daden-icon icon="filter" [strokeWidth]="1.5" [class]="'size-6 text-white'"></daden-icon>
+  <div class="relative">
+    <button
+      type="button"
+      class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 hover:text-neutral-900 transition-colors"
+      [attr.aria-expanded]="menuOpen"
+      aria-haspopup="menu"
+      aria-label="Choose preview"
+      (click)="toggleMenu($event)">
+      <daden-icon icon="phone" [strokeWidth]="1.5" [class]="'size-4'"></daden-icon>
     </button>
+    @if (menuOpen) {
+      <div
+        class="absolute right-0 top-full z-30 mt-2 w-56 rounded-md border border-neutral-200 bg-white p-1 shadow-lg"
+        role="menu"
+        (click)="$event.stopPropagation()">
+        @for (option of previewOptions; track option.key) {
+          @if (option.comingSoon) {
+            <div class="flex items-center justify-between gap-2 rounded px-2 py-1.5 text-[13px] text-neutral-400 cursor-not-allowed select-none">
+              <span>{{ option.label }}</span>
+              <span class="shrink-0 rounded bg-neutral-100 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-neutral-400">Coming soon</span>
+            </div>
+          } @else {
+            <button
+              type="button"
+              role="menuitem"
+              class="flex w-full items-center justify-between gap-2 rounded px-2 py-1.5 text-left text-[13px] text-neutral-700 hover:bg-neutral-50"
+              (click)="selectPreview(option, $event)">
+              <span>{{ option.label }}</span>
+              @if (selectedPreview === option.key) {
+                <daden-icon icon="check" [strokeWidth]="2.5" [class]="'size-3.5 text-emerald-500'"></daden-icon>
+              }
+            </button>
+          }
+        }
+      </div>
+    }
   </div>
 </div>
 
-<div class="flex-1 flex rounded-lg shadow-lg bg-white flex-col overflow-y-scroll preview-container">
-      <daden-preview-landing class="h-1 " [brandnamePreview]="getBrandNameAndTagline"></daden-preview-landing>
-</div>
-
-<div>{{ getBrandNameAndTagline() | json }}</div>
-
-<!-- <div class="flex-1 flex flex-col h-full">
-<div>{{ getBrandNameAndTagline() | json }}</div>
-<div class="flex-1 flex flex-col h-full">
-  <div class="bg-white rounded-lg shadow-lg flex-1 flex flex-col">
-    <div class="bg-gray-200 rounded relative h-[90dvh] lg:h-full overflow-hidden">
-      <iframe 
-        src="/assets/landing.html" 
-        frameborder="0"
-        class="lg:absolute top-0 left-0 w-full h-full origin-top"
-      ></iframe>
+<div class="flex-1 min-h-0 flex justify-center">
+  <div class="phone-frame">
+    <div class="phone-notch" aria-hidden="true"></div>
+    <div class="phone-screen">
+      @if (hasBrandName()) {
+        <daden-preview-landing viewport="phone"></daden-preview-landing>
+      } @else {
+        <div class="empty-preview">
+          <p class="empty-preview-title">Your brand site</p>
+          <p class="empty-preview-copy">Add a name to see the site.</p>
+        </div>
+      }
     </div>
+    <div class="phone-bar" aria-hidden="true"></div>
   </div>
-</div> -->
+</div>

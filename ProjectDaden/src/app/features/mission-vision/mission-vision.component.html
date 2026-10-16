@@ -3,47 +3,53 @@
 <section id="mission">
     <daden-group-header
     title="Our Mission"
-    subtitle="Tell us why your brand exists and who it serves. Choose from pre-written options or write your own."></daden-group-header>
-    
+    subtitle="Tell us why your brand exists and who it serves."></daden-group-header>
+
     <div class="flex flex-col gap-6">
-        <!-- Purpose Dropdown/Input -->
         <div>
-            <daden-label
-                label="We exist to...">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select a purpose...</option>
-                <option value="empower">Empower</option>
-                <option value="inspire">Inspire</option>
-                <option value="connect">Connect</option>
+            <daden-label>We exist to...</daden-label>
+            <select class="daden-field"
+              [value]="purposeSelectValue()"
+              (change)="onPurposePick($event)">
+                <option value="" disabled>Select a purpose...</option>
+                @for (purpose of purposes; track purpose) {
+                  <option [value]="purpose">{{ purpose }}</option>
+                }
                 <option value="custom">Custom (write your own)</option>
             </select>
-            <daden-detail
-                text="Select a purpose...">
-            </daden-detail>
-            <input type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all hidden" placeholder="Enter custom purpose">
+            @if (purposeMode() === 'custom') {
+              <daden-input
+                class="mt-2"
+                type="text"
+                placeholder="Enter a custom purpose"
+                [value]="session.purpose()"
+                (valueChange)="updatePurpose($event)">
+              </daden-input>
+            }
         </div>
-        
-        <!-- Audience Dropdown/Input -->
+
         <div>
-            <daden-label
-                label="For...">
-            </daden-label>
-            <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                <option value="" disabled selected>Select an audience...</option>
-                <option value="communities">Communities</option>
-                <option value="innovators">Innovators</option>
-                <option value="families">Families</option>
+            <daden-label>For...</daden-label>
+            <select class="daden-field"
+              [value]="audienceSelectValue()"
+              (change)="onAudiencePick($event)">
+                <option value="" disabled>Select an audience...</option>
+                @for (audience of audiences; track audience) {
+                  <option [value]="audience">{{ audience }}</option>
+                }
                 <option value="custom">Custom (write your own)</option>
             </select>
-            <daden-detail
-                text="Select an audience...">
-            </daden-detail>
-            <input type="text" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all hidden" placeholder="Enter custom audience">
+            @if (audienceMode() === 'custom') {
+              <daden-input
+                class="mt-2"
+                type="text"
+                placeholder="Enter a custom audience"
+                [value]="session.audience()"
+                (valueChange)="updateAudience($event)">
+              </daden-input>
+            }
         </div>
-        <daden-detail
-            text="These choices will shape your brand’s tagline and audience focus.">
-        </daden-detail>
+        <daden-detail>These choices shape your brand story and the people the preview speaks to.</daden-detail>
     </div>
 </section>
 
@@ -51,9 +57,9 @@
     <daden-group-header
     title="Mission Statement Preview"
     subtitle="See how your selections come together."></daden-group-header>
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-lg font-medium italic">“We exist to <span class="text-blue-700">empower</span>&nbsp;<span class="text-blue-700">communities</span>.”</p>
+    <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200">
+        <p class="text-base font-medium">We exist to <span class="font-semibold text-neutral-900">{{ session.purpose() || '…' }}</span> for <span class="font-semibold text-neutral-900">{{ session.audience() || '…' }}</span>.</p>
     </div>
 </section>
-   
+
 <daden-page-footer></daden-page-footer>

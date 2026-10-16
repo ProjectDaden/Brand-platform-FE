@@ -1,15 +1,14 @@
-<div class="flex flex-row items-baseline gap-4">
-    <input 
-      type="range" 
-      min="{{ min() }}" 
-      max="{{ max() }}" 
-      step="{{ step() }}" 
-      [value]="value()" 
-      (input)="onSliderChange($event)" 
-      class="w-full h-2 my-4 rounded-lg cursor-pointer flex-1 text-red-900 bg-blue-900 border-l-gray-900 outline-none"
-    />
-    <!-- <div class="mt-2 text-blue-900 w-20">
-      <span class="font-semibold">Value: </span>
-      <span class="">{{ value() }}</span>
-    </div> -->
+<div class="relative flex items-center h-6">
+  <div class="absolute inset-x-0 h-1.5 rounded-full bg-neutral-100 pointer-events-none">
+    <div class="h-1.5 rounded-full bg-neutral-900" [style.width.%]="fillPercent()"></div>
   </div>
+  <input
+    type="range"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [value]="value()"
+    (input)="onSliderChange($event)"
+    class="tone-range relative z-10 w-full h-6 bg-transparent appearance-none cursor-pointer outline-none"
+  />
+</div>

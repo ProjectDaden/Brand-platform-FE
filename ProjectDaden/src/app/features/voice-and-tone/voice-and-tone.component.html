@@ -3,100 +3,50 @@
 <section id="tone-of-voice">
     <daden-group-header
         title="Set Your Tone"
-        subtitle="Adjust the sliders to craft your brand’s unique voice.">
+        subtitle="Sliders start from your archetype. Move them when you want a more personal voice.">
     </daden-group-header>
+    @if (session.archetype()) {
+      <daden-detail>Suggested for a {{ session.archetype() }} brand. Adjust anything that doesn't sound like you.</daden-detail>
+    }
 
-    <div class="grid grid-cols-1 gap-6">
-        <!-- Formality Slider -->
-        <div>
-            <daden-label
-                label="Formality (Casual to Professional)">
-            </daden-label>
-            <daden-input-range
-                type="range"
-                [min]="0"
-                [max]="100"
-                [value]="formality"
-                (input)="handleSliderChange($event, 'formality')">
-             </daden-input-range>
-            <div class="flex justify-between text-md mt-1">
-                <span class=" w-24 flex justify-start opacity-50">Casual</span>
-                <h3>{{ formality }}%</h3>
-                <span class=" w-24 flex justify-end opacity-50">Professional</span>
+    <div class="flex flex-col gap-8 mt-6">
+        @for (axis of axes; track axis.key) {
+            <div>
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="font-medium text-neutral-800">{{ axis.label }}</span>
+                    <span class="tabular-nums text-neutral-500">{{ axisValue(axis.key) }}%</span>
+                </div>
+                <daden-input-range
+                    [min]="0"
+                    [max]="100"
+                    [value]="axisValue(axis.key)"
+                    (valueChange)="setTone(axis.key, $event)">
+                </daden-input-range>
+                <div class="flex justify-between text-xs text-neutral-400 mt-1.5">
+                    <span>{{ axis.left }}</span>
+                    <span>{{ axis.right }}</span>
+                </div>
+                <p class="mt-3 text-sm leading-relaxed text-neutral-600">{{ axisSample(axis.key) }}</p>
             </div>
-        </div>
-
-        <!-- Playfulness Slider -->
-        <div>
-            <daden-label
-                label="Playfulness (Serious to Playful)"
-                >
-            </daden-label>
-            <daden-input-range
-                type="range"
-                [min]="0"
-                [max]="100"
-                [value]="playfulness"
-                (input)="handleSliderChange($event, 'playfulness')">
-             </daden-input-range>
-            <div class="flex justify-between text-md mt-1">
-                <span class=" w-24 flex justify-start opacity-50">Casual</span>
-                <h3>{{ playfulness }}%</h3>
-                <span class="w-24 flex justify-end opacity-50">Playful</span>
-            </div>
-        </div>
-
-        <!-- Respect Slider -->
-        <div>
-            <daden-label
-                label="Respect (Respectful to Irreverent)"
-                >
-            </daden-label>
-            <daden-input-range
-                type="range"
-                [min]="0"
-                [max]="100"
-                [value]="respect"
-                (input)="handleSliderChange($event, 'respect')">
-             </daden-input-range>
-            <div class="flex justify-between text-md mt-1">
-                <span class=" w-24 flex justify-start opacity-50">Respectful</span>
-                <h3>{{ respect }}%</h3>
-                <span class="w-24 flex justify-end opacity-50">Irreverent</span>
-            </div>
-        </div>
-
-        <!-- Emotion Slider -->
-        <div>
-            <daden-label
-                label="Emotion (Matter-of-Fact to Enthusiastic)">
-            </daden-label>
-            <daden-input-range
-                type="range"
-                [min]="0"
-                [max]="100"
-                [value]="emotion"
-                (input)="handleSliderChange($event, 'emotion')">
-             </daden-input-range>
-            <div class="flex justify-between text-md mt-1">
-                <span class=" w-32 flex justify-start opacity-50">Matter-of-Fact</span>
-                <h3>{{ emotion }}%</h3>
-                <span class="w-32 flex justify-end opacity-50">Enthusiastic</span>
-            </div>
-        </div>
+        }
     </div>
-    <daden-detail
-        text="These settings will influence your brand’s copywriting and style guide.">
-    </daden-detail>
+    <daden-detail>These settings shape copy, buttons, and cards in the live preview.</daden-detail>
 </section>
 
 <section id="tone-of-voice-preview">
     <daden-group-header
         title="Tone Preview"
-        subtitle="See how your tone settings adjust the way your brand communicates.">
+        subtitle="How this voice sounds, and how it lands on a button.">
     </daden-group-header>
-    <div class="p-4 bg-blue-50 rounded-lg">
-        <p class="text-base leading-relaxed">{{ getTonePreview() }}</p>
+    <div class="p-4 bg-neutral-50 rounded-md border border-neutral-200">
+        <p class="text-base leading-relaxed text-neutral-700">{{ combinedSample() }}</p>
+        <div class="mt-5">
+            <span
+                class="inline-flex items-center bg-neutral-900 text-white text-sm transition-transform"
+                [ngStyle]="sampleButtonStyle()">
+                {{ session.cta() || 'Try ' + (session.brandname() || 'the brand') }}
+            </span>
+        </div>
     </div>
 </section>
 
